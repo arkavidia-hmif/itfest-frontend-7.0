@@ -20,10 +20,14 @@ module.exports = {
     eqeqeq: "error",
     "no-console": "warn",
     curly: ["error", "multi-line"],
+    quotes: "warn",
   },
   settings: {
     react: {
       version: "detect",
+    },
+    "import/resolver": {
+      typescript: {},
     },
   },
 };
