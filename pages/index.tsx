@@ -1,10 +1,7 @@
+import Layout from "components/commons/Layout";
+
 const Home: React.FC = () => {
-  return (
-    <div>
-    efr
-    frgthryju
-    </div>
-  );
+  return <Layout title="Home">rgt</Layout>;
 };
 
 export default Home;

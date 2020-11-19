@@ -1,6 +1,9 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import "../styles/globals.css";
+import "bootstrap/dist/css/bootstrap-reboot.min.css";
+import "bootstrap/dist/css/bootstrap-grid.min.css";
+import ApiProvider from "provider/ApiProvider";
+import AuthProvider from "provider/AuthProvider";
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -16,11 +19,37 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
           href="https://fonts.googleapis.com/css?family=Roboto"
           rel="stylesheet"
         />
-
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="alternate icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <AuthProvider>
+        <ApiProvider>
+          <Component {...pageProps} />
+        </ApiProvider>
+      </AuthProvider>
+      <style global jsx>
+        {`
+          body {
+            font-family: "roboto";
+            margin: 0;
+            line-height: 1.2;
+          }
+
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            font-family: "Viga";
+            font-weight: 300;
+          }
+
+          .max-content {
+            max-width: 1440px;
+          }
+        `}
+      </style>
     </>
   );
 };
