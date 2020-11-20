@@ -1,5 +1,5 @@
-import Layout from "components/commons/Layout";
 import LeaderBoard from "../components/LeaderBoard";
+import Layout from "components/commons/Layout";
 
 const Home: React.FC = () => {
   return (

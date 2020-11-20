@@ -40,7 +40,7 @@ const LeaderBoard: React.FC = () => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
 export default LeaderBoard;

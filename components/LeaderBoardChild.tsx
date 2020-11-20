@@ -35,7 +35,7 @@ const LeaderBoardChild: React.FC<Props> = ({no, name, score}) => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
 export default LeaderBoardChild;
