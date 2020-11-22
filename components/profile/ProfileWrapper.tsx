@@ -1,12 +1,15 @@
 import ColorfulHeader from "components/ColorfulHeader";
-import { ReactNode } from "react";
+import { useState } from "react";
 import { Theme } from "styles/theme";
+import ProfileSidebar from "./sidebar/ProfileSidebar";
 
-interface Props {
-  children: ReactNode;
-}
 
-const ProfileWrapper: React.FC<Props> = ({children}) => {
+const ProfileWrapper: React.FC = () => {
+  const [selection, setSelection] = useState(0);
+  const getComponent = () => {
+    if (selection === 0) return <div>a</div>;
+    if (selection === 1) return <div>b</div>;
+  }
 
   return (
     <div className="container">
@@ -23,11 +26,17 @@ const ProfileWrapper: React.FC<Props> = ({children}) => {
         <div className="col-1 points mr-1">
           <h2 id="point">Points<div className="indicator"></div></h2>
         </div>
-        <div className="col-1">
+        <div className="col-9">
           <h2>1000</h2>
         </div>
-        <div className="row pt-3">
-          <div className="col-12">{children}</div>
+        <div className="col-3">
+          <ProfileSidebar
+            setSelection={setSelection}
+            selection={selection}
+          />
+        </div>
+        <div className="col-9">
+          {getComponent()}
         </div>
       </div>
     <style jsx>{`

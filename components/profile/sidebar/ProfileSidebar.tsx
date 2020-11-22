@@ -2,15 +2,14 @@ import { SidebarEntry } from "interfaces/sidebar";
 import SidebarSection from "./SidebarSection";
 
 const sidebarTop = {
-  name: "Tim",
   item: [
     {
       text: "Primary Data",
-      image: "/img/dashboard/submission/tim.png",
+      image: "/img/profile/primary.png",
     },
     {
       text: "Personal Data",
-      image: "/img/dashboard/submission/anggota.png",
+      image: "/img/profile/personal.png",
     },
   ] as SidebarEntry[],
 };

@@ -1,5 +1,4 @@
-import { Fragment } from "react";
-import SidebarItem from "./sidebarItem";
+import SidebarItem from "./SidebarItem";
 import { SidebarGroup } from "interfaces/sidebar";
 
 interface Props {
@@ -14,26 +13,21 @@ const SidebarSection: React.FC<Props> = ({ data, selection, setSelection }) => {
     <>
       {data.map((entry) => {
         return (
-          <Fragment key={entry.name}>
-            <div className="not-dropdown">
-              <div className="title">{entry.name}</div>
-            </div>
-            <div className="dropdown">
-              <ul className="list">
-                {entry.item.map((item) => {
-                  i += 1;
-                  return (
-                    <SidebarItem
-                      key={i}
-                      entry={item}
-                      index={i}
-                      selection={selection}
-                      setSelection={setSelection}
-                    />
-                  );
-                })}
-              </ul>
-            </div>
+          <div className="dropdown">
+            <ul className="list">
+              {entry.item.map((item) => {
+                i += 1;
+                return (
+                  <SidebarItem
+                    key={i}
+                    entry={item}
+                    index={i}
+                    selection={selection}
+                    setSelection={setSelection}
+                  />
+                );
+              })}
+            </ul>
             <style jsx>{`
               ul {
                 list-style: none;
@@ -50,7 +44,7 @@ const SidebarSection: React.FC<Props> = ({ data, selection, setSelection }) => {
                 line-height: 1.4rem;
               }
             `}</style>
-          </Fragment>
+          </div>
         );
       })}
     </>
