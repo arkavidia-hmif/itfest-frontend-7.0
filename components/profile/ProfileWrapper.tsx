@@ -1,7 +1,7 @@
-import ColorfulHeader from "components/ColorfulHeader";
 import { useState } from "react";
-import { Theme } from "styles/theme";
 import ProfileSidebar from "./sidebar/ProfileSidebar";
+import ColorfulHeader from "components/ColorfulHeader";
+import { Theme } from "styles/theme";
 
 
 const ProfileWrapper: React.FC = () => {
@@ -9,7 +9,7 @@ const ProfileWrapper: React.FC = () => {
   const getComponent = () => {
     if (selection === 0) return <div>a</div>;
     if (selection === 1) return <div>b</div>;
-  }
+  };
 
   return (
     <div className="container">
@@ -39,7 +39,7 @@ const ProfileWrapper: React.FC = () => {
           {getComponent()}
         </div>
       </div>
-    <style jsx>{`
+      <style jsx>{`
       .points {
         max-width: 4.5em;
       }

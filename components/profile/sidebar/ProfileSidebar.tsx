@@ -1,5 +1,5 @@
-import { SidebarEntry } from "interfaces/sidebar";
 import SidebarSection from "./SidebarSection";
+import { SidebarEntry } from "interfaces/sidebar";
 
 const sidebarTop = {
   item: [
@@ -31,7 +31,7 @@ const ProfileSidebar: React.FC<props> = ({selection, setSelection}) => {
       />
       <p>logout</p>
     </div>
-  )
-}
+  );
+};
 
 export default ProfileSidebar;
