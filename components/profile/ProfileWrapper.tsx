@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProfileSidebar from "./sidebar/ProfileSidebar";
+import PrimaryField from "./PrimaryField";
 import ColorfulHeader from "components/ColorfulHeader";
 import { Theme } from "styles/theme";
 
@@ -7,8 +8,12 @@ import { Theme } from "styles/theme";
 const ProfileWrapper: React.FC = () => {
   const [selection, setSelection] = useState(0);
   const getComponent = () => {
-    if (selection === 0) return <div>a</div>;
-    if (selection === 1) return <div>b</div>;
+    if (selection === 0){
+      return <PrimaryField />;
+    } 
+    if (selection === 1){
+      return <PrimaryField />;
+    } 
   };
 
   return (
@@ -29,13 +34,13 @@ const ProfileWrapper: React.FC = () => {
         <div className="col-9">
           <h2>1000</h2>
         </div>
-        <div className="col-3">
+        <div className="col-lg-3 col-xs-12 mt-3">
           <ProfileSidebar
             setSelection={setSelection}
             selection={selection}
           />
         </div>
-        <div className="col-9">
+        <div className="col-lg-9 col-xs-12 mt-3">
           {getComponent()}
         </div>
       </div>
