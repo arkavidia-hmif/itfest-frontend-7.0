@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProfileSidebar from "./sidebar/ProfileSidebar";
 import PrimaryField from "./PrimaryField";
+import PersonalField from "./PersonalField";
 import ColorfulHeader from "components/ColorfulHeader";
 import { Theme } from "styles/theme";
 
@@ -12,7 +13,7 @@ const ProfileWrapper: React.FC = () => {
       return <PrimaryField />;
     } 
     if (selection === 1){
-      return <PrimaryField />;
+      return <PersonalField />;
     } 
   };
 
