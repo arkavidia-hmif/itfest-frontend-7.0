@@ -122,8 +122,9 @@ const MerchStoreContainer: React.FC = () => {
                 renderPagination={() => <></>}
                 renderArrow={customArrow}
               >
-                {MerchStoreItems.map((item) => (
+                {MerchStoreItems.map((item, index) => (
                   <MerchStoreItem
+                    key={index}
                     name={item["item-name"]}
                     image={item["item-img"]}
                     price={item["item-price"]}
@@ -140,8 +141,9 @@ const MerchStoreContainer: React.FC = () => {
                 renderPagination={() => <></>}
                 renderArrow={customArrow}
               >
-                {MerchStoreItems.map((item) => (
+                {MerchStoreItems.map((item, index) => (
                   <MerchStoreItem
+                    key={index}
                     name={item["item-name"]}
                     image={item["item-img"]}
                     price={item["item-price"]}
