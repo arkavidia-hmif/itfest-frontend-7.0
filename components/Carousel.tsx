@@ -54,6 +54,10 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
         />
       </div>
 
+      <div className="message">
+        <img src="/img/carousel/message.svg"/>
+      </div>
+
       <style jsx>
         {`
           .carousel-wrapper {
@@ -79,6 +83,20 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
             min-width: 100%;
             height: 300px;
             transition: 0.5s;
+          }
+
+          .message {
+            position: absolute;
+            background-color: white;
+            bottom: 1.5rem;
+            right: -3rem;
+            padding: 0.5rem;
+            border-radius: 100%;
+            background: linear-gradient(309.03deg, rgba(205, 187, 255, 0.63) 8.8%, #FBBCC8 51.93%, rgba(205, 187, 255, 0.83) 76.67%);
+          }
+
+          .message img {
+            width: 3rem;
           }
 
           .nav-wrapper {

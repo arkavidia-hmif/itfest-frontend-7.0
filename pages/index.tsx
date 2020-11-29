@@ -10,44 +10,34 @@ const Home: React.FC = () => {
       <div className="carouselTest">
         <Carousel>
           <CarouselItem
-            url="/competition/arkalogica"
-            desc={"ARKALOGICA"}
+            textCompany={"Dino"}
+            mainText={"Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"}
             backgroundImage={"/img/carousel/bground.png"}
-            foregroundImage={"/img/carousel/bg.svg"}
-            width={"150px"}
-            type="competition"
+            companyImage={"/img/carousel/dino.svg"}
           />
           <CarouselItem
-            url="/competition/capture-the-flag"
-            desc={"CAPTURE THE FLAG"}
+            textCompany={"Wiella"}
+            mainText={"Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"}
             backgroundImage={"/img/carousel/bground.png"}
-            foregroundImage={"/img/carousel/bg.svg"}
-            width={"150px"}
-            type="competition"
+            companyImage={"/img/carousel/dino.svg"}
           />
           <CarouselItem
-            url="/competition/competitive-programming"
-            desc={"COMPETITIVE PROGRAMMING"}
+            textCompany={"Afif"}
+            mainText={"Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"}
             backgroundImage={"/img/carousel/bground.png"}
-            foregroundImage={"/img/carousel/bg.svg"}
-            width={"160px"}
-            type="competition"
+            companyImage={"/img/carousel/dino.svg"}
           />
           <CarouselItem
-            url="/competition/datavidia"
-            desc={"DATAVIDIA"}
+            textCompany={"Romi"}
+            mainText={"Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"}
             backgroundImage={"/img/carousel/bground.png"}
-            foregroundImage={"/img/carousel/bg.svg"}
-            width={"130px"}
-            type="competition"
+            companyImage={"/img/carousel/dino.svg"}
           />
           <CarouselItem
-            url="/competition/gamejam"
-            desc={"ARKAV GAME JAM"}
+            textCompany={"Akromi"}
+            mainText={"Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"}
             backgroundImage={"/img/carousel/bground.png"}
-            foregroundImage={"/img/carousel/bg.svg"}
-            width={"150px"}
-            type="competition"
+            companyImage={"/img/carousel/dino.svg"}
           />
         </Carousel>
       </div>
