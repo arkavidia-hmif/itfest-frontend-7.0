@@ -1,0 +1,118 @@
+import React, { ReactNode, useState } from "react";
+
+interface CarouselProps {
+  children: ReactNode[];
+}
+
+const Carousel: React.FC<CarouselProps> = ({ children }) => {
+  const [position, setPosition] = useState(0);
+
+  const goLeft = () => {
+    setPosition(position + 100);
+    if (position === 0) {
+      setPosition(-100 * (children.length - 1));
+    } else {
+      setPosition(position + 100);
+    }
+  };
+
+  const goRight = () => {
+    if (position === -100 * (children.length - 1)) {
+      setPosition(0);
+    } else {
+      setPosition(position - 100);
+    }
+  };
+  return (
+    <div className="carousel-wrapper">
+      <div className="carousels">
+        {children.map((item: ReactNode, index: number) => {
+          return (
+            <div
+              key={index}
+              className="carousels-content"
+              style={{ transform: `translateX(${position}%)` }}
+            >
+              {item}
+            </div>
+          );
+        })}
+      </div>
+      <div className="nav-wrapper nav-left">
+        <img
+          className="navigation-button"
+          onClick={goLeft}
+          src="/img/carousel/arLeft.svg"
+        />
+      </div>
+
+      <div className="nav-wrapper nav-right">
+        <img
+          className="navigation-button"
+          onClick={goRight}
+          src="/img/carousel/arRight.svg"
+        />
+      </div>
+
+      <style jsx>
+        {`
+          .carousel-wrapper {
+            width: 100%;
+            position: relative;
+            border-radius: 1rem;
+          }
+
+          .carousels {
+            border-radius: 1rem;
+            width: 100%;
+            height: 300px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .carousels-content {
+            min-width: 100%;
+            height: 300px;
+            transition: 0.5s;
+          }
+
+          .nav-wrapper {
+            position: absolute;
+            top: 44%;
+            padding: 0.8rem;
+            z-index: 2;
+            background-color: white;
+            border-radius: 100%;
+          }
+
+          .navigation-button {
+            width: 1.5rem;
+            height: 1.5rem;
+            cursor: pointer;
+            transition: filter 0.2s;
+          }
+
+          .nav-right {
+            right: -1.5rem;
+          }
+
+          .nav-left {
+            left: -1.5rem;
+          }
+
+          .nav-wrapper:hover {
+            filter: brightness(75%);
+          }
+        `}
+      </style>
+    </div>
+
+  );
+};
+
+export default Carousel;
