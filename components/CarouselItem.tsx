@@ -3,84 +3,38 @@ import { Theme } from "styles/theme";
 
 interface CarouselItemProps {
   backgroundImage?: string;
-  width: string;
-  foregroundImage?: string;
-  desc: string;
-  type: "event" | "competition";
-  url: string;
+  companyImage?: string;
+  textCompany: string;
+  mainText: string;
 }
 
 const CarouselItem: React.FC<CarouselItemProps> = ({
   backgroundImage,
-  width,
-  foregroundImage,
-  desc,
-  type,
-  url,
+  companyImage,
+  textCompany,
+  mainText
 }) => {
   const background = {
     backgroundImage: `url(${backgroundImage})`,
   };
 
-  const competitionStyle = {
-    img: {
-      width: `${width}`,
-      left: "30px",
-    },
-    infoBox: {
-      right: "0px",
-      padding: "0.5rem 0.5rem 0.5rem 1rem",
-      marginLeft: "85px",
-    },
-    title: {
-      color: "#623FA2",
-      textAlign: "right" as const,
-    },
-    gradient: {
-      transform: "rotate(0deg)",
-      backgroundImage: "linear-gradient(90.9deg, #EBE3FF 15.28%, rgba(255, 255, 255, 0) 99.31%",
-    },
-    infoBtn: {
-      textAlign: "right" as const,
-    },
+  const company = {
+    backgroundImage: `url(${companyImage})`,
+    width: "4rem",
+    height: "4rem",
+    marginTop: "1rem"
   };
-
-  const eventStyle = {
-    gradient: {
-      transform: "rotate(180deg)",
-      backgroundImage: "linear-gradient(90.9deg, #FFD2E1 15.28%, rgba(255, 255, 255, 0) 99.31%)",
-    },
-    img: {
-      width: `${width}`,
-      right: "30px",
-    },
-    infoBox: {
-      left: "0px",
-      padding: "0.5rem 1rem 0.5rem 0.5rem",
-      marginRight: "85px",
-    },
-    title: {
-      color: "#B41A83",
-      textAlign: "left" as const,
-    },
-    infoBtn: {
-      textAlign: "left" as const,
-    },
-  };
-
-  const choosenStyle = type === "event" ? eventStyle : competitionStyle;
 
   return (
     <div className="item-carousel" style={background}>
       <div className="content-wrapper">
-        <img className="dino-img" src="/img/carousel/dino.svg" />
+        <img className="dino-img" style={company} />
         <div className="dino-text">
-          <p className="dino-txt-large">Dino</p>
+          <p className="dino-txt-large">{textCompany}</p>
           <a><p className="dino-txt-normal">Find out more</p></a>
         </div>
         <div className="dino-paragraph">
-          <p>Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer</p>
-          <p>Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer</p>
+          <p>{mainText}</p>
         </div>
       </div>
 
@@ -117,10 +71,6 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             padding: 0 1.5rem 0 1.5rem;
           }
 
-          .dino-img {
-            width: 4rem;
-          }
-
           .dino-text {
             width: 30%;
             padding-left: 2.5rem;
@@ -139,7 +89,6 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 
           .dino-text, .dino-paragraph {
             height: 4rem;
-            // border: 1px solid red;
             align-self: center;
           }
 
@@ -188,11 +137,11 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             }
 
             .dino-text {
-              padding: 1.2rem 0 0 1rem;
+              padding: 0.8rem 0 0 1rem;
             }
 
             .dino-txt-large {
-              font-size: 1rem;
+              font-size: 1.2rem;
             }
           }
         `}
