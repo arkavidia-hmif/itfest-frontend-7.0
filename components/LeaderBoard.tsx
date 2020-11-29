@@ -22,7 +22,6 @@ const LeaderBoard: React.FC = () => {
           display: flex;
           flex-direction: column;
           justify-content: space-around;
-          height: 40vh;
           text-align: center;
         }
 
@@ -37,6 +36,12 @@ const LeaderBoard: React.FC = () => {
 
         p {
           font-weight: bold;
+        }
+
+        @media (max-width: 1000px) {
+          .leaderboard {
+            width: 100%;
+          }
         }
       `}</style>
     </div>
