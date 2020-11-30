@@ -32,6 +32,10 @@ const MerchStoreItem: React.SFC<Props> = ({ name, image, price }) => {
             justify-content: center;
           }
 
+          .item-image img {
+            width: 100%;
+          }
+
           .store-item:hover button {
             position: absolute;
             top: 40%;

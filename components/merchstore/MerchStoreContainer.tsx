@@ -2,7 +2,25 @@ import Carousel, { consts } from "react-elastic-carousel";
 import MerchStoreItem from "./MerchStoreItem";
 
 const MerchStoreContainer: React.FC = () => {
-  const customArrow = ({ type, onClick, isEdge }) => {
+  const breakPoints = [
+    { width: 100, itemsToShow: 1 },
+    { width: 200, itemsToShow: 2 },
+    { width: 350, itemsToShow: 3 },
+    { width: 450, itemsToShow: 4 },
+    { width: 550, itemsToShow: 5 },
+    { width: 850, itemsToShow: 6 },
+    { width: 1150, itemsToShow: 7 },
+  ];
+  // { type, onClick, isEdge }
+  const customArrow = ({
+    type,
+    onClick,
+    isEdge,
+  }: {
+    type: any;
+    onClick: any;
+    isEdge: any;
+  }) => {
     return (
       <>
         <div className="next-btn-container">
@@ -100,7 +118,7 @@ const MerchStoreContainer: React.FC = () => {
               alt="store-logo"
               className="store-logo"
             />
-            <div className="store-name ml-5">
+            <div className="store-name">
               <h2>John Shop</h2>
             </div>
           </div>
@@ -118,7 +136,7 @@ const MerchStoreContainer: React.FC = () => {
             <h3 className="store-items-title">Top Merch</h3>
             <div className="store-items-carousel mt-4 mb-2">
               <Carousel
-                itemsToShow={7}
+                breakPoints={breakPoints}
                 renderPagination={() => <></>}
                 renderArrow={customArrow}
               >
@@ -137,7 +155,7 @@ const MerchStoreContainer: React.FC = () => {
             <h3 className="store-items-title">Merch Lain</h3>
             <div className="store-items-carousel mt-4 mb-2">
               <Carousel
-                itemsToShow={7}
+                breakPoints={breakPoints}
                 renderPagination={() => <></>}
                 renderArrow={customArrow}
               >
@@ -192,12 +210,14 @@ const MerchStoreContainer: React.FC = () => {
 
           .store-logo {
             width: 6.3rem;
+            height: 6.3rem;
           }
 
           .store-name {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin-left: 3rem;
           }
 
           .store-name h2 {
@@ -238,6 +258,68 @@ const MerchStoreContainer: React.FC = () => {
 
           .store-items-title {
             font-size: 2.5rem;
+          }
+
+          @media only screen and (max-width: 1200px) {
+            .merch-store-top {
+              display: block;
+            }
+            .merch-store-search {
+              padding-top: 2rem;
+            }
+          }
+
+          @media only screen and (max-width: 1000px) {
+            .merch-store-title {
+              padding: 0;
+            }
+
+            .merch-store-top {
+              padding: 1.5rem 1rem;
+            }
+
+            .merch-store-bottom {
+              padding: 1.5rem 1rem;
+            }
+
+            .merch-store-search {
+              padding-top: 1rem;
+              padding-bottom: 1rem;
+            }
+          }
+
+          @media only screen and (max-width: 700px) {
+            .merch-store-search-bar {
+              font-size: 1.25rem;
+              padding: 0.5rem 2rem 0.5rem 2.7rem;
+            }
+
+            .store-name {
+              margin-left: 0.5rem;
+            }
+
+            .store-logo {
+              width: 5rem;
+              height: 5rem;
+            }
+
+            .store-name h2 {
+              font-size: 3rem;
+            }
+
+            .store-items-title {
+              font-size: 2.3rem;
+            }
+          }
+
+          @media only screen and (max-width: 400px) {
+            .store-name h2 {
+              font-size: 2rem;
+            }
+
+            .store-items-title {
+              font-size: 2rem;
+            }
           }
         `}
       </style>

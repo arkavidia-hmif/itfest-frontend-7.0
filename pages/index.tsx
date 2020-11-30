@@ -12,6 +12,12 @@ const Home: React.FC = () => {
           .container-merch {
             margin: 6rem;
           }
+
+          @media only screen and (max-width: 375px) {
+            .container-merch {
+              margin: 2rem;
+            }
+          }
         `}
       </style>
     </Layout>
