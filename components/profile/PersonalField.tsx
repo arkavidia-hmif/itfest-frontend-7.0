@@ -39,11 +39,11 @@ const PersonalField: React.FC = () => {
               <h2>{data.text}</h2>
               { isEdit ? (
                 <InputField
-                type={data.text}
-                value={value}
-                setValue={setValue}
-                placeholder={data.text}
-              />
+                  type={data.text}
+                  value={value}
+                  setValue={setValue}
+                  placeholder={data.text}
+                />
               ) : (
                 <h2>{value}</h2>
               )}
