@@ -33,6 +33,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
             font-family: "roboto";
             margin: 0;
             line-height: 1.2;
+            overflow-x: hidden;
           }
 
           h1,
