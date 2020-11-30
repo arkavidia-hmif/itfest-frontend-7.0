@@ -21,16 +21,9 @@ const CombinedComponents: React.FC<Props> = ({done}) => {
         .flex-container {
             display: flex;
             flex-direction: row;
-            margin-left: 10%;
-            margin-right: 10%;
-        }
-
-        .flex-container-alt {
-            display: flex;
-            flex-direction: column;
+            margin-left: 15%;
+            margin-right: 15%;
             align-items: center;
-            margin-left: 10%;
-            margin-right: 10%;
         }
 
         .margin {
@@ -44,7 +37,8 @@ const CombinedComponents: React.FC<Props> = ({done}) => {
         @media only screen and (max-width: 1000px) {
             .flex-container {
                 flex-direction: column-reverse;
-                margin-top: 8%;
+                margin-top: 4.5%;
+                justify-content: center;
             }
         }
       `}</style>

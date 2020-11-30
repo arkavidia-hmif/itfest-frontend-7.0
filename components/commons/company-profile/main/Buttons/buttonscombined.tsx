@@ -35,6 +35,12 @@ const CombinedButton: React.FC<Props> = ({type, done}) => {
             flex-direction: row;
             justify-content: center;
         }
+
+        @media only screen and (max-width: 1000px) {
+            .flex-container {
+                justify-content: center;
+            }
+      }
       `}</style>
     </>
   );

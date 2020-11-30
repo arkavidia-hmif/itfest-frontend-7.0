@@ -5,7 +5,7 @@ import GalleryMain from "../../components/commons/company-profile/main/Gallery/g
 import ChallengeDone from "../../components/commons/company-profile/main/Challenge/challenge";
 
 const CompanyProfile: React.FC = () => {
-  const done = false;
+  const done = true;
   return (
     <div>
       <Logo type="main"/>

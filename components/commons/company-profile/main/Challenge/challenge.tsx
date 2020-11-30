@@ -48,8 +48,19 @@ const Challenge: React.FC<Props> = ({done}) => {
         </div>
       }
       <style jsx>{`
+        .button {
+            border-radius: 4rem;
+            border-color: transparent;
+            background-color: #441985;
+            color: white;
+            min-width: 7rem;
+            min-height: 2.4rem;
+            font-size: 1.2rem;
+            margin-top: 2%;
+        }
+
         .challenge-margin {
-            margin-top: 3rem;
+            margin-top: 5%;
             margin-bottom: 5rem;
         }
 
@@ -72,8 +83,8 @@ const Challenge: React.FC<Props> = ({done}) => {
             flex-direction: column;
             justify-content: center;
             align-items: stretch;
-            margin-left: 10%;
-            margin-right: 10%;
+            margin-left: 15%;
+            margin-right: 15%;
         }
 
         .flex-center {
@@ -95,6 +106,8 @@ const Challenge: React.FC<Props> = ({done}) => {
 
         .challenge-description {
             text-align: center;
+            margin-right: 5%;
+            margin-left: 5%;
         }
 
         .hologram-image {
@@ -119,13 +132,13 @@ const Challenge: React.FC<Props> = ({done}) => {
         .flag-flex {
             display: flex;
             justify-content: flex-end;
-            margin-right: 7%;
+            margin-right: 12%;
             transform: translateY(-4rem);
         }
 
         .gameconsole-flex {
             display: flex;
-            margin-left: 7%;
+            margin-left: 12%;
             transform: translateY(-4rem);
         }
 
@@ -143,13 +156,13 @@ const Challenge: React.FC<Props> = ({done}) => {
             .flag-flex {
                 display: flex;
                 justify-content: flex-end;
-                margin-right: 5%;
+                margin-right: 6.5%;
                 transform: translateY(-3rem);
             }
     
             .gameconsole-flex {
                 display: flex;
-                margin-left: 5%;
+                margin-left: 6.5%;
                 transform: translateY(-3rem);
             }
 

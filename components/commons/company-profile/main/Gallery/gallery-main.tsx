@@ -53,6 +53,8 @@ const GalleryMain: React.FC = () => {
             justify-content: center;
             align-items: center;
             margin-top: 8%;
+            margin-left: 10%;
+            margin-right: 10%;
         }
 
         .carousel-background {

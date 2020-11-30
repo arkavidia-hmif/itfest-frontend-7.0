@@ -8,14 +8,14 @@ const VideoMain: React.FC<Props> = ({type}) => {
   return (
     <>
       {type === "main" ?
-        <>
-          <video width="100%" height="20%" controls>
+        <div className="flex-container">
+          <video className="video-size-main" controls>
             <source src="movie.mp4" type="video/mp4"/>
             <source src="movie.ogg" type="video/ogg"/>
-            Your browser does not support the video tag.
+              Your browser does not support the video tag.
           </video>
           {/*<img src="/img/company-profile/video-right.png" className="video-image-main"/>*/}
-        </>
+        </div>
         :
         <div className="flex-container-alt">
           <video className="video-size" controls>
@@ -29,15 +29,6 @@ const VideoMain: React.FC<Props> = ({type}) => {
         </div>
       }
       <style jsx>{`
-        .button {
-            border-radius: 5px;
-            border-color: transparent;
-            background-color: #FE789A;
-            color: white;
-            min-width: 6rem;
-            margin-right: 1.5rem;
-        }
-
         .flex-container-alt {
             margin-top: 1%;
             display: flex;
@@ -55,8 +46,13 @@ const VideoMain: React.FC<Props> = ({type}) => {
             position: absolute;
         }
 
+        .video-size-main {
+            min-width: 35rem;
+            min-weight: 50%;
+        }
+
         .video-size {
-            width: 30%;
+            width: 35rem;
             height: 20%;
         }
 
@@ -68,8 +64,22 @@ const VideoMain: React.FC<Props> = ({type}) => {
 
         @media only screen and (max-width: 1000px) {
             .video-size {
-                width: 70%;
+                width: 25rem;
                 height: 16rem;
+            }
+
+            .video-size-main {
+                min-width: 0;
+                min-height: 0;
+                width: 25rem;
+                height: 16rem;
+            }
+
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
         }
       `}</style>

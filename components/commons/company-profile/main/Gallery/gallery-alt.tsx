@@ -50,20 +50,25 @@ const GalleryAlt: React.FC = () => {
       </div>
       <style jsx>{`
         .flex-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            margin-left: 10%;
-            margin-right: 10%;
-            margin-top: 3%;
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-top: 5%;
         }
 
         .text {
-            margin-right: 1%;
+            margin-right: 5%;
+            grid-column-start: 1;
+            grid-column-end: 3;
         }
 
         .carousel-background {
+            grid-column-start: 3;
+            grid-column-end: 5;
             background-color: white;
             width: 100%;
             height: 20rem;
@@ -80,6 +85,7 @@ const GalleryAlt: React.FC = () => {
 
         @media only screen and (max-width: 1000px) {
             .flex-container {
+                display: flex;
                 flex-direction: column-reverse;
                 margin-top: 8%;
             }

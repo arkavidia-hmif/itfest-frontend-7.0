@@ -26,8 +26,8 @@ const LogoTitleCompany: React.FC<Props> = ({type}) => {
         .flex-container {
             display: flex;
             flex-direction: row;
-            margin-left: 10%;
-            margin-right: 10%;
+            margin-left: 15%;
+            margin-right: 15%;
         }
 
         .flex-container-alt {
@@ -68,6 +68,12 @@ const LogoTitleCompany: React.FC<Props> = ({type}) => {
 
             .title {
                 font-size: 2rem;
+            }
+
+            .flex-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
             }
         }
       `}</style>
