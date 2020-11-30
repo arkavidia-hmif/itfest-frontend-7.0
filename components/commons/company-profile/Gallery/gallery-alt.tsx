@@ -1,6 +1,6 @@
 import * as React from "react";
 import Carousel from "react-elastic-carousel";
-import GalleryAltContent from "../../../../../utils/context/constants/company-profile/gallery-text";
+import GalleryAltContent from "../../../../utils/context/constants/company-profile/gallery-text";
 
 const GalleryAlt: React.FC = () => {
   const [items] = React.useState([

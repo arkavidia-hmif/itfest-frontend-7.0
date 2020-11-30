@@ -1,5 +1,5 @@
 import * as React from "react";
-import AboutUsContent from "../../../../utils/context/constants/company-profile/about-us-data";
+import AboutUsContent from "../../../utils/context/constants/company-profile/about-us-data";
 
 interface Props {
   type: string;

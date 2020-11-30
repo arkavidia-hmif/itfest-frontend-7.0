@@ -1,10 +1,10 @@
 import * as React from "react";
-import Logo from "../../components/commons/company-profile/main/logo-title";
-import AboutUs from "../../components/commons/company-profile/main/about-us";
-import Buttons from "../../components/commons/company-profile/main/Buttons/buttonscombined";
-import Video from "../../components/commons/company-profile/main/Video/video";
-import GalleryAlt from "../../components/commons/company-profile/main/Gallery/gallery-alt";
-import ChallengeDone from "../../components/commons/company-profile/main/Challenge/challenge";
+import Logo from "../../components/commons/company-profile/logo-title";
+import AboutUs from "../../components/commons/company-profile/about-us";
+import Buttons from "../../components/commons/company-profile/Buttons/buttonscombined";
+import Video from "../../components/commons/company-profile/Video/video";
+import GalleryAlt from "../../components/commons/company-profile/Gallery/gallery-alt";
+import ChallengeDone from "../../components/commons/company-profile/Challenge/challenge";
 
 const CompanyProfile: React.FC = () => {
   const done = true;

@@ -1,8 +1,8 @@
 import * as React from "react";
-import Logo from "../../components/commons/company-profile/main/logo-title";
-import CombinedComponent from "../../components/commons/company-profile/main/combinedmain";
-import GalleryMain from "../../components/commons/company-profile/main/Gallery/gallery-main";
-import ChallengeDone from "../../components/commons/company-profile/main/Challenge/challenge";
+import Logo from "../../components/commons/company-profile/logo-title";
+import CombinedComponent from "../../components/commons/company-profile/combinedmain";
+import GalleryMain from "../../components/commons/company-profile/Gallery/gallery-main";
+import ChallengeDone from "../../components/commons/company-profile/Challenge/challenge";
 
 const CompanyProfile: React.FC = () => {
   const done = true;
