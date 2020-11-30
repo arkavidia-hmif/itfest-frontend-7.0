@@ -74,6 +74,11 @@ const PersonalField: React.FC = () => {
           font-size: 1.5rem;
           color: #441985;
         }
+        @media only screen and (max-width: 767px) {
+          h2{
+            font-size: 1.25rem;
+          }
+        }
       `}</style>
     </>
   );
