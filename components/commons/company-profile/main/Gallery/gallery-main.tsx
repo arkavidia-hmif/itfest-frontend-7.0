@@ -1,8 +1,7 @@
 import * as React from "react";
 import Carousel from "react-elastic-carousel";
-import GalleryAltContent from "../../../../../utils/context/constants/company-profile/gallery-text";
 
-const GalleryAlt: React.FC = () => {
+const GalleryMain: React.FC = () => {
   const [items] = React.useState([
     {id: 1, title: "item #1"},
     {id: 2, title: "item #2"},
@@ -24,11 +23,10 @@ const GalleryAlt: React.FC = () => {
       <div className="flex-container">
         <div>
           <h1>Gallery</h1>
-          <p>{GalleryAltContent[0].content}</p>
         </div>
         <div className="carousel-background">
           <Carousel 
-            itemPadding={[10, 50]}
+            itemsToShow={3}
             renderPagination={({ pages }) => {
               return (
                 <>
@@ -41,7 +39,7 @@ const GalleryAlt: React.FC = () => {
               );
             }}>
             {items.map(item => 
-              <div key={item.id} >
+              <div key={item.id} className="item-container">
                 {item.title}
               </div>
             )}
@@ -51,27 +49,29 @@ const GalleryAlt: React.FC = () => {
       <style jsx>{`
         .flex-container {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-left: 10%;
-            margin-right: 10%;
-            margin-top: 1%;
+            margin-top: 4%;
         }
 
         .carousel-background {
-            background-color: white;
             width: 100%;
             height: 20rem;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             padding: 2%;
-            box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
             border-radius: 1.3rem;
+        }
+
+        .item-container {
+            background: white;
+            width: 90%;
+            height: 14rem;
         }
       `}</style>
     </>
   );
 };
 
-export default GalleryAlt;
+export default GalleryMain;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import CompanyProfile from "./company-profile/companyprofilealt";
+import CompanyProfile from "./company-profile/companyprofilemain";
 import Layout from "components/commons/Layout";
 
 const Home: React.FC = () => {

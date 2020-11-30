@@ -9,7 +9,7 @@ const AboutUs: React.FC<Props> = ({type}) => {
     <>
       {type === "main" ?
         <div className="flex-container">
-          <h2>Tentang Kami</h2>
+          <p className="title">Tentang Kami</p>
           <p>{AboutUsContent[0].content}</p>
         </div>
         :
@@ -22,6 +22,11 @@ const AboutUs: React.FC<Props> = ({type}) => {
         .flex-container {
             display: flex;
             flex-direction: column;
+            margin-top: 1rem;
+        }
+
+        .title {
+            font-size: 1.8rem;
         }
 
         .flex-container-alt {
