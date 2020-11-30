@@ -18,7 +18,7 @@ const ProfileWrapper: React.FC = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container main-profile">
       <div className="row">
         <div className="col-12">
           <ColorfulHeader
@@ -35,17 +35,20 @@ const ProfileWrapper: React.FC = () => {
         <div className="col-9">
           <h2>1000</h2>
         </div>
-        <div className="col-lg-3 col-xs-12 mt-3">
+        <div className="col-lg-3 col-xs-12 mt-4">
           <ProfileSidebar
             setSelection={setSelection}
             selection={selection}
           />
         </div>
-        <div className="col-lg-9 col-xs-12 mt-3">
+        <div className="col-lg-9 col-xs-12 mt-4">
           {getComponent()}
         </div>
       </div>
       <style jsx>{`
+      .main-profile {
+        height: 90vh;
+      }
       .points {
         max-width: 4.5em;
       }
