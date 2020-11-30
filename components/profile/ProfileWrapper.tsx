@@ -52,6 +52,9 @@ const ProfileWrapper: React.FC = () => {
       #point {
         color: #441985;
       }
+      h2 {
+        color: #441985;
+      }
       .indicator {
         position: absolute;
         width: 100%;

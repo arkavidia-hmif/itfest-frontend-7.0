@@ -24,12 +24,45 @@ const ProfileSidebar: React.FC<props> = ({selection, setSelection}) => {
 
   return (
     <div className="container">
-      <SidebarSection
-        data={sidebarData}
-        selection={selection}
-        setSelection={setSelection}
-      />
-      <p>logout</p>
+      <div className="row">
+        <div className="col-lg-11 col-md-12 side-item">
+          <SidebarSection
+            data={sidebarData}
+            selection={selection}
+            setSelection={setSelection}
+          />
+          <a>Logout</a>
+        </div>
+        <div id="right-roller">
+        </div>
+      </div>
+      <style jsx>{`
+        .side-item {
+          text-align: center;
+        }
+        #right-roller {
+          position: absolute;
+          background: linear-gradient(45deg, #623FA2 0%, #fe789a 100%);
+          border-radius: 0.2em;
+          width: 0.4em;
+          height: 100%;
+          right: 0em;
+        }
+        a {
+          color: #ac0b3d;
+          font-family: viga;
+          font-size: 1.5rem;
+          text-decoration: none;
+        }
+        @media screen and (max-width: 767px) {
+          #right-roller {
+            display: none;
+          }
+          a {
+            font-size: 1rem;
+          }
+        }
+      `}</style>
     </div>
   );
 };
