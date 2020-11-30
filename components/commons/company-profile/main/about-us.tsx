@@ -10,19 +10,19 @@ const AboutUs: React.FC<Props> = ({type}) => {
       {type === "main" ?
         <div className="flex-container">
           <p className="title">Tentang Kami</p>
-          <p>{AboutUsContent[0].content}</p>
+          <p className="description-text">{AboutUsContent[0].content}</p>
         </div>
         :
         <div className="flex-container-alt">
-          <h2>Tentang Kami</h2>
-          <p className="description-text">{AboutUsContent[0].content}</p>
+          <p className="title">Tentang Kami</p>
+          <p className="description-text-alt">{AboutUsContent[0].content}</p>
         </div>
       }
       <style jsx>{`
         .flex-container {
             display: flex;
             flex-direction: column;
-            margin-top: 1rem;
+            margin-top: 3%;
         }
 
         .title {
@@ -35,10 +35,33 @@ const AboutUs: React.FC<Props> = ({type}) => {
             align-items: center;
             margin-left: 10%;
             margin-right: 10%;
+            margin-top: 3%;
         }
 
-        .description-text {
+        .description-text-alt {
             text-align: center;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .flex-container {
+                margin-top: 5%;
+            }
+
+            .flex-container-alt {
+                margin-top: 5%;
+            }
+
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .logo-photo-alt {
+                max-width: 4rem;
+            }
+
+            .description-text {
+                font-size: 2.6vw;
+            }
         }
       `}</style>
     </>

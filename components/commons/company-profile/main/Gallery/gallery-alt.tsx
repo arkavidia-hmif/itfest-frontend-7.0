@@ -22,7 +22,7 @@ const GalleryAlt: React.FC = () => {
   return (
     <>
       <div className="flex-container">
-        <div>
+        <div className="text">
           <h1>Gallery</h1>
           <p>{GalleryAltContent[0].content}</p>
         </div>
@@ -41,7 +41,7 @@ const GalleryAlt: React.FC = () => {
               );
             }}>
             {items.map(item => 
-              <div key={item.id} >
+              <div key={item.id} className="item-container">
                 {item.title}
               </div>
             )}
@@ -56,7 +56,11 @@ const GalleryAlt: React.FC = () => {
             align-items: center;
             margin-left: 10%;
             margin-right: 10%;
-            margin-top: 1%;
+            margin-top: 3%;
+        }
+
+        .text {
+            margin-right: 1%;
         }
 
         .carousel-background {
@@ -64,10 +68,36 @@ const GalleryAlt: React.FC = () => {
             width: 100%;
             height: 20rem;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             padding: 2%;
             box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
             border-radius: 1.3rem;
+        }
+
+        .item-container {
+
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .flex-container {
+                flex-direction: column-reverse;
+                margin-top: 8%;
+            }
+
+            .carousel-background {
+                background-color: white;
+                width: 100%;
+                height: 20rem;
+                display: flex;
+                align-items: center;
+                padding: 2%;
+                box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 1rem;
+            }
+
+            .text {
+                margin-top: 3%;
+            }
         }
       `}</style>
     </>

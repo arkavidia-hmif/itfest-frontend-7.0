@@ -1,11 +1,19 @@
 import * as React from "react";
 
-const ApplyButton: React.FC = () => {
+interface Props {
+  done: boolean;
+}
+
+const ApplyButton: React.FC<Props> = ({done}) => {
   return (
     <>
-      <button className="button">Apply Now</button>
+      {(done) ?
+        <button className="button-done">Apply Now</button>
+        :
+        <button className="button-undone">Apply Now</button>
+      }
       <style jsx>{`
-        .button {
+        .button-done {
             border-radius: 5px;
             border-color: transparent;
             background-color: #B296FE;
@@ -14,6 +22,16 @@ const ApplyButton: React.FC = () => {
             min-height: 2.4rem;
             font-size: 1.2rem;
         }
+
+        .button-undone {
+            border-radius: 5px;
+            border-color: transparent;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            min-width: 7rem;
+            min-height: 2.4rem;
+            font-size: 1.2rem;
+      }
       `}</style>
     </>
   );

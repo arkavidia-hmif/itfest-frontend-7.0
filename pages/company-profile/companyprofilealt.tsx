@@ -7,14 +7,15 @@ import GalleryAlt from "../../components/commons/company-profile/main/Gallery/ga
 import ChallengeDone from "../../components/commons/company-profile/main/Challenge/challenge";
 
 const CompanyProfile: React.FC = () => {
+  const done = false;
   return (
     <div>
       <Logo type="alt"/>
       <Video type="alt"/>
       <AboutUs type="alt"/>
-      <Buttons type="alt"/>
+      <Buttons type="alt" done={done}/>
       <GalleryAlt/>
-      <ChallengeDone done={false}/>
+      <ChallengeDone done={done}/>
       <style jsx>{`
         .grid-container {
             display: grid;

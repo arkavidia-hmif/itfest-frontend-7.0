@@ -52,7 +52,7 @@ const GalleryMain: React.FC = () => {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-top: 4%;
+            margin-top: 8%;
         }
 
         .carousel-background {
@@ -61,13 +61,20 @@ const GalleryMain: React.FC = () => {
             display: flex;
             align-items: center;
             padding: 2%;
-            border-radius: 1.3rem;
         }
 
         .item-container {
             background: white;
             width: 90%;
-            height: 14rem;
+            height: 18rem;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .item-container {
+                background: white;
+                width: 90%;
+                height: 18rem;
+            }
         }
       `}</style>
     </>

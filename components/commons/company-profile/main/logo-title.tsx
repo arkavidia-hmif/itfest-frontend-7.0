@@ -11,14 +11,14 @@ const LogoTitleCompany: React.FC<Props> = ({type}) => {
         <div className="flex-container">
           <img src="/img/company-profile/logocompany.png" className="logo-photo"/>
           <div className="logo-title">
-            <h1>Dinosaurus</h1>
+            <h1 className="title">Dinosaurus</h1>
           </div>
         </div>
         :
         <div className="flex-container-alt">
           <img src="/img/company-profile/logocompany.png" className="logo-photo-alt"/>
-          <div className="logo-title">
-            <h1>Dinosaurus</h1>
+          <div className="logo-title-alt">
+            <h1 className="title">Dinosaurus</h1>
           </div>
         </div>
       }
@@ -50,6 +50,25 @@ const LogoTitleCompany: React.FC<Props> = ({type}) => {
             display: flex;
             align-items: center;
             margin-left: 1.5rem;
+        }
+
+        .logo-title-alt {
+            display: flex;
+            align-items: center;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .logo-photo {
+                max-width: 3rem;
+            }
+
+            .logo-photo-alt {
+                max-width: 4rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
         }
       `}</style>
     </>

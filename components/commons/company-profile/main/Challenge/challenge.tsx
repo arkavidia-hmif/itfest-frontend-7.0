@@ -8,7 +8,7 @@ const Challenge: React.FC<Props> = ({done}) => {
   return (
     <>
       {(done) ?
-        <>
+        <div className="challenge-margin">
           <h1 className="challenge-title">Challenge</h1>
           <div className="flag-flex">
             <img src="/img/company-profile/flag.png" className="flag-image"/>
@@ -27,9 +27,9 @@ const Challenge: React.FC<Props> = ({done}) => {
           <div className="gameconsole-flex">
             <img src="/img/company-profile/game-console.png" className="flag-image"/>
           </div>
-        </>
+        </div>
         :
-        <>
+        <div className="challenge-margin">
           <h1 className="challenge-title">Challenge</h1>
           <div className="flag-flex">
             <img src="/img/company-profile/flag.png" className="flag-image"/>
@@ -45,9 +45,14 @@ const Challenge: React.FC<Props> = ({done}) => {
           <div className="gameconsole-flex">
             <img src="/img/company-profile/game-console.png" className="flag-image"/>
           </div>
-        </>
+        </div>
       }
       <style jsx>{`
+        .challenge-margin {
+            margin-top: 3rem;
+            margin-bottom: 5rem;
+        }
+
         .challenge-box-done {
             padding: 1rem;
             background: rgba(219, 194, 255, 0.8);
@@ -56,10 +61,10 @@ const Challenge: React.FC<Props> = ({done}) => {
         }
 
         .challenge-box-undone {
-          padding: 1rem;
-          background: white;
-          box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
-          border-radius: 1.5rem;
+            padding: 1rem;
+            background: white;
+            box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 1.5rem;
         }
 
         .flex-center-box {
@@ -97,12 +102,12 @@ const Challenge: React.FC<Props> = ({done}) => {
         }
 
         .play-image {
-            width: 8rem;
+            width: 6.5vw;
             background-color: #FE789A;
             padding: 1%;
             padding-left: 3.5%;
             padding-right: 3%;
-            border-radius: 1.3rem;
+            border-radius: 1vw;
             margin-top: 1%;
         }
 
@@ -124,15 +129,43 @@ const Challenge: React.FC<Props> = ({done}) => {
             transform: translateY(-4rem);
         }
 
-        .button {
-            border-color: transparent;
-            background-color: #441985;
-            color: white;
-            font-size: 1.3rem;
-            border-radius: 1.5rem;
-            font-weight: bold;
-            padding: 0.5rem 0.4rem;
-            margin-top: 1rem;
+        @media only screen and (max-width: 1000px) {
+            .flex-container {
+                flex-direction: column-reverse;
+                margin-top: 8%;
+            }
+
+            .flag-image {
+                max-width: 5.3rem;
+                position: absolute;
+            }
+    
+            .flag-flex {
+                display: flex;
+                justify-content: flex-end;
+                margin-right: 5%;
+                transform: translateY(-3rem);
+            }
+    
+            .gameconsole-flex {
+                display: flex;
+                margin-left: 5%;
+                transform: translateY(-3rem);
+            }
+
+            .play-image {
+                width: 12vw;
+                background-color: #FE789A;
+                padding: 2%;
+                padding-left: 6.5%;
+                padding-right: 6%;
+                border-radius: 0.8rem;
+                margin-top: 1%;
+            }
+
+            .challenge-description {
+                font-size: 3vw;
+            }
         }
       `}</style>
     </>

@@ -5,12 +5,13 @@ import GalleryMain from "../../components/commons/company-profile/main/Gallery/g
 import ChallengeDone from "../../components/commons/company-profile/main/Challenge/challenge";
 
 const CompanyProfile: React.FC = () => {
+  const done = false;
   return (
     <div>
       <Logo type="main"/>
-      <CombinedComponent/>
+      <CombinedComponent done={done}/>
       <GalleryMain/>
-      <ChallengeDone done={false}/>
+      <ChallengeDone done={done}/>
       <style jsx>{`
         .grid-container {
             display: grid;

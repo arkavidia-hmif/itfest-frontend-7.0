@@ -3,13 +3,17 @@ import Video from "./Video/video";
 import AboutUs from "./about-us";
 import ButtonCombined from "./Buttons/buttonscombined";
 
-const CombinedComponents: React.FC = () => {
+interface Props {
+    done: boolean;
+}
+
+const CombinedComponents: React.FC<Props> = ({done}) => {
   return (
     <>
       <div className="flex-container">
-        <div>
+        <div className="margin">
           <AboutUs type="main"/>
-          <ButtonCombined type="main"/>
+          <ButtonCombined type="main" done={done}/>
         </div>
         <Video type="main"/>
       </div>
@@ -29,8 +33,19 @@ const CombinedComponents: React.FC = () => {
             margin-right: 10%;
         }
 
+        .margin {
+            margin-right: 2%;
+        }
+
         .description-text {
             text-align: center;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .flex-container {
+                flex-direction: column-reverse;
+                margin-top: 8%;
+            }
         }
       `}</style>
     </>
