@@ -17,9 +17,9 @@ const MerchStoreContainer: React.FC = () => {
     onClick,
     isEdge,
   }: {
-    type: any;
-    onClick: any;
-    isEdge: any;
+    type: "PREV" | "NEXT";
+    onClick: () => void;
+    isEdge: boolean;
   }) => {
     return (
       <>
