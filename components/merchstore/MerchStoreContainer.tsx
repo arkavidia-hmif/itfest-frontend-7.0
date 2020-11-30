@@ -1,7 +1,7 @@
 import Carousel from "react-elastic-carousel";
 import MerchStoreItem from "./MerchStoreItem";
 
-var consts = {
+let consts = {
   PREV: "PREV",
   NEXT: "NEXT",
   START: "flex-start",
