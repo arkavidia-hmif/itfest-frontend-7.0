@@ -1,5 +1,13 @@
-import Carousel, { consts } from "react-elastic-carousel";
+import Carousel from "react-elastic-carousel";
 import MerchStoreItem from "./MerchStoreItem";
+
+var consts = {
+  PREV: "PREV",
+  NEXT: "NEXT",
+  START: "flex-start",
+  CENTER: "center",
+  END: "flex-end",
+};
 
 const MerchStoreContainer: React.FC = () => {
   const breakPoints = [
