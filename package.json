@@ -8,7 +8,8 @@
     "type-check": "tsc",
     "lint": "npm run lint:check",
     "lint:check": "eslint --max-warnings 0 --ext .ts,.js,.tsx . && tsc",
-    "lint:fix": "eslint --max-warnings 0 --fix --ext .ts,.js,.tsx ."
+    "lint:fix": "eslint --max-warnings 0 --fix --ext .ts,.js,.tsx .",
+    "generate": "next build && next export"
   },
   "dependencies": {
     "axios": "^0.21.0",
