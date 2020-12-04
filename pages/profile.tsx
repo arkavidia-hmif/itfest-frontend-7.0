@@ -3,10 +3,8 @@ import ProfileWrapper from "components/profile/ProfileWrapper";
 
 const Home: React.FC = () => {
   return (
-    <Layout title="Home">
-      <ProfileWrapper>
-    
-      </ProfileWrapper>
+    <Layout title="Profile">
+      <ProfileWrapper />
     </Layout>
   );
 };
