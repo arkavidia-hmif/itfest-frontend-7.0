@@ -7,8 +7,8 @@ const LeaderBoard: React.FC = () => {
   return (
     <div className="leaderboard">
       <div className="header">
-        <ColorfulHeader headingLevel={1} color={Theme.headerColors.pipi} size="1em">LEADERBOARD</ColorfulHeader>
-        <p className="visitor">Visitors: 135182</p>
+        <ColorfulHeader headingLevel={1} color={Theme.headerColors.pipl} size="1em">LEADERBOARD</ColorfulHeader>
+        <b className="visitor">Visitors: 135182</b>
       </div>
       <LeaderBoardChild no={1} name="John Doe" score={10000000} />
       <LeaderBoardChild no={2} name="Jane Doe" score={5000000} />
@@ -27,15 +27,11 @@ const LeaderBoard: React.FC = () => {
 
         .visitor {
           background-size: 100%;
-          background-image: ${Theme.headerColors.pipi};
+          background-image: ${Theme.headerColors.pipl};
           background-clip: text;
           -webkit-background-clip: text;
           text-fill-color: transparent;
           -webkit-text-fill-color: transparent;
-        }
-
-        p {
-          font-weight: bold;
         }
 
         @media (max-width: 1000px) {
