@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 const Map: React.FC = () => {
   return (
@@ -149,7 +149,7 @@ const Map: React.FC = () => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
 export default Map;
