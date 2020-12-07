@@ -5,23 +5,19 @@ import { Theme } from "styles/theme";
 
 const LeaderBoard: React.FC = () => {
   return (
-    <div className="leaderboard">
-      <div className="header">
-        <ColorfulHeader headingLevel={1} color={Theme.headerColors.pipl} size="1em">LEADERBOARD</ColorfulHeader>
-        <b className="visitor">Visitors: 135182</b>
+    <div className="container-sm manual-lg-width">
+      <div className="row center">
+        <div className="col-12">
+          <ColorfulHeader headingLevel={1} color={Theme.headerColors.pipl} size="1em">LEADERBOARD</ColorfulHeader>
+          <b className="visitor">Visitors: 135182</b>
+        </div>
       </div>
-      <LeaderBoardChild no={1} name="John Doe" score={10000000} />
+      <LeaderBoardChild no={1} name="Jane Doe" score={5000000} />
       <LeaderBoardChild no={2} name="Jane Doe" score={5000000} />
       <LeaderBoardChild no={3} name="John Mayer" score={12000000} />
       <LeaderBoardChild no={4} name="Afif Akromi" score={7000000} />
-
       <style jsx>{`
-        .leaderboard {
-          width: 50%;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
+        .center {
           text-align: center;
         }
 
@@ -32,12 +28,6 @@ const LeaderBoard: React.FC = () => {
           -webkit-background-clip: text;
           text-fill-color: transparent;
           -webkit-text-fill-color: transparent;
-        }
-
-        @media (max-width: 1000px) {
-          .leaderboard {
-            width: 100%;
-          }
         }
       `}</style>
     </div>

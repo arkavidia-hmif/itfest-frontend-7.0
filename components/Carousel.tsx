@@ -126,6 +126,22 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
           .nav-wrapper:hover {
             filter: brightness(75%);
           }
+
+          @media (max-width: 575.98px) { 
+
+            .carousel-wrapper {
+              width: 95%;
+              margin: 0 auto;
+            }
+
+            .message {
+              right: -2.5rem;
+            }
+
+            .message img {
+              width: 2rem;
+            }
+          }
         `}
       </style>
     </div>
