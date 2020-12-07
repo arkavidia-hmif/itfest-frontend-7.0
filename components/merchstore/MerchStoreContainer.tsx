@@ -1,13 +1,16 @@
-import Carousel from "react-elastic-carousel";
-import {
-  merchStoreCarouselBreakPoints,
-  merchStoreItems,
-} from "./MerchStoreConstants";
-import { MerchStoreCustomArrow } from "./MerchStoreCustomArrow";
-import MerchStoreItem from "./MerchStoreItem";
 import { Dimen } from "styles/dimen";
+import MerchStoreCarousel from "./MerchStoreCarousel";
 
 const MerchStoreContainer: React.FC = () => {
+  // const customArrow = ({
+  //   type,
+  //   onClick,
+  //   isEdge,
+  // }: {
+  //   type: "PREV" | "NEXT";
+  //   onClick: () => void;
+  //   isEdge: boolean;
+  // }) => MerchStoreCustomArrow(type, onClick, isEdge);
   return (
     <div>
       <div className="merch-store-container">
@@ -40,39 +43,13 @@ const MerchStoreContainer: React.FC = () => {
           <div className="store-items">
             <h3 className="store-items-title">Top Merch</h3>
             <div className="store-items-carousel mt-4 mb-2">
-              <Carousel
-                breakPoints={merchStoreCarouselBreakPoints}
-                renderPagination={() => <></>}
-                renderArrow={MerchStoreCustomArrow}
-              >
-                {merchStoreItems.map((item, index) => (
-                  <MerchStoreItem
-                    key={index}
-                    name={item["item-name"]}
-                    image={item["item-img"]}
-                    price={item["item-price"]}
-                  />
-                ))}
-              </Carousel>
+              <MerchStoreCarousel />
             </div>
           </div>
           <div className="store-items">
             <h3 className="store-items-title">Merch Lain</h3>
             <div className="store-items-carousel mt-4 mb-2">
-              <Carousel
-                breakPoints={merchStoreCarouselBreakPoints}
-                renderPagination={() => <></>}
-                renderArrow={MerchStoreCustomArrow}
-              >
-                {merchStoreItems.map((item, index) => (
-                  <MerchStoreItem
-                    key={index}
-                    name={item["item-name"]}
-                    image={item["item-img"]}
-                    price={item["item-price"]}
-                  />
-                ))}
-              </Carousel>
+              <MerchStoreCarousel />
             </div>
           </div>
         </div>
