@@ -2,8 +2,8 @@ import Carousel from "react-elastic-carousel";
 import {
   merchStoreCarouselBreakPoints,
   merchStoreItems,
+  merchStoreConsts,
 } from "./MerchStoreConstants";
-import { merchStoreConsts } from "./MerchStoreConstants";
 import MerchStoreItem from "./MerchStoreItem";
 
 const MerchStoreCarousel: React.FC = () => {

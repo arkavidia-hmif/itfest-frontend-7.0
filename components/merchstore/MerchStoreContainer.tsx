@@ -1,16 +1,7 @@
-import { Dimen } from "styles/dimen";
 import MerchStoreCarousel from "./MerchStoreCarousel";
+import { Dimen } from "styles/dimen";
 
 const MerchStoreContainer: React.FC = () => {
-  // const customArrow = ({
-  //   type,
-  //   onClick,
-  //   isEdge,
-  // }: {
-  //   type: "PREV" | "NEXT";
-  //   onClick: () => void;
-  //   isEdge: boolean;
-  // }) => MerchStoreCustomArrow(type, onClick, isEdge);
   return (
     <div>
       <div className="merch-store-container">
