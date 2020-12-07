@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
             <li>
               <Link href="https://instagram.com/arkavidia">
                 <a>
-                  <img src="https://arkavidia.id/img/social/ig.png"></img>
+                  <img src="https://arkavidia.id/img/social/ig.png" />
                 </a>
               </Link>
             </li>
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/competition/arkalogica">
+                  <Link href="https://arkavidia.id/competition/arkalogica">
                     <a>Arkalogica</a>
                   </Link>
                 </li>
@@ -88,22 +88,22 @@ const Footer: React.FC = () => {
               <h3>PRE-EVENTS</h3>
               <ul>
                 <li>
-                  <Link href="/preevent/technocamp">
+                  <Link href="https://arkavidia.id/preevent/technocamp">
                     <a>Technocamp</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/preevent/arkavidia-goes-to-school">
+                  <Link href="https://arkavidia.id/preevent/arkavidia-goes-to-school">
                     <a>Arkavidia Goes To School</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/preevent/arkavidia-academy">
+                  <Link href="https://arkavidia.id/preevent/arkavidia-academy">
                     <a>Arkavidia Academy</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/preevent/arkavidia-on-air">
+                  <Link href="https://arkavidia.id/preevent/arkavidia-on-air">
                     <a>Arkavidia On Air</a>
                   </Link>
                 </li>
@@ -115,12 +115,12 @@ const Footer: React.FC = () => {
               <h3>EVENTS</h3>
               <ul>
                 <li>
-                  <Link href="/event/it-festival">
+                  <Link href="https://arkavidia.id/event/it-festival">
                     <a>IT Fest</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/event/arkavidia-talks">
+                  <Link href="https://arkavidia.id/event/arkavidia-talks">
                     <a>Arkavidia Talks</a>
                   </Link>
                 </li>
