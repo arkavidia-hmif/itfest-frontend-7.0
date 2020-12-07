@@ -1,11 +1,11 @@
 import Carousel from "react-elastic-carousel";
-import { Dimen } from "styles/dimen";
 import {
   merchStoreCarouselBreakPoints,
   merchStoreItems,
 } from "./MerchStoreConstants";
 import { MerchStoreCustomArrow } from "./MerchStoreCustomArrow";
 import MerchStoreItem from "./MerchStoreItem";
+import { Dimen } from "styles/dimen";
 
 const MerchStoreContainer: React.FC = () => {
   return (

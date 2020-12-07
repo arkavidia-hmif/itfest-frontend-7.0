@@ -1,6 +1,7 @@
+import { ReactNode } from "react";
 import { merchStoreConsts } from "./MerchStoreConstants";
 
-export const MerchStoreCustomArrow = ({
+export const MerchStoreCustomArrow: ReactNode = ({
   type,
   onClick,
   isEdge,
