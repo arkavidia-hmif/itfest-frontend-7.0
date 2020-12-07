@@ -1,116 +1,13 @@
 import Carousel from "react-elastic-carousel";
+import { Dimen } from "styles/dimen";
+import {
+  merchStoreCarouselBreakPoints,
+  merchStoreItems,
+} from "./MerchStoreConstants";
+import { MerchStoreCustomArrow } from "./MerchStoreCustomArrow";
 import MerchStoreItem from "./MerchStoreItem";
 
-const consts = {
-  PREV: "PREV",
-  NEXT: "NEXT",
-  START: "flex-start",
-  CENTER: "center",
-  END: "flex-end",
-};
-
 const MerchStoreContainer: React.FC = () => {
-  const breakPoints = [
-    { width: 100, itemsToShow: 1 },
-    { width: 200, itemsToShow: 2 },
-    { width: 350, itemsToShow: 3 },
-    { width: 450, itemsToShow: 4 },
-    { width: 550, itemsToShow: 5 },
-    { width: 850, itemsToShow: 6 },
-    { width: 1150, itemsToShow: 7 },
-  ];
-  // { type, onClick, isEdge }
-  const customArrow = ({
-    type,
-    onClick,
-    isEdge,
-  }: {
-    type: "PREV" | "NEXT";
-    onClick: () => void;
-    isEdge: boolean;
-  }) => {
-    return (
-      <>
-        <div className="next-btn-container">
-          <button onClick={onClick} disabled={isEdge}>
-            <img src="/img/merchstore/next_button.png" className="next-icon" />
-          </button>
-        </div>
-        <style jsx>
-          {`
-            .next-btn-container {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-            }
-
-            .next-btn-container button {
-              background: none;
-              border: none;
-            }
-
-            .next-btn-container button:focus {
-              outline: none;
-            }
-
-            .next-icon {
-              -webkit-transform: scaleX(${type === consts.PREV ? -1 : 1});
-              width: 2rem;
-              border-radius: 50%;
-              box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-            }
-          `}
-        </style>
-      </>
-    );
-  };
-  const MerchStoreItems = [
-    {
-      "item-img": "/img/merchstore/store_item_1.png",
-      "item-name": "Tas Totebag Shopee",
-      "item-price": "3,000,000",
-    },
-    {
-      "item-img": "/img/merchstore/store_item_2.png",
-      "item-name": "Tas Totebag Shopee",
-      "item-price": "3,000,000",
-    },
-    {
-      "item-img": "/img/merchstore/store_item_3.png",
-      "item-name": "Tas Totebag Shopee",
-      "item-price": "3,000,000",
-    },
-    {
-      "item-img": "/img/merchstore/store_item_1.png",
-      "item-name": "Tas Totebag Shopee",
-      "item-price": "3,000,000",
-    },
-    {
-      "item-img": "/img/merchstore/store_item_2.png",
-      "item-name": "Tas Totebag Shopee",
-      "item-price": "3,000,000",
-    },
-    {
-      "item-img": "/img/merchstore/store_item_3.png",
-      "item-name": "Tas Totebag Shopee",
-      "item-price": "3,000,000",
-    },
-    {
-      "item-img": "/img/merchstore/store_item_1.png",
-      "item-name": "Tas Totebag Shopee",
-      "item-price": "3,000,000",
-    },
-    {
-      "item-img": "/img/merchstore/store_item_2.png",
-      "item-name": "Tas Totebag Shopee",
-      "item-price": "3,000,000",
-    },
-    {
-      "item-img": "/img/merchstore/store_item_3.png",
-      "item-name": "Tas Totebag Shopee",
-      "item-price": "3,000,000",
-    },
-  ];
   return (
     <div>
       <div className="merch-store-container">
@@ -144,11 +41,11 @@ const MerchStoreContainer: React.FC = () => {
             <h3 className="store-items-title">Top Merch</h3>
             <div className="store-items-carousel mt-4 mb-2">
               <Carousel
-                breakPoints={breakPoints}
+                breakPoints={merchStoreCarouselBreakPoints}
                 renderPagination={() => <></>}
-                renderArrow={customArrow}
+                renderArrow={MerchStoreCustomArrow}
               >
-                {MerchStoreItems.map((item, index) => (
+                {merchStoreItems.map((item, index) => (
                   <MerchStoreItem
                     key={index}
                     name={item["item-name"]}
@@ -163,11 +60,11 @@ const MerchStoreContainer: React.FC = () => {
             <h3 className="store-items-title">Merch Lain</h3>
             <div className="store-items-carousel mt-4 mb-2">
               <Carousel
-                breakPoints={breakPoints}
+                breakPoints={merchStoreCarouselBreakPoints}
                 renderPagination={() => <></>}
-                renderArrow={customArrow}
+                renderArrow={MerchStoreCustomArrow}
               >
-                {MerchStoreItems.map((item, index) => (
+                {merchStoreItems.map((item, index) => (
                   <MerchStoreItem
                     key={index}
                     name={item["item-name"]}
@@ -180,7 +77,7 @@ const MerchStoreContainer: React.FC = () => {
           </div>
         </div>
       </div>
-      <style jsx>
+      <style>
         {`
           .merch-store-container {
             background: white;
@@ -268,7 +165,7 @@ const MerchStoreContainer: React.FC = () => {
             font-size: 2.5rem;
           }
 
-          @media only screen and (max-width: 1200px) {
+          @media only screen and (max-width: ${Dimen.lgBreakpoint}) {
             .merch-store-top {
               display: block;
             }
@@ -277,7 +174,7 @@ const MerchStoreContainer: React.FC = () => {
             }
           }
 
-          @media only screen and (max-width: 1000px) {
+          @media only screen and (max-width: ${Dimen.xsBreakpoint}) {
             .merch-store-title {
               padding: 0;
             }
@@ -296,7 +193,7 @@ const MerchStoreContainer: React.FC = () => {
             }
           }
 
-          @media only screen and (max-width: 700px) {
+          @media only screen and (max-width: ${Dimen.mdBreakpoint}) {
             .merch-store-search-bar {
               font-size: 1.25rem;
               padding: 0.5rem 2rem 0.5rem 2.7rem;

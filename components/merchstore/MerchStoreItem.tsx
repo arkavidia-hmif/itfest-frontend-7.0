@@ -16,7 +16,7 @@ const MerchStoreItem: React.SFC<Props> = ({ name, image, price }) => {
         <h4 className="mt-2 mb-2">{name}</h4>
         <p className="mt-4 mb-2">{price}</p>
       </div>
-      <style jsx>
+      <style>
         {`
           .store-item {
             width: 6.75rem;
