@@ -111,12 +111,7 @@ export const Theme = {
   headerColors: {
     plbl: "linear-gradient(120deg, #835FBF, #835FBF, #30C5E8)", // Purple blue (e.g on competition page)
     plpi: "linear-gradient(120deg, #623FA2 25%, #FE5982 100%)",
-<<<<<<< HEAD
     pipl: "linear-gradient(110deg, #FE789A 0%, #623FA2 100%)"
-=======
-    pipl: "linear-gradient(110deg, #FE789A 0%, #623FA2 100%)",
-    pipi: "linear-gradient(120deg, rgba(254, 148, 171, 1) 0%, rgba(144, 106, 247, 1) 100%)"
->>>>>>> a25f61a70742508df28e3f558bed0cec9aa29ed3
   },
   competitionColors: {
     subHeadingColor: "#05058d",
