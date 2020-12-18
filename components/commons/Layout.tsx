@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import Head from "next/head";
 import Footer from "./Footer";
+import Navbar from "./navbar/Navbar";
 import { Theme } from "styles/theme";
-// import Navbar from "./navbar/Navbar";
 
 interface Props {
   children?: ReactNode;
@@ -26,7 +26,7 @@ const Layout: React.FC<Props> = ({
       <Head>
         <title>{title}</title>
       </Head>
-      {/* <Navbar /> */}
+      <Navbar />
       <div id="main-container">{children}</div>
       <Footer />
       <style jsx>{`
