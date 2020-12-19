@@ -111,7 +111,7 @@ const Popup : React.FC<Props> = ({open, setOpen, top, left, imageURL, title}) =>
         }  
       `}</style>
     </div>
-  )
+  );
 };
 
 export default Popup;
