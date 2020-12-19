@@ -1,22 +1,17 @@
 import * as React from "react";
 import Logo from "../../components/commons/company-profile/logo-title";
 import CombinedComponent from "../../components/commons/company-profile/combinedmain";
-import GalleryMain from "../../components/commons/company-profile/Gallery/gallery-main";
+import GalleryMain from "../../components/commons/company-profile/Gallery/gallery";
 import ChallengeDone from "../../components/commons/company-profile/Challenge/challenge";
 
 const CompanyProfile: React.FC = () => {
-  const done = true;
+  const done = false;
   return (
-    <div>
+    <div className="container pb-4">
       <Logo type="main"/>
       <CombinedComponent done={done}/>
-      <GalleryMain/>
+      <GalleryMain main={true}/>
       <ChallengeDone done={done}/>
-      <style jsx>{`
-        .grid-container {
-            display: grid;
-        }
-      `}</style>
     </div>
   );
 };

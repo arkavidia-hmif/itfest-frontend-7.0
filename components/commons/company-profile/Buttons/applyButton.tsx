@@ -5,14 +5,11 @@ interface Props {
 }
 
 const ApplyButton: React.FC<Props> = ({done}) => {
-  return (
-    <>
-      {(done) ?
+  if(done){
+    return (
+      <>
         <button className="button-done">Apply Now</button>
-        :
-        <button className="button-undone">Apply Now</button>
-      }
-      <style jsx>{`
+        <style jsx>{`
         .button-done {
             border-radius: 5px;
             border-color: transparent;
@@ -22,7 +19,14 @@ const ApplyButton: React.FC<Props> = ({done}) => {
             min-height: 2.4rem;
             font-size: 1.2rem;
         }
-
+      `}</style>
+      </>
+    );
+  }else{
+    return (
+      <>
+        <button className="button-undone">Apply Now</button>
+        <style jsx>{`
         .button-undone {
             border-radius: 5px;
             border-color: transparent;
@@ -33,8 +37,9 @@ const ApplyButton: React.FC<Props> = ({done}) => {
             font-size: 1.2rem;
       }
       `}</style>
-    </>
-  );
+      </>
+    );
+  }
 };
 
 export default ApplyButton;

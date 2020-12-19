@@ -7,43 +7,44 @@ interface Props {
   done: boolean;
 }
 const CombinedButton: React.FC<Props> = ({type, done}) => {
-  return (
-    <>
-      {type === "main" ?
+  if(type === "main"){
+    return (
+      <>
         <div className="flex-container">
           <MeetButton/>
           <ApplyButton done={done}/>
         </div>
-        :
+        <style jsx>{`
+          .flex-container {
+              display: flex;
+              flex-direction: row;
+          }
+  
+          @media only screen and (max-width: 1000px) {
+              .flex-container {
+                  justify-content: center;
+              }
+        }
+        `}</style>
+      </>
+    );
+  }else{
+    return (
+      <>
         <div className="flex-container-alt">
           <MeetButton/>
           <ApplyButton done={done}/>
         </div>
-      }
-      <style jsx>{`
-        .flex-container {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .meet-button {
-            margin-right: 2rem;
-        }
-
+        <style jsx>{`
         .flex-container-alt {
             display: flex;
             flex-direction: row;
             justify-content: center;
         }
-
-        @media only screen and (max-width: 1000px) {
-            .flex-container {
-                justify-content: center;
-            }
-      }
       `}</style>
-    </>
-  );
+      </>
+    );
+  }
 };
 
 export default CombinedButton;

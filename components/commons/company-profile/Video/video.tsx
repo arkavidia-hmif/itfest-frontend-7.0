@@ -48,7 +48,7 @@ const VideoMain: React.FC<Props> = ({type}) => {
 
         .video-size-main {
             min-width: 35rem;
-            min-weight: 50%;
+            min-height: 50%;
         }
 
         .video-size {
@@ -64,15 +64,15 @@ const VideoMain: React.FC<Props> = ({type}) => {
 
         @media only screen and (max-width: 1000px) {
             .video-size {
-                width: 25rem;
-                height: 16rem;
+                min-width: 1rem;
+                width: 90%;
+                min-height: 13rem;
             }
 
             .video-size-main {
-                min-width: 0;
-                min-height: 0;
-                width: 25rem;
-                height: 16rem;
+                min-width: 1rem;
+                width: 100%;
+                min-height: 13rem;
             }
 
             .flex-container {

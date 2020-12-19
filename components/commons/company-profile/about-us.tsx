@@ -1,5 +1,5 @@
 import * as React from "react";
-import AboutUsContent from "../../../utils/context/constants/company-profile/about-us-data";
+import AboutUsContent from "../../../utils/constants/company-profile/about-us-data";
 
 interface Props {
   type: string;
@@ -37,13 +37,7 @@ const AboutUs: React.FC<Props> = ({type}) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-left: 15%;
-            margin-right: 15%;
             margin-top: 3%;
-        }
-
-        .description-text-main {
-
         }
 
         .description-text-alt {

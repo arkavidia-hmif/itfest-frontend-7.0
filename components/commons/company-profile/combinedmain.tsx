@@ -21,8 +21,6 @@ const CombinedComponents: React.FC<Props> = ({done}) => {
         .flex-container {
             display: flex;
             flex-direction: row;
-            margin-left: 15%;
-            margin-right: 15%;
             align-items: center;
         }
 
