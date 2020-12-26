@@ -1,8 +1,93 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Popup from "./Popup";
 
 const Map: React.FC = () => {
   const [open, setOpen] = useState(false);
+  const [startpoint, setStartPoint] = useState({x : 0, y : 0});
+  const [isPressed, setIsPressed] = useState(false);
+  const [viewBox, setViewBox] = useState({
+    x : 0,
+    y : 0,
+    width : 792,
+    height : 316
+  });
+
+  const checkEdge = (x : number, y: number) => {
+    return (x <= viewBox.width) && (y <= viewBox.height) && (x >= -1*viewBox.width) && (y >= -1 * viewBox.height);
+  };
+
+  const stopmove = (e : MouseEvent) => {
+    if (isPressed) {
+      const endpoint = {
+        x : e.x,
+        y : e.y
+      };
+
+      const dx = (startpoint.x - endpoint.x)/100;
+      const dy = (startpoint.y - endpoint.y)/100;
+      const newX = viewBox.x + dx;
+      const newY = viewBox.y + dy;
+
+      if (checkEdge(newX, newY)) {
+        setViewBox({
+          x : newX,
+          y : newY,
+          width : viewBox.width,
+          height : viewBox.height
+        });
+      }
+      
+      setIsPressed(false);
+    } 
+  };
+
+  const moveimage = (e : MouseEvent) => {
+    if (isPressed) {
+      const endpoint = {
+        x : e.x,
+        y : e.y
+      };
+
+      const dx = (startpoint.x - endpoint.x)/100;
+      const dy = (startpoint.y - endpoint.y)/100;
+      const newX = viewBox.x + dx;
+      const newY = viewBox.y + dy;
+
+      if (checkEdge(newX, newY)) {
+        setViewBox({
+          x : newX,
+          y : newY,
+          width : viewBox.width,
+          height : viewBox.height
+        });
+  
+      }
+    }   
+  };
+
+  const startmove = (e: MouseEvent) => {
+    setIsPressed(true);
+    setStartPoint({x : e.x, y: e.y});
+  };
+
+  useEffect(() => {
+    const svgimage = document.getElementById("peta-indonesia");
+
+    // Set viewbox svg
+    svgimage?.setAttribute("viewBox", `${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`);
+    
+    // Panning svg image
+    svgimage?.addEventListener("mouseup", stopmove);
+    svgimage?.addEventListener("mousemove", moveimage);
+    svgimage?.addEventListener("mousedown", startmove);
+
+    return () => {
+      svgimage?.removeEventListener("mouseup", stopmove);
+      svgimage?.removeEventListener("mousemove", moveimage);
+      svgimage?.removeEventListener("mousedown", startmove);
+      svgimage?.setAttribute("viewBox", `${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`);
+    };
+  });
 
   return (
     <div id="map-container">
@@ -15,7 +100,7 @@ const Map: React.FC = () => {
         left="40%"
       />
       <svg
-        viewBox="0 0 792 316"
+        id="peta-indonesia"
         xmlns="http://www.w3.org/2000/svg"
       >
         <g id="indonesia">
