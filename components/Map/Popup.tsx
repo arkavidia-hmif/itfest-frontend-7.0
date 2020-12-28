@@ -12,30 +12,32 @@ interface Props {
 
 const Popup : React.FC<Props> = ({open, setOpen, top, left, imageURL, title}) => {
   return (
-    <div id="popup-container" style={{top: top, left: left}}>
+    <div id="popup-container" className="p-2" style={{top: top, left: left}}>
       <a className="close" onClick={() => setOpen(false)}>
         &times;
       </a>
-      <div id="popup-body">
-        <div className="image">
-          <img src={imageURL} alt="friendly-dino"/>
+      <div id="popup-body" className="container">
+        <div className="row">
+          <div className="image col-5">
+            <img src={imageURL}/>
+          </div>
+          <div className="name col-7 align-self-center justify-content-center">
+            <p>{title}</p>
+          </div>
         </div>
-        <div className="name">
-          <p>{title}</p>
-        </div>
-        <div className="info">
-          <Link href="#"><a><p>more &gt; &gt; &gt;</p></a></Link>
+        <div className="row py-2">
+          <div className="info col">
+            <Link href="#"><a><p>more &gt; &gt; &gt;</p></a></Link>
+          </div>
         </div>
       </div>
       <style jsx>{`
         #popup-container {
           position: absolute;
-          align-items: center;
-          padding: 1rem;
-          background: #FFFF;
-          min-width: 100px;
           width: 15%;
-          height: 15%;
+          height: auto;
+          min-width: 120px;
+          background: #FFFF;
           border-radius: 10px;
           transition: visibility 0.2s, opacity 0.2s linear;
           box-shadow: 2px 4px 8px 0px #000000;
@@ -45,6 +47,7 @@ const Popup : React.FC<Props> = ({open, setOpen, top, left, imageURL, title}) =>
           width: 100%;
           display: flex; 
           align-items: center;
+          justify-content: center;
           flex-wrap: wrap;
         }
 
@@ -57,17 +60,13 @@ const Popup : React.FC<Props> = ({open, setOpen, top, left, imageURL, title}) =>
           color: #000000;
         }
 
-        .image {
-          width: 20%;
-        }
-
         img {
-          min-width: 20px;
+          min-width: 30px;
           width: 100%;
         }
 
         .name {
-          margin-left: 1rem;
+          text-align: center;
         }
 
         .name p {
@@ -88,20 +87,6 @@ const Popup : React.FC<Props> = ({open, setOpen, top, left, imageURL, title}) =>
         .info p {
           color: #FE5982;
           margin: 0;
-        }
-
-        @media (max-width: 600px){
-          #popup-container {
-            padding: 0.5rem;
-          }
-          
-          #popup-body {
-            flex-direction: column;
-          }
-
-          .name {
-            margin-left: 0;
-          }
         }
       `}</style>
       <style jsx>{`
