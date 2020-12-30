@@ -1,3 +1,4 @@
 out/
 .eslintrc.js
 next.config.js
+sitemap_generator.js
