@@ -9,7 +9,9 @@
     "lint": "npm run lint:check",
     "lint:check": "eslint --max-warnings 0 --ext .ts,.js,.tsx . && tsc",
     "lint:fix": "eslint --max-warnings 0 --fix --ext .ts,.js,.tsx .",
-    "generate": "next build && next export"
+    "generate:sitemap": "node sitemap_generator.js",
+    "generate:production": "DOTENV_FILE=production next build && DOTENV_FILE=production next export && npm run generate:sitemap",
+    "generate:staging": "DOTENV_FILE=staging next build && DOTENV_FILE=staging next export && npm run generate:sitemap",
   },
   "dependencies": {
     "axios": "^0.21.0",
