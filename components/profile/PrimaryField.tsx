@@ -1,7 +1,7 @@
 import { useState } from "react";
 import InputField from "./InputField";
 import { Theme } from "styles/theme";
-import FilledButton from "components/FilledButton";
+import FilledButton from "components/commons/FilledButton";
 
 const primary = [
   {
@@ -65,12 +65,12 @@ const PrimaryField: React.FC = () => {
       <style jsx>{`
         h2 {
           font: viga;
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           color: #441985;
         }
         @media only screen and (max-width: 767px) {
           h2{
-            font-size: 1.25rem;
+            font-size: 1rem;
           }
         }
       `}</style>

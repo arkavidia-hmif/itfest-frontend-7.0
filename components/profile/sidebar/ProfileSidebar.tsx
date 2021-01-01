@@ -46,18 +46,20 @@ const ProfileSidebar: React.FC<props> = ({selection, setSelection}) => {
           border-radius: 0.2em;
           width: 0.4em;
           height: 100%;
-          right: 0em;
+          right: 1em;
         }
         a {
           color: #ac0b3d;
           font-family: viga;
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           text-decoration: none;
         }
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 991px) {
           #right-roller {
             display: none;
           }
+        }
+        @media screen and (max-width: 767px) {
           a {
             font-size: 1rem;
           }

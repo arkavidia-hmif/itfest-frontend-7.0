@@ -28,11 +28,11 @@ const InputField: React.FC<Props> = ({
           border: none;
           border-radius: 2em;
           padding: 0.25rem 0em 0.25rem 0.5em;
-          border: 0.15rem solid;
+          box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.2);
           box-sizing: border-box;
           background: white;
           margin: 0rem 0 1rem 0;
-          font-size: 1.3rem;
+          font-size: 1.1rem;
           font-weight: bold;
         }
         input:focus{
@@ -40,7 +40,7 @@ const InputField: React.FC<Props> = ({
         }
         @media only screen and (max-width: 767px) {
           input{
-            font-size: 1rem;
+            font-size: 0.9rem;
           }
         }
       `}</style>

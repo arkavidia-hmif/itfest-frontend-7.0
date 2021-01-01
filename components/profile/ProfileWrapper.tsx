@@ -2,7 +2,7 @@ import { useState } from "react";
 import ProfileSidebar from "./sidebar/ProfileSidebar";
 import PrimaryField from "./PrimaryField";
 import PersonalField from "./PersonalField";
-import ColorfulHeader from "components/ColorfulHeader";
+import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
 
 
@@ -35,13 +35,13 @@ const ProfileWrapper: React.FC = () => {
         <div className="col-9">
           <h2>1000</h2>
         </div>
-        <div className="col-lg-3 col-xs-12 mt-4">
+        <div className="col-lg-4 col-xs-12 mt-4">
           <ProfileSidebar
             setSelection={setSelection}
             selection={selection}
           />
         </div>
-        <div className="col-lg-9 col-xs-12 mt-4">
+        <div className="col-lg-8 col-xs-12 mt-4">
           {getComponent()}
         </div>
       </div>

@@ -40,11 +40,6 @@ const SidebarSection: React.FC<Props> = ({ data, selection, setSelection }) => {
               .list {
                 padding: 0;
               }
-              .title {
-                color: rgba(0, 0, 0, 0.6);
-                font-size: 1.2rem;
-                line-height: 1.4rem;
-              }
             `}</style>
           </div>
         );

@@ -34,10 +34,9 @@ const SidebarItem: React.FC<Props> = ({
         li {
           color: #161f24;
           cursor: pointer;
-          padding: 0.5rem;
-          padding-right: 0rem;
+          padding: 0.75rem;
           position: relative;
-          font-size: 1.5rem;
+          font-size: 1.1rem;
           font-family: viga;
           display: flex;
           flex-direction: row;
@@ -50,8 +49,9 @@ const SidebarItem: React.FC<Props> = ({
         li.active {
           background: rgba(251, 188, 200, 0.3);
           margin: 0 -10px 0 -15px;
-          padding: 0.5rem calc(0.5rem + 15px);
+          padding: 0.75rem calc(0.75rem + 15px);
           padding-right: 0rem;
+          border-radius: 1rem;
         }
         @media screen and (max-width: 767px) {
           li {
