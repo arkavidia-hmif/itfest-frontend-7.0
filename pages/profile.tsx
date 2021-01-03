@@ -1,9 +1,10 @@
 import Layout from "components/commons/Layout";
 import ProfileWrapper from "components/profile/ProfileWrapper";
+import { Theme } from "styles/theme";
 
 const Home: React.FC = () => {
   return (
-    <Layout title="Profile">
+    <Layout background={Theme.bgColors.whpipl} title="Profile">
       <ProfileWrapper />
     </Layout>
   );

@@ -48,6 +48,10 @@ const ProfileWrapper: React.FC = () => {
       <style jsx>{`
       .main-profile {
         height: 90vh;
+        background: url(/img/bg-white.png);
+        background-position: center 13em;
+        background-repeat: no-repeat;
+        background-size: 60%;
       }
       .points {
         max-width: 4.5em;
@@ -63,6 +67,11 @@ const ProfileWrapper: React.FC = () => {
         width: 100%;
         height: 0.25em;
         background: linear-gradient(90deg, #fe789a 0%, #623FA2 100%);
+      }
+      @media screen and (max-width: 991px) {
+        .main-profile {
+          background: none;
+        }
       }
     `}</style>
     </div>
