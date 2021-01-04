@@ -74,7 +74,7 @@ const MerchStoreContainer: React.FC = () => {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid #b7b7b7;
-            padding: 0rem 3.7rem 2.6rem;
+            padding: 0rem 1.7rem 1.6rem;
           }
 
           .merch-store-title {
@@ -82,20 +82,20 @@ const MerchStoreContainer: React.FC = () => {
           }
 
           .store-logo {
-            width: 6.3rem;
-            height: 6.3rem;
+            width: 4.5rem;
+            height: 4.5rem;
           }
 
           .store-name {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin-left: 3rem;
+            margin-left: 5rem;
           }
 
           .store-name h2 {
             margin: 0;
-            font-size: 3.3rem;
+            font-size: 2.75rem;
           }
 
           .merch-store-search {
@@ -122,7 +122,7 @@ const MerchStoreContainer: React.FC = () => {
           }
 
           .merch-store-bottom {
-            padding: 2.6rem 5rem;
+            padding: 2.6rem 2.5rem 0;
           }
 
           .store-items {
@@ -138,7 +138,7 @@ const MerchStoreContainer: React.FC = () => {
               display: block;
             }
             .merch-store-search {
-              padding-top: 2rem;
+              padding-top: 1.5rem;
             }
           }
 

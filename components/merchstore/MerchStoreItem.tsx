@@ -19,7 +19,7 @@ const MerchStoreItem: React.SFC<Props> = ({ name, image, price }) => {
       <style>
         {`
           .store-item {
-            width: 6.75rem;
+            width: 5.75rem;
           }
 
           .store-item button {
@@ -40,10 +40,10 @@ const MerchStoreItem: React.SFC<Props> = ({ name, image, price }) => {
             position: absolute;
             top: 40%;
             border: none;
-            border-radius: 15px;
+            border-radius: 12px;
             display: block;
             color: white;
-            font-size: 1rem;
+            font-size: .9rem;
             font-family: Viga;
             font-style: normal;
             font-weight: normal;

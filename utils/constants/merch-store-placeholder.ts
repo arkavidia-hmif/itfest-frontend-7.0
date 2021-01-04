@@ -12,8 +12,7 @@ export const merchStoreCarouselBreakPoints = [
   { width: 350, itemsToShow: 3 },
   { width: 450, itemsToShow: 4 },
   { width: 550, itemsToShow: 5 },
-  { width: 850, itemsToShow: 6 },
-  { width: 1150, itemsToShow: 7 },
+  { width: 850, itemsToShow: 7 },
 ];
 
 export const merchStoreItems = [
