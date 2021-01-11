@@ -6,7 +6,7 @@ const MeetButton: React.FC = () => {
       <button className="button">Meet</button>
       <style jsx>{`
         .button {
-            border-radius: 5px;
+            border-radius: 0.6rem;
             border-color: transparent;
             background-color: #FE789A;
             color: white;

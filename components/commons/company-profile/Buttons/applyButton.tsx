@@ -11,7 +11,7 @@ const ApplyButton: React.FC<Props> = ({done}) => {
         <button className="button-done">Apply Now</button>
         <style jsx>{`
         .button-done {
-            border-radius: 5px;
+            border-radius: 0.6rem;
             border-color: transparent;
             background-color: #B296FE;
             color: white;
@@ -28,7 +28,7 @@ const ApplyButton: React.FC<Props> = ({done}) => {
         <button className="button-undone">Apply Now</button>
         <style jsx>{`
         .button-undone {
-            border-radius: 5px;
+            border-radius: 0.6rem;
             border-color: transparent;
             background-color: rgba(0, 0, 0, 0.5);
             color: white;

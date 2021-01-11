@@ -9,7 +9,9 @@ const CompanyProfile: React.FC = () => {
   return (
     <div className="container pb-4">
       <Logo type="main"/>
-      <CombinedComponent done={done}/>
+      <div>
+        <CombinedComponent done={done}/>
+      </div>
       <GalleryMain main={true}/>
       <ChallengeDone done={done}/>
     </div>

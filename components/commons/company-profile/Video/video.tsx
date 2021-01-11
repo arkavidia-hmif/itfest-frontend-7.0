@@ -4,7 +4,7 @@ interface Props {
   type: string;
 }
 
-const VideoMain: React.FC<Props> = ({type}) => {
+const Video: React.FC<Props> = ({type}) => {
   return (
     <>
       {type === "main" ?
@@ -14,7 +14,6 @@ const VideoMain: React.FC<Props> = ({type}) => {
             <source src="movie.ogg" type="video/ogg"/>
               Your browser does not support the video tag.
           </video>
-          {/*<img src="/img/company-profile/video-right.png" className="video-image-main"/>*/}
         </div>
         :
         <div className="flex-container-alt">
@@ -23,12 +22,16 @@ const VideoMain: React.FC<Props> = ({type}) => {
             <source src="movie.ogg" type="video/ogg"/>
             Your browser does not support the video tag.
           </video>
-          {/* <div className="video-flex">
-            <img src="/img/company-profile/video-right.png" className="video-image"/>
-          </div> */}
         </div>
       }
       <style jsx>{`
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
         .flex-container-alt {
             margin-top: 1%;
             display: flex;
@@ -44,10 +47,11 @@ const VideoMain: React.FC<Props> = ({type}) => {
         .video-image-main {
             max-width: 5rem;
             position: absolute;
+            right: 10rem;
         }
 
         .video-size-main {
-            min-width: 35rem;
+            min-width: 33rem;
             min-height: 50%;
         }
 
@@ -62,17 +66,22 @@ const VideoMain: React.FC<Props> = ({type}) => {
             transform: translateX(-22rem) translateY(-3rem);
         }
 
+        @media only screen and (max-width: 1200px) {
+            .video-size-main {
+                min-width: 21rem;
+                min-height: 15rem;
+            }
+        }
+
         @media only screen and (max-width: 1000px) {
             .video-size {
-                min-width: 1rem;
-                width: 90%;
-                min-height: 13rem;
+                min-width: 11rem;
+                min-height: 10rem;
             }
 
             .video-size-main {
-                min-width: 1rem;
-                width: 100%;
-                min-height: 13rem;
+                min-width: 9rem;
+                min-height: 15rem;
             }
 
             .flex-container {
@@ -82,9 +91,59 @@ const VideoMain: React.FC<Props> = ({type}) => {
                 align-items: center;
             }
         }
+
+        @media only screen and (max-width: 768px) {
+            .video-size {
+                width: 25rem;
+                min-height: 16rem;
+            }
+
+            .video-size-main {
+                width: 25rem;
+                min-height: 14rem;
+            }
+
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        @media only screen and (max-width: 576px) {
+            .video-size {
+                width: 18.5rem;
+                min-height: 14rem;
+            }
+
+            .video-size-main {
+                width: 20rem;
+                min-height: 14rem;
+            }
+
+            .flex-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .video-size-main {
+                width: 16rem;
+                min-height: 12rem;
+            }
+
+            .video-size {
+                width: 16rem;
+                min-height: 12rem;
+            }
+        }
       `}</style>
     </>
   );
 };
 
-export default VideoMain;
+export default Video;

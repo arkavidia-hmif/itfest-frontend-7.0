@@ -43,11 +43,13 @@ const Challenge: React.FC<Props> = ({done}) => {
         .challenge-margin {
             margin-top: 5%;
             margin-bottom: 5rem;
+            margin-left: 10%;
+            margin-right: 10%;
         }
 
         .challenge-box-done {
             padding: 1rem;
-            background: rgba(219, 194, 255, 0.8);
+            background: rgba(219, 194, 255, 0.7);
             box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
             border-radius: 1.5rem;
             display: flex;
@@ -171,11 +173,13 @@ const Challenge: React.FC<Props> = ({done}) => {
         .challenge-margin {
             margin-top: 5%;
             margin-bottom: 5rem;
+            margin-left: 10%;
+            margin-right: 10%;
         }
 
         .challenge-box-undone {
             padding: 1rem;
-            background: white;
+            background: rgba(255, 255, 255, 0.7);
             box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
             border-radius: 0.5rem;
         }
@@ -206,7 +210,7 @@ const Challenge: React.FC<Props> = ({done}) => {
         }
 
         .play-image {
-            width: 7.2rem;
+            width: 6rem;
             background-color: #FE789A;
             padding: 1%;
             padding-left: 5.5%;
@@ -229,6 +233,12 @@ const Challenge: React.FC<Props> = ({done}) => {
         .gameconsole-flex {
             display: flex;
             transform: translate(-3rem,-4rem);
+        }
+
+        @media only screen and (max-width: 1200px) {
+            .play-image {
+                width: 5rem;
+            }
         }
 
         @media only screen and (max-width: 1000px) {
@@ -260,18 +270,35 @@ const Challenge: React.FC<Props> = ({done}) => {
             }
 
             .play-image {
-                max-width: 3rem;
-                max-height: 1.6rem;
-                background-color: #FE789A;
-                padding: 2%;
-                padding-left: 8%;
-                padding-right: 8%;
-                border-radius: 0.8rem;
-                margin-top: 1%;
+                width: 3.3rem;
             }
 
             .challenge-description {
                 font-size: 1rem;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .play-image {
+                width: 2.5rem;
+            }
+        }
+
+        @media only screen and (max-width: 576px) {
+            .play-image {
+                width: 2.4rem;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .play-image {
+                width: 2.2rem;
+                height: 1.2rem;
+                border-radius: 0.35rem;
+                padding-left: 7.5%;
+                padding-right: 7%;
+                padding-top: 2%;
+                padding-bottom: 2%;
             }
         }
       `}</style>

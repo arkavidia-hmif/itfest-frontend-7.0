@@ -1,6 +1,6 @@
 import * as React from "react";
-import MeetButton from "./meetButton";
-import ApplyButton from "./applyButton";
+import FilledButton from "../../FilledButton";
+import { Theme } from "../../../../styles/theme";
 
 interface Props {
   type: string;
@@ -11,13 +11,27 @@ const CombinedButton: React.FC<Props> = ({type, done}) => {
     return (
       <>
         <div className="flex-container">
-          <MeetButton/>
-          <ApplyButton done={done}/>
+          <div className="margin-right-button">
+            <FilledButton
+              color={Theme.buttonColors.pinkButton}
+              text="MEET"
+              padding="0.75em 1.5em"
+            />
+          </div>
+          <FilledButton
+            color={(done) ? Theme.buttonColors.lightPurpleButton : Theme.buttonColors.greyButton}
+            text="APPLY NOW"
+            padding="0.75em 1.5em"
+          />
         </div>
         <style jsx>{`
           .flex-container {
               display: flex;
               flex-direction: row;
+          }
+
+          .margin-right-button {
+              margin-right: 3%;
           }
   
           @media only screen and (max-width: 1000px) {
@@ -32,14 +46,28 @@ const CombinedButton: React.FC<Props> = ({type, done}) => {
     return (
       <>
         <div className="flex-container-alt">
-          <MeetButton/>
-          <ApplyButton done={done}/>
+          <div className="margin-right-button">
+            <FilledButton
+              color={Theme.buttonColors.pinkButton}
+              text="MEET"
+              padding="0.75em 1.5em"
+            />
+          </div>
+          <FilledButton
+            color={(done) ? Theme.buttonColors.lightPurpleButton : Theme.buttonColors.greyButton}
+            text="APPLY NOW"
+            padding="0.75em 1.5em"
+          />
         </div>
         <style jsx>{`
         .flex-container-alt {
             display: flex;
             flex-direction: row;
             justify-content: center;
+        }
+
+        .margin-right-button {
+            margin-right: 3%;
         }
       `}</style>
       </>

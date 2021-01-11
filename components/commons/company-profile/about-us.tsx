@@ -37,11 +37,13 @@ const AboutUs: React.FC<Props> = ({type}) => {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 3%;
+            margin-top: 5%;
         }
 
         .description-text-alt {
             text-align: center;
+            margin-left: 10%;
+            margin-right: 10%;
         }
 
         @media only screen and (max-width: 1000px) {
@@ -51,7 +53,7 @@ const AboutUs: React.FC<Props> = ({type}) => {
             }
 
             .flex-container-alt {
-                margin-top: 5%;
+                margin-top: 10%;
             }
 
             .title {
@@ -73,6 +75,8 @@ const AboutUs: React.FC<Props> = ({type}) => {
 
             .description-text-main {
                 text-align: center;
+                margin-left: 10%;
+                margin-right: 10%;
             }
         }
       `}</style>
