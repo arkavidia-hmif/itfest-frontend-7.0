@@ -6,17 +6,17 @@ const CombinedComponents: React.FC = () => {
     <>
       <div className="flex-container">
         <div className="grid-item-2">
-          <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+          <div className="video-flex">
             <Video type="alt"/>
           </div>
         </div>
         <div className="grid-item-2-image">
-          <div style={{display: "flex", justifyContent: "flex-start", alignItems: "center", marginBottom: "2%"}}>
+          <div className="video-icon-flex">
             <img src="/img/company-profile/video-right.png" className="video-image-alt"/>
           </div>
         </div>
         <div className="grid-item-3-image">
-          <div style={{display: "flex", justifyContent: "center", alignItems: "flex-end", marginBottom: "2%"}}>
+          <div className="chat-button-flex">
             <img src="/img/company-profile/chat-button.png" className="chat-image-alt"/>
           </div>
         </div>
@@ -25,6 +25,26 @@ const CombinedComponents: React.FC = () => {
         .flex-container {
             display: grid;
             grid-template-columns: repeat(3, 25%);
+        }
+
+        .video-flex {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-icon-flex {
+            display: flex;
+            justify-content: flex-start; 
+            align-items: center;
+            margin-bottom: 2%;
+        }
+
+        .chat-button-flex {
+            display: flex;
+            justify-content: center; 
+            align-items: flex-end; 
+            margin-bottom: 2%;
         }
 
         .margin {
