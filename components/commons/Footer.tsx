@@ -37,14 +37,14 @@ const Footer: React.FC = () => {
             <li>
               <Link href="https://facebook.com/arkavidia">
                 <a>
-                  <img src="/img/social/fb.png"></img>
+                  <img src="https://arkavidia.id/img/social/fb.png"></img>
                 </a>
               </Link>
             </li>
             <li>
               <Link href="http://line.me/ti/p/@arkavidia">
                 <a>
-                  <img src="/img/social/line.png"></img>
+                  <img src="https://arkavidia.id/img/social/line.png"></img>
                 </a>
               </Link>
             </li>
