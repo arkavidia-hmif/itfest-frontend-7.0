@@ -10,27 +10,27 @@ const Footer: React.FC = () => {
           <img
             id="footer-logo"
             className="mb-3"
-            src="https://arkavidia.id/img/logo.jpg"
+            src="img/logo.jpg"
           ></img>
           <ul id="social-link">
             <li>
               <Link href="https://instagram.com/arkavidia">
                 <a>
-                  <img src="https://arkavidia.id/img/social/ig.png" />
+                  <img src="/img/social/ig.png" />
                 </a>
               </Link>
             </li>
             <li>
               <Link href="https://twitter.com/arkavidia_hmif">
                 <a>
-                  <img src="https://arkavidia.id/img/social/twitter.png"></img>
+                  <img src="/img/social/twitter.png"></img>
                 </a>
               </Link>
             </li>
             <li>
               <Link href="https://linkedin.com/company/arkavidia">
                 <a>
-                  <img src="https://arkavidia.id/img/social/linkedin.png"></img>
+                  <img src="/img/social/linkedin.png"></img>
                 </a>
               </Link>
             </li>
