@@ -16,6 +16,7 @@ const Map: React.FC = () => {
 
   return (
     <MapContainer
+      touchZoom={true}
       center={center}
       zoom={1}
       maxZoom={3}
