@@ -19,10 +19,10 @@ const Map: React.FC = () => {
       touchZoom={true}
       center={center}
       zoom={1}
-      maxZoom={3}
-      minZoom={-1}
+      maxZoom={2}
+      minZoom={1}
       maxBounds={maxBounds}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
       style={{ height: "80vh", width: "100%", backgroundColor: "transparent", zIndex: 0 }}
       crs={CRS.Simple}
     >
