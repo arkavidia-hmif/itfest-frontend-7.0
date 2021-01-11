@@ -1,17 +1,15 @@
 import { MapContainer, Marker, Popup, ImageOverlay } from "react-leaflet";
-import { CRS, LatLngBoundsExpression, LatLngTuple } from "leaflet";
+import { CRS, icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import Link from "next/link";
 import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import "leaflet-defaulticon-compatibility";
 
-const Map : React.FC = () => {
-  const center : LatLngTuple= [125, 312.5];
-  const bounds : LatLngBoundsExpression = [
+const Map: React.FC = () => {
+  const center: LatLngTuple = [125, 312.5];
+  const bounds: LatLngBoundsExpression = [
     [0, 0],
     [250, 625],
   ];
-  const maxBounds : LatLngBoundsExpression = [
+  const maxBounds: LatLngBoundsExpression = [
     [-250, -625],
     [500, 1250]
   ];
@@ -32,7 +30,14 @@ const Map : React.FC = () => {
         bounds={bounds}
       />
 
-      <Marker position={[125, 210]}>
+      <Marker position={[125, 210]}
+        title={"asd"}
+        icon={icon({
+          iconUrl: "/img/marker.png",
+          iconSize: [24, 36],
+          iconAnchor: [0, 18]
+        })}
+      >
         <Popup>
           <div id="popup-body" className="container">
             <div className="row">
