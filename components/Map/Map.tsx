@@ -35,7 +35,7 @@ const Map: React.FC = () => {
         icon={icon({
           iconUrl: "/img/marker.png",
           iconSize: [24, 36],
-          iconAnchor: [0, 18]
+          iconAnchor: [12, 36]
         })}
       >
         <Popup>
