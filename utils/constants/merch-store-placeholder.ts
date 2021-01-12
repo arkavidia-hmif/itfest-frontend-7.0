@@ -13,46 +13,46 @@ export const MerchStorePlaceholderItems: Array<MerchStoreItem> = [
   {
     image: "/img/merchstore/store_item_1.png",
     name: "Tas Totebag Shopee",
-    price: "3,000,000",
+    price: 3000000,
   },
   {
     image: "/img/merchstore/store_item_2.png",
     name: "Kaos Putih",
-    price: "3,000,000",
+    price: 3000000,
   },
   {
     image: "/img/merchstore/store_item_3.png",
     name: "Kaos Kuning",
-    price: "3,000,000",
+    price: 3000000,
   },
   {
     image: "/img/merchstore/store_item_1.png",
     name: "Tas Totebag Shopee",
-    price: "3,000,000",
+    price: 3000000,
   },
   {
     image: "/img/merchstore/store_item_2.png",
     name: "Tas Totebag Shopee",
-    price: "3,000,000",
+    price: 3000000,
   },
   {
     image: "/img/merchstore/store_item_3.png",
     name: "Tas Totebag Shopee",
-    price: "3,000,000",
+    price: 3000000,
   },
   {
     image: "/img/merchstore/store_item_1.png",
     name: "Tas Totebag Shopee",
-    price: "3,000,000",
+    price: 3000000,
   },
   {
     image: "/img/merchstore/store_item_2.png",
     name: "Tas Totebag Shopee",
-    price: "3,000,000",
+    price: 3000000,
   },
   {
     image: "/img/merchstore/store_item_3.png",
     name: "Tas Totebag Shopee",
-    price: "3,000,000",
+    price: 3000000,
   },
 ];

@@ -20,7 +20,7 @@ const MerchStoreCarouselItem: React.FC<Props> = ({ item, buyCallback }) => {
         </div>
 
         <p className="mt-3 item-name"><b>{item.name}</b></p>
-        <p className="mt-3 mb-2">{item.price}</p>
+        <p className="mt-3 mb-2">{item.price.toLocaleString()}</p>
       </div>
       <style jsx>
         {`
