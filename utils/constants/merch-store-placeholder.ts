@@ -17,12 +17,12 @@ export const MerchStorePlaceholderItems: Array<MerchStoreItem> = [
   },
   {
     image: "/img/merchstore/store_item_2.png",
-    name: "Tas Totebag Shopee",
+    name: "Kaos Putih",
     price: "3,000,000",
   },
   {
     image: "/img/merchstore/store_item_3.png",
-    name: "Tas Totebag Shopee",
+    name: "Kaos Kuning",
     price: "3,000,000",
   },
   {
