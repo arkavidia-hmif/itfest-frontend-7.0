@@ -19,11 +19,15 @@ const MerchStoreCarouselItem: React.FC<Props> = ({ item, buyCallback }) => {
           </div>
         </div>
 
-        <h4 className="mt-2 mb-2">{item.name}</h4>
-        <p className="mt-4 mb-2">{item.price}</p>
+        <p className="mt-3 item-name"><b>{item.name}</b></p>
+        <p className="mt-3 mb-2">{item.price}</p>
       </div>
       <style jsx>
         {`
+          .item-name {
+            min-height: 2.5rem;
+          }
+
           .store-item {
             width: 5.75rem;
           }
