@@ -8,8 +8,7 @@ const Home: React.FC = () => {
 
   return (
     <Layout title="Home">
-      {process.env.API_BASE_URL}
-      <MapWithNoSSR/>
+      <MapWithNoSSR />
     </Layout>
   );
 };
