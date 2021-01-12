@@ -1,9 +1,9 @@
 import MerchStoreCarousel from "./MerchStoreCarousel";
 import { Dimen } from "styles/dimen";
 
-const MerchStoreContainer: React.FC = () => {
+const MerchStoreExpanded: React.FC = () => {
   return (
-    <div>
+    <div className="w-100">
       <div className="merch-store-container">
         <div className="merch-store-cross-button mt-2 mr-2">
           <button>
@@ -45,7 +45,7 @@ const MerchStoreContainer: React.FC = () => {
           </div>
         </div>
       </div>
-      <style>
+      <style jsx>
         {`
           .merch-store-container {
             background: white;
@@ -200,4 +200,4 @@ const MerchStoreContainer: React.FC = () => {
   );
 };
 
-export default MerchStoreContainer;
+export default MerchStoreExpanded;
