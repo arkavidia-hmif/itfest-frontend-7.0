@@ -1,5 +1,4 @@
 import MerchStoreCarousel from "./MerchStoreCarousel";
-import { Dimen } from "styles/dimen";
 import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
 
 const MerchStoreExpanded: React.FC = () => {
