@@ -127,7 +127,7 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
             filter: brightness(75%);
           }
 
-          @media (max-width: 575.98px) { 
+          @media (max-width: 576px) { 
 
             .carousel-wrapper {
               width: 95%;

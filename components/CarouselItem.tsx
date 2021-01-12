@@ -129,11 +129,11 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 
           @media (max-width: 1000px) {
             .dino-txt-normal {
-              font-size: 0.5rem;
+              font-size: 0.6rem;
             }
   
             .dino-paragraph p {
-              font-size: 0.5rem;
+              font-size: 0.6rem;
             }
 
             .dino-text {
