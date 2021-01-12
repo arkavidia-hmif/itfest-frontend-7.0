@@ -2,17 +2,20 @@ import FilledButton from "components/commons/FilledButton";
 import { MerchStoreItem } from "interfaces/merch-store";
 
 export interface Props {
-  item: MerchStoreItem
+  item: MerchStoreItem,
+  buyCallback: (item: MerchStoreItem) => void
 }
 
-const MerchStoreCarouselItem: React.FC<Props> = ({ item }) => {
+const MerchStoreCarouselItem: React.FC<Props> = ({ item, buyCallback }) => {
   return (
     <div>
       <div className="store-item">
         <div className="item-image">
           <img src={item.image} className="w-100" />
           <div className="item-hover">
-            <FilledButton text="Buy" />
+            <FilledButton text="Buy" onClick={() => {
+              buyCallback(item);
+            }} />
           </div>
         </div>
 

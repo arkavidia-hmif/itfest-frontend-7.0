@@ -9,6 +9,12 @@ interface Props {
 }
 
 const MerchStoreCarousel: React.FC<Props> = ({ items }) => {
+  const buyCallback = (item: MerchStoreItem) => {
+    // debug
+    // eslint-disable-next-line no-console 
+    console.log(`Buy ${item.name}`);
+  };
+
   return (
     <Carousel
       breakPoints={MerchStoreCarouselBreakPoints}
@@ -17,6 +23,7 @@ const MerchStoreCarousel: React.FC<Props> = ({ items }) => {
     >
       {items.map((item, index) => (
         <MerchStoreCarouselItem
+          buyCallback={buyCallback}
           key={index}
           item={item}
         />
