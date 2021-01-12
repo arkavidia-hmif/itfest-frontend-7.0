@@ -1,3 +1,4 @@
+import FilledButton from "components/commons/FilledButton";
 import { MerchStoreItem } from "interfaces/merch-store";
 
 export interface Props {
@@ -9,8 +10,10 @@ const MerchStoreCarouselItem: React.FC<Props> = ({ item }) => {
     <div>
       <div className="store-item">
         <div className="item-image">
-          <img src={item.image} />
-          <button>Buy</button>
+          <img src={item.image} className="w-100" />
+          <div className="item-hover">
+            <FilledButton text="Buy" />
+          </div>
         </div>
 
         <h4 className="mt-2 mb-2">{item.name}</h4>
@@ -22,37 +25,30 @@ const MerchStoreCarouselItem: React.FC<Props> = ({ item }) => {
             width: 5.75rem;
           }
 
-          .store-item button {
-            display: none;
-          }
-
           .item-image {
             position: relative;
-            display: flex;
-            justify-content: center;
           }
 
-          .item-image img {
-            width: 100%;
-          }
-
-          .store-item:hover button {
+          .item-hover {
             position: absolute;
-            top: 40%;
-            border: none;
-            border-radius: 12px;
-            display: block;
-            color: white;
-            font-size: .9rem;
-            font-family: Viga;
-            font-style: normal;
-            font-weight: normal;
-            background: #fe789a;
-            padding: 0.5rem 2rem;
+            top: 0;
+            width: 100%;
+            height: 100%;
+
+            border-radius: 0.25rem;
+
+            background-color: rgba(0,0,0,0.2);
+            
+            justify-content: center;
+            align-items: center;
+            display: flex;
+
+            opacity: 0;
+            transition: opacity 200ms ease-out;
           }
 
-          .store-item:hover button:focus {
-            outline: none;
+          .item-hover:hover {
+            opacity: 1;
           }
         `}
       </style>
