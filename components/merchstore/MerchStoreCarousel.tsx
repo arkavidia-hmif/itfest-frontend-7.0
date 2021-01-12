@@ -1,12 +1,16 @@
 import Carousel from "react-elastic-carousel";
-import MerchStoreItem from "./MerchStoreItem";
+import MerchStoreCarouselItem from "./MerchStoreCarouselItem";
 import {
   merchStoreCarouselBreakPoints,
-  merchStoreItems,
   merchStoreConsts,
 } from "utils/constants/merch-store-placeholder";
+import { MerchStoreItem } from "interfaces/merch-store";
 
-const MerchStoreCarousel: React.FC = () => {
+interface Props {
+  items: Array<MerchStoreItem>
+}
+
+const MerchStoreCarousel: React.FC<Props> = ({ items }) => {
   const MerchStoreCustomArrow = ({
     type,
     onClick,
@@ -63,12 +67,10 @@ const MerchStoreCarousel: React.FC = () => {
       renderPagination={() => <></>}
       renderArrow={MerchStoreCustomArrow}
     >
-      {merchStoreItems.map((item, index) => (
-        <MerchStoreItem
+      {items.map((item, index) => (
+        <MerchStoreCarouselItem
           key={index}
-          name={item["item-name"]}
-          image={item["item-img"]}
-          price={item["item-price"]}
+          item={item}
         />
       ))}
     </Carousel>

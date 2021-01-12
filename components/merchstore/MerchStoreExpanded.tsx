@@ -1,7 +1,14 @@
 import MerchStoreCarousel from "./MerchStoreCarousel";
 import { Dimen } from "styles/dimen";
+import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
 
 const MerchStoreExpanded: React.FC = () => {
+
+  const { merchantName, storeLogo } = {
+    merchantName: "John",
+    storeLogo: "/img/merchstore/store_logo.png"
+  };
+
   return (
     <div className="w-100">
       <div className="merch-store-container">
@@ -13,12 +20,12 @@ const MerchStoreExpanded: React.FC = () => {
         <div className="merch-store-top">
           <div className="merch-store-title">
             <img
-              src="/img/merchstore/store_logo.png"
-              alt="store-logo"
+              src={storeLogo}
+              alt={merchantName}
               className="store-logo"
             />
             <div className="store-name">
-              <h2>John Shop</h2>
+              <h2>{merchantName}&#39;s Shop</h2>
             </div>
           </div>
           <div className="merch-store-search">
@@ -34,13 +41,13 @@ const MerchStoreExpanded: React.FC = () => {
           <div className="store-items">
             <h3 className="store-items-title">Top Merch</h3>
             <div className="store-items-carousel mt-4 mb-2">
-              <MerchStoreCarousel />
+              <MerchStoreCarousel items={MerchStorePlaceholderItems} />
             </div>
           </div>
           <div className="store-items">
             <h3 className="store-items-title">Merch Lain</h3>
             <div className="store-items-carousel mt-4 mb-2">
-              <MerchStoreCarousel />
+              <MerchStoreCarousel items={MerchStorePlaceholderItems} />
             </div>
           </div>
         </div>

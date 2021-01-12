@@ -1,22 +1,22 @@
+import { MerchStoreItem } from "interfaces/merch-store";
+
 export interface Props {
-  name: string;
-  image: string;
-  price: string;
+  item: MerchStoreItem
 }
 
-const MerchStoreItem: React.SFC<Props> = ({ name, image, price }) => {
+const MerchStoreCarouselItem: React.FC<Props> = ({ item }) => {
   return (
     <div>
       <div className="store-item">
         <div className="item-image">
-          <img src={image} />
+          <img src={item.image} />
           <button>Buy</button>
         </div>
 
-        <h4 className="mt-2 mb-2">{name}</h4>
-        <p className="mt-4 mb-2">{price}</p>
+        <h4 className="mt-2 mb-2">{item.name}</h4>
+        <p className="mt-4 mb-2">{item.price}</p>
       </div>
-      <style>
+      <style jsx>
         {`
           .store-item {
             width: 5.75rem;
@@ -60,4 +60,4 @@ const MerchStoreItem: React.SFC<Props> = ({ name, image, price }) => {
   );
 };
 
-export default MerchStoreItem;
+export default MerchStoreCarouselItem;

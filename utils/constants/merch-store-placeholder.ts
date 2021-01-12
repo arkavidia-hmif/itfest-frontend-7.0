@@ -1,3 +1,5 @@
+import { MerchStoreItem } from "interfaces/merch-store";
+
 export const merchStoreConsts = {
   PREV: "PREV",
   NEXT: "NEXT",
@@ -15,50 +17,50 @@ export const merchStoreCarouselBreakPoints = [
   { width: 850, itemsToShow: 7 },
 ];
 
-export const merchStoreItems = [
+export const MerchStorePlaceholderItems: Array<MerchStoreItem> = [
   {
-    "item-img": "/img/merchstore/store_item_1.png",
-    "item-name": "Tas Totebag Shopee",
-    "item-price": "3,000,000",
+    image: "/img/merchstore/store_item_1.png",
+    name: "Tas Totebag Shopee",
+    price: "3,000,000",
   },
   {
-    "item-img": "/img/merchstore/store_item_2.png",
-    "item-name": "Tas Totebag Shopee",
-    "item-price": "3,000,000",
+    image: "/img/merchstore/store_item_2.png",
+    name: "Tas Totebag Shopee",
+    price: "3,000,000",
   },
   {
-    "item-img": "/img/merchstore/store_item_3.png",
-    "item-name": "Tas Totebag Shopee",
-    "item-price": "3,000,000",
+    image: "/img/merchstore/store_item_3.png",
+    name: "Tas Totebag Shopee",
+    price: "3,000,000",
   },
   {
-    "item-img": "/img/merchstore/store_item_1.png",
-    "item-name": "Tas Totebag Shopee",
-    "item-price": "3,000,000",
+    image: "/img/merchstore/store_item_1.png",
+    name: "Tas Totebag Shopee",
+    price: "3,000,000",
   },
   {
-    "item-img": "/img/merchstore/store_item_2.png",
-    "item-name": "Tas Totebag Shopee",
-    "item-price": "3,000,000",
+    image: "/img/merchstore/store_item_2.png",
+    name: "Tas Totebag Shopee",
+    price: "3,000,000",
   },
   {
-    "item-img": "/img/merchstore/store_item_3.png",
-    "item-name": "Tas Totebag Shopee",
-    "item-price": "3,000,000",
+    image: "/img/merchstore/store_item_3.png",
+    name: "Tas Totebag Shopee",
+    price: "3,000,000",
   },
   {
-    "item-img": "/img/merchstore/store_item_1.png",
-    "item-name": "Tas Totebag Shopee",
-    "item-price": "3,000,000",
+    image: "/img/merchstore/store_item_1.png",
+    name: "Tas Totebag Shopee",
+    price: "3,000,000",
   },
   {
-    "item-img": "/img/merchstore/store_item_2.png",
-    "item-name": "Tas Totebag Shopee",
-    "item-price": "3,000,000",
+    image: "/img/merchstore/store_item_2.png",
+    name: "Tas Totebag Shopee",
+    price: "3,000,000",
   },
   {
-    "item-img": "/img/merchstore/store_item_3.png",
-    "item-name": "Tas Totebag Shopee",
-    "item-price": "3,000,000",
+    image: "/img/merchstore/store_item_3.png",
+    name: "Tas Totebag Shopee",
+    price: "3,000,000",
   },
 ];
