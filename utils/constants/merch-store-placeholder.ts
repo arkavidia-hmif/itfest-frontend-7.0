@@ -1,14 +1,6 @@
 import { MerchStoreItem } from "interfaces/merch-store";
 
-export const merchStoreConsts = {
-  PREV: "PREV",
-  NEXT: "NEXT",
-  START: "flex-start",
-  CENTER: "center",
-  END: "flex-end",
-};
-
-export const merchStoreCarouselBreakPoints = [
+export const MerchStoreCarouselBreakPoints = [
   { width: 100, itemsToShow: 1 },
   { width: 200, itemsToShow: 2 },
   { width: 350, itemsToShow: 3 },

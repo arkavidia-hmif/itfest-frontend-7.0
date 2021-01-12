@@ -3,3 +3,5 @@ export interface MerchStoreItem {
   name: string,
   price: string,
 }
+
+export type MerchStoreCarouselButtonType = "PREV" | "NEXT";
