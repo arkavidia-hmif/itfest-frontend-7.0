@@ -1,10 +1,11 @@
 import MerchStoreCarousel from "./MerchStoreCarousel";
 import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
+import { Dimen } from "styles/dimen";
 
 const MerchStoreExpanded: React.FC = () => {
 
   const { merchantName, storeLogo } = {
-    merchantName: "John",
+    merchantName: "Arkavidia",
     storeLogo: "/img/merchstore/store_logo.png"
   };
 
@@ -16,14 +17,15 @@ const MerchStoreExpanded: React.FC = () => {
             <img src="/img/merchstore/cross_button.png" />
           </button>
         </div>
-        <div className="col-md-6 merch-title justify-content-center justify-content-md-start pl-0 pl-md-5">
+        <div className="col-lg-6 merch-title justify-content-center justify-content-lg-start row">
           <img
+            className="col-md-6"
             src={storeLogo}
             alt={merchantName}
           />
-          <h2 className="mb-0 ml-3">{merchantName}&#39;s Shop</h2>
+          <h2 className="mb-0 col-md-6">{merchantName}&#39;s Shop</h2>
         </div>
-        <div className="merch-store-search col-md-6 pr-md-5 align-items-center align-items-md-end">
+        <div className="merch-store-search col-lg-6 pr-lg-5 align-items-center align-items-lg-end ">
           <input
             className="merch-store-search-bar mx-3 mr-md-5 my-3"
             type="text"
@@ -83,6 +85,10 @@ const MerchStoreExpanded: React.FC = () => {
             font-size: 2rem;
           }
 
+          .merch-title img {
+            max-width: min(200px, 50vw);
+          }
+
           .merch-store-search {
             display: flex;
             flex-direction: column;
@@ -107,6 +113,12 @@ const MerchStoreExpanded: React.FC = () => {
             font-size: 1.5rem;
             padding-left: 1.5rem;
             margin-top: 2.5rem;
+          }
+
+          @media (max-width: ${Dimen.mdBreakpoint}){
+            .merch-title h2 {
+              text-align: center;
+            }
           }
         `}
       </style>
