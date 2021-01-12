@@ -86,7 +86,7 @@ const MerchStoreExpanded: React.FC = () => {
           }
 
           .merch-title img {
-            max-width: min(200px, 50vw);
+            max-width: min(150px, 50vw);
           }
 
           .merch-store-search {
