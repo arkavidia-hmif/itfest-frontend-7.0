@@ -37,23 +37,13 @@ const Navbar: React.FC = () => {
             <Link href="/">
               <a>
                 <img
-                  src="https://www.arkavidia.id/img/logo-horizontal.svg"
+                  src="/img/logo-horizontal.svg"
                   alt="Logo Arkavidia"
                 />
               </a>
             </Link>
           </div>
-        ) : (
-          <NavDesktop />
-        )}
-        {/* <div className="logo pl-md-3">
-          <Link href="/">
-            <a>
-              <img src="/img/logo-horizontal.svg" alt="Logo Arkavidia" />
-            </a>
-          </Link>
-        </div>
-        <div id="spacer" /> */}
+        ) : <NavDesktop />}
       </nav>
 
       <style jsx>{`

@@ -1,14 +1,15 @@
-import * as React from "react";
-import CompanyProfile from "./company-profile/companyprofilealt";
+import dynamic from "next/dynamic";
 import Layout from "components/commons/Layout";
 
 const Home: React.FC = () => {
+  const MapWithNoSSR = dynamic(() => import("components/Map/Map"), {
+    ssr: false
+  });
+
   return (
-    <>
-      <Layout title="Home">
-        <CompanyProfile/>
-      </Layout>;
-    </>
+    <Layout title="Home">
+      <MapWithNoSSR />
+    </Layout>
   );
 };
 
