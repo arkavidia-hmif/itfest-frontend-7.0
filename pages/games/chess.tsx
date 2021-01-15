@@ -1,7 +1,11 @@
+import dynamic from "next/dynamic";
 import Layout from "components/commons/Layout";
-import Chess from "components/games/Chess";
 
-const MerchStorePage: React.FC = () => {
+const Chess = dynamic(() => import("components/games/Chess"), {
+  ssr: false,
+});
+
+const ChessPage: React.FC = () => {
   return (
     <Layout title="Chess">
       <div className="container my-5">
@@ -11,4 +15,4 @@ const MerchStorePage: React.FC = () => {
   );
 };
 
-export default MerchStorePage;
+export default ChessPage;

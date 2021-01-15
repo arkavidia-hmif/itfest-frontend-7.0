@@ -1,12 +1,11 @@
 import dynamic from "next/dynamic";
 import Layout from "components/commons/Layout";
-// import CrossWord from "components/games/Crossword";
 
 const CrossWord = dynamic(() => import("components/games/Crossword"), {
   ssr: false,
 });
 
-const MerchStorePage: React.FC = () => {
+const CrosswordPage: React.FC = () => {
   return (
     <Layout title="Crossword Puzzle">
       <div className="container my-5">
@@ -16,4 +15,4 @@ const MerchStorePage: React.FC = () => {
   );
 };
 
-export default MerchStorePage;
+export default CrosswordPage;
