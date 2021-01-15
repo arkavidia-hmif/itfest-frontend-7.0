@@ -22,6 +22,7 @@
     "leaflet-geosearch": "^3.2.0",
     "next": "^9.5.5",
     "react": "^16.12.0",
+    "react-crossword": "^0.2.0",
     "react-dom": "^16.12.0",
     "react-elastic-carousel": "^0.9.5",
     "react-ga": "^3.2.0",

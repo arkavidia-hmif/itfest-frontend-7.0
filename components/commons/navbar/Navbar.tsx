@@ -36,14 +36,13 @@ const Navbar: React.FC = () => {
           <div className="text-center">
             <Link href="/">
               <a>
-                <img
-                  src="/img/logo-horizontal.svg"
-                  alt="Logo Arkavidia"
-                />
+                <img src="/img/logo-horizontal.svg" alt="Logo Arkavidia" />
               </a>
             </Link>
           </div>
-        ) : <NavDesktop />}
+        ) : (
+          <NavDesktop />
+        )}
       </nav>
 
       <style jsx>{`
