@@ -13,7 +13,7 @@ interface Props {
 const Layout: React.FC<Props> = ({
   children,
   title,
-  background = Theme.bgColors.whblpi,
+  background = Theme.bgColors.pitopl,
 }) => {
   if (!title) {
     title = "Arkavidia 7.0";
@@ -27,7 +27,11 @@ const Layout: React.FC<Props> = ({
         <title>{title}</title>
       </Head>
       <Navbar />
-      <div id="main-container">{children}</div>
+      <div id="main-container">
+        <div className="background-image">
+          {children}
+        </div>
+      </div>
       <Footer />
       <style jsx>{`
         #parent-container {
@@ -38,6 +42,17 @@ const Layout: React.FC<Props> = ({
         #main-container {
           background: ${background};
           flex: 1;
+        }
+        .background-image {
+          background-image: url("/img/company-profile/background.png");
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        @media only screen and (max-width: 1000px) {
+          .background-image {
+            background-size: cover;
+          }
         }
       `}</style>
     </div>
