@@ -1,15 +1,28 @@
 import * as React from "react";
-// import ColorfulHeader from "../commons/ColorfulHeader";
+import ColorfulHeader from "../commons/ColorfulHeader";
+import { Theme } from "styles/theme";
 
 // interface Props {
 //   type: string;
 //   done: boolean;
 // }
 const MapDescription: React.FC = () => {
+  const points = 1000;
+  const rank = "1 of 9999";
   return (
     <>
       <div className="flex-container">
-        <h1 className="journey-text">START YOUR JOURNEY!</h1>
+        <div className="journey-text">
+          <div className="title-text">
+            <ColorfulHeader
+              color={Theme.headerColors.plpi}
+              headingLevel={1}
+            > START YOUR JOURNEY!
+            </ColorfulHeader>
+          </div>
+          <img src="img/home/email-icon.png" className="email-img"/>
+        </div>
+        <h1 className="journey-text"></h1>
         <div className="description-flex">
           <div className="grid-left">
             <div className="border-left"></div>
@@ -18,8 +31,8 @@ const MapDescription: React.FC = () => {
               <p className="text-bold-left-down">Rank</p>
             </div>
             <div>
-              <p className="text-bold-left-up">1000</p>
-              <p className="text-bold-left-down">1 of 9999</p>
+              <p className="text-bold-left-up-value">{points}</p>
+              <p className="text-bold-left-down-value">{rank}</p>
             </div>
           </div>
           <div className="grid-right">
@@ -35,11 +48,14 @@ const MapDescription: React.FC = () => {
           .flex-container {
               display: flex;
               flex-direction: column;
-              margin-bottom: 5%;
           }
 
           .journey-text {
               text-align: center;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              margin-left: 6%;
           }
 
           .grid-left {
@@ -90,6 +106,16 @@ const MapDescription: React.FC = () => {
               color: #441985;
           }
 
+          .text-bold-left-up-value {
+              color: #441985;
+          }
+
+          .text-bold-left-down-value {
+              margin-top: 1rem;
+              margin-bottom: 0;
+              color: #441985;
+          }
+
           .text-bold-right-up {
               font-weight: bold;
               text-align: right;
@@ -110,6 +136,16 @@ const MapDescription: React.FC = () => {
 
           .text-right {
               grid-column: 1 / span 1;
+          }
+
+          .email-img {
+              width: 75px;
+              height: 100px;
+          }
+
+          .title-text {
+              margin-top: 1.2%;
+              margin-right: 1%;
           }
   
           @media only screen and (max-width: 1000px) {

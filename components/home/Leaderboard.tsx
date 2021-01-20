@@ -1,5 +1,6 @@
 import * as React from "react";
-// import ColorfulHeader from "../commons/ColorfulHeader";
+import ColorfulHeader from "../commons/ColorfulHeader";
+import { Theme } from "styles/theme";
 
 interface dataProps {
   name: string;
@@ -7,6 +8,7 @@ interface dataProps {
 }
 
 const LeaderBoard: React.FC = () => {
+  const visitorNumber = 135182;
   const dummyData = 
   [
     {name: "John Doe", score: "10,000,000"},
@@ -64,8 +66,18 @@ const LeaderBoard: React.FC = () => {
   return (
     <>
       <div className="flex-container">
-        <h1 className="leaderboard-text">LEADERBOARD</h1>
-        <h2 className="visitor-text">Visitors: 135182</h2>
+        <div className="title-text">
+          <ColorfulHeader
+            color={Theme.headerColors.pipl}
+            headingLevel={1}
+          > LEADERBOARD
+          </ColorfulHeader>
+          <ColorfulHeader
+            color={Theme.headerColors.pipl}
+            headingLevel={3}
+          > Visitors: {visitorNumber}
+          </ColorfulHeader>
+        </div>
         {leaderboardList(dummyData)}
       </div>
       <style jsx>{`
@@ -73,18 +85,12 @@ const LeaderBoard: React.FC = () => {
               display: flex;
               flex-direction: column;
               margin-bottom: 5%;
+              margin-top: 5%;
           }
 
-          .margin-right-button {
-              margin-right: 3%;
-          }
-
-          .leaderboard-text {
+          .title-text {
               text-align: center;
-          }
-
-          .visitor-text {
-              text-align: center;
+              margin-bottom: 2%;
           }
   
           @media only screen and (max-width: 1000px) {
