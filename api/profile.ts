@@ -11,7 +11,7 @@ export const getProfile = async (
   return axios
     .get<UserData>(PROFILE_URL)
     .then((response) => {
-      return response.data
+      return response.data;
     })
     .catch((error: AxiosError) => {
       throw new ApiError<StandardError>(StandardError.ERROR, error.message);
@@ -30,4 +30,4 @@ export const editProfile = async (
     .catch((error: AxiosError) => {
       throw new ApiError<StandardError>(StandardError.ERROR, error.message);
     });
-}
+};
