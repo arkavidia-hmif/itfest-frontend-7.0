@@ -20,7 +20,7 @@ export async function login(
     return response.data as AuthData;
   } catch (e) {
     if (e.response) {
-      const errorCode = e.response.code;
+      const errorCode = e.response.data?.code;
       if (errorCode === "user-not-found" || errorCode === "invalid-auth") {
         throw new ApiError<LoginStatus>(
           LoginStatus.INVALID_CREDS,
@@ -47,7 +47,7 @@ export async function registerVisitor(
     return response.data as AuthData;
   } catch (e) {
     if (e.response) {
-      const errorCode = e.response.data.code;
+      const errorCode = e.response.data?.code;
       if (errorCode === "user-exists") {
         throw new ApiError<RegisterStatus>(
           RegisterStatus.USER_EXISTS,
