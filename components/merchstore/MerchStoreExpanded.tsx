@@ -3,10 +3,9 @@ import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placehol
 import { Dimen } from "styles/dimen";
 
 const MerchStoreExpanded: React.FC = () => {
-
   const { merchantName, storeLogo } = {
     merchantName: "Arkavidia",
-    storeLogo: "/img/merchstore/store_logo.png"
+    storeLogo: "/img/merchstore/store_logo.png",
   };
 
   return (
@@ -18,11 +17,7 @@ const MerchStoreExpanded: React.FC = () => {
           </button>
         </div>
         <div className="col-lg-6 merch-title justify-content-center justify-content-lg-start row">
-          <img
-            className="col-md-6"
-            src={storeLogo}
-            alt={merchantName}
-          />
+          <img className="col-md-6" src={storeLogo} alt={merchantName} />
           <h2 className="mb-0 col-md-6">{merchantName}&#39;s Shop</h2>
         </div>
         <div className="merch-store-search col-lg-6 pr-lg-5 align-items-center align-items-lg-end ">
@@ -115,14 +110,14 @@ const MerchStoreExpanded: React.FC = () => {
             margin-top: 2.5rem;
           }
 
-          @media (max-width: ${Dimen.mdBreakpoint}){
+          @media (max-width: ${Dimen.mdBreakpoint}) {
             .merch-title h2 {
               text-align: center;
             }
           }
         `}
       </style>
-    </div >
+    </div>
   );
 };
 
