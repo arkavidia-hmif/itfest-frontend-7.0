@@ -174,7 +174,6 @@ const MapDescription: React.FC = () => {
                   display: flex;
                   flex-direction: column;
                   justify-content: center;
-                  margin-left: 6%;
               }
 
               .email-img {
@@ -196,8 +195,7 @@ const MapDescription: React.FC = () => {
                   padding: 1% 3%;
                   align-items: center;
                   border-radius: 1rem;
-                  grid-template-columns: 0.3rem 0.6rem 2.7rem 5rem;
-                  margin-inline-end: 0;
+                  grid-template-columns: 0.3rem 0.6rem 3.2rem 4.8rem;
               }
 
               .grid-right {
@@ -205,31 +203,14 @@ const MapDescription: React.FC = () => {
                   padding: 1% 3%;
                   align-items: center;
                   border-radius: 1rem;
-                  grid-template-columns: 7.8rem 0.3rem 0.3rem;
+                  grid-template-columns: 10rem 0.3rem 0.3rem;
               }
 
-              .text-bold-left-up {
-                  font-size: .8rem;
-              }
-  
-              .text-bold-left-down {
-                  font-size: .8rem;
-              }
-    
-              .text-bold-left-up-value {
-                  font-size: .8rem;
-              }
-    
-              .text-bold-left-down-value {
-                  font-size: .8rem;
-              }
-    
-              .text-bold-right-up {
-                  font-size: .8rem;
-              }
-    
-              .text-bold-right-down {
-                  font-size: .8rem;
+              .description-flex {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  margin: 0 2% 0 2%;
               }
           }
         `}</style>
