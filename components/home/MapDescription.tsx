@@ -48,6 +48,7 @@ const MapDescription: React.FC = () => {
           .flex-container {
               display: flex;
               flex-direction: column;
+              margin-top: 10%;
           }
 
           .journey-text {

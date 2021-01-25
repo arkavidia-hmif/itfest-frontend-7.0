@@ -54,7 +54,6 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             position: relative;
             overflow: hidden;
             background-size: cover;
-            background-color: white;
           }
 
           .content-wrapper {

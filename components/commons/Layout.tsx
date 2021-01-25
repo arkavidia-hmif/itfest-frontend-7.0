@@ -13,7 +13,7 @@ interface Props {
 const Layout: React.FC<Props> = ({
   children,
   title,
-  background = Theme.bgColors.pitopl,
+  background = Theme.bgColors.whplpi,
 }) => {
   if (!title) {
     title = "Arkavidia 7.0";

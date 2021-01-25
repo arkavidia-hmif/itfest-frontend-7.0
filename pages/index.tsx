@@ -13,8 +13,8 @@ const Home: React.FC = () => {
   return (
     <Layout title="Home">
       <Carousel>
-        <CarouselItem textCompany="Dinosaurus" mainText="Lalaland" backgroundImage="img/dino.png"/>
-        <CarouselItem textCompany="Brontosaurus" mainText="Lalaland2"/>
+        <CarouselItem textCompany="Dinosaurus" mainText="Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer" backgroundImage="img/carousel/bground.png" companyImage="img/carousel/dino.svg"/>
+        <CarouselItem textCompany="Brontosaurus" mainText="Lalaland2" backgroundImage="img/carousel/bground.png" companyImage="img/carousel/dino.svg"/>
       </Carousel>
       <MapDescription />
       <MapWithNoSSR />

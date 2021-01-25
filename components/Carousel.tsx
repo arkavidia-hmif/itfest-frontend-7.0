@@ -61,7 +61,11 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
       <style jsx>
         {`
           .carousel-wrapper {
-            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: auto;
+            width: 85%;
             position: relative;
             border-radius: 1rem;
           }
