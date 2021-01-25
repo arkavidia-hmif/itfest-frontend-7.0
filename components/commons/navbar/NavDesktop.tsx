@@ -124,6 +124,12 @@ const NavDesktop: React.FC = () => {
             height: 3px;
           }
 
+          ul.right {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+          }
+
           li {
             margin: 0 2rem;
           }

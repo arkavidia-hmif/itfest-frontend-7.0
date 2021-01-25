@@ -33,14 +33,16 @@ const Navbar: React.FC = () => {
       <nav className="container-fluid max-content">
         <Burger {...burgerProps} />
         {!open ? (
-          <div className="text-center">
-            <Link href="/">
-              <a>
-                <img src="/img/logo-horizontal.svg" alt="Logo Arkavidia" />
-              </a>
-            </Link>
-            <div className="">
-              <h1>IT FEST</h1>
+          <div className="d-flex align-items-center">
+            <div className="text-center">
+              <Link href="/">
+                <a>
+                  <img src="/img/logo-horizontal.svg" alt="Logo Arkavidia" />
+                </a>
+              </Link>
+              <div className="">
+                <h1>IT FEST</h1>
+              </div>
             </div>
           </div>
         ) : (
@@ -103,6 +105,25 @@ const Navbar: React.FC = () => {
           .logo img {
             height: 30px;
           }
+
+          img {
+            height: 45%;
+            width: 45%;
+          }
+
+          .text-center {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            height: 70%;
+          }
+
+          .text-center h1 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            margin-left: -4rem;
+          }
+
           nav {
             height: ${Dimen.navbarMobileHeight};
           }
