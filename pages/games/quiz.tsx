@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Layout from "components/commons/Layout";
 
-const Chess = dynamic(() => import("components/games/Chess"), {
+const Quiz = dynamic(() => import("components/games/Quiz"), {
   ssr: false,
 });
 
@@ -9,7 +9,7 @@ const ChessPage: React.FC = () => {
   return (
     <Layout title="Chess">
       <div className="container my-5">
-        <Chess />
+        <Quiz />
       </div>
     </Layout>
   );

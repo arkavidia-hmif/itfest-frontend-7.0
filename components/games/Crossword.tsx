@@ -1,3 +1,4 @@
+import { useLayoutEffect } from "react";
 import Crossword from "react-crossword";
 
 const CrossWord: React.FC = () => {
@@ -68,10 +69,7 @@ const CrossWord: React.FC = () => {
         direction: "down",
         length: 4,
         group: ["3-down", "4-down"],
-        position: {
-          x: 6,
-          y: 1,
-        },
+        position: { x: 6, y: 1 },
         separatorLocations: {},
         solution: "ENDS",
       },
@@ -95,14 +93,36 @@ const CrossWord: React.FC = () => {
       cols: 13,
       rows: 13,
     },
+    solutionAvailable: false,
+    dateSolutionAvailable: 1,
     crosswordType: "quick",
   };
-  // dateSolutionAvailable: 1,
-  // solutionAvailable: false,
+
+  useLayoutEffect(() => {
+    const className = "crossword__controls ";
+    const crossName = "crossword__container__game";
+    const items: HTMLCollection = document.getElementsByClassName(className);
+    const crossword: HTMLCollection = document.getElementsByClassName(
+      crossName
+    );
+    if (items) {
+      for (const item of items) {
+        item.style.display = "none";
+      }
+    }
+    if (crossword) {
+      for (const item of crossword) {
+        item.style.marginBottom = "3rem";
+      }
+    }
+  });
 
   return (
     <>
-      <Crossword data={data} />
+      <div className="mb-5">
+        <Crossword data={data} />
+      </div>
+
       <style jsx>{`
         .crossword * {
           font-family: Roboto !important;

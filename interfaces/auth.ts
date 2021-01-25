@@ -3,10 +3,9 @@ export interface AuthData {
 }
 
 export enum LoginStatus {
-  INVALID_CREDS
+  INVALID_CREDS,
 }
 
-
 export enum RegisterStatus {
-  USER_EXISTS
+  USER_EXISTS,
 }
