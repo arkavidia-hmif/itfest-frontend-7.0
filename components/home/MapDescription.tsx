@@ -174,6 +174,21 @@ const MapDescription: React.FC = () => {
                   display: flex;
                   flex-direction: column;
                   justify-content: center;
+                  margin-left: 6%;
+              }
+
+              .email-img {
+                  width: 50px;
+                  height: 75px;
+                  margin: auto;
+              }
+
+              .border-left {
+                  width: 6px;
+              }
+    
+              .border-right {
+                  width: 6px;
               }
 
               .email-img {
