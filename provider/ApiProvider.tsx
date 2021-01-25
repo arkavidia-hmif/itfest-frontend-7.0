@@ -14,23 +14,13 @@ const ApiProvider: React.FC<Props> = ({ children }) => {
     baseURL: process.env.API_BASE_URL,
 
     withCredentials: false,
-
-    xsrfCookieName: "csrftoken",
-    xsrfHeaderName: "X-CSRFToken",
   });
 
   apiClient.interceptors.request.use((config) => {
-    const currentEpoch = new Date().getTime() / 1000;
-
     if (authContext.authenticated && authContext.auth) {
-      if (authContext.auth.exp > currentEpoch) {
-        config.headers.common[
-          "Authorization"
-        ] = `Bearer ${authContext.auth.token}`;
-      } else {
-        authContext.setAuthenticated(false);
-        authContext.setAuth();
-      }
+      config.headers.common[
+        "Authorization"
+      ] = `Bearer ${authContext.auth.jwt}`;
     }
 
     return config;

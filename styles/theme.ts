@@ -48,6 +48,11 @@ const purpleButton: ButtonColor = {
   hover: "#936bd4",
 };
 
+const lightPurpleButton: ButtonColor = {
+  main: "#B296FE",
+  hover: "#d5a6e6",
+};
+
 const blueButton: ButtonColor = {
   main: "#00B6F1",
   hover: "#5EE6E9",
@@ -66,6 +71,11 @@ const pinkButton: ButtonColor = {
 const darkPinkButton: ButtonColor = {
   main: "#FE65D4",
   hover: "#F3A9DD",
+};
+
+const greyButton: ButtonColor = {
+  main: "rgba(0, 0, 0, 0.5)",
+  hover: "rgba(0, 0, 0, 0.5)",
 };
 
 const redAlert: AlertColor = {
@@ -96,6 +106,8 @@ export const Theme = {
     pinkButton,
     darkPinkButton,
     purpleButton,
+    lightPurpleButton,
+    greyButton
   },
   bgColors: {
     whblpi: "linear-gradient(to bottom, #FFFFFF 4%, #DAFFFF 44%, #FFDFF2 93%)", // White blue pink
@@ -107,11 +119,13 @@ export const Theme = {
       "linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 17.32%, rgba(0, 255, 255, 0.21) 56.34%, rgba(218, 125, 218, 0.58) 100%);", // White blue purple
     whtogr:
       "linear-gradient(0deg, rgba(168, 142, 215, 0.39) 2.49%, rgba(196, 196, 196, 0) 48.34%)", // white to grey
+    pitopl:
+      "linear-gradient(180deg, #FFFFFF 0%, #FFDCF4 20.31%, #FFD9DB 65.62%, #E8DBFA 100%)", // pink to purple
   },
   headerColors: {
     plbl: "linear-gradient(120deg, #835FBF, #835FBF, #30C5E8)", // Purple blue (e.g on competition page)
     plpi: "linear-gradient(120deg, #623FA2 25%, #FE5982 100%)",
-    pipl: "linear-gradient(110deg, #FE789A 0%, #623FA2 100%)",
+    pipl: "linear-gradient(110deg, #FE789A 0%, #623FA2 100%)"
   },
   competitionColors: {
     subHeadingColor: "#05058d",
