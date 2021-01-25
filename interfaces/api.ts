@@ -12,3 +12,9 @@ export class ApiError<E> extends Error {
 export enum StandardError {
   ERROR,
 }
+
+export interface ApiResponse<T> {
+  status: number;
+  code: string;
+  data: T
+}
