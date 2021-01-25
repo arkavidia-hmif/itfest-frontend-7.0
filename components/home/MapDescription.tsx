@@ -150,10 +150,88 @@ const MapDescription: React.FC = () => {
           }
   
           @media only screen and (max-width: 1000px) {
-              .flex-container {
-                  justify-content: center;
+              .email-img {
+                  width: 50px;
+                  height: 75px;
               }
-        }
+
+              .border-left {
+                  width: 6px;
+              }
+    
+              .border-right {
+                  width: 6px;
+              }
+
+              .grid-left {
+                  grid-template-columns: 1rem 1rem 3.4rem 5rem;
+              }
+          }
+
+          @media only screen and (max-width: 400px) {
+              .journey-text {
+                  text-align: center;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  margin-left: 6%;
+              }
+
+              .email-img {
+                  width: 50px;
+                  height: 75px;
+                  margin: auto;
+              }
+
+              .border-left {
+                  width: 6px;
+              }
+    
+              .border-right {
+                  width: 6px;
+              }
+
+              .grid-left {
+                  display: grid;
+                  padding: 1% 3%;
+                  align-items: center;
+                  border-radius: 1rem;
+                  grid-template-columns: 0.3rem 0.6rem 2.7rem 5rem;
+                  margin-inline-end: 0;
+              }
+
+              .grid-right {
+                  display: grid;
+                  padding: 1% 3%;
+                  align-items: center;
+                  border-radius: 1rem;
+                  grid-template-columns: 7.8rem 0.3rem 0.3rem;
+              }
+
+              .text-bold-left-up {
+                  font-size: .8rem;
+              }
+  
+              .text-bold-left-down {
+                  font-size: .8rem;
+              }
+    
+              .text-bold-left-up-value {
+                  font-size: .8rem;
+              }
+    
+              .text-bold-left-down-value {
+                  font-size: .8rem;
+              }
+    
+              .text-bold-right-up {
+                  font-size: .8rem;
+              }
+    
+              .text-bold-right-down {
+                  font-size: .8rem;
+              }
+          }
         `}</style>
     </>
   );

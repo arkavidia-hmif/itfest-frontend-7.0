@@ -55,6 +55,27 @@ const LeaderBoard: React.FC = () => {
               grid-column: 3 / span 1;
               text-align: right;
           }
+
+          @media only screen and (max-width: 1000px) {
+              .grid-container {
+                  border-radius: 0.5rem;
+                  margin: 1% 10%;
+              }
+          }
+
+          @media only screen and (max-width: 768px) {
+              .grid-container {
+                  border-radius: 0.5rem;
+                  padding: 2% 4%;
+                  margin: 1% 10%;
+              }
+          }
+
+          @media only screen and (max-width: 400px) {
+              .grid-container {
+                  grid-template-columns: 7% 50% 43%;
+              }
+          }
         `}</style>
         </div>
       );
@@ -97,7 +118,7 @@ const LeaderBoard: React.FC = () => {
               .flex-container {
                   justify-content: center;
               }
-        }
+          }
         `}</style>
     </>
   );

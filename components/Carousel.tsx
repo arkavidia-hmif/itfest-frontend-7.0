@@ -134,12 +134,12 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
           @media (max-width: 576px) { 
 
             .carousel-wrapper {
-              width: 95%;
+              width: 80%;
               margin: 0 auto;
             }
 
             .message {
-              right: -2.5rem;
+              right: -1.5rem;
             }
 
             .message img {
