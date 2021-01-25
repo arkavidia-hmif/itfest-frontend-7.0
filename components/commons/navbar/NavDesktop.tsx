@@ -64,13 +64,17 @@ const NavDesktop: React.FC = () => {
           height: 100%;
         }
         ul.right {
-          display: flex;
-          justify-content: flex-end;
+          // display: flex;
+          // justify-content: flex-end;
           margin-right: 2rem;
-          margin-top: 1rem;
+          margin-top: 0.5rem;
         }
+
         .right h1 {
           margin: 0;
+          background: linear-gradient(to right, #fe5982, #441985);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
         a {
           color: #623fa2;
@@ -93,6 +97,8 @@ const NavDesktop: React.FC = () => {
           // margin-right: auto;
           display: flex;
           align-items: center;
+          justify-content: space-between;
+          width: 100%;
         }
 
         .indicator {
@@ -116,6 +122,12 @@ const NavDesktop: React.FC = () => {
         @media (max-width: ${Dimen.navbarBreakpoint}) {
           .indicator {
             height: 3px;
+          }
+
+          ul.right {
+            width: 100%;
+            display: flex;
+            justify-content: center;
           }
 
           li {
