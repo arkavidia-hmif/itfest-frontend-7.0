@@ -101,9 +101,15 @@ const CrossWord: React.FC = () => {
   useLayoutEffect(() => {
     const className = "crossword__controls ";
     const crossName = "crossword__container__game";
-    const items: HTMLCollection = document.getElementsByClassName(className);
-    const crossword: HTMLCollection = document.getElementsByClassName(
-      crossName
+    const items = Array.from(
+      document.getElementsByClassName(
+        className
+      ) as HTMLCollectionOf<HTMLElement>
+    );
+    const crossword = Array.from(
+      document.getElementsByClassName(
+        crossName
+      ) as HTMLCollectionOf<HTMLElement>
     );
     if (items) {
       for (const item of items) {

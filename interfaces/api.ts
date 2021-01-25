@@ -16,5 +16,5 @@ export enum StandardError {
 export interface ApiResponse<T> {
   status: number;
   code: string;
-  data: T
+  data: T;
 }

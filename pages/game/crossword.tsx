@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Layout from "components/commons/Layout";
 
-const CrossWord = dynamic(() => import("components/games/Crossword"), {
+const CrossWord = dynamic(() => import("components/game/Crossword"), {
   ssr: false,
 });
 
