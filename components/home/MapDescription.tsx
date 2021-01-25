@@ -174,7 +174,6 @@ const MapDescription: React.FC = () => {
                   display: flex;
                   flex-direction: column;
                   justify-content: center;
-                  margin-left: 6%;
               }
 
               .email-img {
