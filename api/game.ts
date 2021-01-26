@@ -1,5 +1,6 @@
 import { AxiosInstance } from "axios";
 import { ApiError, ApiResponse, StandardError } from "interfaces/api";
+import { QuizResponse } from "interfaces/game";
 
 export const GET_GAME_URL = "/game/";
 
@@ -9,24 +10,13 @@ export async function playGame(
 ): Promise<ApiResponse<string>> {
   try {
     const response = await axios.post(`${GET_GAME_URL}${id}/play`);
+    console.log(response);
     return response.data as ApiResponse<string>;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
-      if (errorCode === "game-not-found") {
-        throw new ApiError<StandardError>(
-          StandardError.ERROR,
-          "Game tidak ditemukan"
-        );
-      }
-      if (errorCode === "game-havent-started") {
-        throw new ApiError<StandardError>(
-          StandardError.ERROR,
-          "Game belum dimulai"
-        );
-      }
+      console.log(errorCode);
     }
-
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
@@ -37,6 +27,7 @@ export async function getGame(
 ): Promise<ApiResponse<string>> {
   try {
     const response = await axios.get(`${GET_GAME_URL}${id}`);
+    console.log(response);
     return response.data as ApiResponse<string>;
   } catch (e) {
     if (e.response) {
@@ -51,6 +42,36 @@ export async function getGame(
         throw new ApiError<StandardError>(
           StandardError.ERROR,
           "Game belum dimulai"
+        );
+      }
+      if (errorCode === "user-already-play") {
+        throw new ApiError<StandardError>(
+          StandardError.ERROR,
+          "Game telah dimainkan"
+        );
+      }
+    }
+
+    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
+  }
+}
+
+export async function submitGame(
+  axios: AxiosInstance,
+  id: string,
+  body: QuizResponse
+): Promise<ApiResponse<string>> {
+  try {
+    const response = await axios.post(`${GET_GAME_URL}${id}/submit`, body);
+    console.log(response);
+    return response.data as ApiResponse<string>;
+  } catch (e) {
+    if (e.response) {
+      const errorCode = e.response.data?.code;
+      if (errorCode === "game-not-found") {
+        throw new ApiError<StandardError>(
+          StandardError.ERROR,
+          "Game tidak ditemukan"
         );
       }
     }
@@ -63,7 +84,7 @@ export async function getAllGames(
   axios: AxiosInstance
 ): Promise<ApiResponse<string>> {
   try {
-    const response = await axios.get(GET_ALL_GAMES_URL);
+    const response = await axios.get(GET_GAME_URL);
     console.log(response);
     return response.data as ApiResponse<string>;
   } catch (e) {
