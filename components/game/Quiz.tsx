@@ -33,15 +33,11 @@ const Quiz: React.FC<Props> = ({ quizId, gameData }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      console.log(Object.keys(submission));
-      console.log(Object.keys(gameData));
-      if (Object.keys(submission)?.length !== Object.keys(gameData).length) {
+      if (Object.keys(submission)?.length < Object.keys(gameData).length) {
         throw new Error("Game belum terisi semua");
       }
-      console.log("f");
       const res = await submitGame(apiContext.axios, quizId, submission);
       if (res) {
-        console.log(res);
         setSuccess(true);
         setError(null);
       }
