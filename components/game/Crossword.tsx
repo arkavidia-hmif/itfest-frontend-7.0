@@ -1,114 +1,30 @@
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect, useState } from "react";
 import Crossword from "react-crossword";
+import FilledButton from "components/commons/FilledButton";
+import { ApiContext } from "utils/context/api";
+import Success from "components/commons/Success";
+import Alert from "components/commons/Alert";
+import { submitGame } from "api/game";
+import { CrosswordData } from "interfaces/game";
 
-const CrossWord: React.FC = () => {
-  const data = {
-    id: "new",
-    number: 2,
-    name: "Crossword Puzzle",
-    entries: [
-      {
-        id: "1-across",
-        number: 1,
-        humanNumber: "1",
-        clue: "Toy on a string (2-2)",
-        direction: "across",
-        length: 4,
-        group: ["1-across"],
-        position: { x: 0, y: 0 },
-        separatorLocations: {
-          "-": [2],
-        },
-        solution: "YOYO",
-      },
-      {
-        id: "2-across",
-        number: 2,
-        humanNumber: "2",
-        clue: "Have a rest (3,4)",
-        direction: "across",
-        length: 7,
-        group: ["2-across"],
-        position: { x: 0, y: 2 },
-        separatorLocations: {
-          ",": [3],
-        },
-        solution: "LIEDOWN",
-      },
-      {
-        id: "1-down",
-        number: 1,
-        humanNumber: "1",
-        clue: "Colour (6)",
-        direction: "down",
-        length: 6,
-        group: ["1-down"],
-        position: { x: 0, y: 0 },
-        separatorLocations: {},
-        solution: "YELLOW",
-      },
-      {
-        id: "3-down",
-        number: 3,
-        humanNumber: "3",
-        clue: "Bits and bobs (4,3,4)",
-        direction: "down",
-        length: 7,
-        group: ["3-down", "4-down"],
-        position: { x: 3, y: 0 },
-        separatorLocations: {
-          ",": [4],
-        },
-        solution: "ODDSAND",
-      },
-      {
-        id: "4-down",
-        number: 4,
-        humanNumber: "4",
-        clue: "See 3 down",
-        direction: "down",
-        length: 4,
-        group: ["3-down", "4-down"],
-        position: { x: 6, y: 1 },
-        separatorLocations: {},
-        solution: "ENDS",
-      },
-      {
-        id: "6-down",
-        number: 6,
-        humanNumber: "6",
-        clue: "Tes",
-        direction: "down",
-        length: 4,
-        group: ["6-down"],
-        position: {
-          x: 8,
-          y: 5,
-        },
-        separatorLocations: {},
-        solution: "test",
-      },
-    ],
-    dimensions: {
-      cols: 13,
-      rows: 13,
-    },
-    solutionAvailable: false,
-    dateSolutionAvailable: 1,
-    crosswordType: "quick",
-  };
+interface Props {
+  quizId: string;
+  gameData: CrosswordData;
+}
+
+const CrossWordItem: React.FC<Props> = ({ quizId, gameData }) => {
+  const data = gameData;
+  const apiContext = useContext(ApiContext);
+  const [local, setLocal] = useState<{ [key: string]: string }>({});
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useLayoutEffect(() => {
     const className = "crossword__controls ";
-    const crossName = "crossword__container__game";
     const items = Array.from(
       document.getElementsByClassName(
         className
-      ) as HTMLCollectionOf<HTMLElement>
-    );
-    const crossword = Array.from(
-      document.getElementsByClassName(
-        crossName
       ) as HTMLCollectionOf<HTMLElement>
     );
     if (items) {
@@ -116,26 +32,100 @@ const CrossWord: React.FC = () => {
         item.style.display = "none";
       }
     }
-    if (crossword) {
-      for (const item of crossword) {
-        item.style.marginBottom = "3rem";
-      }
-    }
   });
+
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const totalInitLength = data.entries
+        .map((datum) => datum.length)
+        .reduce((a, b) => a + b);
+      const arrayedLocal = Object.values(local);
+      const totalLocalLength =
+        arrayedLocal.length !== 0
+          ? arrayedLocal?.map((val) => val.length).reduce((a, b) => a + b)
+          : 0;
+
+      if (totalInitLength > totalLocalLength) {
+        throw new Error("Fill all board first");
+      }
+      const res = await submitGame(
+        apiContext.axios,
+        quizId,
+        JSON.stringify(local)
+      );
+      if (res) {
+        setSuccess(true);
+        setError(null);
+      }
+    } catch (e) {
+      setSuccess(false);
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGrid = (grid: string[][]) => {
+    const temp: { [key: string]: string } = {};
+    for (const datum of data?.entries) {
+      const entry = datum.direction;
+      const x = datum.position.x;
+      const y = datum.position.y;
+      const len = datum.length;
+      const word = [];
+      if (entry === "across") {
+        for (let j = x; j < x + len; j++) {
+          word.push(grid[j][y]);
+        }
+      }
+      if (entry === "down") {
+        for (let i = y; i < y + len; i++) {
+          word.push(grid[x][i]);
+        }
+      }
+      const finalWord = word.join("");
+      temp[datum.id] = finalWord;
+    }
+    setLocal(temp);
+  };
 
   return (
     <>
       <div className="mb-5">
-        <Crossword data={data} />
+        {error && <Alert error={error} />}
+        {success && <Success message="Successfully submitted" />}
+        <div className="mt-3">
+          <Crossword
+            data={data}
+            saveGrid={(_: undefined, grid: string[][]) => handleGrid(grid)}
+          />
+        </div>
+        <div className="clear">
+          <FilledButton
+            text="Submit"
+            padding=".75rem 1.5rem"
+            onClick={handleSubmit}
+            loading={loading}
+          />
+        </div>
       </div>
 
       <style jsx>{`
         .crossword * {
           font-family: Roboto !important;
         }
+        .clear {
+          margin: 1rem 0;
+          clear: both;
+          float: left;
+        }
       `}</style>
     </>
   );
 };
 
-export default CrossWord;
+export default CrossWordItem;

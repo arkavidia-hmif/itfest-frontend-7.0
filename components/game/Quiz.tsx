@@ -10,8 +10,9 @@ interface Props {
   quizId: string;
   gameData: QuizData;
 }
+
 const Quiz: React.FC<Props> = ({ quizId, gameData }) => {
-  const realData = gameData ?? data;
+  const realData = gameData;
   const apiContext = useContext(ApiContext);
   const [submission, setSubmission] = useState<QuizResponse>({});
 
@@ -36,7 +37,11 @@ const Quiz: React.FC<Props> = ({ quizId, gameData }) => {
       if (Object.keys(submission)?.length < Object.keys(gameData).length) {
         throw new Error("Game belum terisi semua");
       }
-      const res = await submitGame(apiContext.axios, quizId, submission);
+      const res = await submitGame(
+        apiContext.axios,
+        quizId,
+        JSON.stringify(submission)
+      );
       if (res) {
         setSuccess(true);
         setError(null);

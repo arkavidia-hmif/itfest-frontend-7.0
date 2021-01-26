@@ -12,18 +12,13 @@ const ApiProvider: React.FC<Props> = ({ children }) => {
 
   const apiClient = Axios.create({
     baseURL: process.env.API_BASE_URL,
-
     withCredentials: false,
   });
 
   apiClient.interceptors.request.use((config) => {
-    // if (authContext.authenticated && authContext.auth) {
-    config.headers.common["Authorization"] = `Bearer ${
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJqcmFuZGlueSIsImVtYWlsIjoianJhbmRpbnlAZ21haWwuY29tIiwicm9sZSI6InZpc2l0b3IiLCJpYXQiOjE2MTE1NTgxNTB9.WgIprOZ6AjrfI76dcl-5zW9Uz8vFcJHSucBndjzPyr0"
-      // authContext.auth.jwt ??
-    }`;
-    // }
-
+    if (authContext.authenticated && authContext.auth) {
+      config.headers.common["Authorization"] = `Bearer ${authContext.auth.jwt}`;
+    }
     return config;
   });
 

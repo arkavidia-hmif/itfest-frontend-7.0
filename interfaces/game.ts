@@ -7,3 +7,18 @@ export interface QuizData {
     choice: string[];
   };
 }
+export interface CrosswordData {
+  crosswordType: "quick";
+  dimensions: { cols: number; rows: number };
+  entries: {
+    id: string;
+    number: number;
+    humanNumber: string;
+    clue: string;
+    direction: string;
+    length: number;
+    position: { x: number; y: number };
+    group?: string[];
+    separatorLocations?: { [key: string]: string };
+  }[];
+}

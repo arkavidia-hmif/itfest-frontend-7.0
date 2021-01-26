@@ -1,6 +1,5 @@
 import { AxiosInstance } from "axios";
 import { ApiError, ApiResponse, StandardError } from "interfaces/api";
-import { QuizResponse } from "interfaces/game";
 
 export const GET_GAME_URL = "/game/";
 
@@ -10,12 +9,12 @@ export async function playGame(
 ): Promise<ApiResponse<string>> {
   try {
     const response = await axios.post(`${GET_GAME_URL}${id}/play`);
-    console.log(response);
+    // console.log(response);
     return response.data as ApiResponse<string>;
   } catch (e) {
     if (e.response) {
-      const errorCode = e.response.data?.code;
-      console.log(errorCode);
+      // const errorCode = e.response.data?.code;
+      // console.log(errorCode);
     }
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
@@ -27,7 +26,7 @@ export async function getGame(
 ): Promise<ApiResponse<string>> {
   try {
     const response = await axios.get(`${GET_GAME_URL}${id}`);
-    console.log(response);
+    // console.log(response);
     return response.data as ApiResponse<string>;
   } catch (e) {
     if (e.response) {
@@ -59,11 +58,11 @@ export async function getGame(
 export async function submitGame(
   axios: AxiosInstance,
   id: string,
-  body: QuizResponse
+  body: string
 ): Promise<ApiResponse<string>> {
   try {
     const response = await axios.post(`${GET_GAME_URL}${id}/submit`, body);
-    console.log(response);
+    // console.log(response);
     return response.data as ApiResponse<string>;
   } catch (e) {
     if (e.response) {
@@ -85,12 +84,12 @@ export async function getAllGames(
 ): Promise<ApiResponse<string>> {
   try {
     const response = await axios.get(GET_GAME_URL);
-    console.log(response);
+    // console.log(response);
     return response.data as ApiResponse<string>;
   } catch (e) {
     if (e.response) {
-      const errorCode = e.response.data?.code;
-      console.log(errorCode);
+      // const errorCode = e.response.data?.code;
+      // console.log(errorCode);
     }
 
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
