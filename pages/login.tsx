@@ -65,7 +65,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <AuthWrapper title="Login ke Dashboard">
+    <AuthWrapper title="Login IT FEST">
       <Alert error={error} />
       <form
         onSubmit={(evt) => {
@@ -96,8 +96,12 @@ const LoginPage: React.FC = () => {
         </p>
         <p className="login-link">
           Belum terdaftar ?{" "}
-          <a href="/register">
-            <b>Daftar</b>
+          <a href="/register/visitor">
+            <br/><b>Daftar Sebagai Pengunjung</b>
+          </a>
+          <a className="hoverless"> | </a>
+          <a href="/register/tenant">
+            <b>Daftar Sebagai Tenant</b>
           </a>
         </p>
       </form>
@@ -108,6 +112,10 @@ const LoginPage: React.FC = () => {
 
         .login-link a {
           color: #fe789a;
+        }
+
+        .hoverless:hover {
+          text-decoration: none;
         }
       `}</style>
     </AuthWrapper>

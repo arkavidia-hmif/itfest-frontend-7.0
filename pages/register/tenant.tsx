@@ -1,20 +1,22 @@
 import Link from "next/link";
 import { useContext, useState } from "react";
-import Alert from "../components/commons/Alert";
-import AuthWrapper from "../components/auth/AuthWrapper";
-import InputField from "../components/auth/InputField";
-import FilledButton from "../components/commons/FilledButton";
-import { RegisterStatus } from "../interfaces/auth";
-import { ApiContext } from "../utils/context/api";
+import Alert from "../../components/commons/Alert";
+import AuthWrapper from "../../components/auth/AuthWrapper";
+import InputField from "../../components/auth/InputField";
+import FilledButton from "../../components/commons/FilledButton";
+import { RegisterStatus } from "../../interfaces/auth";
+import { ApiContext } from "../../utils/context/api";
 import { ApiError } from "interfaces/api";
 import { register } from "api/auth";
 
 const RegisterPage: React.FC = () => {
   const apiContext = useContext(ApiContext);
 
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [point, setPoint] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -23,13 +25,18 @@ const RegisterPage: React.FC = () => {
   const handleSubmit = () => {
     setError(null);
 
-    if (name === "") {
-      setError("Nama tidak boleh kosong");
+    if (email === "") {
+      setError("Email tidak boleh kosong");
+      return;
+    }
+  
+    if (username === "") {
+      setError("Username tidak boleh kosong");
       return;
     }
 
-    if (email === "") {
-      setError("Email tidak boleh kosong");
+    if (name === "") {
+      setError("Nama tidak boleh kosong");
       return;
     }
 
@@ -40,6 +47,11 @@ const RegisterPage: React.FC = () => {
 
     if (password.length < 8) {
       setError("Password harus lebih dari 8 karakter");
+      return;
+    }
+
+    if (point === "") {
+      setError("Poin tidak boleh kosong");
       return;
     }
 
@@ -62,7 +74,7 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <AuthWrapper title="Registrasi Akun">
+    <AuthWrapper title="Registrasi Akun Tenant">
       {success ? (
         <>
           <br />
@@ -84,15 +96,21 @@ const RegisterPage: React.FC = () => {
             }}
           >
             <InputField
-              name="Nama Lengkap"
-              value={name}
-              setValue={setName}
-              placeholder="John Doe"
-            />
-            <InputField
               name="Alamat Email"
               value={email}
               setValue={setEmail}
+              placeholder="johndoe@email.com"
+            />
+            <InputField
+              name="Username"
+              value={name}
+              setValue={setUsername}
+              placeholder="John_Doe_2021"
+            />
+            <InputField
+              name="Nama Lengkap"
+              value={name}
+              setValue={setName}
               placeholder="John Doe"
             />
             <InputField
@@ -101,6 +119,12 @@ const RegisterPage: React.FC = () => {
               value={password}
               setValue={setPassword}
               placeholder="********"
+            />
+            <InputField
+              name="Poin"
+              value={name}
+              setValue={setPoint}
+              placeholder="999"
             />
             <br />
             <div className="row">
