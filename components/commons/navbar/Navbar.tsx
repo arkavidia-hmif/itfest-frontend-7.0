@@ -33,14 +33,6 @@ const Navbar: React.FC = () => {
       <nav className="container-fluid max-content">
         <Burger {...burgerProps} />
         {!open ? (
-<<<<<<< HEAD
-          <div className="text-center">
-            <Link href="/">
-              <a>
-                <img src="/img/logo-horizontal.svg" alt="Logo Arkavidia" />
-              </a>
-            </Link>
-=======
           <div className="d-flex align-items-center">
             <div className="text-center">
               <Link href="/">
@@ -52,7 +44,6 @@ const Navbar: React.FC = () => {
                 <h1>IT FEST</h1>
               </div>
             </div>
->>>>>>> 64d340bba3f131091cccf420dd675b902edeb628
           </div>
         ) : (
           <NavDesktop />
