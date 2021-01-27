@@ -62,5 +62,17 @@ export const checkTruth = async (
     data.institute = institute;
   } else throw new Error("Asal sekolah/universitas tidak valid");
 
+  // sementara
+  if (point < 0) throw new Error("Point tidak valid");
+  if (gender && gender < 0) throw new Error("Gender tidak valid");
+
+  if (isEmpty(photo)) {
+    if (isValidString(profile?.photo, 75)) {
+      data.photo = profile?.photo;
+    } else throw new Error("Alamat photo tidak valid");
+  } else if (isValidString(photo, 75)) {
+    data.photo = photo;
+  } else throw new Error("Alamat photo tidak valid");
+
   return data;
 };

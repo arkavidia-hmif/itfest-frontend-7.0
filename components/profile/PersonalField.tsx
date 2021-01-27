@@ -42,7 +42,6 @@ const PersonalField: React.FC = () => {
                   type={data.text}
                   value={value}
                   setValue={setValue}
-                  placeholder={data.text}
                 />
               ) : (
                 <h2>{value}</h2>

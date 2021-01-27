@@ -12,6 +12,7 @@ import { AuthContext } from "utils/context/auth";
 import useFormInput from "utils/hooks/useFormInput";
 import Alert from "components/commons/Alert";
 import Success from "components/commons/Success";
+import Spinner from "components/commons/Spinner";
 
 const PrimaryField: React.FC = () => {
   const apiContext = useContext(ApiContext);
@@ -54,8 +55,8 @@ const PrimaryField: React.FC = () => {
     name.setValue,
   ]);
 
-  if (errorProfile) return <div>a</div>;
-  if (!profile) return <div>b</div>;
+  if (errorProfile) return <Alert error="Masalah koneksi" />;
+  if (!profile) return <Spinner height="200px" />;
 
   const handleSubmit = async () => {
     setLoading(true);
