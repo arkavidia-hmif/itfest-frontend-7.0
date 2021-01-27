@@ -88,12 +88,12 @@ const LoginPage: React.FC = () => {
         />
         <br />
         <FilledButton text="LOGIN" loading={loading} padding="0.75em 1.5em" submit />
-        <p className="login-link mt-4 mb-0">
+        {/* <p className="login-link mt-4 mb-0">
           Lupa kata sandi ?{" "}
           <a href="/forget-password">
             <b>Reset</b>
           </a>
-        </p>
+        </p> */}
         <p className="login-link">
           Belum terdaftar ?{" "}
           <a href="/register/visitor">
