@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import useSWR from "swr";
+import InputField from "./InputField";
 import { editProfile, getProfile, PROFILE_URL } from "api/profile";
 import { ApiContext } from "utils/context/api";
-import InputField from "./InputField";
 import { Theme } from "styles/theme";
 import FilledButton from "components/commons/FilledButton";
 import profileAttributes from "utils/constants/profile-attributes";
@@ -36,13 +36,13 @@ const PrimaryField: React.FC = () => {
   useEffect(() => {
     if (profile !== undefined) {
       if (profile.email && profile.email !== ""){
-        email.setValue(profile.email)
+        email.setValue(profile.email);
       }
       if (profile.telp && profile.telp !== "") {
-        telp.setValue(profile.telp)
+        telp.setValue(profile.telp);
       }
       if (profile.name && profile.name !== "") {
-        name.setValue(profile.name)
+        name.setValue(profile.name);
       }
     }
   }, [
