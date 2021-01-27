@@ -1,45 +1,114 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import useSWR from "swr";
+import { editProfile, getProfile, PROFILE_URL } from "api/profile";
+import { ApiContext } from "utils/context/api";
 import InputField from "./InputField";
 import { Theme } from "styles/theme";
 import FilledButton from "components/commons/FilledButton";
-
-const primary = [
-  {
-    text: "Email Address",
-  },
-  {
-    text: "Password",
-  },
-  {
-    text: "Phone Number",
-  },
-  {
-    text: "Full Name",
-  },
-];
+import profileAttributes from "utils/constants/profile-attributes";
+import { checkTruth } from "utils/transformer/profile";
+import { UserData } from "interfaces/auth";
+import { AuthContext } from "utils/context/auth";
+import useFormInput from "utils/hooks/useFormInput";
 
 const PrimaryField: React.FC = () => {
-  const [value, setValue] = useState("");
-  const [isEdit, setIsEdit] = useState(true);
-  let i = -1;
+  const apiContext = useContext(ApiContext);
+  const { auth, setAuth } = useContext(AuthContext);
+
+  const [isEdit, setIsEdit] = useState(false);
+  const email = useFormInput("");
+  const telp = useFormInput("");
+  const name = useFormInput("");
+
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    isEdit ? setSuccess(false) : setError("");
+  }, [setError, setSuccess, isEdit]);
+
+  const { data: profile, error: errorProfile, mutate } = useSWR(
+    PROFILE_URL,
+    () => getProfile(apiContext.axios)
+  );
+
+  useEffect(() => {
+    if (profile !== undefined) {
+      if (profile.email && profile.email !== ""){
+        email.setValue(profile.email)
+      }
+      if (profile.telp && profile.telp !== "") {
+        telp.setValue(profile.telp)
+      }
+      if (profile.name && profile.name !== "") {
+        name.setValue(profile.name)
+      }
+    }
+  }, [
+    profile,
+    email.setValue,
+    telp.setValue,
+    name.setValue,
+  ]);
+
+  if (errorProfile) return <div>a</div>;
+  if (!profile) return <div>b</div>;
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const truth = await checkTruth(
+        profile.username,
+        telp.value,
+        name.value,
+        profile.gender,
+        profile.dob,
+        profile.institute,
+        profile.point,
+        profile.photo,
+        profile
+      );
+      const res = await editProfile(apiContext.axios, truth);
+      mutate(res);
+      if (res) {
+        if (auth) {
+          setAuth({token: auth?.token, exp: auth?.exp, user: res});
+        }
+        setSuccess(true);
+        setIsEdit(false);
+        setError(null);
+      }
+    } catch (e) {
+      setSuccess(false);
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
       <div className="mt-3">
-        {primary.map((data) => {
-          i += 1;
+        {[
+          { state: email, key: "email" },
+          { state: telp, key: "telp" },
+          { state: name, key: "name" },
+        ].map((data, index) => {
+          const label = profileAttributes[data.key];
+          const value = profile[data.key as keyof UserData] || "";
           return (
-            <div key={i} className="d-flex justify-content-between">
-              <h2>{data.text}</h2>
+            <div key={label} className="d-flex justify-content-between">
+              <h2>{label}</h2>
               { isEdit ? (
                 <InputField
-                  type={data.text}
-                  value={value}
-                  setValue={setValue}
-                  placeholder={data.text}
+                  shouldRef={index === 0}
+                  type={data.key === "dob" ? "date" : "text"}
+                  value={String(data.state.value)}
+                  setValue={data.state.setValue}
                 />
               ) : (
-                <h2>{value}</h2>
+                <h2>{value ?? "-"}</h2>
               )}
             </div>
           );
@@ -48,17 +117,18 @@ const PrimaryField: React.FC = () => {
       <div className="d-flex justify-content-center mt-3">
         {isEdit ? (
           <FilledButton
-            color={Theme.buttonColors.pinkButton}
+            color={Theme.buttonColors.purpleButton}
+            loading={loading}
             text="Submit"
             padding="0.75rem 3rem"
-            onClick={() => setIsEdit(false)}
+            onClick={handleSubmit}
           />
         ) : (
           <FilledButton
-            color={Theme.buttonColors.pinkButton}
-            text="Edit"
-            padding="0.75rem 3rem"
-            onClick={() => setIsEdit(true)}
+            color={Theme.buttonColors.blueButton}
+            text="Cancel"
+            padding="0.75em 1.5em"
+            onClick={() => setIsEdit(false)}
           />
         )}
       </div>

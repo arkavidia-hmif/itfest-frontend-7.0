@@ -1,10 +1,13 @@
 const profileAttributes: { [slug: string]: string } = {
+  username: "Username",
+  telp: "Nomor Telepon",
   name: "Nama",
-  email: "Email",
   gender: "Gender",
-  institution: "Asal Sekolah/Universitas",
-  phoneNumber: "Nomor Telepon",
   dob: "Tanggal Lahir",
+  institute: "Asal Sekolah/Universitas",
+  point: "Point",
+  photo: "Photo",
+  email: "Email",
 };
 
 const MALE = "Male";

@@ -1,29 +1,56 @@
+import { useEffect, useRef } from "react";
+
 interface Props {
   type?: string;
   value: string;
+  shouldRef?: boolean;
   setValue: (newValue: string) => void;
-  placeholder: string;
+  choices?: Array<string>;
 }
 
 const InputField: React.FC<Props> = ({
   type = "text",
   value,
+  shouldRef = false,
   setValue,
-  placeholder,
+  choices = [],
 }) => {
+  const ref = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    ref?.current?.focus();
+  }, [shouldRef]);
 
   return (
     <div>
-      <input
-        type={type}
-        value={value}
-        onChange={(evt) => {
-          setValue(evt.target.value);
-        }}
-        placeholder={placeholder}
-      />
+      {shouldRef ? (
+        <input
+          ref={ref} 
+          type={type}
+          value={value}
+          onChange={(evt) => {
+            setValue(evt.target.value);
+          }}
+        />
+      ) : choices.length > 0 ? (
+        <select value={value} onChange={(e) => setValue(e.target.value)}>
+          {choices.map((choice) => (
+            <option value={choice} key={choice}>
+              {choice}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <input
+          type={type}
+          value={value}
+          onChange={(evt) => {
+            setValue(evt.target.value);
+          }}
+        />
+      )}
       <style jsx>{`
-        input{
+        input,
+        select {
           width: 100%;
           border: none;
           border-radius: 2em;
@@ -35,7 +62,11 @@ const InputField: React.FC<Props> = ({
           font-size: 1.1rem;
           font-weight: bold;
         }
-        input:focus{
+        option {
+          font-family: Roboto;
+        }
+        input:focus,
+        select:focus{
           outline: none;
         }
         @media only screen and (max-width: 767px) {
