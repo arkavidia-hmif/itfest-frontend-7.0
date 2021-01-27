@@ -10,6 +10,8 @@ import { checkTruth } from "utils/transformer/profile";
 import { UserData } from "interfaces/auth";
 import { AuthContext } from "utils/context/auth";
 import useFormInput from "utils/hooks/useFormInput";
+import Alert from "components/commons/Alert";
+import Success from "components/commons/Success";
 
 const PrimaryField: React.FC = () => {
   const apiContext = useContext(ApiContext);
@@ -90,6 +92,8 @@ const PrimaryField: React.FC = () => {
   return (
     <>
       <div className="mt-3">
+        {error && isEdit && <Alert error={error}/>}
+        {success && !isEdit && <Success message="Successfully update" />}
         {[
           { state: email, key: "email" },
           { state: telp, key: "telp" },
