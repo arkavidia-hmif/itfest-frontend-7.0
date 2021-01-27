@@ -10,14 +10,14 @@ export async function login(
   axios: AxiosInstance,
   email: string,
   password: string
-): Promise<ApiResponse<AuthData>> {
+): Promise<AuthData> {
   try {
     const response = await axios.post("/login", {
       email,
       password,
     });
 
-    return response.data as ApiResponse<AuthData>;
+    return response.data as AuthData;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
@@ -35,13 +35,19 @@ export async function login(
 
 export async function registerVisitor(
   axios: AxiosInstance,
+  name: string,
   email: string,
   password: string,
+  phone: string, 
+  institution: string
 ): Promise<ApiResponse<AuthData>> {
   try {
     const response = await axios.post("/register/visitor/", {
+      name,
       email,
       password,
+      phone,
+      institution
     });
 
     return response.data as ApiResponse<AuthData>;
