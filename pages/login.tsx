@@ -2,13 +2,13 @@ import { useRouter } from "next/dist/client/router";
 import { useContext, useState } from "react";
 import Alert from "../components/commons/Alert";
 import AuthWrapper from "../components/auth/AuthWrapper";
-import InputField from "../components/auth/InputField";
+import InputField from "../components/commons/InputField";
 import FilledButton from "../components/commons/FilledButton";
 import { LoginStatus } from "../interfaces/auth";
 import { ApiContext } from "../utils/context/api";
 import { AuthContext } from "../utils/context/auth";
 import { isValidEmail } from "../utils/validator";
-import { ApiError } from "interfaces/api";
+import { ApiError, StandardError } from "interfaces/api";
 import { login } from "api/auth";
 
 const LoginPage: React.FC = () => {
@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
     login(apiContext.axios, email, password)
       .then((data) => {
         authContext.setAuthenticated(true);
-        authContext.setAuth(data);
+        authContext.setAuth(data.data);
         if (redirectTarget.startsWith("?continue=")) {
           router.push(redirectTarget.replace("?continue=", ""));
         } else {
@@ -52,7 +52,7 @@ const LoginPage: React.FC = () => {
           } else if (e.code === LoginStatus.EMAIL_NOT_CONFIRMED) {
             setError("Email belum dikonfirmasi");
             return;
-          } else if (e.code === LoginStatus.SERVER_ERROR) {
+          } else if (e instanceof ApiError && e.code === StandardError.ERROR) {
             setError("Server Error");
             return;
           }
@@ -78,14 +78,14 @@ const LoginPage: React.FC = () => {
           handleSubmit();
         }}
       >
+        <label>Alamat Email</label>
         <InputField
-          name="Alamat Email"
           value={email}
           setValue={setEmail}
           placeholder="johndoe@email.com"
         />
+        <label>Kata Sandi</label>
         <InputField
-          name="Kata Sandi"
           type="password"
           value={password}
           setValue={setPassword}
@@ -113,6 +113,17 @@ const LoginPage: React.FC = () => {
 
         .login-link a {
           color: #fe789a;
+        }
+
+        label {
+          font-style: normal;
+          font-weight: bold;
+          font-size: 1.2rem;
+          line-height: .7rem;
+          display: block;
+          color: #000000;
+          margin-top: 0.8rem;
+          margin-bottom: .9rem;
         }
       `}</style>
     </AuthWrapper>

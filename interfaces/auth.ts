@@ -5,7 +5,6 @@ export interface AuthData {
 export enum LoginStatus {
   INVALID_CREDS,
   EMAIL_NOT_CONFIRMED,
-  SERVER_ERROR
 }
 
 
@@ -14,5 +13,4 @@ export enum RegisterStatus {
   EMAIL_USED,
   INVALID_EMAIL,
   INVALID_NAME,
-  SERVER_ERROR
 }

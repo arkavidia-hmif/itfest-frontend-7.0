@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Alert from "../components/commons/Alert";
 import AuthWrapper from "../components/auth/AuthWrapper";
-import InputField from "../components/auth/InputField";
+import InputField from "../components/commons/InputField";
 import FilledButton from "../components/commons/FilledButton";
 import { RegisterStatus } from "../interfaces/auth";
 import { ApiContext } from "../utils/context/api";
-import { ApiError } from "interfaces/api";
+import { isValidName, isValidPhone, isValidEmail, isValidString } from "../utils/validator";
+import { ApiError, StandardError } from "interfaces/api";
 import { registerVisitor } from "api/auth";
 
 const RegisterPage: React.FC = () => {
@@ -20,41 +21,12 @@ const RegisterPage: React.FC = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [errorStatus, setErrorStatus] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = () => {
     setError(null);
 
-    if (email === "") {
-      setError("Email tidak boleh kosong");
-      return;
-    }
-
-    if (name === "") {
-      setError("Nama lengkap tidak boleh kosong");
-      return;
-    }
-
-    if (password === "") {
-      setError("Password tidak boleh kosong");
-      return;
-    }
-
-    if (password.length < 8) {
-      setError("Password harus lebih dari 8 karakter");
-      return;
-    }
-
-    if (telp === "") {
-      setError("Nomor telepon tidak boleh kosong");
-      return;
-    }
-
-    if (institute === "") {
-      setError("Institusi tidak boleh kosong");
-      return;
-    }
-  
     setLoading(true);
 
     registerVisitor(apiContext.axios, name, email, password, telp, institute)
@@ -74,7 +46,7 @@ const RegisterPage: React.FC = () => {
           setError("Email tidak valid");
           return;
         }
-        else if (e instanceof ApiError && e.code === RegisterStatus.SERVER_ERROR) {
+        else if (e instanceof ApiError && e.code === StandardError.ERROR) {
           setError("Server Error");
           return;
         }
@@ -84,6 +56,34 @@ const RegisterPage: React.FC = () => {
         setLoading(false);
       });
   };
+
+  useEffect(() => {
+    if (isValidString(email) && !isValidEmail(email)) {
+      setError("Email tidak valid");
+      setErrorStatus(true);
+      return;
+    } else if (isValidString(name) && !isValidName(name)) {
+      setError("Nama lengkap hanya dapat memuat huruf, angka, atau spasi");
+      setErrorStatus(true);
+      return;
+    } else if (isValidString(telp) && !isValidPhone(telp)) {
+      setError("Nomor telepon tidak valid");
+      setErrorStatus(true);
+      return;
+    } else if (isValidString(password) && password.length < 8) {
+      setError("Password harus lebih dari 8 karakter");
+      setErrorStatus(true);
+      return;
+    } else if (!isValidString(email) || !isValidString(name) || !isValidString(password) || !isValidString(telp) || !isValidString(institute)) {
+      setErrorStatus(true);
+      setError(null);
+    } else if (isValidString(email) && isValidString(name) && isValidString(password) && isValidString(telp) && isValidString(institute)){
+      setError(null);
+      setErrorStatus(false);
+    } else {
+      setError(null);
+    }
+  },[email, name, telp, password, institute]);
 
   return (
     <AuthWrapper title="Registrasi Akun">
@@ -109,33 +109,33 @@ const RegisterPage: React.FC = () => {
               handleSubmit();
             }}
           >
+            <label>Alamat Email</label>
             <InputField
-              name="Alamat Email"
               value={email}
               setValue={setEmail}
               placeholder="johndoe@email.com"
             />
+            <label>Nama Lengkap</label>
             <InputField
-              name="Nama Lengkap"
               value={name}
               setValue={setName}
               placeholder="John Doe"
             />
+            <label>Kata Sandi</label>
             <InputField
               type={"password"}
-              name="Kata Sandi"
               value={password}
               setValue={setPassword}
               placeholder="********"
             />
+            <label>Nomor Telepon</label>
             <InputField
-              name="Nomor Telepon"
               value={telp}
               setValue={setTelp}
               placeholder="081234567890"
             />
+            <label>Institusi</label>
             <InputField
-              name="Institusi"
               value={institute}
               setValue={setInstitute}
               placeholder="John University"
@@ -143,12 +143,15 @@ const RegisterPage: React.FC = () => {
             <br />
             <div className="row">
               <div className="col-6">
-                <FilledButton
-                  text="DAFTAR"
-                  padding="0.75em 1.5em"
-                  loading={loading}
-                  submit
-                />
+                {(errorStatus) ?
+                  <b className="error-text">MASIH ADA KESALAHAN/BELUM TERISI</b>
+                  : <FilledButton
+                    text="DAFTAR"
+                    padding="0.75em 1.5em"
+                    loading={loading}
+                    submit
+                  />
+                }
               </div>
               <div className="col-6" style={{ textAlign: "right" }}>
                 <a href="/login">
@@ -172,6 +175,21 @@ const RegisterPage: React.FC = () => {
 
         p {
           color: #7446a1;
+        }
+
+        .error-text {
+          color: #B41A83;
+        }
+
+        label {
+          font-style: normal;
+          font-weight: bold;
+          font-size: 1.2rem;
+          line-height: .7rem;
+          display: block;
+          color: #000000;
+          margin-top: 0.8rem;
+          margin-bottom: .9rem;
         }
       `}</style>
     </AuthWrapper>

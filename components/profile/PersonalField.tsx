@@ -1,5 +1,5 @@
 import { useState } from "react";
-import InputField from "./InputField";
+import InputField from "../commons/InputField";
 import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
 import FilledButton from "components/commons/FilledButton";

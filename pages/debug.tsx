@@ -54,7 +54,7 @@ const Debug: React.FC = () => {
             login(apiContext.axios, email, password)
               .then((resp) => {
                 authContext.setAuthenticated(true);
-                authContext.setAuth(resp);
+                authContext.setAuth(resp.data);
               })
               .catch((err) => {
                 setResult(JSON.stringify(err));
