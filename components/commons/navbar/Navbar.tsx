@@ -33,17 +33,21 @@ const Navbar: React.FC = () => {
       <nav className="container-fluid max-content">
         <Burger {...burgerProps} />
         {!open ? (
-          <div className="text-center">
-            <Link href="/">
-              <a>
-                <img
-                  src="/img/logo-horizontal.svg"
-                  alt="Logo Arkavidia"
-                />
-              </a>
-            </Link>
+          <div className="d-flex align-items-center">
+            <div className="text-center">
+              <Link href="/">
+                <a>
+                  <img src="/img/logo-horizontal.svg" alt="Logo Arkavidia" />
+                </a>
+              </Link>
+              <div className="">
+                <h1>IT FEST</h1>
+              </div>
+            </div>
           </div>
-        ) : <NavDesktop />}
+        ) : (
+          <NavDesktop />
+        )}
       </nav>
 
       <style jsx>{`
@@ -56,16 +60,26 @@ const Navbar: React.FC = () => {
           transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         img {
-          height: 100%;
-          width: 100%;
+          height: 60%;
+          width: 60%;
         }
         header.shadow {
           box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
             0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
         }
         .text-center {
+          display: flex;
           text-align: center;
+          align-items: center;
           height: 70%;
+        }
+
+        .text-center h1 {
+          font-size: 1.7rem;
+          margin-top: 1rem;
+          background: linear-gradient(to right, #fe5982, #441985);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
         nav {
           background: #ffff;
@@ -73,7 +87,7 @@ const Navbar: React.FC = () => {
           width: 100%;
           height: ${Dimen.navbarHeight};
           align-items: center;
-          justify-content: center;
+          justify-content: ${!open ? "center" : ""};
         }
 
         .logo {
@@ -91,6 +105,25 @@ const Navbar: React.FC = () => {
           .logo img {
             height: 30px;
           }
+
+          img {
+            height: 45%;
+            width: 45%;
+          }
+
+          .text-center {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            height: 70%;
+          }
+
+          .text-center h1 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            margin-left: -4rem;
+          }
+
           nav {
             height: ${Dimen.navbarMobileHeight};
           }
