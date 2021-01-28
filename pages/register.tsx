@@ -34,23 +34,26 @@ const RegisterPage: React.FC = () => {
         setSuccess(true);
       })
       .catch((e) => {
-        if (e instanceof ApiError && e.code === RegisterStatus.EMAIL_USED) {
-          setError("Email sudah digunakan");
-          return;
+        if (e instanceof ApiError) {
+          if (e.code === RegisterStatus.EMAIL_USED) {
+            setError("Email sudah digunakan");
+            return;
+          }
+          else if (e.code === RegisterStatus.INVALID_NAME) {
+            setError("Nama lengkap hanya dapat memuat huruf, angka, atau spasi");
+            return;
+          }
+          else if (e.code === RegisterStatus.INVALID_EMAIL) {
+            setError("Email tidak valid");
+            return;
+          }
+          else if (e.code === StandardError.ERROR) {
+            setError("Maaf, terdapat masalah koneksi");
+            return;
+          }
+          setError(e.message);
         }
-        else if (e instanceof ApiError && e.code === RegisterStatus.INVALID_NAME) {
-          setError("Nama lengkap hanya dapat memuat huruf, angka, atau spasi");
-          return;
-        }
-        else if (e instanceof ApiError && e.code === RegisterStatus.INVALID_EMAIL) {
-          setError("Email tidak valid");
-          return;
-        }
-        else if (e instanceof ApiError && e.code === StandardError.ERROR) {
-          setError("Server Error");
-          return;
-        }
-        setError(e);
+        setError(e.message);
       })
       .finally(() => {
         setLoading(false);
@@ -77,11 +80,14 @@ const RegisterPage: React.FC = () => {
     } else if (!isValidString(email) || !isValidString(name) || !isValidString(password) || !isValidString(telp) || !isValidString(institute)) {
       setErrorStatus(true);
       setError(null);
+      return;
     } else if (isValidString(email) && isValidString(name) && isValidString(password) && isValidString(telp) && isValidString(institute)){
       setError(null);
       setErrorStatus(false);
+      return;
     } else {
       setError(null);
+      return;
     }
   },[email, name, telp, password, institute]);
 
@@ -100,9 +106,7 @@ const RegisterPage: React.FC = () => {
         </>
       ) : (
         <>
-          {(typeof error === "string") ?
-            <Alert error={error} />
-            : null}
+          <Alert error={error} />
           <form
             onSubmit={(evt) => {
               evt.preventDefault();
