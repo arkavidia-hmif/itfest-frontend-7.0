@@ -2,17 +2,22 @@ import MerchStoreCarousel from "./MerchStoreCarousel";
 import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
 import { Dimen } from "styles/dimen";
 
-const MerchStoreExpanded: React.FC = () => {
-  const { merchantName, storeLogo } = {
-    merchantName: "Arkavidia",
+interface Props {
+  merchantName: string;
+  handleClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
+
+const MerchStoreExpanded: React.FC<Props> = ({ merchantName, handleClose }) => {
+  const { storeLogo } = {
     storeLogo: "/img/merchstore/store_logo.png",
   };
 
   return (
     <div className="w-100 merch-store-container">
       <div className="row">
+        <button onClick={handleClose}></button>
         <div className="merch-store-cross-button">
-          <button>
+          <button onClick={handleClose}>
             <img src="/img/merchstore/cross_button.png" />
           </button>
         </div>

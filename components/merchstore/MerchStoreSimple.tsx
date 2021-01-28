@@ -3,24 +3,37 @@ import { Dimen } from "styles/dimen";
 import MerchStoreMerchSimple from "./MerchStoreMerchSimple";
 import FilledButton from "components/commons/FilledButton";
 
-const MerchStoreSimple: React.FC = () => {
-  const { merchantName, storeLogo } = {
-    merchantName: "Arkavidia",
+interface Props {
+  merchantName: string;
+  handleMore: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
+
+const MerchStoreSimple: React.FC<Props> = ({ merchantName, handleMore }) => {
+  const { storeLogo } = {
     storeLogo: "/img/merchstore/store_logo.png",
   };
 
   return (
     <div className="merch-store-container">
       <div className="row merch-store-container-top">
-        <div className="merch-title row w-100">
-          <img className="col-md-3" src={storeLogo} alt={merchantName} />
-          <h2 className="mb-0 col-md-6">{merchantName}&#39;s Shop</h2>
-          <FilledButton text="Show more" />
+        <div className="w-100 merch-title">
+          <div className="merch-store-top-left">
+            <img className="" src={storeLogo} alt={merchantName} />
+            <h2 className="">{merchantName}&#39;s Shop</h2>
+          </div>
+          <div className="merch-store-top-right">
+            <FilledButton
+              text="More"
+              padding=".5rem 2.25rem"
+              fontSize="1.25rem"
+              onClick={handleMore}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="px-3 merch-store-container-bottom d-flex">
-        <div className="merch-store-bottom justify-content-center">
+      <div className="px-3 merch-store-container-bottom d-flex justify-content-center">
+        <div className="merch-store-bottom ">
           <div>
             <h3 className="store-items-title">Top Merch</h3>
             <div className="mt-4 mb-2">
@@ -38,12 +51,16 @@ const MerchStoreSimple: React.FC = () => {
       <style jsx>
         {`
           .merch-store-container {
-            width: 50%;
+            width: 100%;
           }
           .merch-store-container-top {
             background: white;
-            border: 1px solid #b7b7b7;
-            border-radius: 45px;
+            border: 1px solid #000000;
+            border-radius: 50px;
+          }
+
+          .merch-store-container-bottom {
+            width: 100%;
           }
 
           .merch-title {
@@ -54,11 +71,12 @@ const MerchStoreSimple: React.FC = () => {
           }
 
           .merch-title h2 {
-            font-size: 1.75rem;
+            font-size: 1.65rem;
+            margin: 2px 2rem 0 2rem;
           }
 
           .merch-title img {
-            max-width: min(150px, 50vw);
+            max-width: min(75px, 50vw);
           }
 
           .merch-title button {
@@ -68,12 +86,28 @@ const MerchStoreSimple: React.FC = () => {
             background: none;
           }
 
+          .merch-title {
+            display: flex;
+          }
+
+          .merch-store-top-left {
+            display: flex;
+            align-items: center;
+            margin: 0 0 0 1rem;
+          }
+          .merch-store-top-right {
+            margin-right: 1.5rem;
+          }
+
           .merch-store-bottom {
-            width: 30%;
+            width: 95%;
+            background: #ffffff;
+            box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.25);
+            border-radius: 0 0 20px 20px;
           }
 
           .store-items-title {
-            font-size: 1.5rem;
+            font-size: 1.9rem;
             padding-left: 1.5rem;
             margin-top: 2.5rem;
           }
@@ -81,6 +115,29 @@ const MerchStoreSimple: React.FC = () => {
           @media (max-width: ${Dimen.mdBreakpoint}) {
             .merch-title h2 {
               text-align: center;
+            }
+          }
+
+          @media (max-width: ${Dimen.xsBreakpoint}) {
+            .merch-title h2 {
+              text-align: center;
+            }
+
+            .merch-title {
+              display: inline;
+            }
+
+            .merch-store-top-left {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin: 0;
+            }
+
+            .merch-store-top-right {
+              display: flex;
+              justify-content: center;
+              margin: 0;
             }
           }
         `}
