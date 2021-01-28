@@ -129,7 +129,7 @@ const RegisterPage: React.FC = () => {
               placeholder="********"
             />
             <InputField
-              name="Nomor Telpon"
+              name="Nomor Telepon"
               value={telp}
               setValue={setTelp}
               placeholder="081234567890"
