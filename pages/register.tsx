@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useContext, useState } from "react";
-import Alert from "../../components/commons/Alert";
-import AuthWrapper from "../../components/auth/AuthWrapper";
-import InputField from "../../components/auth/InputField";
-import FilledButton from "../../components/commons/FilledButton";
-import { RegisterStatus } from "../../interfaces/auth";
-import { ApiContext } from "../../utils/context/api";
+import Alert from "../components/commons/Alert";
+import AuthWrapper from "../components/auth/AuthWrapper";
+import InputField from "../components/auth/InputField";
+import FilledButton from "../components/commons/FilledButton";
+import { RegisterStatus } from "../interfaces/auth";
+import { ApiContext } from "../utils/context/api";
 import { ApiError } from "interfaces/api";
 import { registerVisitor } from "api/auth";
 
@@ -15,8 +15,8 @@ const RegisterPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
-  const [institution, setInstitution] = useState("");
+  const [telp, setTelp] = useState("");
+  const [institute, setInstitute] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -31,7 +31,7 @@ const RegisterPage: React.FC = () => {
     }
 
     if (name === "") {
-      setError("Nama tidak boleh kosong");
+      setError("Nama lengkap tidak boleh kosong");
       return;
     }
 
@@ -45,25 +45,37 @@ const RegisterPage: React.FC = () => {
       return;
     }
 
-    if (phone === "") {
+    if (telp === "") {
       setError("Nomor telepon tidak boleh kosong");
       return;
     }
 
-    if (institution === "") {
+    if (institute === "") {
       setError("Institusi tidak boleh kosong");
       return;
     }
   
     setLoading(true);
 
-    registerVisitor(apiContext.axios, name, email, password, phone, institution)
+    registerVisitor(apiContext.axios, name, email, password, telp, institute)
       .then(() => {
         setSuccess(true);
       })
       .catch((e) => {
         if (e instanceof ApiError && e.code === RegisterStatus.EMAIL_USED) {
           setError("Email sudah digunakan");
+          return;
+        }
+        else if (e instanceof ApiError && e.code === RegisterStatus.INVALID_NAME) {
+          setError("Nama lengkap hanya dapat memuat huruf, angka, atau spasi");
+          return;
+        }
+        else if (e instanceof ApiError && e.code === RegisterStatus.INVALID_EMAIL) {
+          setError("Email tidak valid");
+          return;
+        }
+        else if (e instanceof ApiError && e.code === RegisterStatus.SERVER_ERROR) {
+          setError("Server Error");
           return;
         }
         setError(e);
@@ -88,7 +100,9 @@ const RegisterPage: React.FC = () => {
         </>
       ) : (
         <>
-          <Alert error={error} />
+          {(typeof error === "string") ?
+            <Alert error={error} />
+            : null}
           <form
             onSubmit={(evt) => {
               evt.preventDefault();
@@ -116,14 +130,14 @@ const RegisterPage: React.FC = () => {
             />
             <InputField
               name="Nomor Telpon"
-              value={phone}
-              setValue={setPhone}
+              value={telp}
+              setValue={setTelp}
               placeholder="081234567890"
             />
             <InputField
               name="Institusi"
-              value={institution}
-              setValue={setInstitution}
+              value={institute}
+              setValue={setInstitute}
               placeholder="John University"
             />
             <br />

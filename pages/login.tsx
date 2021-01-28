@@ -52,6 +52,9 @@ const LoginPage: React.FC = () => {
           } else if (e.code === LoginStatus.EMAIL_NOT_CONFIRMED) {
             setError("Email belum dikonfirmasi");
             return;
+          } else if (e.code === LoginStatus.SERVER_ERROR) {
+            setError("Server Error");
+            return;
           }
 
           setError(e.message);
@@ -66,7 +69,9 @@ const LoginPage: React.FC = () => {
 
   return (
     <AuthWrapper title="Login IT FEST">
-      <Alert error={error} />
+      {(typeof error === "string") ?
+        <Alert error={error} />
+        : null}
       <form
         onSubmit={(evt) => {
           evt.preventDefault();
@@ -94,9 +99,9 @@ const LoginPage: React.FC = () => {
             <b>Reset</b>
           </a>
         </p> */}
-        <p className="login-link">
+        <p className="login-link mt-4 mb-0">
           Belum terdaftar ?{" "}
-          <a href="/register/visitor">
+          <a href="/register">
             <b>Daftar</b>
           </a>
         </p>
