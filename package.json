@@ -16,8 +16,7 @@
   "dependencies": {
     "@types/leaflet": "^1.5.19",
     "axios": "^0.21.1",
-    "bootstrap": "^4.5.3",
-    "chessboardjsx": "^2.4.2",
+    "bootstrap": "^4.5.3",    
     "dotenv": "^8.2.0",
     "leaflet": "^1.7.1",
     "leaflet-geosearch": "^3.2.0",
