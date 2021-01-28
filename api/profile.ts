@@ -1,5 +1,5 @@
 import { AxiosError, AxiosInstance } from "axios";
-import { ApiError, StandardError } from "interfaces/api";
+import { ApiError, ApiResponse, StandardError } from "interfaces/api";
 import { ProfileData, UserData } from "interfaces/auth";
 
 
@@ -9,9 +9,9 @@ export const getProfile = async (
   axios: AxiosInstance
 ): Promise<UserData> => {
   return axios
-    .get<UserData>(PROFILE_URL)
+    .get<ApiResponse<UserData>>(PROFILE_URL)
     .then((response) => {
-      return response.data;
+      return response.data.data;
     })
     .catch((error: AxiosError) => {
       throw new ApiError<StandardError>(StandardError.ERROR, error.message);
@@ -23,9 +23,9 @@ export const editProfile = async (
   truth: ProfileData
 ): Promise<UserData> => {
   return axios
-    .put<UserData>(PROFILE_URL, truth)
+    .put<ApiResponse<UserData>>(PROFILE_URL, truth)
     .then((response) => {
-      return response.data;
+      return response.data.data;
     })
     .catch((error: AxiosError) => {
       throw new ApiError<StandardError>(StandardError.ERROR, error.message);

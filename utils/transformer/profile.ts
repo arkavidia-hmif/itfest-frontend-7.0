@@ -2,35 +2,31 @@ import { ProfileData, UserData } from "../../interfaces/auth";
 import { isValidDate, isValidString, isEmpty, isValidPhone } from "../validator";
 
 export const checkTruth = async (
-  username: string,
-  telp: string | null,
   name: string | null,
   gender: number | null,
+  telp: string | null,
   dob: string | null,
-  institute: string | null,
-  point: number,
   photo: string | null,
+  institute: string | null,
   profile: UserData
 ): Promise<ProfileData> => {
   const data: ProfileData = {
+    id: 0,
     username: "",
     telp: "",
     name: "",
+    role: "",
     gender: 0,
     dob: "",
     institute: "",
     point: 0,
-    photo: ""
+    filled: false,
+    photo: "",
+    interest: []
   };
   if (!profile) {
     throw new Error("Masalah koneksi");
   }
-  if (isEmpty(username)) {
-    if (isValidString(profile?.username, 75)) data.username = profile?.username;
-    else throw new Error("Nama tidak valid");
-  } else if (isValidString(username, 75)) {
-    data.username = username;
-  } else throw new Error("Nama tidak valid");
 
   if (isEmpty(telp)) {
     if (isValidPhone(profile?.telp)) {
@@ -62,9 +58,9 @@ export const checkTruth = async (
     data.institute = institute;
   } else throw new Error("Asal sekolah/universitas tidak valid");
 
-  // sementara
-  if (point < 0) throw new Error("Point tidak valid");
-  if (gender && gender < 0) throw new Error("Gender tidak valid");
+  if (gender){
+    data.gender = Number(gender);
+  } else data.gender = Number(profile?.gender);
 
   if (isEmpty(photo)) {
     if (isValidString(profile?.photo, 75)) {

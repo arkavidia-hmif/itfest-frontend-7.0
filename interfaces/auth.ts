@@ -4,18 +4,23 @@ export interface AuthData {
 }
 
 export interface ProfileData {
+  id: number;
   username: string;
   telp: string | null;
   name: string | null;
+  role: string | null;
   gender: number | null;
   dob: string | null;
   institute: string | null;
   point: number;
+  filled: boolean;
   photo: string | null;
+  interest: Array<string>;
 }
 
 export interface UserData extends ProfileData {
-  dateJoined: string;
+  createdAt: string;
+  updatedAt: string;
   email: string;
 }
 

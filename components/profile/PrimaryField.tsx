@@ -62,13 +62,11 @@ const PrimaryField: React.FC = () => {
     setLoading(true);
     try {
       const truth = await checkTruth(
-        profile.username,
-        telp.value,
         name.value,
         profile.gender,
+        telp.value,
         profile.dob,
         profile.institute,
-        profile.point,
         profile.photo,
         profile
       );
@@ -105,7 +103,7 @@ const PrimaryField: React.FC = () => {
           return (
             <div key={label} className="d-flex justify-content-between">
               <h2>{label}</h2>
-              { isEdit ? (
+              { isEdit && data.key !== "email" ? (
                 <InputField
                   shouldRef={index === 0}
                   type={data.key === "dob" ? "date" : "text"}
@@ -122,7 +120,7 @@ const PrimaryField: React.FC = () => {
       <div className="d-flex justify-content-center mt-3">
         {isEdit ? (
           <FilledButton
-            color={Theme.buttonColors.purpleButton}
+            color={Theme.buttonColors.pinkButton}
             loading={loading}
             text="Submit"
             padding="0.75rem 3rem"
@@ -130,10 +128,10 @@ const PrimaryField: React.FC = () => {
           />
         ) : (
           <FilledButton
-            color={Theme.buttonColors.blueButton}
-            text="Cancel"
+            color={Theme.buttonColors.pinkButton}
+            text="Edit"
             padding="0.75em 1.5em"
-            onClick={() => setIsEdit(false)}
+            onClick={() => setIsEdit(true)}
           />
         )}
       </div>

@@ -33,8 +33,8 @@ const InputField: React.FC<Props> = ({
         />
       ) : choices.length > 0 ? (
         <select value={value} onChange={(e) => setValue(e.target.value)}>
-          {choices.map((choice) => (
-            <option value={choice} key={choice}>
+          {choices.map((choice, index) => (
+            <option value={index+1} key={choice}>
               {choice}
             </option>
           ))}

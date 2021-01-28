@@ -1,25 +1,93 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import useSWR from "swr";
 import InputField from "./InputField";
 import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
 import FilledButton from "components/commons/FilledButton";
-
-const personal = [
-  {
-    text: "Gender",
-  },
-  {
-    text: "Date of Birth",
-  },
-  {
-    text: "Institution",
-  },
-];
+import { ApiContext } from "utils/context/api";
+import { AuthContext } from "utils/context/auth";
+import useFormInput from "utils/hooks/useFormInput";
+import { editProfile, getProfile, PROFILE_URL } from "api/profile";
+import Alert from "components/commons/Alert";
+import Spinner from "components/commons/Spinner";
+import { checkTruth } from "utils/transformer/profile";
+import Success from "components/commons/Success";
+import profileAttributes, { genderList } from "utils/constants/profile-attributes";
+import { UserData } from "interfaces/auth";
 
 const PersonalField: React.FC = () => {
-  const [value, setValue] = useState("");
+  const apiContext = useContext(ApiContext);
+  const { auth, setAuth } = useContext(AuthContext);
+
   const [isEdit, setIsEdit] = useState(true);
-  let i = -1;
+  const gender = useFormInput("");
+  const dob = useFormInput("");
+  const institute = useFormInput("");
+
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  
+  useEffect(() => {
+    isEdit ? setSuccess(false) : setError("");
+  }, [setError, setSuccess, isEdit]);
+
+  const { data: profile, error: errorProfile, mutate } = useSWR(
+    PROFILE_URL,
+    () => getProfile(apiContext.axios)
+  );
+
+  useEffect(() => {
+    if (profile !== undefined) {
+      if (profile.gender && profile.gender !== 0){
+        gender.setValue(String(profile.gender));
+      }
+      if (profile.dob && profile.dob !== "") {
+        dob.setValue(profile.dob);
+      }
+      if (profile.institute && profile.institute !== "") {
+        institute.setValue(profile.institute);
+      }
+    }
+  }, [
+    profile,
+    gender.setValue,
+    dob.setValue,
+    institute.setValue,
+  ]);
+
+  if (errorProfile) return <Alert error="Masalah koneksi" />;
+  if (!profile) return <Spinner height="200px" />;
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const truth = await checkTruth(
+        profile.name,
+        Number(gender.value),
+        profile.telp,
+        dob.value,
+        institute.value,
+        profile.photo,
+        profile
+      );
+      const res = await editProfile(apiContext.axios, truth);
+      mutate(res);
+      if (res) {
+        if (auth) {
+          setAuth({jwt: auth?.jwt, user: res});
+        }
+        setSuccess(true);
+        setIsEdit(false);
+        setError(null);
+      }
+    } catch (e) {
+      setSuccess(false);
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -32,19 +100,28 @@ const PersonalField: React.FC = () => {
         </ColorfulHeader>
       </div>
       <div className="mt-3">
-        {personal.map((data) => {
-          i += 1;
+        {error && isEdit && <Alert error={error}/>}
+        {success && !isEdit && <Success message="Successfully update" />}
+        {[
+          { state: gender, key: "gender", choices:genderList },
+          { state: dob, key: "dob" },
+          { state: institute, key: "institute" },
+        ].map((data, index) => {
+          const label = profileAttributes[data.key];
+          const value = profile[data.key as keyof UserData] || "";
           return (
-            <div key={i} className="d-flex justify-content-between">
-              <h2>{data.text}</h2>
-              { isEdit ? (
+            <div key={label} className="d-flex justify-content-between">
+              <h2>{label}</h2>
+              { isEdit && data.key !== "email" ? (
                 <InputField
-                  type={data.text}
-                  value={value}
-                  setValue={setValue}
+                  shouldRef={index === 0}
+                  type={data.key === "dob" ? "date" : "text"}
+                  value={String(data.state.value)}
+                  choices={data.choices ?? []}
+                  setValue={data.state.setValue}
                 />
               ) : (
-                <h2>{value}</h2>
+                <h2>{value ?? "-"}</h2>
               )}
             </div>
           );
@@ -54,9 +131,10 @@ const PersonalField: React.FC = () => {
         {isEdit ? (
           <FilledButton
             color={Theme.buttonColors.pinkButton}
+            loading={loading}
             text="Submit"
             padding="0.75rem 3rem"
-            onClick={() => setIsEdit(false)}
+            onClick={handleSubmit}
           />
         ) : (
           <FilledButton
