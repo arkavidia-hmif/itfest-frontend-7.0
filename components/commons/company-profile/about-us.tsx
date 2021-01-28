@@ -1,21 +1,21 @@
 import * as React from "react";
-import AboutUsContent from "../../../utils/constants/company-profile/about-us-data";
 
 interface Props {
   type: string;
+  aboutUs: string;
 }
-const AboutUs: React.FC<Props> = ({type}) => {
+const AboutUs: React.FC<Props> = ({type, aboutUs}) => {
   return (
     <>
       {type === "main" ?
         <div className="flex-container">
           <p className="title-main">Tentang Kami</p>
-          <p className="description-text-main">{AboutUsContent[0].content}</p>
+          <p className="description-text-main">{aboutUs}</p>
         </div>
         :
         <div className="flex-container-alt">
           <p className="title">Tentang Kami</p>
-          <p className="description-text-alt">{AboutUsContent[0].content}</p>
+          <p className="description-text-alt">{aboutUs}</p>
         </div>
       }
       <style jsx>{`

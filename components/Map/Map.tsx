@@ -56,7 +56,7 @@ const Map: React.FC = () => {
               </div>
               <div className="row">
                 <div className="info col">
-                  <Link href="#"><a><p>more &gt; &gt; &gt;</p></a></Link>
+                  <Link href={tenant.companyLink}><a><p>more &gt; &gt; &gt;</p></a></Link>
                 </div>
               </div>
             </div>

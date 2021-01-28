@@ -5,15 +5,16 @@ import ButtonCombined from "./Buttons/buttonscombined";
 
 interface Props {
     done: boolean;
+    aboutUs: string;
 }
 
-const CombinedComponents: React.FC<Props> = ({done}) => {
+const CombinedComponents: React.FC<Props> = ({done, aboutUs}) => {
   return (
     <>
       <div className="flex-container">
         <div className="margin">
-          <AboutUs type="main"/>
-          <ButtonCombined type="main" done={done}/>
+          <AboutUs type="main" aboutUs={aboutUs}/>
+          <ButtonCombined done={done}/>
         </div>
         <div className="grid-item-2">
           <div className="grid-item-2-flex">

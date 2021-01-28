@@ -2,16 +2,18 @@ import * as React from "react";
 
 interface Props {
   type: string;
+  logo: string;
+  title: string;
 }
 
-const LogoTitleCompany: React.FC<Props> = ({type}) => {
+const LogoTitleCompany: React.FC<Props> = ({type, logo, title}) => {
   if(type === "main"){
     return (
       <>
         <div className="flex-container">
-          <img src="/img/company-profile/logocompany.png" className="logo-photo"/>
+          <img src={logo} className="logo-photo"/>
           <div className="logo-title">
-            <h1 className="title">Dinosaurus</h1>
+            <h1 className="title">{title}</h1>
           </div>
         </div>
         <style jsx>{`
@@ -53,9 +55,9 @@ const LogoTitleCompany: React.FC<Props> = ({type}) => {
     return (
       <>
         <div className="flex-container-alt">
-          <img src="/img/company-profile/logocompany.png" className="logo-photo-alt"/>
+          <img src={logo} className="logo-photo-alt"/>
           <div className="logo-title-alt">
-            <h1 className="title">Dinosaurus</h1>
+            <h1 className="title">{title}</h1>
           </div>
         </div>
         <style jsx>{`
