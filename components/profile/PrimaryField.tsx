@@ -76,7 +76,7 @@ const PrimaryField: React.FC = () => {
       mutate(res);
       if (res) {
         if (auth) {
-          setAuth({token: auth?.token, exp: auth?.exp, user: res});
+          setAuth({jwt: auth?.jwt, user: res});
         }
         setSuccess(true);
         setIsEdit(false);
