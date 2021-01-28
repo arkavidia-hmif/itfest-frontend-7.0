@@ -70,11 +70,11 @@ const Quiz: React.FC<Props> = ({ quizId, gameData }) => {
                       required
                       type="radio"
                       value={ans}
-                      id={`answe-${String(i)}`}
+                      id={`answer-${String(i)}`}
                       checked={String(ans) === String(submission[datum[0]])}
                       onChange={(e) => handleChange(e.target.value, datum[0])}
                     />
-                    <label htmlFor={`answe-${String(i)}`}>{ans}</label>
+                    <label htmlFor={`answer-${String(i)}`}>{ans}</label>
                   </div>
                 ))}
               </div>

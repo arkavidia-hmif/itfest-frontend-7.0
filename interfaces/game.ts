@@ -1,5 +1,5 @@
 export interface QuizResponse {
-  [key: string]: number;
+  [key: string]: string;
 }
 export interface QuizData {
   [key: string]: {
