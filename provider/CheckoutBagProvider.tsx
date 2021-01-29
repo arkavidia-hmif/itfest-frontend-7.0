@@ -28,12 +28,23 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
     setShow(status);
   };
 
+  const deleteItem = (item: MerchStoreItem) => {
+    const newItem = [...items];
+    const index = newItem.indexOf(item);
+
+    if (index !== -1) {
+      newItem.splice(index, 1);
+      setItems(newItem);
+    }
+  };
+
   const checkoutContext: CheckoutBagContextType = {
     data: items,
     show: show,
     addData: addData,
     deleteData: deleteData,
-    showBag: showBagContainer
+    showBag: showBagContainer,
+    deleteItem: deleteItem
   };
 
   return (

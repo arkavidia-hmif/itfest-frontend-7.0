@@ -8,8 +8,13 @@ import FilledButton from "components/commons/FilledButton";
 import { Theme } from "styles/theme";
 
 
+
 const BagContainer: React.FC = () => {
-  const { data, deleteData, show } = useContext(CheckoutBagContext) as CheckoutBagContextType;
+  const { data, deleteData, show, showBag } = useContext(CheckoutBagContext) as CheckoutBagContextType;
+
+  const closeBagContainer = () => {
+    showBag(false);
+  };
 
   const none = {
     display: "none"
@@ -23,17 +28,18 @@ const BagContainer: React.FC = () => {
     <div className="main container-sm" style={show ? block: none}>
       <div className="header">
         <p>Arkavidia Shopping Bag</p>
+        <img src="/img/close.svg" style={{float: "right", width: "1.5rem"}} onClick={closeBagContainer}/>
       </div>
       <div className="content row justify-content-center">
         {
-          data.map((data: MerchStoreItem) => 
-            <Bag key={data.name} item={data} />
+          data.map((item: MerchStoreItem) => 
+            <Bag key={item.id} item={item} />
           )
         }
 
       </div>
       <div className="content row justify-content-end" style={{paddingRight: "2rem"}}>
-        <img src="/img/trash.svg" onClick={deleteData} />
+        <img src="/img/trash.svg" onClick={deleteData} style={{marginRight: "1rem"}}/>
         <FilledButton
           color={Theme.buttonColors.pinkButton}
           text="Buy"
@@ -45,7 +51,7 @@ const BagContainer: React.FC = () => {
         {`
           .main {
             padding: 0 0 0 0 !important;
-            background-color: #A7C8F3;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFDCF4 20.31%, #FFD9DB 65.62%, #E8DBFA 100%);
             width: 50%;
             box-sizing: border-box;
             position: absolute;
@@ -73,12 +79,14 @@ const BagContainer: React.FC = () => {
             margin-block-end: 0;
             font-weight: bold;
             font-size: 1.2rem;
+            display: inline-block;
           }
 
           img {
             width: 2rem;
             margin-right: 1rem;
             cursor: pointer;
+            display: inline-block;
           }
 
           @media only screen and (max-width: 576px) {
