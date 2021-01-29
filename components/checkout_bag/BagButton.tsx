@@ -5,10 +5,10 @@ import { CheckoutBagContext } from "../../provider/CheckoutBagContext";
 
 
 const BagButton: React.FC = () => {
-  const { show, showBag } = useContext(CheckoutBagContext) as CheckoutBagContextType;
+  const { showBag, data } = useContext(CheckoutBagContext) as CheckoutBagContextType;
 
   const showBagContainer = () => {
-    showBag(!show);
+    showBag(true);
   };
 
   return (
@@ -20,7 +20,11 @@ const BagButton: React.FC = () => {
         <div className="col-3">
           <img src="/img/bag.svg" />
         </div>
+        <div className="notif">
+          <p style={{color: "white", fontWeight: "bold", marginTop: "0.2rem"}}>{data.length}</p>
+        </div>
       </div>
+
       <style jsx>
         {`
           .main {
@@ -28,6 +32,8 @@ const BagButton: React.FC = () => {
             border-radius: 4rem;
             width: 20%;
             cursor: pointer;
+            position: relative;
+            margin-top: 5rem;
           }
 
           img {
@@ -38,6 +44,18 @@ const BagButton: React.FC = () => {
           p {
             margin-block-start: 0;
             margin-block-end: 0;
+          }
+
+          .notif {
+            border-radius: 100%;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: red;
+            text-align: center;
+            z-index: 1;
+            position: absolute;
+            right: 0;
+            top: -0.5rem;
           }
 
           @media only screen and (max-width: 576px) {

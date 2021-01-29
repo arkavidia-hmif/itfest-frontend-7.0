@@ -7,6 +7,7 @@ type CheckoutBagContextType = {
   addData: (item: MerchStoreItem) => void;
   deleteData: () => void;
   showBag: (status: boolean) => void;
+  deleteItem: (item: MerchStoreItem) => void;
 }
 
 export default CheckoutBagContextType;
