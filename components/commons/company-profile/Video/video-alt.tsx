@@ -5,7 +5,6 @@ interface Props {
 }
 
 const VideoAlt : React.FC<Props> = ({ videoUrl }) => {
-  console.log(videoUrl)
   return (
     <div className="flex-container-alt">
       <iframe 
