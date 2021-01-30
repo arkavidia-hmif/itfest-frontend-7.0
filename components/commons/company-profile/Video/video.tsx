@@ -10,16 +10,16 @@ const Video: React.FC<Props> = ({type}) => {
       {type === "main" ?
         <div className="flex-container">
           <video className="video-size-main" controls>
-            <source src="movie.mp4" type="video/mp4"/>
-            <source src="movie.ogg" type="video/ogg"/>
+            <source src="" type="video/mp4"/>
+            <source src="" type="video/ogg"/>
               Your browser does not support the video tag.
           </video>
         </div>
         :
         <div className="flex-container-alt">
           <video className="video-size" controls>
-            <source src="movie.mp4" type="video/mp4"/>
-            <source src="movie.ogg" type="video/ogg"/>
+            <source src="" type="video/mp4"/>
+            <source src="" type="video/ogg"/>
             Your browser does not support the video tag.
           </video>
         </div>

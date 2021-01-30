@@ -135,6 +135,11 @@ const Gallery: React.FC<Props> = ({items}) => {
         </div>
       </div>
       <style jsx>{`
+        img {
+          height: 100%;
+          width: 100%;
+        }
+        
         .flex-container {
             display: flex;
             flex-direction: column;

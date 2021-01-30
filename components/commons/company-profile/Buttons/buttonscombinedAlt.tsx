@@ -10,17 +10,17 @@ const CombinedButtonAlt: React.FC<Props> = ({done}) => {
     <>
       <div className="flex-container-alt">
         <div className="margin-right-button">
-            <FilledButton
-              color={Theme.buttonColors.pinkButton}
-              text="MEET"
-              padding="0.75em 1.5em"
-            />
-        </div>
           <FilledButton
-            color={(done) ? Theme.buttonColors.lightPurpleButton : Theme.buttonColors.greyButton}
-            text="APPLY NOW"
+            color={Theme.buttonColors.pinkButton}
+            text="MEET"
             padding="0.75em 1.5em"
           />
+        </div>
+        <FilledButton
+          color={(done) ? Theme.buttonColors.lightPurpleButton : Theme.buttonColors.greyButton}
+          text="APPLY NOW"
+          padding="0.75em 1.5em"
+        />
       </div>
       <style jsx>{`
         .flex-container-alt {
