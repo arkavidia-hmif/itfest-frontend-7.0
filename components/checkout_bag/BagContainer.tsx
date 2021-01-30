@@ -28,7 +28,7 @@ const BagContainer: React.FC = () => {
     <div className="main container-sm" style={show ? block: none}>
       <div className="header">
         <p>Arkavidia Shopping Bag</p>
-        <img src="/img/close.svg" style={{float: "right", width: "1.5rem"}} onClick={closeBagContainer}/>
+        <img className="btn-close" src="/img/close.svg" onClick={closeBagContainer}/>
       </div>
       <div className="content row justify-content-center">
         {
@@ -39,7 +39,7 @@ const BagContainer: React.FC = () => {
 
       </div>
       <div className="content row justify-content-end" style={{paddingRight: "2rem"}}>
-        <img src="/img/trash.svg" onClick={deleteData} style={{marginRight: "1rem"}}/>
+        <img className="btn-del" src="/img/trash.svg" onClick={deleteData} style={{marginRight: "1rem"}}/>
         <FilledButton
           color={Theme.buttonColors.pinkButton}
           text="Buy"
@@ -56,10 +56,10 @@ const BagContainer: React.FC = () => {
             box-sizing: border-box;
             position: absolute;
             z-index: 2;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -40%);
+            left: 25%;
             border-radius: 1rem 1rem 0 0;
+            animation-name: dropdown;
+            animation-duration: 1s;
           }
 
           .header {
@@ -89,10 +89,25 @@ const BagContainer: React.FC = () => {
             display: inline-block;
           }
 
+          .btn-close {
+            float: right; 
+            width: 1.5rem;
+          }
+
+          .btn-close:hover, .btn-del:hover {
+            opacity: 0.5;
+          }
+
           @media only screen and (max-width: 576px) {
             .main {
               width: 90%;
+              left: 5%;
             }
+          }
+
+          @keyframes dropdown {
+            from {top: -100%;}
+            to {top: 32%;}
           }
         `}
       </style>

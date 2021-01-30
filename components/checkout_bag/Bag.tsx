@@ -20,7 +20,7 @@ const Bag: React.FC<Props> = ({ item }) => {
         <div className="col-8">
           <p>{item.name}</p>
           <p style={{fontWeight: "bold"}}>Rp {item.price.toLocaleString()}</p>
-          <img src="/img/trash.svg" style={{width: "2rem", float: "right"}}  onClick={() => deleteItem(item)}/>
+          <img  className="btn-del" src="/img/trash.svg" onClick={() => deleteItem(item)}/>
         </div>
       </div>
       <style jsx>
@@ -32,11 +32,21 @@ const Bag: React.FC<Props> = ({ item }) => {
             background-color: #FE99B3;
             padding: 1rem;
             border-radius: 1rem;
+            box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.25);
           }
 
           img {
             width: 5rem;
             cursor: pointer;
+          }
+
+          .btn-del {
+            width: 2rem;
+            float: right;
+          }
+
+          .btn-del:hover {
+            opacity: 0.5;
           }
 
           p {
