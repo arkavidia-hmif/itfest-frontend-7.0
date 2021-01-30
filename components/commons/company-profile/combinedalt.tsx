@@ -1,5 +1,5 @@
 import * as React from "react";
-import Video from "./Video/video";
+import VideoAlt from "./Video/video-alt";
 
 const CombinedComponents: React.FC = () => {
   return (
@@ -7,7 +7,7 @@ const CombinedComponents: React.FC = () => {
       <div className="flex-container">
         <div className="grid-item-2">
           <div className="video-flex">
-            <Video type="alt"/>
+            <VideoAlt/>
           </div>
         </div>
         <div className="grid-item-2-image">

@@ -1,6 +1,6 @@
 import * as React from "react";
 import Video from "./Video/video";
-import AboutUs from "./about-us";
+import AboutUs from "./AboutUs/about-us";
 import ButtonCombined from "./Buttons/buttonscombined";
 
 interface Props {
@@ -13,12 +13,12 @@ const CombinedComponents: React.FC<Props> = ({done, aboutUs}) => {
     <>
       <div className="flex-container">
         <div className="margin">
-          <AboutUs type="main" aboutUs={aboutUs}/>
+          <AboutUs aboutUs={aboutUs}/>
           <ButtonCombined done={done}/>
         </div>
         <div className="grid-item-2">
           <div className="grid-item-2-flex">
-            <Video type="main"/>
+            <Video/>
           </div>
         </div>
         <div className="grid-item-2-image">

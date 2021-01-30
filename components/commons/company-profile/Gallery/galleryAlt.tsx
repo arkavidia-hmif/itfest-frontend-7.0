@@ -149,75 +149,75 @@ const GalleryAlt : React.FC<Props> = ({items, galleryText}) => {
       <style jsx>{`
         img {
           height: 100%;
-          width: 100%;
+          width: auto;
         }
         
         .flex-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5%;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          margin-top: 5%;
         }
 
         .text {
-            margin-right: 5%;
-            grid-column-start: 1;
-            grid-column-end: 3;
+          margin-right: 5%;
+          grid-column-start: 1;
+          grid-column-end: 3;
         }
 
         .carousel-background {
-            grid-column-start: 3;
-            grid-column-end: 5;
-            background-color: white;
-            width: 100%;
-            height: 20rem;
-            display: flex;
-            align-items: center;
-            padding: 2%;
-            box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 1.3rem;
+          grid-column-start: 3;
+          grid-column-end: 5;
+          background-color: white;
+          width: 100%;
+          height: 20rem;
+          display: flex;
+          align-items: center;
+          padding: 2%;
+          box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 1.3rem;
         }
 
         .item-container {
-            grid-column-start: 3;
-            grid-column-end: 5;
-            background-color: white;
-            width: 100%;
-            height: 20rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          grid-column-start: 3;
+          grid-column-end: 5;
+          background-color: white;
+          width: 100%;
+          height: 20rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         @media only screen and (max-width: 1000px) {
-            .flex-container {
-                display: flex;
-                flex-direction: column-reverse;
-                margin-top: 8%;
-            }
+          .flex-container {
+            display: flex;
+            flex-direction: column-reverse;
+            margin-top: 8%;
+          }
 
-            .carousel-background {
-                width: 100%;
-                height: 14rem;
-                display: flex;
-                align-items: center;
-                padding: 2%;
-            }
+          .carousel-background {
+            width: 100%;
+            height: 14rem;
+            display: flex;
+            align-items: center;
+            padding: 2%;
+          }
 
-            .item-container {
-                background-color: transparent;
-                width: 100%;
-                height: 14rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+          .item-container {
+            background-color: transparent;
+            width: 100%;
+            height: 14rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
 
-            .text {
-                margin-top: 3%;
-            }
+          .text {
+            margin-top: 3%;
+          }
         }
       `}</style>
     </>

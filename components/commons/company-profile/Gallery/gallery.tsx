@@ -137,39 +137,41 @@ const Gallery: React.FC<Props> = ({items}) => {
       <style jsx>{`
         img {
           height: 100%;
+          width: auto;
         }
         
         .flex-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 8%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-top: 8%;
         }
 
         .carousel-background {
-            width: 110%;
-            height: 20rem;
-            display: flex;
-            align-items: center;
+          width: 110%;
+          height: 20rem;
+          display: flex;
+          align-items: center;
         }
 
         .item-container {
-            background: white;
-            width: 95%;
-            height: 15rem;
+          background: white;
+          width: 95%;
+          height: 15rem;
+          text-align: center;
         }
 
         @media only screen and (max-width: 1000px) {
-              .carousel-background {
-                  height: 10rem;
-              }
+          .carousel-background {
+            height: 10rem;
+          }
 
-              .item-container {
-                  background: white;
-                  width: 90%;
-                  height: 8rem;
-              }
+          .item-container {
+            background: white;
+            width: 90%;
+            height: 8rem;
+          }
         }
       `}</style>
     </>

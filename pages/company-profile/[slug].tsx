@@ -1,10 +1,11 @@
 import * as React from "react";
 import { GetServerSideProps } from "next";
-import Logo from "../../components/commons/company-profile/logo-title";
+import Logo from "../../components/commons/company-profile/LogoTitle/logo-title";
 import CombinedComponent from "../../components/commons/company-profile/combinedmain";
 import GalleryMain from "../../components/commons/company-profile/Gallery/gallery";
 import ChallengeDone from "../../components/commons/company-profile/Challenge/challenge";
 import Tenants from "../../utils/constants/tenants";
+import Layout from "components/commons/Layout";
 import { Tenant } from "interfaces/tenant";
 
 interface Props {
@@ -14,14 +15,16 @@ interface Props {
 const CompanyProfile: React.FC<Props> = ({ tenant }) => {
   const done = false;
   return (
-    <div className="container pb-4">
-      <Logo type="main" logo={tenant.logo} title={tenant.name} />
-      <div>
-        <CombinedComponent done={done} aboutUs={tenant.aboutUs} />
+    <Layout title={tenant.name}>
+      <div className="container pb-4">
+        <Logo logo={tenant.logo} title={tenant.name} />
+        <div>
+          <CombinedComponent done={done} aboutUs={tenant.aboutUs} />
+        </div>
+        <GalleryMain items={tenant.gallery} />
+        <ChallengeDone done={done}/>
       </div>
-      <GalleryMain items={tenant.gallery} />
-      <ChallengeDone done={done}/>
-    </div>
+    </Layout>
   );
 };
 
