@@ -7,6 +7,6 @@ export interface Tenant {
   position: LatLngTuple;  /* Posisi di Map */
   aboutUs: string;
   galleryText: string;
-  video: string;
+  videoUrl: string;
   gallery: string[];
 }

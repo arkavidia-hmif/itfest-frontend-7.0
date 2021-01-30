@@ -1,17 +1,25 @@
 import * as React from "react";
 
-const Video: React.FC = () => {
+interface Props {
+  videoUrl : string;
+}
+
+const Video: React.FC<Props> = ({ videoUrl }) => {
+  console.log(videoUrl)
   return (
     <div className="flex-container">
-      <video className="video-size-main" controls>
-        <source src="" type="video/mp4"/>
-        <source src="" type="video/ogg"/>
-          Your browser does not support the video tag.
-      </video>
-      {/* <iframe width="420" height="315"
-        src="https://www.youtube.com/embed/tgbNymZ7vqY">
-      </iframe> */}
+      <iframe 
+        src={videoUrl}
+        frameBorder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowFullScreen
+      >
+      </iframe>
       <style jsx>{`
+        iframe {
+          width: 520px;
+          height: 292.5px;
+        }
         .flex-container {
           display: flex;
           flex-direction: row;
@@ -19,24 +27,7 @@ const Video: React.FC = () => {
           align-items: flex-end;
         }
 
-        .video-size-main {
-          min-width: 33rem;
-          min-height: 50%;
-        }
-
-        @media only screen and (max-width: 1200px) {
-          .video-size-main {
-            min-width: 21rem;
-            min-height: 15rem;
-          }
-        }
-
         @media only screen and (max-width: 1000px) {
-          .video-size-main {
-            min-width: 9rem;
-            min-height: 15rem;
-          }
-
           .flex-container {
             display: flex;
             flex-direction: column;
@@ -46,9 +37,9 @@ const Video: React.FC = () => {
         }
 
         @media only screen and (max-width: 768px) {
-          .video-size-main {
-            width: 25rem;
-            min-height: 14rem;
+          iframe {
+            width: 430px;
+            height: 241.875px;
           }
 
           .flex-container {
@@ -60,9 +51,9 @@ const Video: React.FC = () => {
         }
 
         @media only screen and (max-width: 576px) {
-          .video-size-main {
-            width: 20rem;
-            min-height: 14rem;
+          iframe {
+            width: 350px;
+            height: 196.875px;
           }
 
           .flex-container {
@@ -74,9 +65,9 @@ const Video: React.FC = () => {
         }
 
         @media only screen and (max-width: 400px) {
-          .video-size-main {
-            width: 16rem;
-            min-height: 12rem;
+          iframe {
+            width: 280px;
+            height: 157.5px;
           }
         }
       `}</style>

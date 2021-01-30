@@ -1,14 +1,26 @@
 import * as React from "react";
 
-const VideoAlt : React.FC = () => {
+interface Props {
+  videoUrl : string;
+}
+
+const VideoAlt : React.FC<Props> = ({ videoUrl }) => {
+  console.log(videoUrl)
   return (
     <div className="flex-container-alt">
-      <video className="video-size" controls>
-        <source src="" type="video/mp4"/>
-        <source src="" type="video/ogg"/>
-        Your browser does not support the video tag.
-      </video>
+      <iframe 
+        src={videoUrl} 
+        frameBorder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowFullScreen
+      >
+      </iframe>
       <style jsx>{`
+        iframe {
+          width: 560px;
+          height: 315px;
+        }
+
         .flex-container-alt {
           margin-top: 1%;
           display: flex;
@@ -17,36 +29,24 @@ const VideoAlt : React.FC = () => {
           align-items: center;
         }  
 
-        .video-size {
-          width: 35rem;
-          height: 20%;
-        }
-
-        @media only screen and (max-width: 1000px) {
-          .video-size {
-            min-width: 11rem;
-            min-height: 10rem;
-          }
-        }
-
         @media only screen and (max-width: 768px) {
-          .video-size {
-            width: 25rem;
-            min-height: 16rem;
+          iframe {
+            width: 450px;
+            height: 253.125px;
           }
         }
 
         @media only screen and (max-width: 576px) {
-          .video-size {
-            width: 18.5rem;
-            min-height: 14rem;
+          iframe {
+            width: 350px;
+            height: 196.875px;
           }
         }
 
         @media only screen and (max-width: 400px) {
-          .video-size {
-            width: 16rem;
-            min-height: 12rem;
+          iframe {
+            width: 300px;
+            height: 168.75px;
           }
         }
       `}</style>

@@ -6,9 +6,10 @@ import ButtonCombined from "./Buttons/buttonscombined";
 interface Props {
     done: boolean;
     aboutUs: string;
+    videoUrl: string;
 }
 
-const CombinedComponents: React.FC<Props> = ({done, aboutUs}) => {
+const CombinedComponents: React.FC<Props> = ({done, aboutUs,videoUrl}) => {
   return (
     <>
       <div className="flex-container">
@@ -18,7 +19,7 @@ const CombinedComponents: React.FC<Props> = ({done, aboutUs}) => {
         </div>
         <div className="grid-item-2">
           <div className="grid-item-2-flex">
-            <Video/>
+            <Video videoUrl={videoUrl} />
           </div>
         </div>
         <div className="grid-item-2-image">

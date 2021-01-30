@@ -20,7 +20,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
     <Layout title={tenant.name}>
       <div className="container pb-4">
         <Logo logo={tenant.logo} title={tenant.name} />
-        <CombinedAlt/>
+        <CombinedAlt videoUrl={tenant.videoUrl} />
         <AboutUs aboutUs={tenant.aboutUs} />
         <Buttons done={done}/>
         <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
