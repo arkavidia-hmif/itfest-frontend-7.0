@@ -137,7 +137,6 @@ const Gallery: React.FC<Props> = ({items}) => {
       <style jsx>{`
         img {
           height: 100%;
-          width: 100%;
         }
         
         .flex-container {
