@@ -1,5 +1,6 @@
 import * as React from "react";
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { ParsedUrlQuery } from 'querystring';
 import Logo from "../../components/commons/company-profile/LogoTitle/logo-title-alt";
 import AboutUs from "../../components/commons/company-profile/AboutUs/about-us-alt";
 import Buttons from "../../components/commons/company-profile/Buttons/buttonscombinedAlt";
@@ -12,6 +13,10 @@ import { Tenant } from "interfaces/tenant";
 
 interface Props {
   tenant: Tenant
+}
+
+interface Params extends ParsedUrlQuery {
+  slug: string,
 }
 
 const CompanyProfile: React.FC<Props> = ({ tenant }) => {
@@ -30,8 +35,19 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async(context) => {
-  const { slug } = context.query;
+export const getStaticPaths: GetStaticPaths = async() => {
+  const paths = Tenants.map((tenant) => ({
+    params : { slug: tenant.slug }
+  }));
+
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+export const getStaticProps: GetStaticProps = async(context) => {
+  const { slug } = context.params as Params;
   const data = Tenants.filter(obj => {
     return obj.slug === slug;
   });
@@ -41,6 +57,6 @@ export const getServerSideProps: GetServerSideProps = async(context) => {
       tenant: data[0],
     },
   };
-};
+}
 
 export default CompanyProfile;
