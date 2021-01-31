@@ -54,3 +54,8 @@ export enum RegisterStatus {
   INVALID_EMAIL,
   INVALID_NAME,
 }
+
+export enum EmailResetPasswordStatus {
+  ERROR,
+  INVALID_INPUT
+}

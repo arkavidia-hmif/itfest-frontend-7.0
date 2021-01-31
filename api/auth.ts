@@ -1,6 +1,7 @@
 import { AxiosInstance } from "axios";
 import {
   AuthData,
+  EmailResetPasswordStatus,
   LoginStatus,
   RegisterStatus,
 } from "interfaces/auth";
@@ -59,5 +60,21 @@ export async function registerVisitor(
     }
 
     throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
+  }
+}
+
+export async function resetPassword(
+  axios: AxiosInstance,
+  newPassword: string
+): Promise<void> {
+  try {
+    await axios.post("/resetpass", {
+      newPassword,
+    });
+  } catch(e) {
+    if (e.response) {
+      if (e.response.data.code === "invalid_input") throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.INVALID_INPUT, e.response.data.detail);
+    }
+    throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e)
   }
 }
