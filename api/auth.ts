@@ -75,6 +75,6 @@ export async function resetPassword(
     if (e.response) {
       if (e.response.data.code === "invalid_input") throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.INVALID_INPUT, e.response.data.detail);
     }
-    throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e)
+    throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e);
   }
 }

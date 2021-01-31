@@ -8,13 +8,13 @@ interface Props {
 
 const InputField: React.FC<Props> = ({ name, type = "text", value, setValue, placeholder }) => {
 
-const id = name.toLowerCase().replace(/\s/g, "");
+  const id = name.toLowerCase().replace(/\s/g, "");
 
-return (
-  <div>
-    <label htmlFor={id}>{name}</label>
-    <input id={id} type={type} value={value} onChange={(evt) => { setValue(evt.target.value); }} placeholder={placeholder} />
-    <style jsx>{`
+  return (
+    <div>
+      <label htmlFor={id}>{name}</label>
+      <input id={id} type={type} value={value} onChange={(evt) => { setValue(evt.target.value); }} placeholder={placeholder} />
+      <style jsx>{`
         label {
           font-style: normal;
           font-weight: bold;
@@ -51,8 +51,8 @@ return (
           font-size: 1.2rem;
         }
       `}</style>
-  </div>
-);
+    </div>
+  );
 };
 
 export default InputField;
