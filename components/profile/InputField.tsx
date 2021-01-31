@@ -5,7 +5,7 @@ interface Props {
   value: string;
   shouldRef?: boolean;
   setValue: (newValue: string) => void;
-  choices?: Array<string>;
+  choices: Array<string>;
 }
 
 const InputField: React.FC<Props> = ({
@@ -13,7 +13,7 @@ const InputField: React.FC<Props> = ({
   value,
   shouldRef = false,
   setValue,
-  choices = [],
+  choices,
 }) => {
   const ref = useRef<HTMLInputElement>(null);
   useEffect(() => {

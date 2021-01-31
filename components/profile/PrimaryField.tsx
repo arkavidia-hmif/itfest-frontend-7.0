@@ -1,25 +1,26 @@
 import { useContext, useEffect, useState } from "react";
 import useSWR from "swr";
 import InputField from "./InputField";
-import { editProfile, getProfile, PROFILE_URL } from "api/profile";
+import { editPrimaryData, getPrimaryData, PROFILE_URL } from "api/profile";
 import { ApiContext } from "utils/context/api";
 import { Theme } from "styles/theme";
 import FilledButton from "components/commons/FilledButton";
 import profileAttributes from "utils/constants/profile-attributes";
-import { checkTruth } from "utils/transformer/profile";
-import { UserData } from "interfaces/auth";
+import { checkTruthPrimary } from "utils/transformer/profile";
+import { PrimaryData } from "interfaces/auth";
 import { AuthContext } from "utils/context/auth";
 import useFormInput from "utils/hooks/useFormInput";
 import Alert from "components/commons/Alert";
 import Success from "components/commons/Success";
 import Spinner from "components/commons/Spinner";
+import useStringFormInput from "utils/hooks/useStringFormInput";
 
 const PrimaryField: React.FC = () => {
   const apiContext = useContext(ApiContext);
   const { auth, setAuth } = useContext(AuthContext);
 
   const [isEdit, setIsEdit] = useState(false);
-  const email = useFormInput("");
+  const email = useStringFormInput("");
   const telp = useFormInput("");
   const name = useFormInput("");
 
@@ -31,54 +32,51 @@ const PrimaryField: React.FC = () => {
     isEdit ? setSuccess(false) : setError("");
   }, [setError, setSuccess, isEdit]);
 
-  const { data: profile, error: errorProfile, mutate } = useSWR(
+  const { data: primary, error: errorPrimary, mutate } = useSWR(
     PROFILE_URL,
-    () => getProfile(apiContext.axios)
+    () => getPrimaryData(apiContext.axios)
   );
 
   useEffect(() => {
-    if (profile !== undefined) {
-      if (profile.email && profile.email !== ""){
-        email.setValue(profile.email);
+    if (primary !== undefined) {
+      if (primary.email && primary.email !== ""){
+        email.setValue(primary.email);
       }
-      if (profile.telp && profile.telp !== "") {
-        telp.setValue(profile.telp);
+      if (primary.telp && primary.telp !== "") {
+        telp.setValue(primary.telp);
       }
-      if (profile.name && profile.name !== "") {
-        name.setValue(profile.name);
+      if (primary.name && primary.name !== "") {
+        name.setValue(primary.name);
       }
     }
   }, [
-    profile,
+    primary,
     email.setValue,
     telp.setValue,
     name.setValue,
   ]);
 
-  if (errorProfile) return <Alert error="Masalah koneksi" />;
-  if (!profile) return <Spinner height="200px" />;
+  if (errorPrimary) return <Alert error="Masalah koneksi" />;
+  if (!primary) return <Spinner height="200px" />;
 
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const truth = await checkTruth(
+      const truth = await checkTruthPrimary(
         name.value,
-        profile.gender,
         telp.value,
-        profile.dob,
-        profile.institute,
-        profile.photo,
-        profile
+        email.value,
+        primary
       );
-      const res = await editProfile(apiContext.axios, truth);
+      const res = await editPrimaryData(apiContext.axios, truth);
       mutate(res);
+      setSuccess(true);
+      setIsEdit(false);
+      setError(null);
       if (res) {
         if (auth) {
-          setAuth({jwt: auth?.jwt, user: res});
+          setAuth({jwt: auth?.jwt, primary: res});
         }
-        setSuccess(true);
-        setIsEdit(false);
-        setError(null);
       }
     } catch (e) {
       setSuccess(false);
@@ -90,28 +88,28 @@ const PrimaryField: React.FC = () => {
 
   return (
     <>
+      {error && isEdit && <Alert error={error}/>}
+      {success && !isEdit && <Success message="Successfully update" />}
       <div className="mt-3">
-        {error && isEdit && <Alert error={error}/>}
-        {success && !isEdit && <Success message="Successfully update" />}
         {[
           { state: email, key: "email" },
           { state: telp, key: "telp" },
           { state: name, key: "name" },
-        ].map((data, index) => {
+        ].map((data) => {
           const label = profileAttributes[data.key];
-          const value = profile[data.key as keyof UserData] || "";
+          const value = primary[data.key as keyof PrimaryData] || "";
           return (
             <div key={label} className="d-flex justify-content-between">
               <h2>{label}</h2>
-              { isEdit && data.key !== "email" ? (
+              {!(isEdit && data.key !== "email") ? (
+                <h2>{value ?? "-"}</h2>
+              ) : (
                 <InputField
-                  shouldRef={index === 0}
                   type={data.key === "dob" ? "date" : "text"}
                   value={String(data.state.value)}
                   setValue={data.state.setValue}
+                  choices={[]}
                 />
-              ) : (
-                <h2>{value ?? "-"}</h2>
               )}
             </div>
           );
@@ -123,7 +121,7 @@ const PrimaryField: React.FC = () => {
             color={Theme.buttonColors.pinkButton}
             loading={loading}
             text="Submit"
-            padding="0.75rem 3rem"
+            padding="0.75rem 2rem"
             onClick={handleSubmit}
           />
         ) : (

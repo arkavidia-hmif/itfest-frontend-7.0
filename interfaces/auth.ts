@@ -1,6 +1,8 @@
 export interface AuthData {
   jwt: string;
-  user: UserData;
+  user?: UserData;
+  primary?: PrimaryData;
+  personal?: PersonalData;
 }
 
 export interface ProfileData {
@@ -22,6 +24,18 @@ export interface UserData extends ProfileData {
   createdAt: string;
   updatedAt: string;
   email: string;
+}
+
+export interface PrimaryData {
+  telp: string | null;
+  name: string | null;
+  email: string;
+}
+
+export interface PersonalData {
+  gender: number | null;
+  dob: string | null;
+  institute: string | null;
 }
 
 export enum LoginStatus {
