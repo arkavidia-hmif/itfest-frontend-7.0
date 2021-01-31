@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import Leaderboard from "components/home/Leaderboard";
+import Leaderboard from "components/LeaderBoard";
 import MapDescription from "components/home/MapDescription";
 import Carousel from "components/Carousel";
 import CarouselItem from "components/CarouselItem";

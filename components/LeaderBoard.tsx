@@ -2,10 +2,11 @@ import React from "react";
 import LeaderBoardChild from "./LeaderBoardChild";
 import ColorfulHeader from "./ColorfulHeader";
 import { Theme } from "styles/theme";
+// import { getGlobalScoreboard } from "api/home";
 
 const LeaderBoard: React.FC = () => {
   return (
-    <div className="container-sm manual-lg-width">
+    <div className="container-sm manual-lg-width margin-bot">
       <div className="row center">
         <div className="col-12">
           <ColorfulHeader headingLevel={1} color={Theme.headerColors.pipl} size="1em">LEADERBOARD</ColorfulHeader>
@@ -17,6 +18,10 @@ const LeaderBoard: React.FC = () => {
       <LeaderBoardChild no={3} name="John Mayer" score={12000000} />
       <LeaderBoardChild no={4} name="Afif Akromi" score={7000000} />
       <style jsx>{`
+        .margin-bot {
+          margin-bottom: 5%;
+        }
+
         .center {
           text-align: center;
         }
