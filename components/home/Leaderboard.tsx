@@ -1,6 +1,7 @@
 import * as React from "react";
 import ColorfulHeader from "../commons/ColorfulHeader";
 import { Theme } from "styles/theme";
+// import { getGlobalScoreboard } from "api/home";
 
 interface dataProps {
   name: string;
