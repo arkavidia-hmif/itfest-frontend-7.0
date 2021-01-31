@@ -28,7 +28,7 @@ const LeaderBoard: React.FC = () => {
           <style jsx>{`
           .grid-container {
               display: grid;
-              margin: 0.5% 10%;
+              margin: 0.5% 0%;
               background: linear-gradient(270deg, #FBBCC8 0%, #FFFFFF 53.55%);
               box-shadow: 5px 6px 12px rgba(143, 143, 143, 0.25);
               padding: 1% 3%;
@@ -59,7 +59,7 @@ const LeaderBoard: React.FC = () => {
           @media only screen and (max-width: 1000px) {
               .grid-container {
                   border-radius: 0.5rem;
-                  margin: 1% 10%;
+                  margin: 1% 0;
               }
           }
 
@@ -67,13 +67,14 @@ const LeaderBoard: React.FC = () => {
               .grid-container {
                   border-radius: 0.5rem;
                   padding: 2% 4%;
-                  margin: 1% 10%;
+                  margin: 1% 0;
+                  grid-template-columns: 7% 47% 46%;
               }
           }
 
           @media only screen and (max-width: 400px) {
               .grid-container {
-                  grid-template-columns: 7% 50% 43%;
+                  grid-template-columns: 7% 43% 50%;
               }
           }
         `}</style>
