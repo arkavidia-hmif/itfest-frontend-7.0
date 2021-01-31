@@ -1,5 +1,5 @@
 import { PersonalData, PrimaryData, ProfileData, UserData } from "../../interfaces/auth";
-import { isValidDate, isValidString, isEmpty, isValidPhone, isValidEmail } from "../validator";
+import { isValidDate, isValidString, isEmpty, isValidPhone, isValidEmail, isValidName } from "../validator";
 
 export const checkTruth = async (
   name: string | null,
@@ -100,9 +100,9 @@ export const checkTruthPrimary = async (
   } else throw new Error("Nomor telepon tidak valid");
 
   if (isEmpty(name)) {
-    if (isValidString(primary?.name, 75)) data.name = primary?.name;
+    if (isValidString(primary?.name, 75) && isValidName(primary?.name)) data.name = primary?.name;
     else throw new Error("Nama tidak valid");
-  } else if (isValidString(name, 75)) {
+  } else if (isValidString(name, 75) && isValidName(name)) {
     data.name = name;
   } else throw new Error("Nama tidak valid");
 

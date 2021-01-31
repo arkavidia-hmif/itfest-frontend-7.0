@@ -9,6 +9,12 @@ export const isValidString = (string: string | null, max: number): boolean =>
   String(string).length <= max &&
   String(string).length > 0;
 
+export const isValidName = (string: string | null): boolean => {
+  if (!string) return false;
+  const re = /^(?:[A-Za-z0-9 ]*)$/;
+  return re.test(string);
+};
+
 export const isValidDate = (date: string | null): boolean => {
   if (String(date).length === 0 || date === null) return false;
   const element = String(date).split("-");

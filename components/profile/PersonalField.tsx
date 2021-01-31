@@ -107,34 +107,50 @@ const PersonalField: React.FC = () => {
           const label = profileAttributes[data.key];
           const value = personal[data.key as keyof PersonalData] || "";
           return (
-            <div key={label} className="d-flex justify-content-between">
-              <h2>{label}</h2>
-              {!(isEdit) ? (
-                <h2>{data.key === "gender" ? genderList[Number(gender.value)-1] : value}</h2>
-              ) : (
-                <InputField
-                  type={data.key === "dob" ? "date" : "text"}
-                  value={String(data.state.value)}
-                  setValue={data.state.setValue}
-                  choices={data.choices ?? []}
-                />
-              )}
+            <div key={label} className="row">
+              <div className="col-md-6 col-sm-12"><h2>{label}</h2></div>
+              <div className="col-md-6 col-sm-12">
+                {!(isEdit) ? (
+                  <h2>{data.key === "gender" ? genderList[Number(gender.value)-1] : value}</h2>
+                ) : (
+                  <InputField
+                    type={data.key === "dob" ? "date" : "text"}
+                    value={String(data.state.value)}
+                    setValue={data.state.setValue}
+                    choices={data.choices ?? []}
+                  />
+                )}
+              </div>
             </div>
           );
         })}
       </div>
-      <div className="d-flex justify-content-center mt-3">
+      <div className="mt-3">
         {isEdit ? (
-          <FilledButton
-            color={Theme.buttonColors.pinkButton}
-            loading={loading}
-            text="Submit"
-            padding="0.75rem 2rem"
-            onClick={handleSubmit}
-          />
+          <div className="row">
+            <div className="col-md-6 col-sm-12">
+              <FilledButton
+                color={Theme.buttonColors.pinkButton}
+                loading={loading}
+                text="Submit"
+                padding="0.75rem 2rem"
+                onClick={handleSubmit}
+              />
+            </div>
+            <div className="col-md-6 col-sm-12">
+              <FilledButton
+                color={Theme.buttonColors.darkPinkButton}
+                loading={loading}
+                text="Cancel"
+                padding="0.75rem 2rem"
+                onClick={() => setIsEdit(false)}
+              />
+            </div>
+          </div>
         ) : (
           <FilledButton
             color={Theme.buttonColors.pinkButton}
+            loading={loading}
             text="Edit"
             padding="0.75rem 1.5rem"
             onClick={() => setIsEdit(true)}
