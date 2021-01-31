@@ -1,6 +1,6 @@
+import { ParsedUrlQuery } from "querystring";
 import * as React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { ParsedUrlQuery } from 'querystring';
 import Logo from "../../components/commons/company-profile/LogoTitle/logo-title-alt";
 import AboutUs from "../../components/commons/company-profile/AboutUs/about-us-alt";
 import Buttons from "../../components/commons/company-profile/Buttons/buttonscombinedAlt";
@@ -43,8 +43,8 @@ export const getStaticPaths: GetStaticPaths = async() => {
   return {
     paths,
     fallback: false
-  }
-}
+  };
+};
 
 export const getStaticProps: GetStaticProps = async(context) => {
   const { slug } = context.params as Params;
@@ -57,6 +57,6 @@ export const getStaticProps: GetStaticProps = async(context) => {
       tenant: data[0],
     },
   };
-}
+};
 
 export default CompanyProfile;
