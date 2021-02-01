@@ -168,7 +168,7 @@ const MapDescription: React.FC = () => {
               }
           }
 
-          @media only screen and (max-width: 400px) {
+          @media only screen and (max-width: 576px) {
               .journey-text {
                   text-align: center;
                   display: flex;
@@ -217,7 +217,7 @@ const MapDescription: React.FC = () => {
                   padding: 1% 3%;
                   align-items: center;
                   border-radius: 1rem;
-                  grid-template-columns: 10rem 0.3rem 0.3rem;
+                  grid-template-columns: 10rem 0.5rem 0.3rem;
               }
 
               .description-flex {
