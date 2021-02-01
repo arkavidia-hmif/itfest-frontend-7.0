@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           <img
             id="footer-logo"
             className="mb-3"
-            src="img/logo.jpg"
+            src="/img/logo.jpg"
           ></img>
           <ul id="social-link">
             <li>

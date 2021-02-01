@@ -5,10 +5,10 @@ import { Theme } from "../../../../styles/theme";
 interface Props {
   done: boolean;
 }
-const CombinedButton: React.FC<Props> = ({done}) => {
+const CombinedButtonAlt: React.FC<Props> = ({done}) => {
   return (
     <>
-      <div className="flex-container">
+      <div className="flex-container-alt">
         <div className="margin-right-button">
           <FilledButton
             color={Theme.buttonColors.pinkButton}
@@ -23,23 +23,18 @@ const CombinedButton: React.FC<Props> = ({done}) => {
         />
       </div>
       <style jsx>{`
-        .flex-container {
+        .flex-container-alt {
             display: flex;
             flex-direction: row;
+            justify-content: center;
         }
 
         .margin-right-button {
             margin-right: 3%;
         }
-
-        @media only screen and (max-width: 1000px) {
-            .flex-container {
-                justify-content: center;
-            }
-      }
       `}</style>
     </>
   );
 };
 
-export default CombinedButton;
+export default CombinedButtonAlt;
