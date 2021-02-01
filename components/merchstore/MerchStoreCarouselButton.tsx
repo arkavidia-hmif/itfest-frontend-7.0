@@ -43,10 +43,9 @@ const MerchStoreCarouselButton: React.FC<RenderArrowProps> = ({
 
         @media (max-width: ${Dimen.mdBreakpoint}) {
           .carousel-icon {
-            width: 1rem;
-            height: 2rem;
-            border-radius: 0;
-            box-shadow: none;
+            width: 1.65rem;
+            height: 1.65rem;
+            border-radius: 50%;
             padding: 0;
           }
 
@@ -55,8 +54,8 @@ const MerchStoreCarouselButton: React.FC<RenderArrowProps> = ({
           }
 
           .carousel-btn {
-            width: 1rem;
-            height: 2rem;
+            width: 0.5rem;
+            height: 0.5rem;
           }
         }
       `}</style>

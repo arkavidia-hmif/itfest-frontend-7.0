@@ -118,9 +118,11 @@ const MerchStoreSimple: React.FC<Props> = ({ merchantName, handleMore }) => {
             }
           }
 
-          @media (max-width: ${Dimen.xsBreakpoint}) {
+          @media (max-width: ${Dimen.smBreakpoint}) {
+            
             .merch-title h2 {
               text-align: center;
+              font-size: 1.25rem;
             }
 
             .merch-title {
@@ -129,8 +131,7 @@ const MerchStoreSimple: React.FC<Props> = ({ merchantName, handleMore }) => {
 
             .merch-store-top-left {
               display: flex;
-              flex-direction: column;
-              align-items: center;
+              justify-content: center
               margin: 0;
             }
 

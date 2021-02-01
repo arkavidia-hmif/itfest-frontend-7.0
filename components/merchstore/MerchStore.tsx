@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Dimen } from "styles/dimen";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
 import MerchStoreExpanded from "./MerchStoreExpanded";
 import MerchStoreSimple from "./MerchStoreSimple";
+import { Dimen } from "styles/dimen";
 
 const MerchStore: React.SFC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -12,11 +12,13 @@ const MerchStore: React.SFC = () => {
   const storeArray = ["Arkav0", "Arkav1", "Testtt2", "Testtt3", "TestTest4"];
 
   const goRight = () => {
-    setCurrentPosition(currentPosition + 1);
+    setCurrentPosition((currentPosition + 1) % storeArray.length);
   };
 
   const goLeft = () => {
-    setCurrentPosition(currentPosition - 1);
+    setCurrentPosition(
+      (currentPosition - 1 + storeArray.length) % storeArray.length
+    );
   };
 
   const handleMore = () => {
@@ -41,7 +43,7 @@ const MerchStore: React.SFC = () => {
               <MerchStoreCarouselButton
                 type="PREV"
                 onClick={goLeft}
-                isEdge={currentPosition === 0}
+                isEdge={false}
               />
             </div>
             <div className="merch-store-left">
@@ -50,29 +52,30 @@ const MerchStore: React.SFC = () => {
                 handleMore={handleMore}
               />
             </div>
-            {currentPosition < storeArray.length - 1 ? (
-              <div className="merch-store-simple-minor merch-store-center">
-                <MerchStoreSimple
-                  merchantName={`${storeArray[currentPosition + 1]}`}
-                  handleMore={() => null}
-                />
-              </div>
-            ) : null}
 
-            {currentPosition < storeArray.length - 2 ? (
-              <div className="merch-store-simple-minor merch-store-right">
-                <MerchStoreSimple
-                  merchantName={`${storeArray[currentPosition + 2]}`}
-                  handleMore={() => null}
-                />
-              </div>
-            ) : null}
+            <div className="merch-store-simple-minor merch-store-center">
+              <MerchStoreSimple
+                merchantName={`${
+                  storeArray[(currentPosition + 1) % storeArray.length]
+                }`}
+                handleMore={() => null}
+              />
+            </div>
+
+            <div className="merch-store-simple-minor merch-store-right">
+              <MerchStoreSimple
+                merchantName={`${
+                  storeArray[(currentPosition + 2) % storeArray.length]
+                }`}
+                handleMore={() => null}
+              />
+            </div>
 
             <div className="merch-store-r-btn">
               <MerchStoreCarouselButton
                 type="NEXT"
                 onClick={goRight}
-                isEdge={currentPosition === storeArray.length - 1}
+                isEdge={false}
               />
             </div>
           </div>
@@ -89,7 +92,7 @@ const MerchStore: React.SFC = () => {
           }
 
           .merch-store-center {
-            margin-left: -2vw;
+            margin-left: -3vw;
           }
 
           .merch-store-right {
@@ -119,6 +122,17 @@ const MerchStore: React.SFC = () => {
 
             .merch-store-r-btn {
               margin-left: 0;
+            }
+          }
+
+          @media (max-width: ${Dimen.xsBreakpoint}) {
+            .merch-store-l-btn {
+              margin-left: 3vw;
+              margin-right: 3vw;
+            }
+
+            .merch-store-r-btn {
+              margin-left: -1vw;
             }
           }
         `}
