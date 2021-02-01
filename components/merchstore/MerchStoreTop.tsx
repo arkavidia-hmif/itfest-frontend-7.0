@@ -1,9 +1,7 @@
 import * as React from "react";
 import { Dimen } from "styles/dimen";
 
-export interface MerchStoreTopProps {}
-
-const MerchStoreTop: React.SFC<MerchStoreTopProps> = () => {
+const MerchStoreTop: React.SFC = () => {
   return (
     <>
       <div className="d-sm-flex justify-content-sm-between align-items-center mb-4 ms-top">

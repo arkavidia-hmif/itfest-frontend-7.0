@@ -1,6 +1,6 @@
+import MerchStoreMerchSimple from "./MerchStoreMerchSimple";
 import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
 import { Dimen } from "styles/dimen";
-import MerchStoreMerchSimple from "./MerchStoreMerchSimple";
 import FilledButton from "components/commons/FilledButton";
 
 interface Props {

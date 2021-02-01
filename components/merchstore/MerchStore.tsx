@@ -100,9 +100,7 @@ const MerchStore: React.SFC = () => {
           }
 
           .merch-store-r-btn {
-            margin-left: ${currentPosition === storeArray.length - 1
-              ? "-10px"
-              : "-50px"};
+            margin-left: ${currentPosition === storeArray.length - 1 ? "-10px" : "-50px"};
           }
 
           @media (max-width: 1400px) {
