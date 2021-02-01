@@ -1,23 +1,25 @@
 import * as React from "react";
 import Video from "./Video/video";
-import AboutUs from "./about-us";
+import AboutUs from "./AboutUs/about-us";
 import ButtonCombined from "./Buttons/buttonscombined";
 
 interface Props {
     done: boolean;
+    aboutUs: string;
+    videoUrl: string;
 }
 
-const CombinedComponents: React.FC<Props> = ({done}) => {
+const CombinedComponents: React.FC<Props> = ({done, aboutUs,videoUrl}) => {
   return (
     <>
       <div className="flex-container">
         <div className="margin">
-          <AboutUs type="main"/>
-          <ButtonCombined type="main" done={done}/>
+          <AboutUs aboutUs={aboutUs}/>
+          <ButtonCombined done={done}/>
         </div>
         <div className="grid-item-2">
           <div className="grid-item-2-flex">
-            <Video type="main"/>
+            <Video videoUrl={videoUrl} />
           </div>
         </div>
         <div className="grid-item-2-image">

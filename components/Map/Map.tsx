@@ -1,6 +1,7 @@
 import { MapContainer, Marker, Popup, ImageOverlay } from "react-leaflet";
 import { CRS, icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import Link from "next/link";
+import Tenants from "../../utils/constants/tenants";
 import "leaflet/dist/leaflet.css";
 
 const Map: React.FC = () => {
@@ -31,34 +32,50 @@ const Map: React.FC = () => {
         bounds={bounds}
       />
 
-      <Marker position={[125, 210]}
-        title={"asd"}
-        icon={icon({
-          iconUrl: "/img/marker.png",
-          iconSize: [24, 36],
-          iconAnchor: [12, 36]
-        })}
-      >
-        <Popup>
-          <div id="popup-body" className="container">
-            <div className="row">
-              <div className="image col">
-                <img src="img/dino.png" alt="Logo" />
+      {Tenants.map((tenant, index : number) => (
+        <Marker position={tenant.position}
+          title={"asd"}
+          icon={icon({
+            iconUrl: "/img/marker.png",
+            iconSize: [24, 36],
+            iconAnchor: [12, 36]
+          })}
+          key={index}
+        >
+          <Popup>
+            <div id="popup-body" className="container">
+              <div className="row">
+                <div className="image col">
+                  <img src={tenant.logo} alt={tenant.name} />
+                </div>
+              </div>
+              <div className="row pt-2">
+                <div className="name col align-self-center justify-content-center">
+                  <p>{tenant.name}</p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="info col">
+                  <Link href={{ 
+                    pathname: "/company-profile/[slug]", 
+                    query: { slug: tenant.slug } 
+                  }}>
+                    <a><p>more &gt; &gt; &gt;</p></a>
+                  </Link>
+                </div>
+                <div className="info col">
+                  <Link href={{ 
+                    pathname: "/company-profile-alt/[slug]", 
+                    query: { slug: tenant.slug } 
+                  }}>
+                    <a><p>more &gt; &gt; &gt;</p></a>
+                  </Link>
+                </div>
               </div>
             </div>
-            <div className="row pt-2">
-              <div className="name col align-self-center justify-content-center">
-                <p>Dino</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="info col">
-                <Link href="#"><a><p>more &gt; &gt; &gt;</p></a></Link>
-              </div>
-            </div>
-          </div>
-        </Popup>
-      </Marker>
+          </Popup>
+        </Marker>
+      ))}
 
       <style jsx>{`
         #popup-body {
