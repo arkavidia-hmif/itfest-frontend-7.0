@@ -1,7 +1,6 @@
-interface IndividualLeaderboardData {
-    id: number,
-    score: number,
-    playedAt: string
+export interface IndividualLeaderboardData {
+    name: string,
+    point: number,
 }
 
 export interface LeaderboardData {
