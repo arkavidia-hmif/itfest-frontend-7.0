@@ -2,8 +2,13 @@ import { ParsedUrlQuery } from "querystring";
 import * as React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Logo from "../../components/commons/company-profile/LogoTitle/logo-title";
-import CombinedComponent from "../../components/commons/company-profile/combinedmain";
+import LogoAlt from "../../components/commons/company-profile/LogoTitle/logo-title-alt";
+import AboutUsAlt from "../../components/commons/company-profile/AboutUs/about-us-alt";
+import ButtonsAlt from "../../components/commons/company-profile/Buttons/buttonscombinedAlt";
+import CombinedMain from "../../components/commons/company-profile/combinedmain";
+import CombinedAlt from "../../components/commons/company-profile/combinedalt";
 import GalleryMain from "../../components/commons/company-profile/Gallery/gallery";
+import GalleryAlt from "../../components/commons/company-profile/Gallery/galleryAlt";
 import ChallengeDone from "../../components/commons/company-profile/Challenge/challenge";
 import Tenants from "../../utils/constants/tenants";
 import Layout from "components/commons/Layout";
@@ -21,14 +26,25 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
   const done = false;
   return (
     <Layout title={tenant.name}>
-      <div className="container pb-4">
-        <Logo logo={tenant.logo} title={tenant.name} />
-        <div>
-          <CombinedComponent done={done} aboutUs={tenant.aboutUs} videoUrl={tenant.videoUrl} />
+      {tenant.pageType === 0 ?
+        <div className="container pb-4">
+          <Logo logo={tenant.logo} title={tenant.name} />
+          <div>
+            <CombinedMain done={done} aboutUs={tenant.aboutUs} videoUrl={tenant.videoUrl} />
+          </div>
+          <GalleryMain items={tenant.gallery} />
+          <ChallengeDone done={done}/>
         </div>
-        <GalleryMain items={tenant.gallery} />
-        <ChallengeDone done={done}/>
-      </div>
+        :
+        <div className="container pb-4">
+          <LogoAlt logo={tenant.logo} title={tenant.name} />
+          <CombinedAlt videoUrl={tenant.videoUrl} />
+          <AboutUsAlt aboutUs={tenant.aboutUs} />
+          <ButtonsAlt done={done}/>
+          <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
+          <ChallengeDone done={done}/>
+        </div>
+      }
     </Layout>
   );
 };
