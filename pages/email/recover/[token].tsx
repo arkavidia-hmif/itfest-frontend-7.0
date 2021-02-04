@@ -7,9 +7,12 @@ import Alert from "components/commons/Alert";
 import FilledButton from "components/commons/FilledButton";
 import { EmailResetPasswordStatus } from "interfaces/auth";
 import { ApiContext } from "utils/context/api";
+import AuthWrapper from "components/auth/AuthWrapper";
+import { AuthContext } from "utils/context/auth";
 
 const EmailRecover: React.FC = () => {
   const apiContext = useContext(ApiContext);
+  const authContext = useContext(AuthContext);
 
   const router = useRouter();
   const { token } = router.query;
@@ -26,6 +29,20 @@ const EmailRecover: React.FC = () => {
   const handleSubmit = () => {
     setError(null);
 
+    if (authContext.authenticated) {
+      setError("Sedang login dengan akun lain, harap logout terlebih dahulu");
+      return;
+    }
+
+    if (password.length < 8) {
+      setError("Kata sandi minimal 8 karakter");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Pengulangan kata sandi harus sama");
+      return;
+    }
 
     setLoading(true);
 
@@ -46,7 +63,7 @@ const EmailRecover: React.FC = () => {
   };
 
   return (
-    <>
+    <AuthWrapper title="Ganti Kata Sandi">
       {!success ? (
         <>
           <Alert error={error} />
@@ -98,7 +115,7 @@ const EmailRecover: React.FC = () => {
         color: #7446a1;
       }
     `}</style>
-    </>
+    </AuthWrapper>
   );
 };
 
