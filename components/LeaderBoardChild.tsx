@@ -54,7 +54,7 @@ const LeaderBoardChild: React.FC<Props> = ({no, name, score}) => {
               .grid-container {
                   border-radius: 0.5rem;
                   padding: 2% 4%;
-                  margin: 1% 0;
+                  margin: 1.5% 0;
                   grid-template-columns: 7% 47% 46%;
               }
           }

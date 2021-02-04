@@ -20,8 +20,6 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 
   const company = {
     backgroundImage: `url(${companyImage})`,
-    width: "4rem",
-    height: "4rem",
     marginTop: "1rem"
   };
 
@@ -126,6 +124,11 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             margin-inline-end: 0;
           }
 
+          .dino-img {
+            width: 4rem;
+            height: 4rem;
+          }
+
           @media (max-width: 1000px) {
             .dino-txt-normal {
               font-size: 0.6rem;
@@ -141,6 +144,39 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 
             .dino-txt-large {
               font-size: 1.2rem;
+            }
+          }
+
+          @media (max-width: 576px) {
+            .dino-paragraph p {
+              display: none;
+            }
+
+            .dino-text {
+              width: 70%;
+              padding: 0.45rem 0 0 1rem;
+            }
+
+            .dino-img {
+              width: 6.5rem;
+              height: 4rem;
+              object-fit: contain;
+            }
+
+            .dino-txt-large {
+              font-size: 1.4rem;
+            }
+
+            .dino-txt-normal {
+              font-size: 0.9rem;
+            }
+          }
+
+          @media (max-width: 400px) {
+            .dino-img {
+              width: 180px;
+              height: 4rem;
+              object-fit: contain;
             }
           }
         `}

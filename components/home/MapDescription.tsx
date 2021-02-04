@@ -17,13 +17,13 @@ const MapDescription: React.FC = () => {
             <ColorfulHeader
               color={Theme.headerColors.plpi}
               headingLevel={1}
-            > START YOUR JOURNEY!
+            > <span id="title-size">START&nbsp;YOUR&nbsp;JOURNEY!</span>
             </ColorfulHeader>
           </div>
           <img src="img/home/email-icon.png" className="email-img"/>
         </div>
         <h1 className="journey-text"></h1>
-        <div className="description-flex">
+        <div className="description-container">
           <div className="grid-left">
             <div className="border-left"></div>
             <div className="text-left">
@@ -88,7 +88,7 @@ const MapDescription: React.FC = () => {
               grid-column: 3 / span 1;
           }
 
-          .description-flex {
+          .description-container {
               display: flex;
               flex-direction: row;
               justify-content: space-between;
@@ -169,11 +169,25 @@ const MapDescription: React.FC = () => {
           }
 
           @media only screen and (max-width: 576px) {
+              .flex-container {
+                  margin-bottom: 5%;
+              }
+
+              .description-container {
+                  flex-direction: column;
+              }
+
               .journey-text {
                   text-align: center;
                   display: flex;
                   flex-direction: column;
                   justify-content: center;
+              }
+
+              .title-text {
+                  position: relative;
+                  z-index: 1;
+                  margin-bottom: 5%;
               }
 
               .email-img {
@@ -194,6 +208,9 @@ const MapDescription: React.FC = () => {
                   width: 50px;
                   height: 75px;
                   margin: auto;
+                  position: absolute;
+                  left: 84%;
+                  transform: translateY(20%);
               }
 
               .border-left {
@@ -209,7 +226,7 @@ const MapDescription: React.FC = () => {
                   padding: 1% 3%;
                   align-items: center;
                   border-radius: 1rem;
-                  grid-template-columns: 0.3rem 0.6rem 3.2rem 4.8rem;
+                  grid-template-columns: 2% 3% 3.5rem 60%;
               }
 
               .grid-right {
@@ -217,7 +234,7 @@ const MapDescription: React.FC = () => {
                   padding: 1% 3%;
                   align-items: center;
                   border-radius: 1rem;
-                  grid-template-columns: 10rem 0.5rem 0.3rem;
+                  grid-template-columns: 97% 3%;
               }
 
               .description-flex {
@@ -227,6 +244,12 @@ const MapDescription: React.FC = () => {
                   margin: 0 2% 0 2%;
               }
           }
+
+          @media only screen and (max-width: 400px) {
+            #title-size {
+                font-size: 1.6rem;
+            }
+        }
         `}</style>
     </>
   );

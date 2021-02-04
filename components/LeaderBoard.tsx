@@ -38,6 +38,7 @@ const LeaderBoard: React.FC = () => {
   // useEffect(() => {
   //   getGlobalScoreboard(apiContext.axios)
   //     .then((res) => {
+  //       console.log(res.data);
   //       setLeaderboardData(res.data);
   //     });
   // },[]);
@@ -69,6 +70,16 @@ const LeaderBoard: React.FC = () => {
           -webkit-background-clip: text;
           text-fill-color: transparent;
           -webkit-text-fill-color: transparent;
+        }
+
+        @media only screen and (max-width: 576px) {
+          .margin-bot {
+            margin-top: 5%;
+          }
+
+          .center {
+            margin-bottom: 4%;
+          }
         }
       `}</style>
     </div>
