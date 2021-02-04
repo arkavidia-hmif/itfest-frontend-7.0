@@ -55,7 +55,7 @@ const BagContainer: React.FC = () => {
             width: 50%;
             box-sizing: border-box;
             position: absolute;
-            z-index: 2;
+            z-index: 3;
             left: 25%;
             border-radius: 1rem 1rem 0 0;
             animation-name: dropdown;
