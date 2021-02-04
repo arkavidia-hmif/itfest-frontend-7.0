@@ -1,13 +1,31 @@
+import React, { useState, useEffect, ChangeEvent } from "react";
 import MerchStoreCarousel from "./MerchStoreCarousel";
 import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
 import { Dimen } from "styles/dimen";
 
 const MerchStoreExpanded: React.FC = () => {
 
+  const [searchValue, setSearchValue] = useState("");
+  const [merchStoreShown, setMerchStoreShown] = useState(MerchStorePlaceholderItems);
+
   const { merchantName, storeLogo } = {
     merchantName: "Arkavidia",
     storeLogo: "/img/merchstore/store_logo.png"
   };
+
+  const handleChangeSearchValue = (e:ChangeEvent) => {
+    setSearchValue((e.target as HTMLTextAreaElement).value);
+  };
+
+  useEffect(() => {
+    setMerchStoreShown(MerchStorePlaceholderItems);
+    if(searchValue !== ""){
+      const tempMerchStore = MerchStorePlaceholderItems.filter((unit) => {
+        return unit.name.toLowerCase().startsWith(searchValue.toLowerCase());
+      });
+      setMerchStoreShown(tempMerchStore);
+    }
+  },[searchValue]);
 
   return (
     <div className="w-100 merch-store-container">
@@ -30,6 +48,7 @@ const MerchStoreExpanded: React.FC = () => {
             className="merch-store-search-bar mx-3 mr-md-5 my-3"
             type="text"
             placeholder="Cari Merchandise"
+            onChange={(e) => {handleChangeSearchValue(e);}}
           />
         </div>
       </div>
@@ -40,13 +59,13 @@ const MerchStoreExpanded: React.FC = () => {
         <div>
           <h3 className="store-items-title">Top Merch</h3>
           <div className="mt-4 mb-2">
-            <MerchStoreCarousel items={MerchStorePlaceholderItems} />
+            <MerchStoreCarousel items={merchStoreShown} />
           </div>
         </div>
         <div>
           <h3 className="store-items-title">Merch Lain</h3>
           <div className="mt-4 mb-2">
-            <MerchStoreCarousel items={MerchStorePlaceholderItems} />
+            <MerchStoreCarousel items={merchStoreShown} />
           </div>
         </div>
       </div>
