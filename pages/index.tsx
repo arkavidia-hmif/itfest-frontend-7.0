@@ -3,7 +3,7 @@ import Layout from "components/commons/Layout";
 
 const Home: React.FC = () => {
   const MapWithNoSSR = dynamic(() => import("components/Map/Map"), {
-    ssr: false
+    ssr: false,
   });
 
   return (
