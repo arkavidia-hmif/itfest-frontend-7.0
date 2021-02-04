@@ -235,6 +235,7 @@ const MapDescription: React.FC = () => {
                   align-items: center;
                   border-radius: 1rem;
                   grid-template-columns: 97% 3%;
+                  margin-top: 3%;
               }
 
               .description-flex {
