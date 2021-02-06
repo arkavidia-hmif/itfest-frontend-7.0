@@ -8,12 +8,8 @@ export interface QuizData {
   };
 }
 export interface QuizAPIResponseData {
-  [question: string]: {
-    [key: string]: {
-      text: string;
-      choice: string[];
-    };
-  };
+  type: number;
+  question: QuizData;
 }
 export interface CrosswordData {
   crosswordType: "quick";
@@ -29,4 +25,12 @@ export interface CrosswordData {
     group?: string[];
     separatorLocations?: { [key: string]: string };
   }[];
+}
+
+export interface CrosswordAPIResponseData {
+  id: number;
+  name: string;
+  difficulty: number;
+  type: number;
+  problem: CrosswordData;
 }

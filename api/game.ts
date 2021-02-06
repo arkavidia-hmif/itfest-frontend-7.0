@@ -1,5 +1,8 @@
 import { AxiosInstance } from "axios";
-import { QuizAPIResponseData } from "./../interfaces/game";
+import {
+  QuizAPIResponseData,
+  CrosswordAPIResponseData,
+} from "./../interfaces/game";
 import { ApiError, ApiResponse, StandardError } from "interfaces/api";
 
 export const GET_GAME_URL = "/game/";
@@ -23,15 +26,77 @@ export async function playGame(
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
+const temp = {
+  status: 200,
+  code: "ok",
+  data: {
+    id: 6,
+    name: "Capsa",
+    difficulty: 1,
+    type: 2,
+    problem: {
+      crosswordType: "quick",
+      entries: [
+        {
+          id: "1-across",
+          number: 1,
+          humanNumber: "1",
+          clue: "Toy on a string (2-2)",
+          direction: "across",
+          length: 4,
+          group: [],
+          separatorLocations: {},
+          position: {
+            x: 0,
+            y: 0,
+          },
+        },
+        {
+          id: "2-across",
+          number: 2,
+          humanNumber: "2",
+          clue: "Have a rest (3,4)",
+          direction: "across",
+          length: 7,
+          position: {
+            x: 0,
+            y: 2,
+          },
+          group: [],
+          separatorLocations: {},
+        },
+        {
+          id: "1-down",
+          number: 1,
+          humanNumber: "1",
+          clue: "Colour (6)",
+          direction: "down",
+          length: 6,
+          position: {
+            x: 0,
+            y: 0,
+          },
+          group: [],
+          separatorLocations: {},
+        },
+      ],
+      dimensions: {
+        cols: 7,
+        rows: 7,
+      },
+    },
+  },
+};
 
 export async function getGame(
   axios: AxiosInstance,
   id: string
-): Promise<ApiResponse<QuizAPIResponseData>> {
+): Promise<ApiResponse<QuizAPIResponseData | CrosswordAPIResponseData>> {
   try {
     const response = await axios.get(`${GET_GAME_URL}${id}`);
-    console.log(response.data);
-    return response.data as ApiResponse<QuizAPIResponseData>;
+    return response.data as ApiResponse<
+      QuizAPIResponseData | CrosswordAPIResponseData
+    >;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;

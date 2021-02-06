@@ -1,9 +1,5 @@
 import { AxiosInstance } from "axios";
-import {
-  AuthData,
-  LoginStatus,
-  RegisterStatus,
-} from "interfaces/auth";
+import { AuthData, LoginStatus, RegisterStatus } from "interfaces/auth";
 import { ApiError, ApiResponse, StandardError } from "interfaces/api";
 
 export async function login(
@@ -36,7 +32,7 @@ export async function login(
 export async function registerVisitor(
   axios: AxiosInstance,
   email: string,
-  password: string,
+  password: string
 ): Promise<ApiResponse<AuthData>> {
   try {
     const response = await axios.post("/register/visitor/", {

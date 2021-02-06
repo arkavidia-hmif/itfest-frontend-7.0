@@ -40,7 +40,7 @@ const Quiz: React.FC<Props> = ({ quizId, gameData }) => {
       const res = await submitGame(
         apiContext.axios,
         quizId,
-        JSON.stringify({ answers: submission })
+        JSON.stringify({ answer: submission })
       );
       if (res) {
         setSuccess(true);

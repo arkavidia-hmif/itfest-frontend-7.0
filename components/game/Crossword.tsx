@@ -21,12 +21,21 @@ const CrossWordItem: React.FC<Props> = ({ quizId, gameData }) => {
   const [error, setError] = useState<string | null>(null);
 
   useLayoutEffect(() => {
+    const none = ".crossword__hidden-input";
     const className = "crossword__controls ";
     const items = Array.from(
+      document.getElementsByClassName(none) as HTMLCollectionOf<HTMLElement>
+    );
+    const noneItems = Array.from(
       document.getElementsByClassName(
         className
       ) as HTMLCollectionOf<HTMLElement>
     );
+    if (noneItems) {
+      for (const item of noneItems) {
+        item.style.outline = "none";
+      }
+    }
     if (items) {
       for (const item of items) {
         item.style.display = "none";
@@ -55,7 +64,7 @@ const CrossWordItem: React.FC<Props> = ({ quizId, gameData }) => {
       const res = await submitGame(
         apiContext.axios,
         quizId,
-        JSON.stringify({ answers: local })
+        JSON.stringify({ answer: local })
       );
       if (res) {
         setSuccess(true);
