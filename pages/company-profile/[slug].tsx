@@ -33,7 +33,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             <CombinedMain done={done} aboutUs={tenant.aboutUs} videoUrl={tenant.videoUrl} />
           </div>
           <GalleryMain items={tenant.gallery} />
-          <ChallengeDone done={done}/>
+          <ChallengeDone done={!done}/>
         </div>
         :
         <div className="container pb-4">

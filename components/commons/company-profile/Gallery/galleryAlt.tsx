@@ -1,5 +1,6 @@
-import * as React from "react";
+import { useState } from "react";
 import Carousel, { RenderArrowProps } from "react-elastic-carousel";
+import ImageModal from "./image-modal";
 
 interface Props {
   items: string[];
@@ -115,6 +116,14 @@ const GalleryAlt : React.FC<Props> = ({items, galleryText}) => {
     );
   };
 
+  const [show, setShow] = useState(false);
+  const [image, setImage] = useState("");
+
+  const handleClick = (item:string) => {
+    setImage(item);
+    setShow(true);
+  };
+
   return (
     <>
       <div className="flex-container">
@@ -122,9 +131,10 @@ const GalleryAlt : React.FC<Props> = ({items, galleryText}) => {
           <h1>Gallery</h1>
           <p>{galleryText}</p>
         </div>
+        <ImageModal show={show} setShow={setShow} image={image} />
         <div className="carousel-background">
           <Carousel 
-            itemPadding={[10, 50]}
+            itemPadding={[10, 10]}
             renderPagination={({ pages }) => {
               return (
                 <>
@@ -140,7 +150,7 @@ const GalleryAlt : React.FC<Props> = ({items, galleryText}) => {
           >
             {items.map((item, index) => 
               <div key={index} className="item-container">
-                <img src={item} alt="Foto Gallery"/>
+                <img src={item} alt="Foto Gallery" onClick={() => handleClick(item)}/>
               </div>
             )}
           </Carousel>
@@ -157,38 +167,38 @@ const GalleryAlt : React.FC<Props> = ({items, galleryText}) => {
           grid-template-columns: repeat(4, 1fr);
           flex-direction: row;
           justify-content: center;
-          align-items: center;
-          margin-top: 5%;
+          align-items: flex-start;
+          margin-top: 7%;
         }
 
         .text {
           margin-right: 5%;
           grid-column-start: 1;
           grid-column-end: 3;
+          text-align: justify;
         }
 
         .carousel-background {
           grid-column-start: 3;
           grid-column-end: 5;
-          background-color: white;
+          background-color: transparent;
           width: 100%;
           height: 20rem;
           display: flex;
           align-items: center;
-          padding: 2%;
-          box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
-          border-radius: 1.3rem;
         }
 
         .item-container {
           grid-column-start: 3;
           grid-column-end: 5;
-          background-color: white;
+          background-color: transparent;
           width: 100%;
           height: 20rem;
           display: flex;
           align-items: center;
           justify-content: center;
+          outline: none;
+          cursor: pointer;
         }
 
         @media only screen and (max-width: 1000px) {
@@ -217,6 +227,11 @@ const GalleryAlt : React.FC<Props> = ({items, galleryText}) => {
 
           .text {
             margin-top: 3%;
+            margin: 5%;
+          }
+
+          .text h1 {
+            text-align: center;
           }
         }
       `}</style>
