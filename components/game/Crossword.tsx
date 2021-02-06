@@ -55,7 +55,7 @@ const CrossWordItem: React.FC<Props> = ({ quizId, gameData }) => {
       const res = await submitGame(
         apiContext.axios,
         quizId,
-        JSON.stringify(local)
+        JSON.stringify({ answers: local })
       );
       if (res) {
         setSuccess(true);

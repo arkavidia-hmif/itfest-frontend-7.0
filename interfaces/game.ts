@@ -7,6 +7,14 @@ export interface QuizData {
     choice: string[];
   };
 }
+export interface QuizAPIResponseData {
+  [question: string]: {
+    [key: string]: {
+      text: string;
+      choice: string[];
+    };
+  };
+}
 export interface CrosswordData {
   crosswordType: "quick";
   dimensions: { cols: number; rows: number };

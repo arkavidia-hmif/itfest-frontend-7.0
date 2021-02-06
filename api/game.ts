@@ -1,21 +1,25 @@
 import { AxiosInstance } from "axios";
+import { QuizAPIResponseData } from "./../interfaces/game";
 import { ApiError, ApiResponse, StandardError } from "interfaces/api";
 
 export const GET_GAME_URL = "/game/";
+interface OKData {
+  code: string;
+  status: number;
+}
 
 export async function playGame(
   axios: AxiosInstance,
   id: string
-): Promise<ApiResponse<string>> {
+): Promise<ApiResponse<OKData>> {
   try {
     const response = await axios.post(`${GET_GAME_URL}${id}/play`);
-    // console.log(response);
-    return response.data as ApiResponse<string>;
+    return response.data as ApiResponse<OKData>;
   } catch (e) {
-    if (e.response) {
-      // const errorCode = e.response.data?.code;
-      // console.log(errorCode);
-    }
+    // if (e.response) {
+    //   const errorCode = e.response.data?.code;
+    //   console.log(errorCode);
+    // }
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
@@ -23,11 +27,11 @@ export async function playGame(
 export async function getGame(
   axios: AxiosInstance,
   id: string
-): Promise<ApiResponse<string>> {
+): Promise<ApiResponse<QuizAPIResponseData>> {
   try {
     const response = await axios.get(`${GET_GAME_URL}${id}`);
-    // console.log(response);
-    return response.data as ApiResponse<string>;
+    console.log(response.data);
+    return response.data as ApiResponse<QuizAPIResponseData>;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;

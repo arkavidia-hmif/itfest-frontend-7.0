@@ -40,7 +40,7 @@ const Quiz: React.FC<Props> = ({ quizId, gameData }) => {
       const res = await submitGame(
         apiContext.axios,
         quizId,
-        JSON.stringify(submission)
+        JSON.stringify({ answers: submission })
       );
       if (res) {
         setSuccess(true);
@@ -64,17 +64,19 @@ const Quiz: React.FC<Props> = ({ quizId, gameData }) => {
             <div key={i} className="one-question">
               <div className="quest">{datum[1].text}</div>
               <div className="choices">
-                {datum[1]?.choice.map((ans, i) => (
-                  <div key={i} className="choice">
+                {datum[1]?.choice.map((ans, j) => (
+                  <div key={j} className="choice">
                     <input
                       required
                       type="radio"
                       value={ans}
-                      id={`answer-${String(i)}`}
+                      id={`answer-${String(i)}-${String(j)}`}
                       checked={String(ans) === String(submission[datum[0]])}
                       onChange={(e) => handleChange(e.target.value, datum[0])}
                     />
-                    <label htmlFor={`answer-${String(i)}`}>{ans}</label>
+                    <label htmlFor={`answer-${String(i)}-${String(j)}`}>
+                      {ans}
+                    </label>
                   </div>
                 ))}
               </div>
