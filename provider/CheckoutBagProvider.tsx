@@ -10,13 +10,6 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
   const [show, setShow] = useState(false);
 
   const addData = (item: MerchStoreItem) => {
-    // items.filter((data: MerchStoreItem) => {
-    //   if (item.name === data.name) {
-    //     setItems([...items ?? [], item]);
-    //   } else {
-    //     setItems([...items ?? [], item]);
-    //   }
-    // })
     setItems([...items ?? [], item]);
   };
 
