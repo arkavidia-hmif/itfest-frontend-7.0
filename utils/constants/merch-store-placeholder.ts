@@ -11,46 +11,55 @@ export const MerchStoreCarouselBreakPoints = [
 
 export const MerchStorePlaceholderItems: Array<MerchStoreItem> = [
   {
+    id: 1,
     image: "/img/merchstore/store_item_1.png",
     name: "Tas Totebag Shopee",
     price: 3000000,
   },
   {
+    id: 2,
     image: "/img/merchstore/store_item_2.png",
     name: "Kaos Putih",
     price: 3000000,
   },
   {
+    id: 3,
     image: "/img/merchstore/store_item_3.png",
     name: "Kaos Kuning",
     price: 3000000,
   },
   {
+    id: 4,
     image: "/img/merchstore/store_item_1.png",
     name: "Tas Totebag Shopee",
     price: 3000000,
   },
   {
+    id: 5,
     image: "/img/merchstore/store_item_2.png",
     name: "Tas Totebag Shopee",
     price: 3000000,
   },
   {
+    id: 6,
     image: "/img/merchstore/store_item_3.png",
     name: "Tas Totebag Shopee",
     price: 3000000,
   },
   {
+    id: 6,
     image: "/img/merchstore/store_item_1.png",
     name: "Tas Totebag Shopee",
     price: 3000000,
   },
   {
+    id: 7,
     image: "/img/merchstore/store_item_2.png",
     name: "Tas Totebag Shopee",
     price: 3000000,
   },
   {
+    id: 8,
     image: "/img/merchstore/store_item_3.png",
     name: "Tas Totebag Shopee",
     price: 3000000,
