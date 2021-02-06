@@ -4,7 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import Quiz from "./Quiz";
 import CrossWord from "./Crossword";
 import { ApiContext } from "utils/context/api";
-import { getGame, playGame, GET_GAME_URL } from "api/game";
+import { getGame, GET_GAME_URL } from "api/game";
 import Spinner from "components/commons/Spinner";
 import Alert from "components/commons/Alert";
 import {
@@ -25,10 +25,6 @@ const CrosswordPage: React.FC = () => {
   const apiContext = useContext(ApiContext);
   const router = useRouter();
   const { id } = router.query;
-  // const { data: game, error } = useSWR(
-  //   id !== undefined ? `${GET_GAME_URL}${id}` : null,
-  //   () => playGame(apiContext.axios, String(id))
-  // );
   const { data: game, error } = useSWR(
     id !== undefined ? `${GET_GAME_URL}${id}` : null,
     () => getGame(apiContext.axios, String(id))
