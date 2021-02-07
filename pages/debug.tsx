@@ -52,9 +52,9 @@ const Debug: React.FC = () => {
         onClick={() => {
           if (!authContext.authenticated) {
             login(apiContext.axios, email, password)
-              .then((resp) => {
+              .then((data) => {
                 authContext.setAuthenticated(true);
-                authContext.setAuth(resp.data);
+                authContext.setAuth(data);
               })
               .catch((err) => {
                 setResult(JSON.stringify(err));
