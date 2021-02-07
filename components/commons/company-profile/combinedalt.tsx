@@ -1,13 +1,17 @@
 import * as React from "react";
-import Video from "./Video/video";
+import VideoAlt from "./Video/video-alt";
 
-const CombinedComponents: React.FC = () => {
+interface Props {
+    videoUrl: string;
+}
+
+const CombinedComponents: React.FC<Props> = ({ videoUrl }) => {
   return (
     <>
       <div className="flex-container">
         <div className="grid-item-2">
           <div className="video-flex">
-            <Video type="alt"/>
+            <VideoAlt videoUrl={videoUrl} />
           </div>
         </div>
         <div className="grid-item-2-image">
