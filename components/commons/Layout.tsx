@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Head from "next/head";
 import Footer from "./Footer";
-import Navbar from "./navbar/Navbar";
+import Navbar from "components/navbar/Navbar";
 import { Theme } from "styles/theme";
 
 interface Props {
