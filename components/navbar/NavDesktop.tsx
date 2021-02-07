@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { useContext } from "react";
 import { useRouter } from "next/dist/client/router";
-// import FilledButton from "../FilledButton";
 import { AuthContext } from "utils/context/auth";
 import items from "utils/constants/nav-items";
 import { Dimen } from "styles/dimen";
+import FilledButton from "components/commons/FilledButton";
 
-const NavDesktop: React.FC = () => {
+interface Props {
+  open: boolean;
+}
+
+const NavDesktop: React.FC<Props> = ({ open }) => {
   const router = useRouter();
   const authContext = useContext(AuthContext);
 
@@ -35,67 +39,51 @@ const NavDesktop: React.FC = () => {
           );
         })}
       </ul>
-      <ul className="right">
-        <h1>Hi, John!</h1>
-      </ul>
-      {/* {authContext.authenticated ? (
-        <FilledButton
-          text="LOGOUT"
-          padding="0.75em 1.5em"
-          onClick={() => {
-            authContext.setAuthenticated(false);
-            authContext.setAuth();
-          }}
-        />
-      ) : (
-        <FilledButton
-          text="LOGIN"
-          padding="0.75em 1.5em"
-          onClick={() => {
-            router.push("/login");
-          }}
-        />
-      )} */}
+      {authContext.authenticated ? (
+        <p id="name-text"><b>Hi, {authContext.profile?.name}</b></p>
+      ) :
+        (
+          <FilledButton
+            text="LOGIN"
+            padding="0.75em 1.5em"
+            onClick={() => {
+              router.push("/login");
+            }}
+          />)}
 
       <style jsx>{`
         ul {
           display: flex;
           list-style: none;
           height: 100%;
-        }
-        ul.right {
-          // display: flex;
-          // justify-content: flex-end;
-          margin-right: 2rem;
-          margin-top: 0.5rem;
+          padding-left: 4rem;
         }
 
-        .right h1 {
-          margin: 0;
+        #name-text {
+          font-size: 1.5rem;
+          margin: 0 0 1rem 0;
           background: linear-gradient(to right, #fe5982, #441985);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+
         a {
           color: #623fa2;
           font-family: Viga;
           font-style: normal;
           font-weight: normal;
-          font-size: 1.2rem;
+          font-size: 1.5rem;
           text-decoration: none;
           outline: none;
         }
 
         li {
-          margin: 0 3rem;
+          margin: 0 2rem;
           position: relative;
           font-size: 0.9rem;
         }
 
         .items {
-          // margin-left: 2rem;
-          // margin-right: auto;
-          display: flex;
           align-items: center;
           justify-content: space-between;
           width: 100%;
@@ -119,24 +107,29 @@ const NavDesktop: React.FC = () => {
           opacity: 1;
         }
 
-        @media (max-width: ${Dimen.navbarBreakpoint}) {
-          .indicator {
-            height: 3px;
-          }
+        a:focus {
+          border: black 1px solid;
+        }
 
-          ul.right {
+        @media (max-width: ${Dimen.lgBreakpoint}){
+          ul {
             width: 100%;
-            display: flex;
             justify-content: center;
+            padding-left: 0;
           }
 
-          li {
-            margin: 0 2rem;
+          #name-text {
+            display: none;
           }
-          a {
-            font-size: 0.8rem;
-          }
-          ul:first-child {
+        }
+      `}</style>
+      <style jsx>{`
+        .items {
+          display: ${open ? "flex" : "none"};
+        }  
+
+        @media (max-width: ${Dimen.navbarBreakpoint}) {
+          .items {
             display: none;
           }
         }
