@@ -39,7 +39,7 @@ const PrimaryField: React.FC = () => {
 
   useEffect(() => {
     if (primary !== undefined) {
-      if (primary.email && primary.email !== ""){
+      if (primary.email && primary.email !== "") {
         email.setValue(primary.email);
       }
       if (primary.telp && primary.telp !== "") {
@@ -75,7 +75,7 @@ const PrimaryField: React.FC = () => {
       setError(null);
       if (res) {
         if (auth) {
-          setAuth({jwt: auth?.jwt, primary: res});
+          setAuth({ jwt: auth?.jwt, primary: res });
         }
       }
     } catch (e) {
@@ -88,7 +88,7 @@ const PrimaryField: React.FC = () => {
 
   return (
     <>
-      {error && isEdit && <Alert error={error}/>}
+      {error && isEdit && <Alert error={error} />}
       {success && !isEdit && <Success message="Successfully update" />}
       <div className="mt-3">
         {[
@@ -105,13 +105,13 @@ const PrimaryField: React.FC = () => {
                 {!(isEdit && data.key !== "email") ? (
                   <h2>{value ?? "-"}</h2>
                 ) : (
-                  <InputField
-                    type={data.key === "dob" ? "date" : "text"}
-                    value={String(data.state.value)}
-                    setValue={data.state.setValue}
-                    choices={[]}
-                  />
-                )}
+                    <InputField
+                      type={data.key === "dob" ? "date" : "text"}
+                      value={String(data.state.value)}
+                      setValue={data.state.setValue}
+                      choices={[]}
+                    />
+                  )}
               </div>
             </div>
           );
@@ -140,14 +140,14 @@ const PrimaryField: React.FC = () => {
             </div>
           </div>
         ) : (
-          <FilledButton
-            color={Theme.buttonColors.pinkButton}
-            loading={loading}
-            text="Edit"
-            padding="0.75em 1.5em"
-            onClick={() => setIsEdit(true)}
-          />
-        )}
+            <FilledButton
+              color={Theme.buttonColors.pinkButton}
+              loading={loading}
+              text="Edit"
+              padding="0.75em 1.5em"
+              onClick={() => setIsEdit(true)}
+            />
+          )}
       </div>
       <style jsx>{`
         h2 {
