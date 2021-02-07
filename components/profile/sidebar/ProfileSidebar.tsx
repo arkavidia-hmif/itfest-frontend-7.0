@@ -1,5 +1,8 @@
+import { useContext } from "react";
+import { useRouter } from "next/dist/client/router";
 import SidebarSection from "./SidebarSection";
 import { SidebarEntry } from "interfaces/sidebar";
+import { AuthContext } from "utils/context/auth";
 
 const sidebarTop = {
   item: [
@@ -22,6 +25,9 @@ interface props {
 const ProfileSidebar: React.FC<props> = ({selection, setSelection}) => {
   const sidebarData = [sidebarTop];
 
+  const router = useRouter();
+  const authContext = useContext(AuthContext);
+
   return (
     <div className="container">
       <div className="row">
@@ -31,7 +37,11 @@ const ProfileSidebar: React.FC<props> = ({selection, setSelection}) => {
             selection={selection}
             setSelection={setSelection}
           />
-          <a>Logout</a>
+          <a onClick={() => {
+            authContext.setAuthenticated(false);
+            authContext.setAuth();
+            router.push("/login");
+          }}>Logout</a>
         </div>
         <div id="right-roller">
         </div>
@@ -53,6 +63,7 @@ const ProfileSidebar: React.FC<props> = ({selection, setSelection}) => {
           font-family: viga;
           font-size: 1.3rem;
           text-decoration: none;
+          cursor: pointer;
         }
         @media screen and (max-width: 991px) {
           #right-roller {

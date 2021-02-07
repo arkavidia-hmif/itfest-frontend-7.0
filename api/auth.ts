@@ -4,7 +4,7 @@ import {
   LoginStatus,
   RegisterStatus,
 } from "interfaces/auth";
-import { ApiError, ApiResponse, StandardError } from "interfaces/api";
+import { ApiError, ApiResponse } from "interfaces/api";
 
 export async function login(
   axios: AxiosInstance,
@@ -29,19 +29,25 @@ export async function login(
       }
     }
 
-    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
+    throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
   }
 }
 
 export async function registerVisitor(
   axios: AxiosInstance,
+  name: string,
   email: string,
   password: string,
+  telp: string,
+  institute: string
 ): Promise<ApiResponse<AuthData>> {
   try {
-    const response = await axios.post("/register/visitor/", {
+    const response = await axios.post("/register/visitor", {
+      name,
       email,
       password,
+      telp,
+      institute
     });
 
     return response.data as ApiResponse<AuthData>;
@@ -56,6 +62,6 @@ export async function registerVisitor(
       }
     }
 
-    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
+    throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
   }
 }
