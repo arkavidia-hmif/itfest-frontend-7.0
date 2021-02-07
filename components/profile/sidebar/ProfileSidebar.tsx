@@ -22,7 +22,7 @@ interface props {
   setSelection: (selection: number) => void;
 }
 
-const ProfileSidebar: React.FC<props> = ({selection, setSelection}) => {
+const ProfileSidebar: React.FC<props> = ({ selection, setSelection }) => {
   const sidebarData = [sidebarTop];
 
   const router = useRouter();
@@ -40,6 +40,8 @@ const ProfileSidebar: React.FC<props> = ({selection, setSelection}) => {
           <a onClick={() => {
             authContext.setAuthenticated(false);
             authContext.setAuth();
+            authContext.setProfile();
+
             router.push("/login");
           }}>Logout</a>
         </div>

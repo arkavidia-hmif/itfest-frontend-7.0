@@ -62,6 +62,7 @@ const Debug: React.FC = () => {
           } else {
             authContext.setAuthenticated(!authContext.authenticated);
             authContext.setAuth();
+            authContext.setProfile();
           }
         }}
       />
