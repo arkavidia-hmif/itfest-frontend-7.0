@@ -29,7 +29,7 @@ const CombinedButtonAlt: React.FC<Props> = ({done, hiring, socialMedia}) => {
               window.open(hiring);
             } else {
               null;
-            };
+            }
           }}
         />
       </div>
