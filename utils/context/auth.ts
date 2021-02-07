@@ -6,8 +6,8 @@ export interface AuthContextType {
   auth?: AuthData;
   profile?: VisitorProfileData;
   setAuthenticated: (newValue: boolean) => void;
-  setAuth: (newValue: AuthData) => void;
-  setProfile: (newValue: VisitorProfileData) => void;
+  setAuth: (newValue?: AuthData) => void;
+  setProfile: (newValue?: VisitorProfileData) => void;
 }
 
 export const AuthContext = createContext<AuthContextType>(
