@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import FilledButton from "components/commons/FilledButton";
 import { ApiContext } from "utils/context/api";
 import { AuthContext } from "utils/context/auth";
-import { login } from "api/auth";
 
 const Debug: React.FC = () => {
   if (process.env.NODE_ENV === "production") {
@@ -51,14 +50,7 @@ const Debug: React.FC = () => {
         text="login/logout"
         onClick={() => {
           if (!authContext.authenticated) {
-            login(apiContext.axios, email, password)
-              .then((data) => {
-                authContext.setAuthenticated(true);
-                authContext.setAuth(data);
-              })
-              .catch((err) => {
-                setResult(JSON.stringify(err));
-              });
+            setResult("Login disabled");
           } else {
             authContext.logout();
           }

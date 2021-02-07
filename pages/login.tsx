@@ -37,9 +37,7 @@ const LoginPage: React.FC = () => {
       const loginResult = await login(apiContext.axios, email, password);
       const profileResult = await getProfile(apiContext.axios, loginResult.jwt);
 
-      authContext.setAuthenticated(true);
-      authContext.setAuth(loginResult);
-      authContext.setProfile(profileResult);
+      authContext.login(loginResult, profileResult);
 
       if (redirectTarget.startsWith("?continue=")) {
         router.push(redirectTarget.replace("?continue=", ""));

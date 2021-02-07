@@ -40,6 +40,12 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
+  const login = (auth: AuthData, profile: VisitorProfileData) => {
+    setAndSaveAuthenticated(true);
+    setAndSaveAuth(auth);
+    setAndSaveProfile(profile);
+  };
+
   useEffect(() => {
     setAuthenticated(localStorage.getItem(authenticatedKey) === "true");
     const savedAuth = localStorage.getItem(authKey);
@@ -57,9 +63,8 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     authenticated,
     auth,
     profile,
-    setAuthenticated: setAndSaveAuthenticated,
-    setAuth: setAndSaveAuth,
     setProfile: setAndSaveProfile,
+    login,
     logout: () => {
       setAndSaveAuthenticated(false);
       setAndSaveAuth();
