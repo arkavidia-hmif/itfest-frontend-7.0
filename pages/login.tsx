@@ -39,7 +39,7 @@ const LoginPage: React.FC = () => {
         if (redirectTarget.startsWith("?continue=")) {
           router.push(redirectTarget.replace("?continue=", ""));
         } else {
-          router.push("/dashboard");
+          router.push("/profile");
         }
       })
       .catch((e) => {
