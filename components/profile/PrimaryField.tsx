@@ -104,7 +104,8 @@ const PrimaryField: React.FC = () => {
               <div className="col-md-6 col-sm-12">
                 {!(isEdit && data.key !== "email") ? (
                   <h2>{value ?? "-"}</h2>
-                ) : (
+                ) :
+                  (
                     <InputField
                       type={data.key === "dob" ? "date" : "text"}
                       value={String(data.state.value)}
@@ -139,7 +140,8 @@ const PrimaryField: React.FC = () => {
               />
             </div>
           </div>
-        ) : (
+        ) :
+          (
             <FilledButton
               color={Theme.buttonColors.pinkButton}
               loading={loading}

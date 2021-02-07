@@ -112,7 +112,8 @@ const PersonalField: React.FC = () => {
               <div className="col-md-6 col-sm-12">
                 {!(isEdit) ? (
                   <h2>{data.key === "gender" ? genderList[Number(gender.value) - 1] : value}</h2>
-                ) : (
+                ) :
+                  (
                     <InputField
                       type={data.key === "dob" ? "date" : "text"}
                       value={String(data.state.value)}
@@ -147,7 +148,8 @@ const PersonalField: React.FC = () => {
               />
             </div>
           </div>
-        ) : (
+        ) :
+          (
             <FilledButton
               color={Theme.buttonColors.pinkButton}
               loading={loading}
