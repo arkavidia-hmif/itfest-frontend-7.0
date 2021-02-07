@@ -13,6 +13,8 @@ export interface Tenant {
   pageType: PageType; 
   aboutUs: string;
   galleryText: string;
+  hiring: string;
+  socialMedia: string;
   videoUrl: string;
   gallery: string[];
 }

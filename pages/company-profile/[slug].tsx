@@ -30,7 +30,13 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
         <div className="container pb-4">
           <Logo logo={tenant.logo} title={tenant.name} />
           <div>
-            <CombinedMain done={done} aboutUs={tenant.aboutUs} videoUrl={tenant.videoUrl} />
+            <CombinedMain 
+              done={!done} 
+              aboutUs={tenant.aboutUs} 
+              videoUrl={tenant.videoUrl}
+              hiring={tenant.hiring}
+              socialMedia={tenant.socialMedia}
+            />
           </div>
           <GalleryMain items={tenant.gallery} />
           <ChallengeDone done={!done}/>
@@ -40,7 +46,11 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           <LogoAlt logo={tenant.logo} title={tenant.name} />
           <CombinedAlt videoUrl={tenant.videoUrl} />
           <AboutUsAlt aboutUs={tenant.aboutUs} />
-          <ButtonsAlt done={done}/>
+          <ButtonsAlt 
+            done={done}
+            hiring={tenant.hiring}
+            socialMedia={tenant.socialMedia}
+          />
           <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
           <ChallengeDone done={done}/>
         </div>
