@@ -5,10 +5,8 @@ import Alert from "../components/commons/Alert";
 import AuthWrapper from "../components/auth/AuthWrapper";
 import InputField from "../components/commons/InputField";
 import FilledButton from "../components/commons/FilledButton";
-import { RegisterStatus } from "../interfaces/auth";
 import { ApiContext } from "../utils/context/api";
 import { isValidName, isValidPhone, isValidEmail, isValidString } from "../utils/validator";
-import { ApiError } from "interfaces/api";
 import { registerVisitor } from "api/auth";
 import useProgress from "utils/hooks/useProgress";
 
