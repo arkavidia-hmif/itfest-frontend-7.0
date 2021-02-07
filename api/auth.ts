@@ -4,20 +4,20 @@ import {
   LoginStatus,
   RegisterStatus,
 } from "interfaces/auth";
-import { ApiError, ApiResponse } from "interfaces/api";
+import { ApiError } from "interfaces/api";
 
 export async function login(
   axios: AxiosInstance,
   email: string,
   password: string
-): Promise<ApiResponse<AuthData>> {
+): Promise<AuthData> {
   try {
     const response = await axios.post("/login", {
       email,
       password,
     });
 
-    return response.data as ApiResponse<AuthData>;
+    return response.data.data as AuthData;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
@@ -39,16 +39,14 @@ export async function registerVisitor(
   email: string,
   password: string,
   telp: string
-): Promise<ApiResponse<AuthData>> {
+): Promise<void> {
   try {
-    const response = await axios.post("/register/visitor", {
+    await axios.post("/register/visitor", {
       name,
       email,
       password,
       telp
     });
-
-    return response.data as ApiResponse<AuthData>;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
