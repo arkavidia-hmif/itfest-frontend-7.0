@@ -39,12 +39,14 @@ export interface PersonalData {
 }
 
 export enum LoginStatus {
+  UNKNOWN,
   INVALID_CREDS,
   EMAIL_NOT_CONFIRMED,
 }
 
 
 export enum RegisterStatus {
+  UNKNOWN,
   USER_EXISTS,
   EMAIL_USED,
   INVALID_EMAIL,
