@@ -38,16 +38,14 @@ export async function registerVisitor(
   name: string,
   email: string,
   password: string,
-  telp: string,
-  institute: string
+  telp: string
 ): Promise<ApiResponse<AuthData>> {
   try {
     const response = await axios.post("/register/visitor", {
       name,
       email,
       password,
-      telp,
-      institute
+      telp
     });
 
     return response.data as ApiResponse<AuthData>;

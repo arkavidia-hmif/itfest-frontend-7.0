@@ -18,7 +18,6 @@ const RegisterPage: React.FC = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [telp, setTelp] = useState("");
-  const [institute, setInstitute] = useState("");
 
   const progressObj = useProgress();
 
@@ -37,14 +36,11 @@ const RegisterPage: React.FC = () => {
     } else if (password.length < 8) {
       progressObj.setError("Password harus lebih dari 8 karakter");
       return;
-    } else if (!isValidString(institute, 32)) {
-      progressObj.setError("Intitusi harus diisi dan maksimal 32 karakter");
-      return;
     }
 
     progressObj.startLoad();
 
-    registerVisitor(apiContext.axios, name, email, password, telp, institute)
+    registerVisitor(apiContext.axios, name, email, password, telp)
       .then(() => {
         progressObj.setSuccess(true);
         router.push("/register-complete");
@@ -90,12 +86,6 @@ const RegisterPage: React.FC = () => {
           value={telp}
           setValue={setTelp}
           placeholder="081234567890"
-        />
-        <label>Institusi</label>
-        <InputField
-          value={institute}
-          setValue={setInstitute}
-          placeholder="John University"
         />
         <br />
         <div className="row">
