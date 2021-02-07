@@ -5,7 +5,6 @@ import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
 import FilledButton from "components/commons/FilledButton";
 import { ApiContext } from "utils/context/api";
-import { AuthContext } from "utils/context/auth";
 import useFormInput from "utils/hooks/useFormInput";
 import { editPersonalData, getPersonalData, PROFILE_URL } from "api/profile";
 import Alert from "components/commons/Alert";
@@ -17,7 +16,6 @@ import { PersonalData } from "interfaces/auth";
 
 const PersonalField: React.FC = () => {
   const apiContext = useContext(ApiContext);
-  const { auth, setAuth } = useContext(AuthContext);
 
   const [isEdit, setIsEdit] = useState(false);
   const gender = useFormInput("");
@@ -73,11 +71,6 @@ const PersonalField: React.FC = () => {
       setSuccess(true);
       setIsEdit(false);
       setError(null);
-      if (res) {
-        if (auth) {
-          setAuth({ jwt: auth?.jwt, personal: res });
-        }
-      }
     } catch (e) {
       setSuccess(false);
       setError(e.message);

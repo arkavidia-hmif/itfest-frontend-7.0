@@ -17,7 +17,7 @@ import useStringFormInput from "utils/hooks/useStringFormInput";
 
 const PrimaryField: React.FC = () => {
   const apiContext = useContext(ApiContext);
-  const { auth, setAuth } = useContext(AuthContext);
+  const { profile, setProfile } = useContext(AuthContext);
 
   const [isEdit, setIsEdit] = useState(false);
   const email = useStringFormInput("");
@@ -74,8 +74,10 @@ const PrimaryField: React.FC = () => {
       setIsEdit(false);
       setError(null);
       if (res) {
-        if (auth) {
-          setAuth({ jwt: auth?.jwt, primary: res });
+        if (name.value && profile) {
+          const newProfile = { ...profile };
+          newProfile.name = name.value;
+          setProfile(newProfile);
         }
       }
     } catch (e) {
