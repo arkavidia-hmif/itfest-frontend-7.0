@@ -38,9 +38,7 @@ const ProfileSidebar: React.FC<props> = ({ selection, setSelection }) => {
             setSelection={setSelection}
           />
           <a onClick={() => {
-            authContext.setAuthenticated(false);
-            authContext.setAuth();
-            authContext.setProfile();
+            authContext.logout();
 
             router.push("/login");
           }}>Logout</a>

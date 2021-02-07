@@ -60,9 +60,7 @@ const Debug: React.FC = () => {
                 setResult(JSON.stringify(err));
               });
           } else {
-            authContext.setAuthenticated(!authContext.authenticated);
-            authContext.setAuth();
-            authContext.setProfile();
+            authContext.logout();
           }
         }}
       />

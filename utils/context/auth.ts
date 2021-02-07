@@ -8,6 +8,7 @@ export interface AuthContextType {
   setAuthenticated: (newValue: boolean) => void;
   setAuth: (newValue?: AuthData) => void;
   setProfile: (newValue?: VisitorProfileData) => void;
+  logout: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType>(

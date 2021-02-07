@@ -59,7 +59,12 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     profile,
     setAuthenticated: setAndSaveAuthenticated,
     setAuth: setAndSaveAuth,
-    setProfile: setAndSaveProfile
+    setProfile: setAndSaveProfile,
+    logout: () => {
+      setAndSaveAuthenticated(false);
+      setAndSaveAuth();
+      setAndSaveProfile();
+    }
   };
 
   if (loaded || typeof window === "undefined") {
