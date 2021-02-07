@@ -1,5 +1,6 @@
+import { useContext, useState } from "react";
+import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
-import { useContext, useState, useEffect } from "react";
 import Alert from "../components/commons/Alert";
 import AuthWrapper from "../components/auth/AuthWrapper";
 import InputField from "../components/commons/InputField";
@@ -7,11 +8,13 @@ import FilledButton from "../components/commons/FilledButton";
 import { RegisterStatus } from "../interfaces/auth";
 import { ApiContext } from "../utils/context/api";
 import { isValidName, isValidPhone, isValidEmail, isValidString } from "../utils/validator";
-import { ApiError, StandardError } from "interfaces/api";
+import { ApiError } from "interfaces/api";
 import { registerVisitor } from "api/auth";
+import useProgress from "utils/hooks/useProgress";
 
 const RegisterPage: React.FC = () => {
   const apiContext = useContext(ApiContext);
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -19,153 +22,100 @@ const RegisterPage: React.FC = () => {
   const [telp, setTelp] = useState("");
   const [institute, setInstitute] = useState("");
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [errorStatus, setErrorStatus] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const progressObj = useProgress();
 
   const handleSubmit = () => {
-    setError(null);
+    progressObj.reset();
 
-    setLoading(true);
+    if (!isValidEmail(email)) {
+      progressObj.setError("Email tidak valid");
+      return;
+    } else if (!isValidString(name, 64) || !isValidName(name)) {
+      progressObj.setError("Nama lengkap harus diisi maksimal 64 huruf dan hanya dapat memuat huruf, angka, atau spasi");
+      return;
+    } else if (!isValidPhone(telp)) {
+      progressObj.setError("Nomor telepon tidak valid");
+      return;
+    } else if (password.length < 8) {
+      progressObj.setError("Password harus lebih dari 8 karakter");
+      return;
+    } else if (!isValidString(institute, 32)) {
+      progressObj.setError("Intitusi harus diisi dan maksimal 32 karakter");
+      return;
+    }
+
+    progressObj.startLoad();
 
     registerVisitor(apiContext.axios, name, email, password, telp, institute)
       .then(() => {
-        setSuccess(true);
+        progressObj.setSuccess(true);
+        router.push("/register-complete");
       })
       .catch((e) => {
-        if (e instanceof ApiError) {
-          if (e.code === RegisterStatus.EMAIL_USED) {
-            setError("Email sudah digunakan");
-            return;
-          }
-          else if (e.code === RegisterStatus.INVALID_NAME) {
-            setError("Nama lengkap hanya dapat memuat huruf, angka, atau spasi");
-            return;
-          }
-          else if (e.code === RegisterStatus.INVALID_EMAIL) {
-            setError("Email tidak valid");
-            return;
-          }
-          else if (e.code === StandardError.ERROR) {
-            setError("Maaf, terdapat masalah koneksi");
-            return;
-          }
-          setError(e.message);
-        }
-        setError(e.message);
+        progressObj.setError(e.message);
       })
       .finally(() => {
-        setLoading(false);
+        progressObj.setLoading(false);
       });
   };
 
-  useEffect(() => {
-    if (isValidString(email) && !isValidEmail(email)) {
-      setError("Email tidak valid");
-      setErrorStatus(true);
-      return;
-    } else if (isValidString(name) && !isValidName(name)) {
-      setError("Nama lengkap hanya dapat memuat huruf, angka, atau spasi");
-      setErrorStatus(true);
-      return;
-    } else if (isValidString(telp) && !isValidPhone(telp)) {
-      setError("Nomor telepon tidak valid");
-      setErrorStatus(true);
-      return;
-    } else if (isValidString(password) && password.length < 8) {
-      setError("Password harus lebih dari 8 karakter");
-      setErrorStatus(true);
-      return;
-    } else if (!isValidString(email) || !isValidString(name) || !isValidString(password) || !isValidString(telp) || !isValidString(institute)) {
-      setErrorStatus(true);
-      setError(null);
-      return;
-    } else if (isValidString(email) && isValidString(name) && isValidString(password) && isValidString(telp) && isValidString(institute)){
-      setError(null);
-      setErrorStatus(false);
-      return;
-    } else {
-      setError(null);
-      return;
-    }
-  },[email, name, telp, password, institute]);
-
   return (
     <AuthWrapper title="Registrasi Akun">
-      {success ? (
-        <>
-          <br />
-          <p>
-            Terima kasih telah mendaftar, silahkan cek email untuk tautan
-            konfirmasi
-          </p>
-          <Link href="/login">
-            <FilledButton text="LOGIN" padding="0.75em 1.5em" />
-          </Link>
-        </>
-      ) : (
-        <>
-          <Alert error={error} />
-          <form
-            onSubmit={(evt) => {
-              evt.preventDefault();
-              handleSubmit();
-            }}
-          >
-            <label>Alamat Email</label>
-            <InputField
-              value={email}
-              setValue={setEmail}
-              placeholder="johndoe@email.com"
+      <Alert error={progressObj.error} />
+      <form
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          handleSubmit();
+        }}
+      >
+        <label>Alamat Email</label>
+        <InputField
+          value={email}
+          setValue={setEmail}
+          placeholder="johndoe@email.com"
+        />
+        <label>Nama Lengkap</label>
+        <InputField
+          value={name}
+          setValue={setName}
+          placeholder="John Doe"
+        />
+        <label>Kata Sandi</label>
+        <InputField
+          type={"password"}
+          value={password}
+          setValue={setPassword}
+          placeholder="********"
+        />
+        <label>Nomor Telepon</label>
+        <InputField
+          value={telp}
+          setValue={setTelp}
+          placeholder="081234567890"
+        />
+        <label>Institusi</label>
+        <InputField
+          value={institute}
+          setValue={setInstitute}
+          placeholder="John University"
+        />
+        <br />
+        <div className="row">
+          <div className="col-6">
+            <FilledButton
+              text="DAFTAR"
+              padding="0.75em 1.5em"
+              loading={progressObj.loading}
+              submit
             />
-            <label>Nama Lengkap</label>
-            <InputField
-              value={name}
-              setValue={setName}
-              placeholder="John Doe"
-            />
-            <label>Kata Sandi</label>
-            <InputField
-              type={"password"}
-              value={password}
-              setValue={setPassword}
-              placeholder="********"
-            />
-            <label>Nomor Telepon</label>
-            <InputField
-              value={telp}
-              setValue={setTelp}
-              placeholder="081234567890"
-            />
-            <label>Institusi</label>
-            <InputField
-              value={institute}
-              setValue={setInstitute}
-              placeholder="John University"
-            />
-            <br />
-            <div className="row">
-              <div className="col-6">
-                {(errorStatus) ?
-                  <b className="error-text">MASIH ADA KESALAHAN/BELUM TERISI</b>
-                  : <FilledButton
-                    text="DAFTAR"
-                    padding="0.75em 1.5em"
-                    loading={loading}
-                    submit
-                  />
-                }
-              </div>
-              <div className="col-6" style={{ textAlign: "right" }}>
-                <a href="/login">
-                  <b>Sudah punya akun ?</b>
-                </a>
-              </div>
-            </div>
-          </form>
-        </>
-      )}
+          </div>
+          <div className="col-6" style={{ textAlign: "right" }}>
+            <Link href="/login">
+              <a><b>Sudah punya akun ?</b></a>
+            </Link>
+          </div>
+        </div>
+      </form>
       <style jsx>{`
         .row {
           align-items: center;
@@ -175,14 +125,6 @@ const RegisterPage: React.FC = () => {
         }
         a {
           color: #7446a1;
-        }
-
-        p {
-          color: #7446a1;
-        }
-
-        .error-text {
-          color: #B41A83;
         }
 
         label {

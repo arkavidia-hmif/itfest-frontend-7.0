@@ -1,14 +1,12 @@
 import { useRouter } from "next/dist/client/router";
 import { useContext, useState } from "react";
-import Alert from "../components/commons/Alert";
-import AuthWrapper from "../components/auth/AuthWrapper";
-import InputField from "../components/commons/InputField";
-import FilledButton from "../components/commons/FilledButton";
-import { LoginStatus } from "../interfaces/auth";
-import { ApiContext } from "../utils/context/api";
-import { AuthContext } from "../utils/context/auth";
-import { isValidEmail } from "../utils/validator";
-import { ApiError, StandardError } from "interfaces/api";
+import Alert from "components/commons/Alert";
+import AuthWrapper from "components/auth/AuthWrapper";
+import InputField from "components/commons/InputField";
+import FilledButton from "components/commons/FilledButton";
+import { ApiContext } from "utils/context/api";
+import { AuthContext } from "utils/context/auth";
+import { isValidEmail } from "utils/validator";
 import { login } from "api/auth";
 
 const LoginPage: React.FC = () => {
@@ -45,21 +43,7 @@ const LoginPage: React.FC = () => {
         }
       })
       .catch((e) => {
-        if (e instanceof ApiError) {
-          if (e.code === LoginStatus.INVALID_CREDS) {
-            setError("Email dan/atau kata sandi salah");
-            return;
-          } else if (e.code === LoginStatus.EMAIL_NOT_CONFIRMED) {
-            setError("Email belum dikonfirmasi");
-            return;
-          } else if (e.code === StandardError.ERROR) {
-            setError("Maaf, terdapat masalah koneksi");
-            return;
-          }
-          setError(e.message);
-        } else {
-          setError(e.message);
-        }
+        setError(e.message);
       })
       .finally(() => {
         setLoading(false);

@@ -38,7 +38,7 @@ export async function registerVisitor(
   name: string,
   email: string,
   password: string,
-  telp: string, 
+  telp: string,
   institute: string
 ): Promise<ApiResponse<AuthData>> {
   try {
