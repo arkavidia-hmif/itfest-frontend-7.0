@@ -8,6 +8,7 @@ import { ApiContext } from "utils/context/api";
 import { AuthContext } from "utils/context/auth";
 import { isValidEmail } from "utils/validator";
 import { login } from "api/auth";
+import { getProfile } from "api/profile";
 
 const LoginPage: React.FC = () => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setError(null);
 
     if (!isValidEmail(email)) {
@@ -32,22 +33,24 @@ const LoginPage: React.FC = () => {
     setLoading(true);
     const redirectTarget = window.location.search;
 
-    login(apiContext.axios, email, password)
-      .then((data) => {
-        authContext.setAuthenticated(true);
-        authContext.setAuth(data.data);
-        if (redirectTarget.startsWith("?continue=")) {
-          router.push(redirectTarget.replace("?continue=", ""));
-        } else {
-          router.push("/profile");
-        }
-      })
-      .catch((e) => {
-        setError(e.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    try {
+      const loginResult = await login(apiContext.axios, email, password);
+      const profileResult = await getProfile(apiContext.axios, loginResult.jwt);
+
+      authContext.setAuthenticated(true);
+      authContext.setAuth(loginResult);
+      authContext.setProfile(profileResult);
+
+      if (redirectTarget.startsWith("?continue=")) {
+        router.push(redirectTarget.replace("?continue=", ""));
+      } else {
+        router.push("/profile");
+      }
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
