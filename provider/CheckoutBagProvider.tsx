@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CheckoutBagContextType from "../utils/constants/checkout-bag";
-import { CheckoutBagContext } from "./CheckoutBagContext";
+import { CheckoutBagContext } from "../utils/context/checkout";
 import { MerchStoreItem } from "interfaces/merch-store";
 
 

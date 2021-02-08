@@ -1,10 +1,10 @@
 import * as React from  "react";
 import { useContext } from "react";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
-import { CheckoutBagContext } from "../../provider/CheckoutBagContext";
+import { CheckoutBagContext } from "../../utils/context/checkout";
 import ShoppingBag from "./ShoppingBag";
-import { MerchStoreItem } from "interfaces/merch-store";
 import Checkout from "./Checkout";
+import { MerchStoreItem } from "interfaces/merch-store";
 
 
 
@@ -24,7 +24,7 @@ const ShoppingBagContainer: React.FC = () => {
             <th></th>
           </tr>
           {
-            data.map((item: MerchStoreItem) => <ShoppingBag item={item} />)
+            data.map((item: MerchStoreItem) => <ShoppingBag key={item.id} item={item} />)
           }  
         </table>
       </div>
