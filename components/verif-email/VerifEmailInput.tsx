@@ -34,8 +34,6 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
 
   const apiContext = useContext(ApiContext);
 
-  const [success, setSuccess] = useState(false);
-
   const [error, setError] = useState<string | null>(null);
 
   const focusInput = useCallback(
@@ -110,32 +108,32 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
   const handleOnKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       switch (e.key) {
-        case "Backspace":
-        case "Delete": {
-          e.preventDefault();
-          if (inputValues[activeInput]) {
-            changeCodeAtFocus("");
-          } else {
-            focusPrevInput();
-          }
-          break;
-        }
-        case "ArrowLeft": {
-          e.preventDefault();
+      case "Backspace":
+      case "Delete": {
+        e.preventDefault();
+        if (inputValues[activeInput]) {
+          changeCodeAtFocus("");
+        } else {
           focusPrevInput();
-          break;
         }
-        case "ArrowRight": {
-          e.preventDefault();
-          focusNextInput();
-          break;
-        }
-        case " ": {
-          e.preventDefault();
-          break;
-        }
-        default:
-          break;
+        break;
+      }
+      case "ArrowLeft": {
+        e.preventDefault();
+        focusPrevInput();
+        break;
+      }
+      case "ArrowRight": {
+        e.preventDefault();
+        focusNextInput();
+        break;
+      }
+      case " ": {
+        e.preventDefault();
+        break;
+      }
+      default:
+        break;
       }
     },
     [
@@ -177,7 +175,7 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
   const handleSubmit = () => {
     verifEmail(apiContext.axios, inputValues.join(""))
       .then(() => {
-        setSuccess(true);
+        //
       })
       .catch(() => {
         setError("Silahkan masukan token yang benar");
