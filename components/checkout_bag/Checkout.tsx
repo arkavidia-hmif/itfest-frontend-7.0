@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from  "react";
 import { useContext, useState } from "react";
+import CheckoutBagContextType from "../../utils/constants/checkout-bag";
+import { CheckoutBagContext } from "../../utils/context/checkout";
+import InputField from "./InputField";
 import FilledButton from "components/commons/FilledButton";
 import { Theme } from "styles/theme";
-import InputField from './InputField';
-import CheckoutBagContextType from "../../utils/constants/checkout-bag";
-import { CheckoutBagContext } from "../../provider/CheckoutBagContext";
 import { MerchStoreItem } from "interfaces/merch-store";
 import { ApiContext } from "utils/context/api";
 
@@ -22,28 +22,25 @@ const Checkout: React.FC = () => {
 
   data.map(
     (item: MerchStoreItem) => {
-      total += item.quantity * item.price
+      total += item.quantity * item.price;
     }
-  )
+  );
 
   const handleSubmit = () => {
-    console.log(data);
-    apiContext.axios
-    .post(process.env.API_BASE_URL + "/checkout", 
-    {
+    const items = {
       "lineContact": line,
       "waContact": whatsapp,
       "isSent": false,
       "address": address,
       "items": data
-    })
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err);
+    };
+
+    apiContext.axios.post(process.env.API_BASE_URL + "/checkout", items).then(() => {
+      // console.log(data);
+    }).catch(() => {
+      // console.log(err);
     });
-  }
+  };
 
   return (
     <div className="checkout-box">
@@ -96,7 +93,7 @@ const Checkout: React.FC = () => {
         `}
       </style>
     </div>
-  )
-}
+  );
+};
 
 export default Checkout;

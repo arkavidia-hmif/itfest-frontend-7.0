@@ -1,7 +1,7 @@
 import * as React from  "react";
 import { useContext} from "react";
 import Carousel from "react-elastic-carousel";
-import { CheckoutBagContext } from "../../provider/CheckoutBagContext";
+import { CheckoutBagContext } from "../../utils/context/checkout";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import MerchStoreCarouselItem from "./MerchStoreCarouselItem";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
