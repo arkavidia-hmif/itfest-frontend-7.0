@@ -4,6 +4,6 @@ export const Dimen = {
   navbarBreakpoint: "767px",
   smBreakpoint: "567px",
   mdBreakpoint: "767px",
-  xsBreakpoint: "992px",
-  lgBreakpoint: "1200px",
+  lgBreakpoint: "992px",
+  xlBreakpoint: "1200px",
 };
