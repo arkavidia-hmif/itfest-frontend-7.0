@@ -1,6 +1,6 @@
-import VerifEmailInput from "components/verif-email/VerifEmailInput";
-import VerifEmailTop from "components/verif-email/VerifEmailTop";
 import * as React from "react";
+import VerifEmailInputCode from "components/verif-email/VerifEmailInput";
+import VerifEmailTop from "components/verif-email/VerifEmailTop";
 
 const VerifEmail: React.SFC = () => {
   return (
@@ -9,11 +9,11 @@ const VerifEmail: React.SFC = () => {
         <VerifEmailTop />
       </div>
       <div className="">
-        <VerifEmailInput
+        <VerifEmailInputCode
           autoFocus
-          isNumberInput
-          length={4}
-          onChangeInput={(input) => console.log("Input: ", input)}
+          isNumberInput={false}
+          length={16}
+          onChangeInput={() => null}
         />
       </div>
     </>

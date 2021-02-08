@@ -1,10 +1,14 @@
-import { useCallback, useState, memo } from "react";
-import { Dimen } from "styles/dimen";
+import { useCallback, useState, memo, useContext } from "react";
 import SingleInput from "./SingleInput";
+import { Dimen } from "styles/dimen";
+import { verifEmail } from "api/auth";
+import { ApiContext } from "utils/context/api";
+import FilledButton from "components/commons/FilledButton";
+import Alert from "components/commons/Alert";
 
 export interface VerifEmailInput {
   length: number;
-  onChangeInput: (otp: string) => any;
+  onChangeInput: (otp: string) => void;
   autoFocus?: boolean;
   isNumberInput?: boolean;
   disabled?: boolean;
@@ -28,6 +32,12 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
     Array<string>(length).fill("")
   );
 
+  const apiContext = useContext(ApiContext);
+
+  const [success, setSuccess] = useState(false);
+
+  const [error, setError] = useState<string | null>(null);
+
   const focusInput = useCallback(
     (inputIndex: number) => {
       const selectedIndex = Math.max(Math.min(length - 1, inputIndex), 0);
@@ -49,7 +59,7 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
 
   const getRightValue = useCallback(
     (str: string) => {
-      let changedValue = str;
+      const changedValue = str;
       if (!isNumberInput) {
         return changedValue;
       }
@@ -164,15 +174,25 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
     [activeInput, getRightValue, length, inputValues]
   );
 
+  const handleSubmit = () => {
+    verifEmail(apiContext.axios, inputValues.join(""))
+      .then(() => {
+        setSuccess(true);
+      })
+      .catch(() => {
+        setError("Silahkan masukan token yang benar");
+      });
+  };
+
   return (
     <>
-      <div className="w-100 d-flex flex-column align-items-center justify-content-center">
+      <div className="w-100 d-flex flex-column align-items-center justify-content-center mb-5">
         <div>
           <h1>Enter your code</h1>
         </div>
         <div
           {...rest}
-          className="d-flex justify-content-center p-5 verif-email-input"
+          className="d-flex justify-content-center verif-email-input"
         >
           {Array(length)
             .fill("")
@@ -193,23 +213,41 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
         </div>
       </div>
 
+      <Alert error={error} />
+
+      <div className="mt-3">
+        <FilledButton
+          onClick={handleSubmit}
+          text={"Submit"}
+          fontSize="1.25rem"
+        />
+      </div>
+
       <style jsx>{`
         .verif-email-input {
-          width: 40%;
+          width: 85%;
           background: #fe5982;
           box-shadow: 1px 2px 11px rgba(0, 0, 0, 0.25);
           border-radius: 15px;
+          padding: 2.5rem;
+        }
+
+        @media (max-width: ${Dimen.lgBreakpoint}) {
+          .verif-email-input {
+            width: 70%;
+          }
         }
 
         @media (max-width: ${Dimen.xsBreakpoint}) {
           .verif-email-input {
-            width: 60%;
+            width: 90%;
           }
         }
 
         @media (max-width: ${Dimen.mdBreakpoint}) {
           .verif-email-input {
-            width: 80%;
+            width: 100%;
+            padding: 1.5rem;
           }
         }
 
