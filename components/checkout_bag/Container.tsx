@@ -6,8 +6,12 @@ import FilledButton from "components/commons/FilledButton";
 import { Theme } from "styles/theme";
 
 
+export interface Props {
+  children: ReactNode,
+  buyCallback: () => void
+}
 
-const CheckoutContainer: React.FC<ReactNode> = ({children}) => {
+const Container: React.FC<Props> = ({ children, buyCallback }) => {
   const { deleteData, show, showBag } = useContext(CheckoutBagContext) as CheckoutBagContextType;
 
   const closeBagContainer = () => {
@@ -37,6 +41,7 @@ const CheckoutContainer: React.FC<ReactNode> = ({children}) => {
           color={Theme.buttonColors.pinkButton}
           text="Buy"
           padding="0.75rem 3rem"
+          onClick={buyCallback}
         />
       </div>
 
@@ -108,4 +113,4 @@ const CheckoutContainer: React.FC<ReactNode> = ({children}) => {
   );
 };
 
-export default CheckoutContainer;
+export default Container;
