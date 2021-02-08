@@ -60,7 +60,7 @@ const BagButton: React.FC = () => {
 
           @media only screen and (max-width: 576px) {
             .main {
-              width: 100%;
+              width: 90%;
             }
           }
         `}

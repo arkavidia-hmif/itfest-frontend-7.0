@@ -9,11 +9,11 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
   const [items, setItems] = useState<Array<MerchStoreItem>>([]);
   const [show, setShow] = useState(false);
 
-  const addData = (item: MerchStoreItem) => {
+  const addItem = (item: MerchStoreItem) => {
     setItems([...items ?? [], item]);
   };
 
-  const deleteData = () => {
+  const deleteAllItem = () => {
     setItems([]);
   };
 
@@ -31,13 +31,39 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
     }
   };
 
+  const addQuantity = (item: MerchStoreItem) => {
+    const newItem = [...items];
+    const index = newItem.indexOf(item);
+
+    if (index !== -1) {
+      if (item.quantity >= 0) {
+        item.quantity += 1;
+        setItems(newItem);
+      }
+    }
+  };
+
+  const subQuantity = (item: MerchStoreItem) => {
+    const newItem = [...items];
+    const index = newItem.indexOf(item);
+
+    if (index !== -1) {
+      if (item.quantity > 0) {
+        item.quantity -= 1;
+        setItems(newItem);
+      }
+    }
+  };
+
   const checkoutContext: CheckoutBagContextType = {
     data: items,
     show: show,
-    addData: addData,
-    deleteData: deleteData,
+    addData: addItem,
+    deleteData: deleteAllItem,
     showBag: showBagContainer,
-    deleteItem: deleteItem
+    deleteItem: deleteItem,
+    addQuantity: addQuantity,
+    subQuantity: subQuantity
   };
 
   return (

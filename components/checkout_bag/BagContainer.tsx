@@ -9,13 +9,14 @@ import { MerchStoreItem } from "interfaces/merch-store";
 
 const BagContainer: React.FC = () => {
   const { data } = useContext(CheckoutBagContext) as CheckoutBagContextType;
+  const buyCallback = () => {
+    console.log("Buy From BagContainer");
+  }
 
   return (
-    <Container>
+    <Container buyCallback={buyCallback}>
       {
-        data.map((item: MerchStoreItem) => 
-          <Bag key={item.id} item={item} />
-        )
+        data.map((item: MerchStoreItem) => <Bag key={item.id} item={item} />)
       }
     </Container>
   );
