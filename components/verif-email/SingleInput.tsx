@@ -1,6 +1,6 @@
 import { memo, useLayoutEffect, useRef } from "react";
-import { Dimen } from "styles/dimen";
 import usePrevious from "./hooks/UsePrevious";
+import { Dimen } from "styles/dimen";
 
 export interface SingleInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
