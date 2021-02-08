@@ -230,13 +230,13 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
           padding: 2.5rem;
         }
 
-        @media (max-width: ${Dimen.lgBreakpoint}) {
+        @media (max-width: ${Dimen.xlBreakpoint}) {
           .verif-email-input {
             width: 70%;
           }
         }
 
-        @media (max-width: ${Dimen.xsBreakpoint}) {
+        @media (max-width: ${Dimen.lgBreakpoint}) {
           .verif-email-input {
             width: 90%;
           }

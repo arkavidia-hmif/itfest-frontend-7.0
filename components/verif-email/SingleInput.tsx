@@ -50,7 +50,7 @@ const SingleInputComponent: React.SFC<SingleInputProps> = (
             outline: none;
           }
 
-          @media (max-width: ${Dimen.lgBreakpoint}) {
+          @media (max-width: ${Dimen.xlBreakpoint}) {
             .single-input input {
               width: 2rem !important;
               height: 2rem;
@@ -59,7 +59,7 @@ const SingleInputComponent: React.SFC<SingleInputProps> = (
             }
           }
 
-          @media (max-width: ${Dimen.xsBreakpoint}) {
+          @media (max-width: ${Dimen.lgBreakpoint}) {
           }
 
           @media (max-width: ${Dimen.mdBreakpoint}) {
