@@ -7,6 +7,8 @@ import FilledButton from "components/commons/FilledButton";
 import { Theme } from "styles/theme";
 import { MerchStoreItem } from "interfaces/merch-store";
 import { ApiContext } from "utils/context/api";
+import Alert from "components/commons/Alert";
+import { checkout } from "api/checkout";
 
 
 
@@ -17,6 +19,9 @@ const Checkout: React.FC = () => {
   const [whatsapp, setWhatsapp] = useState("");
   const [line, setLine] = useState("");
   const [address, setAddress] = useState("");
+  const [status, setStatus] = useState("");
+  const [success, setSucess] = useState(false);
+  const [buy, setBuy] = useState(false);
 
   let total = 0;
 
@@ -27,18 +32,14 @@ const Checkout: React.FC = () => {
   );
 
   const handleSubmit = () => {
-    const items = {
-      "lineContact": line,
-      "waContact": whatsapp,
-      "isSent": false,
-      "address": address,
-      "items": data
-    };
-
-    apiContext.axios.post(process.env.API_BASE_URL + "/checkout", items).then(() => {
-      // console.log(data);
-    }).catch(() => {
-      // console.log(err);
+    setBuy(true);
+    
+    checkout(apiContext.axios, line, whatsapp, address, data).then(() => {
+      setStatus("Pembelian berhasil");
+      setSucess(true);
+    }).catch((err) => {
+      setStatus(err.msg);
+      setSucess(false);
     });
   };
 
@@ -57,6 +58,7 @@ const Checkout: React.FC = () => {
           total
         }  
       </h5>
+      { buy ? <Alert error={status} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} /> : null }
       <div className="btn">
         <FilledButton
           color={Theme.buttonColors.pinkButton}
@@ -71,7 +73,6 @@ const Checkout: React.FC = () => {
           .checkout-box {
             border-radius: 1rem;
             box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.25);
-            height: 70vh;
             width: 95%;
             margin: auto;
             padding: 2rem;
@@ -87,14 +88,8 @@ const Checkout: React.FC = () => {
             display: block;
             margin: 0 auto;
             position: relative;
-            top: 15%;
+            margin-top: 1rem;
             text-align: center;
-          }
-
-          @media (max-width: 576px) { 
-            .btn {
-              top: 5%
-            }
           }
         `}
       </style>

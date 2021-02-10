@@ -17,16 +17,18 @@ const ShoppingBagContainer: React.FC = () => {
         <div className="content col-sm-8" style={{overflowY: "scroll"}}>
           <h2>Shopping Bag</h2>
           <table style={{width: "100%"}}>
-            <tr>
-              <th>PRODUCT</th>
-              <th>POINT</th>
-              <th>QUANTITY</th>
-              <th>TOTAL</th>
-              <th></th>
-            </tr>
-            {
-              data.map((item: MerchStoreItem) => <ShoppingBag key={item.id} item={item} />)
-            }  
+            <tbody>
+              <tr>
+                <th>PRODUCT</th>
+                <th>POINT</th>
+                <th>QUANTITY</th>
+                <th>TOTAL</th>
+                <th></th>
+              </tr>
+              {
+                data.map((item: MerchStoreItem) => <ShoppingBag key={item.id} item={item} />)
+              } 
+            </tbody>
           </table>
         </div>
         <div className="content col-sm-4">
@@ -44,10 +46,6 @@ const ShoppingBagContainer: React.FC = () => {
             left: 50%;
             transform: translate(-50%, -20%);
             padding: 1rem;
-          }
-
-          .content {
-            height: 75vh;
           }
 
           .btn-close {
