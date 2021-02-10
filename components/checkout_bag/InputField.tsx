@@ -11,22 +11,21 @@ const InputField: React.FC<Props> = ({ text, value, setValue }) => {
     <div className="input-field">
       <label>{text}</label>
       <input value={value} onChange={(evt) => { setValue(evt.target.value); }} />
+      
       <style jsx>{`
         .input-field {
-          width: 90%;
-          margin: auto;
-          margin: 1rem 0.5rem;
-          }
-
-          label, input {
+          margin-bottom: 1rem;
+        }
+        
+        .label, input {
           display: block;
-          }
+        }
 
-          input {
+        input {
+          border: 1px solid black;
           width: 100%;
-          margin: auto;
-          padding: 0.2rem;
-          }
+          padding: 0.4rem;
+        }
       `}</style>
     </div>
   );

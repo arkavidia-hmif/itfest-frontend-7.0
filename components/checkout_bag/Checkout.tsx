@@ -61,7 +61,7 @@ const Checkout: React.FC = () => {
         <FilledButton
           color={Theme.buttonColors.pinkButton}
           text="CHECKOUT"
-          padding="0.75rem 8rem"
+          padding="0.75rem 6rem"
           onClick={handleSubmit}
         />
       </div>
@@ -74,7 +74,7 @@ const Checkout: React.FC = () => {
             height: 70vh;
             width: 95%;
             margin: auto;
-            padding: 2rem 1rem;
+            padding: 2rem;
             margin-top: 2rem;
           }
 
@@ -89,6 +89,12 @@ const Checkout: React.FC = () => {
             position: relative;
             top: 15%;
             text-align: center;
+          }
+
+          @media (max-width: 576px) { 
+            .btn {
+              top: 5%
+            }
           }
         `}
       </style>
