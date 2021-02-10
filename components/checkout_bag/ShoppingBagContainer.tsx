@@ -10,53 +10,47 @@ import { MerchStoreItem } from "interfaces/merch-store";
 
 const ShoppingBagContainer: React.FC = () => {
   const { data, showBag, show } = useContext(CheckoutBagContext) as CheckoutBagContextType;
-  
+
   return (
-    <div className="main" style={{display: show ? "block": "none"}}>
-      <div className="shopping-bag">
-        <h2>Shopping Bag</h2>
-        <table style={{width: "100%"}}>
-          <tr>
-            <th>PRODUCT</th>
-            <th>POINT</th>
-            <th>QUANTITY</th>
-            <th>TOTAL</th>
-            <th></th>
-          </tr>
-          {
-            data.map((item: MerchStoreItem) => <ShoppingBag key={item.id} item={item} />)
-          }  
-        </table>
-      </div>
-      <div className="checkout">
-        <img src="/img/close.svg" onClick={() => showBag(false)} />
-        <Checkout />
+    <div className="main container-sm" style={{display: show ? "block":"none"}}>
+      <div className="row">
+        <div className="content col-sm-8" style={{overflowY: "scroll"}}>
+          <h2>Shopping Bag</h2>
+          <table style={{width: "100%"}}>
+            <tr>
+              <th>PRODUCT</th>
+              <th>POINT</th>
+              <th>QUANTITY</th>
+              <th>TOTAL</th>
+              <th></th>
+            </tr>
+            {
+              data.map((item: MerchStoreItem) => <ShoppingBag key={item.id} item={item} />)
+            }  
+          </table>
+        </div>
+        <div className="content col-sm-4">
+          <Checkout />
+        </div>
+        <img className="btn-close" src="/img/close.svg" onClick={() => showBag(false)} />
       </div>
       <style jsx>
         {`
           .main {
-            width: 80%;
-            background-color: white; 
+            background-color: white;
             position: absolute;
             z-index: 3;
-            left: 10%;
-            height: 80vh;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            padding: 1rem;
           }
 
-          .shopping-bag {
-            width: 65%;
-            // border: 2px solid red; 
-            height: 100%;
-            top: -70%;
+          .content {
+            height: 75vh;
           }
 
-          .checkout {
-            width: 35%;
-            // border: 2px solid blue; 
-            height: 100%;
-          }
-
-          .checkout img {
+          .btn-close {
             width: 1rem;
             position: absolute;
             top: 1rem;
@@ -64,20 +58,13 @@ const ShoppingBagContainer: React.FC = () => {
             cursor: pointer;
           }
 
-          .checkout img:hover {
+          .btn-close:hover {
             opacity: 0.5;
-          }
-
-          .shopping-bag, .checkout {
-            display: inline-block;
-            padding: 1rem;
-            position: relative;
           }
 
           table { 
             border-collapse: separate; 
             border-spacing: 0 1rem;
-            // border: 2px solid green; 
           } 
         `}
       </style>
