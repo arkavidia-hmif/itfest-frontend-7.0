@@ -1,15 +1,20 @@
 import { AxiosError, AxiosInstance } from "axios";
 import { ApiError, ApiResponse, StandardError } from "interfaces/api";
-import { PersonalData, PrimaryData, ProfileData, UserData } from "interfaces/auth";
+import { PersonalData, PrimaryData, VisitorProfileData, UserData } from "interfaces/auth";
 
 
 export const PROFILE_URL = "/user/me";
 
 export const getProfile = async (
-  axios: AxiosInstance
+  axios: AxiosInstance,
+  token?: string
 ): Promise<UserData> => {
   return axios
-    .get<ApiResponse<UserData>>(PROFILE_URL)
+    .get<ApiResponse<UserData>>(PROFILE_URL, {
+      headers: token ? {
+        "Authorization": `Bearer ${token}`
+      } : {}
+    })
     .then((response) => {
       return response.data.data;
     })
@@ -46,7 +51,7 @@ export const getPersonalData = async (
 
 export const editProfile = async (
   axios: AxiosInstance,
-  truth: ProfileData
+  truth: VisitorProfileData
 ): Promise<UserData> => {
   return axios
     .put<ApiResponse<UserData>>(PROFILE_URL, truth)

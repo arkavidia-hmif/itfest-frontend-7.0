@@ -5,7 +5,6 @@ import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
 import FilledButton from "components/commons/FilledButton";
 import { ApiContext } from "utils/context/api";
-import { AuthContext } from "utils/context/auth";
 import useFormInput from "utils/hooks/useFormInput";
 import { editPersonalData, getPersonalData, PROFILE_URL } from "api/profile";
 import Alert from "components/commons/Alert";
@@ -17,7 +16,6 @@ import { PersonalData } from "interfaces/auth";
 
 const PersonalField: React.FC = () => {
   const apiContext = useContext(ApiContext);
-  const { auth, setAuth } = useContext(AuthContext);
 
   const [isEdit, setIsEdit] = useState(false);
   const gender = useFormInput("");
@@ -27,7 +25,7 @@ const PersonalField: React.FC = () => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   useEffect(() => {
     isEdit ? setSuccess(false) : setError("");
   }, [setError, setSuccess, isEdit]);
@@ -39,7 +37,7 @@ const PersonalField: React.FC = () => {
 
   useEffect(() => {
     if (personal !== undefined) {
-      if (personal.gender && personal.gender !== 0){
+      if (personal.gender && personal.gender !== 0) {
         gender.setValue(String(personal.gender));
       }
       if (personal.dob && personal.dob !== "") {
@@ -73,11 +71,6 @@ const PersonalField: React.FC = () => {
       setSuccess(true);
       setIsEdit(false);
       setError(null);
-      if (res) {
-        if (auth) {
-          setAuth({jwt: auth?.jwt, personal: res});
-        }
-      }
     } catch (e) {
       setSuccess(false);
       setError(e.message);
@@ -88,19 +81,19 @@ const PersonalField: React.FC = () => {
 
   return (
     <>
-      {error && isEdit && <Alert error={error}/>}
+      {error && isEdit && <Alert error={error} />}
       {success && !isEdit && <Success message="Successfully update" />}
       <div>
         <ColorfulHeader
           color={Theme.headerColors.pipl}
           headingLevel={6}
           size="1.5rem"
-        > Fill these data to get extra points! (Optional) 
+        > Fill these data to get extra points! (Optional)
         </ColorfulHeader>
       </div>
       <div className="mt-3">
         {[
-          { state: gender, key: "gender", choices:genderList },
+          { state: gender, key: "gender", choices: genderList },
           { state: dob, key: "dob" },
           { state: institute, key: "institute" },
         ].map((data) => {
@@ -111,15 +104,16 @@ const PersonalField: React.FC = () => {
               <div className="col-md-6 col-sm-12"><h2>{label}</h2></div>
               <div className="col-md-6 col-sm-12">
                 {!(isEdit) ? (
-                  <h2>{data.key === "gender" ? genderList[Number(gender.value)-1] : value}</h2>
-                ) : (
-                  <InputField
-                    type={data.key === "dob" ? "date" : "text"}
-                    value={String(data.state.value)}
-                    setValue={data.state.setValue}
-                    choices={data.choices ?? []}
-                  />
-                )}
+                  <h2>{data.key === "gender" ? genderList[Number(gender.value) - 1] : value}</h2>
+                ) :
+                  (
+                    <InputField
+                      type={data.key === "dob" ? "date" : "text"}
+                      value={String(data.state.value)}
+                      setValue={data.state.setValue}
+                      choices={data.choices ?? []}
+                    />
+                  )}
               </div>
             </div>
           );
@@ -147,15 +141,16 @@ const PersonalField: React.FC = () => {
               />
             </div>
           </div>
-        ) : (
-          <FilledButton
-            color={Theme.buttonColors.pinkButton}
-            loading={loading}
-            text="Edit"
-            padding="0.75rem 1.5rem"
-            onClick={() => setIsEdit(true)}
-          />
-        )}
+        ) :
+          (
+            <FilledButton
+              color={Theme.buttonColors.pinkButton}
+              loading={loading}
+              text="Edit"
+              padding="0.75rem 1.5rem"
+              onClick={() => setIsEdit(true)}
+            />
+          )}
       </div>
       <style jsx>{`
         h2 {
