@@ -1,6 +1,5 @@
-import { useContext } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import useSWR from "swr";
-import { useRouter } from "next/dist/client/router";
 import Quiz from "./Quiz";
 import CrossWord from "./Crossword";
 import { ApiContext } from "utils/context/api";
@@ -21,13 +20,16 @@ const isQuiz = (
   return false;
 };
 
-const CrosswordPage: React.FC = () => {
+interface Props {
+  setDone: Dispatch<SetStateAction<boolean>>;
+  gameId: number;
+}
+
+const Game: React.FC<Props> = ({ setDone, gameId }) => {
   const apiContext = useContext(ApiContext);
-  const router = useRouter();
-  const { id } = router.query;
   const { data: game, error } = useSWR(
-    id !== undefined ? `${GET_GAME_URL}${id}` : null,
-    () => getGame(apiContext.axios, String(id))
+    gameId !== undefined ? `${GET_GAME_URL}${gameId}` : null,
+    () => getGame(apiContext.axios, String(gameId))
   );
   if (error) return <Alert error={error.message} />;
   if (!game) return <Spinner height="200px" />;
@@ -35,16 +37,21 @@ const CrosswordPage: React.FC = () => {
   return (
     <div className="">
       {isQuiz(game?.data) && game?.data.type === 1 && (
-        <Quiz gameData={game?.data.question as QuizData} quizId={String(id)} />
+        <Quiz
+          gameData={game?.data.question as QuizData}
+          gameId={String(gameId)}
+          setDone={setDone}
+        />
       )}
       {!isQuiz(game?.data) && game?.data.type === 2 && (
         <CrossWord
           gameData={game?.data.problem as CrosswordData}
-          quizId={String(id)}
+          gameId={String(gameId)}
+          setDone={setDone}
         />
       )}
     </div>
   );
 };
 
-export default CrosswordPage;
+export default Game;

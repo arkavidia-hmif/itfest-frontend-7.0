@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { Dispatch, SetStateAction, useContext, useState } from "react";
 import Success from "components/commons/Success";
 import Alert from "components/commons/Alert";
 import { QuizData, QuizResponse } from "interfaces/game";
@@ -7,11 +7,12 @@ import { submitGame } from "api/game";
 import { ApiContext } from "utils/context/api";
 
 interface Props {
-  quizId: string;
+  gameId: string;
   gameData: QuizData;
+  setDone: Dispatch<SetStateAction<boolean>>;
 }
 
-const Quiz: React.FC<Props> = ({ quizId, gameData }) => {
+const Quiz: React.FC<Props> = ({ gameId, gameData, setDone }) => {
   const realData = gameData;
   const apiContext = useContext(ApiContext);
   const [submission, setSubmission] = useState<QuizResponse>({});
@@ -39,10 +40,11 @@ const Quiz: React.FC<Props> = ({ quizId, gameData }) => {
       }
       const res = await submitGame(
         apiContext.axios,
-        quizId,
+        gameId,
         JSON.stringify({ answer: submission })
       );
       if (res) {
+        setDone(true);
         setSuccess(true);
         setError(null);
       }

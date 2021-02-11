@@ -1,4 +1,10 @@
-import { useContext, useLayoutEffect, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useLayoutEffect,
+  useState,
+} from "react";
 import Crossword from "react-crossword";
 import FilledButton from "components/commons/FilledButton";
 import { ApiContext } from "utils/context/api";
@@ -8,11 +14,12 @@ import { submitGame } from "api/game";
 import { CrosswordData } from "interfaces/game";
 
 interface Props {
-  quizId: string;
+  gameId: string;
   gameData: CrosswordData;
+  setDone: Dispatch<SetStateAction<boolean>>;
 }
 
-const CrossWordItem: React.FC<Props> = ({ quizId, gameData }) => {
+const CrossWordItem: React.FC<Props> = ({ gameId, gameData, setDone }) => {
   const data = gameData;
   const apiContext = useContext(ApiContext);
   const [local, setLocal] = useState<{ [key: string]: string }>({});
@@ -21,24 +28,24 @@ const CrossWordItem: React.FC<Props> = ({ quizId, gameData }) => {
   const [error, setError] = useState<string | null>(null);
 
   useLayoutEffect(() => {
-    const none = ".crossword__hidden-input";
     const className = "crossword__controls ";
     const items = Array.from(
-      document.getElementsByClassName(none) as HTMLCollectionOf<HTMLElement>
-    );
-    const noneItems = Array.from(
       document.getElementsByClassName(
         className
       ) as HTMLCollectionOf<HTMLElement>
     );
-    if (noneItems) {
-      for (const item of noneItems) {
-        item.style.outline = "none";
-      }
-    }
     if (items) {
       for (const item of items) {
         item.style.display = "none";
+      }
+    }
+    const none = ".crossword__hidden-input";
+    const noneItems = Array.from(
+      document.getElementsByClassName(none) as HTMLCollectionOf<HTMLElement>
+    );
+    if (noneItems) {
+      for (const item of noneItems) {
+        item.style.outline = "none";
       }
     }
   });
@@ -63,10 +70,11 @@ const CrossWordItem: React.FC<Props> = ({ quizId, gameData }) => {
       }
       const res = await submitGame(
         apiContext.axios,
-        quizId,
+        gameId,
         JSON.stringify({ answer: local })
       );
       if (res) {
+        setDone(true);
         setSuccess(true);
         setError(null);
       }
