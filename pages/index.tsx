@@ -1,11 +1,13 @@
-import HomePage from "./home";
 import Layout from "components/commons/Layout";
+import VerifEmail from "./verif-email/VerifEmail";
 
 const Home: React.FC = () => {
-
   return (
     <Layout title="Home">
-      <HomePage/>
+      <div className="container">
+        <VerifEmail />
+      </div>
+
     </Layout>
   );
 };

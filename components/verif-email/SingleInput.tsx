@@ -44,6 +44,7 @@ const SingleInputComponent: React.SFC<SingleInputProps> = (
             border: 1px solid rgba(0, 0, 0, 0.3);
             background: #ffffff;
             box-shadow: 1px 2px 11px rgba(0, 0, 0, 0.25);
+            font-family: 'Viga';
           }
 
           .single-input input:focus {
