@@ -7,7 +7,7 @@ const VerifEmail: React.SFC = () => {
       <VerifEmailInputCode
         autoFocus
         isNumberInput={false}
-        length={16}
+        length={22}
         onChangeInput={() => null}
       />
     </>
