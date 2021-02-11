@@ -1,9 +1,8 @@
-import AuthWrapper from "components/auth/AuthWrapper";
+import VerifEmail from "./verif-email/VerifEmail";
 import GradientSeparator from "components/auth/GradientSeparator";
 import ColorfulHeader from "components/ColorfulHeader";
 import Layout from "components/commons/Layout";
 import { Theme } from "styles/theme";
-import VerifEmail from "./verif-email/VerifEmail";
 
 const RegisterCompletePage: React.FC = () => {
   const title = "Registrasi Akun";
@@ -18,7 +17,7 @@ const RegisterCompletePage: React.FC = () => {
           Terima kasih telah mendaftar, silahkan cek email untuk tautan
           konfirmasi
       </p>
-        <br />
+      <br />
         <VerifEmail />
       </div>
       <style jsx>{`

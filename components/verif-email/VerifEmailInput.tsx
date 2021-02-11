@@ -1,4 +1,5 @@
 import { useCallback, useState, memo, useContext } from "react";
+import { useRouter } from "next/dist/client/router";
 import SingleInput from "./SingleInput";
 import { Dimen } from "styles/dimen";
 import { verifEmail } from "api/auth";
@@ -6,7 +7,6 @@ import { ApiContext } from "utils/context/api";
 import FilledButton from "components/commons/FilledButton";
 import Alert from "components/commons/Alert";
 import useProgress from "utils/hooks/useProgress";
-import { useRouter } from "next/dist/client/router";
 
 export interface VerifEmailInput {
   length: number;
@@ -112,32 +112,32 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
   const handleOnKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       switch (e.key) {
-        case "Backspace":
-        case "Delete": {
-          e.preventDefault();
-          if (inputValues[activeInput]) {
-            changeCodeAtFocus("");
-          } else {
-            focusPrevInput();
-          }
-          break;
-        }
-        case "ArrowLeft": {
-          e.preventDefault();
+      case "Backspace":
+      case "Delete": {
+        e.preventDefault();
+        if (inputValues[activeInput]) {
+          changeCodeAtFocus("");
+        } else {
           focusPrevInput();
-          break;
         }
-        case "ArrowRight": {
-          e.preventDefault();
-          focusNextInput();
-          break;
-        }
-        case " ": {
-          e.preventDefault();
-          break;
-        }
-        default:
-          break;
+        break;
+      }
+      case "ArrowLeft": {
+        e.preventDefault();
+        focusPrevInput();
+        break;
+      }
+      case "ArrowRight": {
+        e.preventDefault();
+        focusNextInput();
+        break;
+      }
+      case " ": {
+        e.preventDefault();
+        break;
+      }
+      default:
+        break;
       }
     },
     [
@@ -189,7 +189,7 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
       .catch(() => {
         progressObj.setError("Silahkan masukan token yang benar");
       }).finally(() => {
-        progressObj.setLoading(false)
+      progressObj.setLoading(false)
       });
   };
 
