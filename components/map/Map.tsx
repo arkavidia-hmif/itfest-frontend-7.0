@@ -12,7 +12,7 @@ const Map: React.FC = () => {
   ];
   const maxBounds: LatLngBoundsExpression = [
     [-250, -625],
-    [500, 1250]
+    [500, 1250],
   ];
 
   return (
@@ -24,21 +24,24 @@ const Map: React.FC = () => {
       minZoom={1}
       maxBounds={maxBounds}
       scrollWheelZoom={true}
-      style={{ height: "80vh", width: "100%", backgroundColor: "transparent", zIndex: 0 }}
+      style={{
+        height: "80vh",
+        width: "100%",
+        backgroundColor: "transparent",
+        zIndex: 0,
+      }}
       crs={CRS.Simple}
     >
-      <ImageOverlay
-        url="img/indonesia.svg"
-        bounds={bounds}
-      />
+      <ImageOverlay url="img/indonesia.svg" bounds={bounds} />
 
-      {Tenants.map((tenant, index : number) => (
-        <Marker position={tenant.position}
+      {Tenants.map((tenant, index: number) => (
+        <Marker
+          position={tenant.position}
           title={"asd"}
           icon={icon({
             iconUrl: "/img/marker.png",
             iconSize: [24, 36],
-            iconAnchor: [12, 36]
+            iconAnchor: [12, 36],
           })}
           key={index}
         >
@@ -56,19 +59,27 @@ const Map: React.FC = () => {
               </div>
               <div className="row">
                 <div className="info col">
-                  <Link href={{ 
-                    pathname: "/company-profile/[slug]", 
-                    query: { slug: tenant.slug } 
-                  }}>
-                    <a><p>more &gt; &gt; &gt;</p></a>
+                  <Link
+                    href={{
+                      pathname: "/company-profile/[slug]",
+                      query: { slug: tenant.slug },
+                    }}
+                  >
+                    <a>
+                      <p>more &gt; &gt; &gt;</p>
+                    </a>
                   </Link>
                 </div>
                 <div className="info col">
-                  <Link href={{ 
-                    pathname: "/company-profile-alt/[slug]", 
-                    query: { slug: tenant.slug } 
-                  }}>
-                    <a><p>more &gt; &gt; &gt;</p></a>
+                  <Link
+                    href={{
+                      pathname: "/company-profile-alt/[slug]",
+                      query: { slug: tenant.slug },
+                    }}
+                  >
+                    <a>
+                      <p>more &gt; &gt; &gt;</p>
+                    </a>
                   </Link>
                 </div>
               </div>
@@ -81,7 +92,7 @@ const Map: React.FC = () => {
         #popup-body {
           margin: 0;
           width: 100%;
-          display: flex; 
+          display: flex;
           align-items: center;
           justify-content: center;
           flex-wrap: wrap;
@@ -106,19 +117,18 @@ const Map: React.FC = () => {
           cursor: pointer;
           margin-left: auto;
         }
-        
+
         .info a {
           text-decoration: none;
         }
-        
+
         .info p {
-          color: #FE5982;
+          color: #fe5982;
           margin: 0;
         }
       `}</style>
     </MapContainer>
   );
 };
-
 
 export default Map;
