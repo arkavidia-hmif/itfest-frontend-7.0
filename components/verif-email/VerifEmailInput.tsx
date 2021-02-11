@@ -5,6 +5,8 @@ import { verifEmail } from "api/auth";
 import { ApiContext } from "utils/context/api";
 import FilledButton from "components/commons/FilledButton";
 import Alert from "components/commons/Alert";
+import useProgress from "utils/hooks/useProgress";
+import { useRouter } from "next/dist/client/router";
 
 export interface VerifEmailInput {
   length: number;
@@ -34,7 +36,9 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
 
   const apiContext = useContext(ApiContext);
 
-  const [error, setError] = useState<string | null>(null);
+  const progressObj = useProgress();
+
+  const router = useRouter();
 
   const focusInput = useCallback(
     (inputIndex: number) => {
@@ -108,32 +112,32 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
   const handleOnKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       switch (e.key) {
-      case "Backspace":
-      case "Delete": {
-        e.preventDefault();
-        if (inputValues[activeInput]) {
-          changeCodeAtFocus("");
-        } else {
-          focusPrevInput();
+        case "Backspace":
+        case "Delete": {
+          e.preventDefault();
+          if (inputValues[activeInput]) {
+            changeCodeAtFocus("");
+          } else {
+            focusPrevInput();
+          }
+          break;
         }
-        break;
-      }
-      case "ArrowLeft": {
-        e.preventDefault();
-        focusPrevInput();
-        break;
-      }
-      case "ArrowRight": {
-        e.preventDefault();
-        focusNextInput();
-        break;
-      }
-      case " ": {
-        e.preventDefault();
-        break;
-      }
-      default:
-        break;
+        case "ArrowLeft": {
+          e.preventDefault();
+          focusPrevInput();
+          break;
+        }
+        case "ArrowRight": {
+          e.preventDefault();
+          focusNextInput();
+          break;
+        }
+        case " ": {
+          e.preventDefault();
+          break;
+        }
+        default:
+          break;
       }
     },
     [
@@ -173,12 +177,19 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
   );
 
   const handleSubmit = () => {
+    progressObj.reset();
+
+    progressObj.startLoad();
+
     verifEmail(apiContext.axios, inputValues.join(""))
       .then(() => {
-        //
+        progressObj.setSuccess(true);
+        router.push("/login");
       })
       .catch(() => {
-        setError("Silahkan masukan token yang benar");
+        progressObj.setError("Silahkan masukan token yang benar");
+      }).finally(() => {
+        progressObj.setLoading(false)
       });
   };
 
@@ -211,15 +222,18 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
         </div>
       </div>
 
-      <Alert error={error} />
-
-      <div className="mt-3">
+      <div className="mt-5 mb-5">
         <FilledButton
           onClick={handleSubmit}
           text={"Submit"}
           fontSize="1.25rem"
+          loading={progressObj.loading}
         />
       </div>
+
+      <Alert error={progressObj.error} />
+
+
 
       <style jsx>{`
         .verif-email-input {
