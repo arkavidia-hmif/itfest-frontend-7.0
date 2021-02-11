@@ -189,7 +189,7 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
       .catch(() => {
         progressObj.setError("Silahkan masukan token yang benar");
       }).finally(() => {
-      progressObj.setLoading(false)
+        progressObj.setLoading(false);
       });
   };
 

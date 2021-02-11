@@ -16,8 +16,8 @@ const RegisterCompletePage: React.FC = () => {
         <p>
           Terima kasih telah mendaftar, silahkan cek email untuk tautan
           konfirmasi
-      </p>
-      <br />
+        </p>
+        <br />
         <VerifEmail />
       </div>
       <style jsx>{`
