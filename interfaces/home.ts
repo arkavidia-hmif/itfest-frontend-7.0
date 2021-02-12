@@ -1,6 +1,9 @@
 export interface IndividualLeaderboardData {
-    name: string,
-    point: number,
+    id: number,
+    score: number,
+    user: {
+      name: string
+    }
 }
 
 export interface LeaderboardData {
