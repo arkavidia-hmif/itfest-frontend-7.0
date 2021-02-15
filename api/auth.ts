@@ -65,16 +65,14 @@ export async function registerVisitor(
 
 export async function resetPassword(
   axios: AxiosInstance,
-  newPassword: string
+  token: string,
+  password: string
 ): Promise<void> {
   try {
-    await axios.post("/resetpass", {
-      newPassword,
+    await axios.post(`/validation/${token}`, {
+      password,
     });
   } catch(e) {
-    if (e.response) {
-      if (e.response.data.code === "invalid_input") throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.INVALID_INPUT, e.response.data.detail);
-    }
     throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e);
   }
 }

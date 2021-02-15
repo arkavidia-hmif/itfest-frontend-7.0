@@ -5,7 +5,6 @@ import { resetPassword } from "api/auth";
 import InputField from "components/auth/InputField";
 import Alert from "components/commons/Alert";
 import FilledButton from "components/commons/FilledButton";
-import { EmailResetPasswordStatus } from "interfaces/auth";
 import { ApiContext } from "utils/context/api";
 import AuthWrapper from "components/auth/AuthWrapper";
 import { AuthContext } from "utils/context/auth";
@@ -46,16 +45,12 @@ const EmailRecover: React.FC = () => {
 
     setLoading(true);
 
-    resetPassword(apiContext.axios, password)
+    resetPassword(apiContext.axios, String(token), password)
       .then(() => {
         setSuccess(true);
       })
       .catch((e) => {
-        if (e.code === EmailResetPasswordStatus.INVALID_INPUT) {
-          setError("Masukkan password tidak boleh kosong");
-        } else {
-          setError(e.message);
-        }
+        setError(e.message);
       })
       .finally(() => {
         setLoading(false);
@@ -68,8 +63,8 @@ const EmailRecover: React.FC = () => {
         <>
           <Alert error={error} />
           <p className="my-3 mb-4">
-          Jangan khawatir, masukkan emailmu untuk mendapatkan tautan perubahan
-          kata sandi
+          Jangan khawatir, masukkan perubahan
+          kata sandimu
           </p>
           <form
             onSubmit={(evt) => {

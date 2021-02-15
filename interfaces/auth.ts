@@ -57,5 +57,5 @@ export enum RegisterStatus {
 
 export enum EmailResetPasswordStatus {
   ERROR,
-  INVALID_INPUT
+  TOKEN_NOT_FOUND,
 }
