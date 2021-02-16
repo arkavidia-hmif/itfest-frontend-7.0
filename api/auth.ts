@@ -1,6 +1,7 @@
 import { AxiosInstance } from "axios";
 import {
   AuthData,
+  EmailResetPasswordStatus,
   LoginStatus,
   RegisterStatus,
 } from "interfaces/auth";
@@ -62,6 +63,20 @@ export async function registerVisitor(
   }
 }
 
+export async function resetPassword(
+  axios: AxiosInstance,
+  token: string,
+  password: string
+): Promise<void> {
+  try {
+    await axios.post(`/validation/${token}`, {
+      password,
+    });
+  } catch(e) {
+    throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e);
+  }
+}
+
 export async function verifEmail(
   axios: AxiosInstance,
   token: string
@@ -72,3 +87,4 @@ export async function verifEmail(
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
+
