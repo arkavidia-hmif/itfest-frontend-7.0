@@ -46,7 +46,6 @@ const LoginPage: React.FC = () => {
       }
     } catch (e) {
       setError(e.message);
-    } finally {
       setLoading(false);
     }
   };
