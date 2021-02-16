@@ -29,11 +29,10 @@ const InputField: React.FC<Props> = ({
             width: 100%;
             border: none;
             border-radius: 2em;
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 1rem;
             box-shadow: 2px 1px 5px  rgba(0, 0, 0, 0.2);
             box-sizing: border-box;
             background: white;
-            margin: 0rem 0 1rem 0;
             font-size: 1.1rem;
             font-weight: bold;
           }
