@@ -71,7 +71,7 @@ const MerchStoreTop: React.SFC = () => {
             width: 80%;
           }
 
-          @media (max-width: ${Dimen.xsBreakpoint}) {
+          @media (max-width: ${Dimen.lgBreakpoint}) {
             .ms-hero-title {
               display: flex;
               justify-content: center;

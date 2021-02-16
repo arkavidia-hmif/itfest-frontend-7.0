@@ -113,7 +113,7 @@ const MerchStore: React.SFC = () => {
             }
           }
 
-          @media (max-width: ${Dimen.xsBreakpoint}) {
+          @media (max-width: ${Dimen.lgBreakpoint}) {
             .merch-store-center {
               display: none;
             }
@@ -123,7 +123,7 @@ const MerchStore: React.SFC = () => {
             }
           }
 
-          @media (max-width: ${Dimen.xsBreakpoint}) {
+          @media (max-width: ${Dimen.lgBreakpoint}) {
             .merch-store-l-btn {
               margin-left: 3vw;
               margin-right: 3vw;
