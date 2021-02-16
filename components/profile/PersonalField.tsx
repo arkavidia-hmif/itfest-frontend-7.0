@@ -1,72 +1,156 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import useSWR from "swr";
 import InputField from "./InputField";
 import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
 import FilledButton from "components/commons/FilledButton";
-
-const personal = [
-  {
-    text: "Gender",
-  },
-  {
-    text: "Date of Birth",
-  },
-  {
-    text: "Institution",
-  },
-];
+import { ApiContext } from "utils/context/api";
+import useFormInput from "utils/hooks/useFormInput";
+import { editPersonalData, getPersonalData, PROFILE_URL } from "api/profile";
+import Alert from "components/commons/Alert";
+import Spinner from "components/commons/Spinner";
+import { checkTruthPersonal } from "utils/transformer/profile";
+import Success from "components/commons/Success";
+import profileAttributes, { genderList } from "utils/constants/profile-attributes";
+import { PersonalData } from "interfaces/auth";
 
 const PersonalField: React.FC = () => {
-  const [value, setValue] = useState("");
-  const [isEdit, setIsEdit] = useState(true);
-  let i = -1;
+  const apiContext = useContext(ApiContext);
+
+  const [isEdit, setIsEdit] = useState(false);
+  const gender = useFormInput("");
+  const dob = useFormInput("");
+  const institute = useFormInput("");
+
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    isEdit ? setSuccess(false) : setError("");
+  }, [setError, setSuccess, isEdit]);
+
+  const { data: personal, error: errorPersonal, mutate } = useSWR(
+    PROFILE_URL,
+    () => getPersonalData(apiContext.axios)
+  );
+
+  useEffect(() => {
+    if (personal !== undefined) {
+      if (personal.gender && personal.gender !== 0) {
+        gender.setValue(String(personal.gender));
+      }
+      if (personal.dob && personal.dob !== "") {
+        dob.setValue(personal.dob);
+      }
+      if (personal.institute && personal.institute !== "") {
+        institute.setValue(personal.institute);
+      }
+    }
+  }, [
+    personal,
+    gender.setValue,
+    dob.setValue,
+    institute.setValue,
+  ]);
+
+  if (errorPersonal) return <Alert error="Masalah koneksi" />;
+  if (!personal) return <Spinner height="200px" />;
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const truth = await checkTruthPersonal(
+        Number(gender.value),
+        dob.value,
+        institute.value,
+        personal
+      );
+      const res = await editPersonalData(apiContext.axios, truth);
+      mutate(res);
+      setSuccess(true);
+      setIsEdit(false);
+      setError(null);
+    } catch (e) {
+      setSuccess(false);
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
+      {error && isEdit && <Alert error={error} />}
+      {success && !isEdit && <Success message="Successfully update" />}
       <div>
         <ColorfulHeader
           color={Theme.headerColors.pipl}
           headingLevel={6}
           size="1.5rem"
-        > Fill these data to get extra points! (Optional) 
+        > Fill these data to get extra points! (Optional)
         </ColorfulHeader>
       </div>
       <div className="mt-3">
-        {personal.map((data) => {
-          i += 1;
+        {[
+          { state: gender, key: "gender", choices: genderList },
+          { state: dob, key: "dob" },
+          { state: institute, key: "institute" },
+        ].map((data) => {
+          const label = profileAttributes[data.key];
+          const value = personal[data.key as keyof PersonalData] || "";
           return (
-            <div key={i} className="d-flex justify-content-between">
-              <h2>{data.text}</h2>
-              { isEdit ? (
-                <InputField
-                  type={data.text}
-                  value={value}
-                  setValue={setValue}
-                  placeholder={data.text}
-                />
-              ) : (
-                <h2>{value}</h2>
-              )}
+            <div key={label} className="row">
+              <div className="col-md-6 col-sm-12"><h2>{label}</h2></div>
+              <div className="col-md-6 col-sm-12">
+                {!(isEdit) ? (
+                  <h2>{data.key === "gender" ? genderList[Number(gender.value) - 1] : value}</h2>
+                ) :
+                  (
+                    <InputField
+                      type={data.key === "dob" ? "date" : "text"}
+                      value={String(data.state.value)}
+                      setValue={data.state.setValue}
+                      choices={data.choices ?? []}
+                    />
+                  )}
+              </div>
             </div>
           );
         })}
       </div>
-      <div className="d-flex justify-content-center mt-3">
+      <div className="mt-3">
         {isEdit ? (
-          <FilledButton
-            color={Theme.buttonColors.pinkButton}
-            text="Submit"
-            padding="0.75rem 3rem"
-            onClick={() => setIsEdit(false)}
-          />
-        ) : (
-          <FilledButton
-            color={Theme.buttonColors.pinkButton}
-            text="Edit"
-            padding="0.75rem 3rem"
-            onClick={() => setIsEdit(true)}
-          />
-        )}
+          <div className="row">
+            <div className="col-md-6 col-sm-12">
+              <FilledButton
+                color={Theme.buttonColors.pinkButton}
+                loading={loading}
+                text="Submit"
+                padding="0.75rem 2rem"
+                onClick={handleSubmit}
+              />
+            </div>
+            <div className="col-md-6 col-sm-12">
+              <FilledButton
+                color={Theme.buttonColors.darkPinkButton}
+                loading={loading}
+                text="Cancel"
+                padding="0.75rem 2rem"
+                onClick={() => setIsEdit(false)}
+              />
+            </div>
+          </div>
+        ) :
+          (
+            <FilledButton
+              color={Theme.buttonColors.pinkButton}
+              loading={loading}
+              text="Edit"
+              padding="0.75rem 1.5rem"
+              onClick={() => setIsEdit(true)}
+            />
+          )}
       </div>
       <style jsx>{`
         h2 {

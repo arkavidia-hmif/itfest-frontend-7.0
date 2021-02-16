@@ -1,11 +1,13 @@
 import { createContext } from "react";
-import { AuthData } from "interfaces/auth";
+import { AuthData, VisitorProfileData } from "interfaces/auth";
 
 export interface AuthContextType {
   authenticated: boolean;
   auth?: AuthData;
-  setAuthenticated: (newValue: boolean) => void;
-  setAuth: (newValue?: AuthData) => void;
+  profile?: VisitorProfileData;
+  setProfile: (newValue?: VisitorProfileData) => void;
+  login: (auth: AuthData, profile: VisitorProfileData) => void;
+  logout: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType>(

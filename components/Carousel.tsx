@@ -61,7 +61,11 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
       <style jsx>
         {`
           .carousel-wrapper {
-            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: auto;
+            width: 95%;
             position: relative;
             border-radius: 1rem;
           }
@@ -130,12 +134,12 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
           @media (max-width: 576px) { 
 
             .carousel-wrapper {
-              width: 95%;
+              width: 90%;
               margin: 0 auto;
             }
 
             .message {
-              right: -2.5rem;
+              right: -1.5rem;
             }
 
             .message img {

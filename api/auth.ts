@@ -4,20 +4,20 @@ import {
   LoginStatus,
   RegisterStatus,
 } from "interfaces/auth";
-import { ApiError, ApiResponse, StandardError } from "interfaces/api";
+import { ApiError, StandardError } from "interfaces/api";
 
 export async function login(
   axios: AxiosInstance,
   email: string,
   password: string
-): Promise<ApiResponse<AuthData>> {
+): Promise<AuthData> {
   try {
     const response = await axios.post("/login", {
       email,
       password,
     });
 
-    return response.data as ApiResponse<AuthData>;
+    return response.data.data as AuthData;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
@@ -29,22 +29,24 @@ export async function login(
       }
     }
 
-    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
+    throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
   }
 }
 
 export async function registerVisitor(
   axios: AxiosInstance,
+  name: string,
   email: string,
   password: string,
-): Promise<ApiResponse<AuthData>> {
+  telp: string
+): Promise<void> {
   try {
-    const response = await axios.post("/register/visitor/", {
+    await axios.post("/register/visitor", {
+      name,
       email,
       password,
+      telp
     });
-
-    return response.data as ApiResponse<AuthData>;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
@@ -56,6 +58,17 @@ export async function registerVisitor(
       }
     }
 
+    throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
+  }
+}
+
+export async function verifEmail(
+  axios: AxiosInstance,
+  token: string
+): Promise<void> {
+  try {
+    await axios.post(`/validation/${token}`, {});
+  } catch (e) {
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
