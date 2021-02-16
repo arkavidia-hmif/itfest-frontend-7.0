@@ -1,5 +1,6 @@
-import * as React from "react";
+import { useState } from "react";
 import Carousel, { RenderArrowProps } from "react-elastic-carousel";
+import ImageModal from "./image-modal";
 
 interface Props {
   items: string[];
@@ -104,15 +105,30 @@ const Gallery: React.FC<Props> = ({items}) => {
     );
   };
 
+  const [show, setShow] = useState(false);
+  const [image, setImage] = useState("");
+
+  const handleClick = (item:string) => {
+    setImage(item);
+    setShow(true);
+  };
+
+  const breakpoints = [
+    { width: 1, itemsToShow: 1},
+    { width: 500, itemsToShow: 2},
+    { width: 850, itemsToShow: 3 }
+  ];
+
   return (
     <>
       <div className="flex-container">
         <div>
           <h1>Gallery</h1>
         </div>
+        <ImageModal show={show} setShow={setShow} image={image} />
         <div className="carousel-background">
           <Carousel 
-            itemsToShow={3}
+            breakPoints={breakpoints}
             renderPagination={({ pages }) => {
               return (
                 <>
@@ -128,7 +144,7 @@ const Gallery: React.FC<Props> = ({items}) => {
           >
             {items.map((item, index) => 
               <div key={index} className="item-container">
-                <img src={item} alt="Foto"/>
+                <img src={item} alt="Foto Gallery" onClick={() => handleClick(item)} />
               </div>
             )}
           </Carousel>
@@ -137,6 +153,7 @@ const Gallery: React.FC<Props> = ({items}) => {
       <style jsx>{`
         img {
           height: 100%;
+          max-width: 100%;
           width: auto;
         }
         
@@ -145,34 +162,25 @@ const Gallery: React.FC<Props> = ({items}) => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          margin-top: 8%;
+          margin-top: 10%;
         }
 
         .carousel-background {
-          width: 110%;
+          width: 100%;
           height: 20rem;
           display: flex;
           align-items: center;
         }
 
         .item-container {
-          background: white;
+          background: transparent;
           width: 95%;
-          height: 15rem;
+          height: 18rem;
           text-align: center;
+          outline: none;
+          cursor : pointer;
         }
 
-        @media only screen and (max-width: 1000px) {
-          .carousel-background {
-            height: 10rem;
-          }
-
-          .item-container {
-            background: white;
-            width: 90%;
-            height: 8rem;
-          }
-        }
       `}</style>
     </>
   );
