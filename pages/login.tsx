@@ -65,6 +65,7 @@ const LoginPage: React.FC = () => {
           setValue={setEmail}
           placeholder="johndoe@email.com"
         />
+        <div className="mb-4" />
         <label>Kata Sandi</label>
         <InputField
           type="password"
