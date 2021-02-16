@@ -15,7 +15,7 @@ const SelectField: React.FC<Props> = ({
     <select
       className={InputStyle.inputBox}
       value={value}
-      onChange={(e) => { setValue(e.target.value) }}>
+      onChange={(e) => { setValue(e.target.value); }}>
       {Object.entries(choices).map((choice, index) => (
         <option value={choice[0]} key={index}>{choice[1]}</option>
       ))}
