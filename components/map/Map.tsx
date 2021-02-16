@@ -63,14 +63,6 @@ const Map: React.FC = () => {
                     <a><p>more &gt; &gt; &gt;</p></a>
                   </Link>
                 </div>
-                <div className="info col">
-                  <Link href={{ 
-                    pathname: "/company-profile-alt/[slug]", 
-                    query: { slug: tenant.slug } 
-                  }}>
-                    <a><p>more &gt; &gt; &gt;</p></a>
-                  </Link>
-                </div>
               </div>
             </div>
           </Popup>

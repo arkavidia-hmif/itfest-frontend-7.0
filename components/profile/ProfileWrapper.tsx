@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import useSWR from "swr";
 import ProfileSidebar from "./sidebar/ProfileSidebar";
 import PrimaryField from "./PrimaryField";
 import PersonalField from "./PersonalField";
 import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
+import { ApiContext } from "utils/context/api";
+import { getProfile, PROFILE_URL } from "api/profile";
+import Alert from "components/commons/Alert";
+import Spinner from "components/commons/Spinner";
 
 
 const ProfileWrapper: React.FC = () => {
+  const apiContext = useContext(ApiContext);
+
   const [selection, setSelection] = useState(0);
   const getComponent = () => {
     if (selection === 0){
@@ -17,6 +24,14 @@ const ProfileWrapper: React.FC = () => {
     } 
   };
 
+  const { data: profile, error: errorProfile } = useSWR (
+    PROFILE_URL,
+    () => getProfile(apiContext.axios)
+  );
+
+  if (errorProfile) return <Alert error="Masalah koneksi" />;
+  if (!profile) return <Spinner height="200px" />;
+
   return (
     <div className="container main-profile">
       <div className="row">
@@ -26,14 +41,14 @@ const ProfileWrapper: React.FC = () => {
             headingLevel={6}
             size="2rem"
           >
-            Hi, John!
+            Hi, {profile?.name}!
           </ColorfulHeader>
         </div>
         <div className="col-1 points mr-1">
           <h2 id="point">Points<div className="indicator"></div></h2>
         </div>
         <div className="col-9">
-          <h2>1000</h2>
+          <h2>{profile?.point}</h2>
         </div>
         <div className="col-lg-4 col-xs-12 mt-4">
           <ProfileSidebar

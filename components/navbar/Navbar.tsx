@@ -32,22 +32,17 @@ const Navbar: React.FC = () => {
       <BurgerMenu {...burgerProps} />
       <nav className="container-fluid max-content">
         <Burger {...burgerProps} />
-        {!open ? (
-          <div className="d-flex align-items-center">
-            <div className="text-center">
-              <Link href="/">
-                <a>
-                  <img src="/img/logo-horizontal.svg" alt="Logo Arkavidia" />
-                </a>
-              </Link>
-              <div className="">
+        <NavDesktop open={open} />
+        <div id="hero-container" className="align-items-center w-100 justify-content-center">
+          <Link href="/">
+            <a>
+              <div className="itfest-container d-flex align-items-center">
+                <img src="/img/logo-horizontal.svg" alt="Logo Arkavidia" />
                 <h1>IT FEST</h1>
               </div>
-            </div>
-          </div>
-        ) : (
-          <NavDesktop />
-        )}
+            </a>
+          </Link>
+        </div>
       </nav>
 
       <style jsx>{`
@@ -59,74 +54,46 @@ const Navbar: React.FC = () => {
           background: #ffff;
           transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        img {
-          height: 60%;
-          width: 60%;
-        }
         header.shadow {
           box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
             0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
         }
-        .text-center {
-          display: flex;
-          text-align: center;
-          align-items: center;
-          height: 70%;
-        }
 
-        .text-center h1 {
+        .itfest-container h1 {
+          margin: 0 0 0 1rem;
           font-size: 1.7rem;
-          margin-top: 1rem;
           background: linear-gradient(to right, #fe5982, #441985);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+
         nav {
           background: #ffff;
           display: flex;
           width: 100%;
           height: ${Dimen.navbarHeight};
           align-items: center;
-          justify-content: ${!open ? "center" : ""};
         }
 
-        .logo {
-          max-width: 300px;
-        }
-
-        .logo img {
-          height: 60px;
+        img {
+          height: 40px;
         }
 
         @media (max-width: ${Dimen.navbarBreakpoint}) {
-          #spacer {
-            flex-grow: 1 !important;
-          }
-          .logo img {
-            height: 30px;
-          }
-
-          img {
-            height: 45%;
-            width: 45%;
-          }
-
-          .text-center {
-            display: flex;
-            text-align: center;
-            align-items: center;
-            height: 70%;
-          }
-
-          .text-center h1 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            margin-left: -4rem;
-          }
-
           nav {
             height: ${Dimen.navbarMobileHeight};
           }
+        }
+      `}</style>
+      <style jsx>{`
+        #hero-container {
+          display: ${open ? "none" : "flex"};
+        }  
+
+        @media (max-width: ${Dimen.navbarBreakpoint}) {
+          #hero-container {
+            display: flex;
+          } 
         }
       `}</style>
     </header>

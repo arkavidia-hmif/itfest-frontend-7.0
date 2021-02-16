@@ -7,15 +7,17 @@ interface Props {
     done: boolean;
     aboutUs: string;
     videoUrl: string;
+    hiring: string;
+    socialMedia: string;
 }
 
-const CombinedComponents: React.FC<Props> = ({done, aboutUs,videoUrl}) => {
+const CombinedComponents: React.FC<Props> = ({done, aboutUs, videoUrl, hiring, socialMedia}) => {
   return (
     <>
       <div className="flex-container">
         <div className="margin">
           <AboutUs aboutUs={aboutUs}/>
-          <ButtonCombined done={done}/>
+          <ButtonCombined done={done} hiring={hiring} socialMedia={socialMedia} />
         </div>
         <div className="grid-item-2">
           <div className="grid-item-2-flex">

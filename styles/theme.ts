@@ -121,6 +121,8 @@ export const Theme = {
       "linear-gradient(0deg, rgba(168, 142, 215, 0.39) 2.49%, rgba(196, 196, 196, 0) 48.34%)", // white to grey
     pitopl:
       "linear-gradient(180deg, #FFFFFF 0%, #FFDCF4 20.31%, #FFD9DB 65.62%, #E8DBFA 100%)", // pink to purple
+    whplpi:
+      "linear-gradient(180deg, #FFFFFF 3.87%, rgba(219, 194, 255, 0.53) 29.4%, rgba(251, 188, 200, 0.49) 71.96%);"
   },
   headerColors: {
     plbl: "linear-gradient(120deg, #835FBF, #835FBF, #30C5E8)", // Purple blue (e.g on competition page)
