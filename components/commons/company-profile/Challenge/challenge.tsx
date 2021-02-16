@@ -41,7 +41,7 @@ const Challenge: React.FC<Props> = ({done}) => {
         }
 
         .challenge-margin {
-            margin-top: 5%;
+            margin-top: 8%;
             margin-bottom: 5rem;
             margin-left: 10%;
             margin-right: 10%;
@@ -171,7 +171,7 @@ const Challenge: React.FC<Props> = ({done}) => {
         </div>
         <style jsx>{`
         .challenge-margin {
-            margin-top: 5%;
+            margin-top: 8%;
             margin-bottom: 5rem;
             margin-left: 10%;
             margin-right: 10%;

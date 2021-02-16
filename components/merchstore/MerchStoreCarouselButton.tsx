@@ -1,16 +1,17 @@
 import { RenderArrowProps } from "react-elastic-carousel";
 import { Dimen } from "styles/dimen";
 
-const MerchStoreCarouselButton: React.FC<RenderArrowProps> = ({ type, onClick, isEdge }) => {
+const MerchStoreCarouselButton: React.FC<RenderArrowProps> = ({
+  type,
+  onClick,
+  isEdge,
+}) => {
   const buttonImgSrc = `/img/merchstore/${type.toLowerCase()}_button.png`;
 
   return (
     <div className="d-flex flex-column justify-content-center next-btn-container">
       <button onClick={onClick} disabled={isEdge} className="carousel-btn">
-        <img
-          src={buttonImgSrc}
-          className="carousel-icon"
-        />
+        <img src={buttonImgSrc} className="carousel-icon" />
       </button>
       <style jsx>{`
         .carousel-btn {
@@ -29,9 +30,10 @@ const MerchStoreCarouselButton: React.FC<RenderArrowProps> = ({ type, onClick, i
           transition: box-shadow 200ms ease-out;
           transition: opacity 200ms ease-out;
           padding: 0.5rem;
+          background: white;
         }
 
-        .carousel-btn:disabled .carousel-icon{
+        .carousel-btn:disabled .carousel-icon {
           opacity: 0;
         }
 
@@ -39,22 +41,21 @@ const MerchStoreCarouselButton: React.FC<RenderArrowProps> = ({ type, onClick, i
           box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
         }
 
-        @media (max-width: ${Dimen.mdBreakpoint}){
+        @media (max-width: ${Dimen.mdBreakpoint}) {
           .carousel-icon {
-            width: 1rem;
-            height: 2rem;
-            border-radius: 0;
-            box-shadow: none;
+            width: 1.65rem;
+            height: 1.65rem;
+            border-radius: 50%;
             padding: 0;
           }
 
-          .carousel-icon:hover{
+          .carousel-icon:hover {
             box-shadow: none !important;
           }
 
           .carousel-btn {
-            width: 1rem;
-            height: 2rem;
+            width: 0.5rem;
+            height: 0.5rem;
           }
         }
       `}</style>

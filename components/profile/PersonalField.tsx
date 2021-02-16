@@ -61,9 +61,10 @@ const PersonalField: React.FC = () => {
     setLoading(true);
     try {
       const truth = await checkTruthPersonal(
-        Number(gender.value),
+        gender.value,
         dob.value,
         institute.value,
+        personal.filled,
         personal
       );
       const res = await editPersonalData(apiContext.axios, truth);
@@ -84,12 +85,12 @@ const PersonalField: React.FC = () => {
       {error && isEdit && <Alert error={error} />}
       {success && !isEdit && <Success message="Successfully update" />}
       <div>
-        <ColorfulHeader
+        {personal.filled ? "" : <ColorfulHeader
           color={Theme.headerColors.pipl}
           headingLevel={6}
           size="1.5rem"
-        > Fill these data to get extra points! (Optional)
-        </ColorfulHeader>
+        > Fill these data to get extra points! (Optional) 
+        </ColorfulHeader>}
       </div>
       <div className="mt-3">
         {[
@@ -100,20 +101,27 @@ const PersonalField: React.FC = () => {
           const label = profileAttributes[data.key];
           const value = personal[data.key as keyof PersonalData] || "";
           return (
-            <div key={label} className="row">
+            <div key={label} className="row mt-3">
               <div className="col-md-6 col-sm-12"><h2>{label}</h2></div>
               <div className="col-md-6 col-sm-12">
                 {!(isEdit) ? (
-                  <h2>{data.key === "gender" ? genderList[Number(gender.value) - 1] : value}</h2>
-                ) :
-                  (
-                    <InputField
-                      type={data.key === "dob" ? "date" : "text"}
-                      value={String(data.state.value)}
-                      setValue={data.state.setValue}
-                      choices={data.choices ?? []}
-                    />
-                  )}
+                  <h2 className="value">{data.key === "gender" ? (
+                    genderList[Number(gender.value)-1]
+                  ) : data.key === "dob" ? (
+                    String(value).substring(0,10) 
+                  ) : value}</h2>
+                ) : (
+                  <InputField
+                    type={data.key === "dob" ? "date" : "text"}
+                    value={data.key === "dob" ? (
+                      String(data.state.value).substring(0,10) 
+                    ) : (
+                      String(data.state.value)
+                    )}
+                    setValue={data.state.setValue}
+                    choices={data.choices ?? []}
+                  />
+                )}
               </div>
             </div>
           );
@@ -157,6 +165,9 @@ const PersonalField: React.FC = () => {
           font: viga;
           font-size: 1.3rem;
           color: #441985;
+        }
+        .value {
+          color: #0f2f2f;
         }
         @media only screen and (max-width: 767px) {
           h2{

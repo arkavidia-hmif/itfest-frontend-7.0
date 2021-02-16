@@ -108,25 +108,27 @@ export const checkTruthPrimary = async (
 };
 
 export const checkTruthPersonal = async (
-  gender: number | null,
+  gender: string | null,
   dob: string | null,
   institute: string | null,
+  filled: boolean,
   personal: PersonalData
 ): Promise<PersonalData> => {
   const data: PersonalData = {
     gender: personal?.gender,
     dob: personal?.dob,
-    institute: personal?.institute
+    institute: personal?.institute,
+    filled: personal?.filled
   };
   if (!personal) {
     throw new Error("Masalah koneksi");
   }
 
   if (isEmpty(dob)) {
-    if (isValidDate(personal?.dob)) data.dob = personal?.dob;
+    if (isValidDate(personal?.dob)) data.dob = String(personal?.dob).substring(0,10);
     else throw new Error("Tanggal lahir tidak valid");
   } else if (isValidDate(dob)) {
-    data.dob = dob;
+    data.dob = String(dob).substring(0,10);
   } else throw new Error("Tanggal lahir tidak valid");
 
   if (isEmpty(institute)) {
@@ -140,6 +142,8 @@ export const checkTruthPersonal = async (
   if (gender) {
     data.gender = Number(gender);
   } else data.gender = Number(personal?.gender);
+
+  data.filled = filled;
 
   return data;
 };

@@ -5,13 +5,13 @@ import { MerchStoreCarouselBreakPoints } from "utils/constants/merch-store-place
 import { MerchStoreItem } from "interfaces/merch-store";
 
 interface Props {
-  items: Array<MerchStoreItem>
+  items: Array<MerchStoreItem>;
 }
 
 const MerchStoreCarousel: React.FC<Props> = ({ items }) => {
   const buyCallback = (item: MerchStoreItem) => {
     // debug
-    // eslint-disable-next-line no-console 
+    // eslint-disable-next-line no-console
     console.log(`Buy ${item.name}`);
   };
 
@@ -26,6 +26,7 @@ const MerchStoreCarousel: React.FC<Props> = ({ items }) => {
           buyCallback={buyCallback}
           key={index}
           item={item}
+          hover={true}
         />
       ))}
     </Carousel>
