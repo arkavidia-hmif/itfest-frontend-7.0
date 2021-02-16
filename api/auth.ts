@@ -4,7 +4,7 @@ import {
   LoginStatus,
   RegisterStatus,
 } from "interfaces/auth";
-import { ApiError } from "interfaces/api";
+import { ApiError, StandardError } from "interfaces/api";
 
 export async function login(
   axios: AxiosInstance,
@@ -59,5 +59,16 @@ export async function registerVisitor(
     }
 
     throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
+  }
+}
+
+export async function verifEmail(
+  axios: AxiosInstance,
+  token: string
+): Promise<void> {
+  try {
+    await axios.post(`/validation/${token}`, {});
+  } catch (e) {
+    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
