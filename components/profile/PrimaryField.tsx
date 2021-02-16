@@ -101,20 +101,19 @@ const PrimaryField: React.FC = () => {
           const label = profileAttributes[data.key];
           const value = primary[data.key as keyof PrimaryData] || "";
           return (
-            <div key={label} className="row">
+            <div key={label} className="row mt-3">
               <div className="col-md-6 col-sm-12"><h2>{label}</h2></div>
               <div className="col-md-6 col-sm-12">
                 {!(isEdit && data.key !== "email") ? (
-                  <h2>{value ?? "-"}</h2>
-                ) :
-                  (
-                    <InputField
-                      type={data.key === "dob" ? "date" : "text"}
-                      value={String(data.state.value)}
-                      setValue={data.state.setValue}
-                      choices={[]}
-                    />
-                  )}
+                  <h2 className="value">{value ?? "-"}</h2>
+                ) : (
+                  <InputField
+                    type="text"
+                    value={String(data.state.value)}
+                    setValue={data.state.setValue}
+                    choices={[]}
+                  />
+                )}
               </div>
             </div>
           );
@@ -158,6 +157,9 @@ const PrimaryField: React.FC = () => {
           font: viga;
           font-size: 1.3rem;
           color: #441985;
+        }
+        .value {
+          color: #0f2f2f;
         }
         @media only screen and (max-width: 767px) {
           h2{

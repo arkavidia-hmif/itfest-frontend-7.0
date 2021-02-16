@@ -38,6 +38,7 @@ export interface PersonalData {
   gender: number | null;
   dob: string | null;
   institute: string | null;
+  filled: boolean;
 }
 
 export enum LoginStatus {
