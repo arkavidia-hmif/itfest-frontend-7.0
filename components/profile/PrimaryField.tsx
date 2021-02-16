@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import useSWR from "swr";
-import InputField from "./InputField";
+import InputField from "components/commons/InputField";
 import { editPrimaryData, getPrimaryData, PROFILE_URL } from "api/profile";
 import { ApiContext } from "utils/context/api";
 import { Theme } from "styles/theme";
@@ -50,10 +50,7 @@ const PrimaryField: React.FC = () => {
       }
     }
   }, [
-    primary,
-    email.setValue,
-    telp.setValue,
-    name.setValue,
+    primary
   ]);
 
   if (errorPrimary) return <Alert error="Masalah koneksi" />;
@@ -106,14 +103,14 @@ const PrimaryField: React.FC = () => {
               <div className="col-md-6 col-sm-12">
                 {!(isEdit && data.key !== "email") ? (
                   <h2 className="value">{value ?? "-"}</h2>
-                ) : (
-                  <InputField
-                    type="text"
-                    value={String(data.state.value)}
-                    setValue={data.state.setValue}
-                    choices={[]}
-                  />
-                )}
+                ) :
+                  (
+                    <InputField
+                      type="text"
+                      value={data.state.value}
+                      setValue={data.state.setValue}
+                    />
+                  )}
               </div>
             </div>
           );
