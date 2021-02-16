@@ -1,10 +1,10 @@
-import { Dimen } from "styles/dimen";
+import InputStyle from "./InputBox.module.css";
 
 interface Props {
   type?: string;
   value: string;
   setValue: (newValue: string) => void;
-  placeholder: string;
+  placeholder?: string;
 }
 
 const InputField: React.FC<Props> = ({
@@ -13,10 +13,10 @@ const InputField: React.FC<Props> = ({
   setValue,
   placeholder,
 }) => {
-
   return (
     <div>
       <input
+        className={InputStyle.inputBox}
         type={type}
         value={value}
         onChange={(evt) => {
@@ -24,27 +24,6 @@ const InputField: React.FC<Props> = ({
         }}
         placeholder={placeholder}
       />
-      <style jsx>{`
-          input{
-            width: 100%;
-            border: none;
-            border-radius: 2em;
-            padding: 0.6rem 1rem;
-            box-shadow: 2px 1px 5px  rgba(0, 0, 0, 0.2);
-            box-sizing: border-box;
-            background: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-          }
-          input:focus{
-            outline: none;
-          }
-          @media only screen and (max-width: ${Dimen.mdBreakpoint}) {
-            input{
-              font-size: 0.9rem;
-            }
-          }
-        `}</style>
     </div>
   );
 };
