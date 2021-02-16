@@ -2,27 +2,26 @@ import MerchStoreCarousel from "./MerchStoreCarousel";
 import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
 import { Dimen } from "styles/dimen";
 
-const MerchStoreExpanded: React.FC = () => {
+interface Props {
+  merchantName: string;
+  handleClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}
 
-  const { merchantName, storeLogo } = {
-    merchantName: "Arkavidia",
-    storeLogo: "/img/merchstore/store_logo.png"
+const MerchStoreExpanded: React.FC<Props> = ({ merchantName, handleClose }) => {
+  const { storeLogo } = {
+    storeLogo: "/img/merchstore/store_logo.png",
   };
 
   return (
     <div className="w-100 merch-store-container">
       <div className="row">
         <div className="merch-store-cross-button">
-          <button>
+          <button onClick={handleClose}>
             <img src="/img/merchstore/cross_button.png" />
           </button>
         </div>
         <div className="col-lg-6 merch-title justify-content-center justify-content-lg-start row">
-          <img
-            className="col-md-6"
-            src={storeLogo}
-            alt={merchantName}
-          />
+          <img className="col-md-6" src={storeLogo} alt={merchantName} />
           <h2 className="mb-0 col-md-6">{merchantName}&#39;s Shop</h2>
         </div>
         <div className="merch-store-search col-lg-6 pr-lg-5 align-items-center align-items-lg-end ">
@@ -115,14 +114,14 @@ const MerchStoreExpanded: React.FC = () => {
             margin-top: 2.5rem;
           }
 
-          @media (max-width: ${Dimen.mdBreakpoint}){
+          @media (max-width: ${Dimen.mdBreakpoint}) {
             .merch-title h2 {
               text-align: center;
             }
           }
         `}
       </style>
-    </div >
+    </div>
   );
 };
 
