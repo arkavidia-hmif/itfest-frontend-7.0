@@ -11,7 +11,6 @@ import { PrimaryData } from "interfaces/auth";
 import { AuthContext } from "utils/context/auth";
 import useFormInput from "utils/hooks/useFormInput";
 import Alert from "components/commons/Alert";
-import Success from "components/commons/Success";
 import Spinner from "components/commons/Spinner";
 import useStringFormInput from "utils/hooks/useStringFormInput";
 
@@ -87,8 +86,7 @@ const PrimaryField: React.FC = () => {
 
   return (
     <>
-      {error && isEdit && <Alert error={error} />}
-      {success && !isEdit && <Success message="Successfully update" />}
+      <Alert error={success ? "Update sukses" : error} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} />
       <div className="mt-3">
         {[
           { state: email, key: "email" },
