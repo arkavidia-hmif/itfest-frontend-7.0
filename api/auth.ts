@@ -4,8 +4,9 @@ import {
   EmailResetPasswordStatus,
   LoginStatus,
   RegisterStatus,
+  EmailVerifStatus
 } from "interfaces/auth";
-import { ApiError, StandardError } from "interfaces/api";
+import { ApiError } from "interfaces/api";
 
 export async function login(
   axios: AxiosInstance,
@@ -73,7 +74,7 @@ export async function resetPassword(
       password,
     });
   } catch (e) {
-    throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e);
+    throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e.message);
   }
 }
 
@@ -88,7 +89,14 @@ export async function verifEmail(
       token
     });
   } catch (e) {
-    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
+    if (e.response?.data?.code === "invalid-token") {
+      throw new ApiError<EmailVerifStatus>(
+        EmailVerifStatus.INVALID_TOKEN,
+        "Token invalid"
+      );
+    }
+
+    throw new ApiError<EmailVerifStatus>(EmailVerifStatus.ERROR, e.message);
   }
 }
 

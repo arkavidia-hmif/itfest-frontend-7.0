@@ -191,8 +191,8 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
         progressObj.setSuccess(true);
         router.push("/login");
       })
-      .catch(() => {
-        progressObj.setError("Silahkan masukan token yang benar");
+      .catch((e) => {
+        progressObj.setError(e.message);
       }).finally(() => {
         progressObj.setLoading(false);
       });
@@ -201,12 +201,15 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
   return (
     <>
       <div className="d-flex flex-column align-items-center justify-content-center mb-5">
-        <div>
+        <div className="mb-3">
           <h1>Enter your code</h1>
         </div>
+
+        <Alert error={progressObj.error} />
+
         <div
           {...rest}
-          className="d-flex justify-content-center verif-email-input"
+          className="mt-3 d-flex justify-content-center verif-email-input"
         >
           {Array(length)
             .fill("")
@@ -235,10 +238,6 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
           loading={progressObj.loading}
         />
       </div>
-
-      <Alert error={progressObj.error} />
-
-
 
       <style jsx>{`
         .verif-email-input {

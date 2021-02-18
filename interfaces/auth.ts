@@ -60,3 +60,8 @@ export enum EmailResetPasswordStatus {
   ERROR,
   TOKEN_NOT_FOUND,
 }
+
+export enum EmailVerifStatus {
+  ERROR,
+  INVALID_TOKEN
+}
