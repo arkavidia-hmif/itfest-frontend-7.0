@@ -62,8 +62,8 @@ const MapDescription: React.FC = () => {
           </div>
           <div className="grid-right">
             <div className="text-right">
-              <p className="text-bold-right-up">Download Guidebook</p>
-              <p className="text-bold-right-down">Download Booklet</p>
+              <a href="https://link.arkavidia.id/itfest_guidebook"><p className="text-bold-right-up" >Download Guidebook</p></a>
+              <a href="https://link.arkavidia.id/itfest_booklet"><p className="text-bold-right-down" >Download Booklet</p></a>
             </div>
             <div className="border-right"></div>
           </div>
