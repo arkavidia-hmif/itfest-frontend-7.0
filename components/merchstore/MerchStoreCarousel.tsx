@@ -16,11 +16,6 @@ const MerchStoreCarousel: React.FC<Props> = ({ items }) => {
   const { addData } = useContext(CheckoutBagContext) as CheckoutBagContextType;
 
   const buyCallback = (item: MerchStoreItem) => {
-<<<<<<< HEAD
-=======
-    // debug
-    // eslint-disable-next-line no-console 
->>>>>>> 66a5ba58566295823e87556b5c01d946f4a33f15
     addData(item);
   };
 
