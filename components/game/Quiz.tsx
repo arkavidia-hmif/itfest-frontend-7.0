@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import Success from "components/commons/Success";
 import Alert from "components/commons/Alert";
 import { QuizData, QuizResponse } from "interfaces/game";
@@ -9,10 +9,9 @@ import { ApiContext } from "utils/context/api";
 interface Props {
   gameId: string;
   gameData: QuizData;
-  setDone: Dispatch<SetStateAction<boolean>>;
 }
 
-const Quiz: React.FC<Props> = ({ gameId, gameData, setDone }) => {
+const Quiz: React.FC<Props> = ({ gameId, gameData }) => {
   const realData = gameData;
   const apiContext = useContext(ApiContext);
   const [submission, setSubmission] = useState<QuizResponse>({});
@@ -44,7 +43,6 @@ const Quiz: React.FC<Props> = ({ gameId, gameData, setDone }) => {
         JSON.stringify({ answer: submission })
       );
       if (res) {
-        setDone(true);
         setSuccess(true);
         setError(null);
       }

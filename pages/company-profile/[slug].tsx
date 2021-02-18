@@ -18,7 +18,6 @@ import Layout from "components/commons/Layout";
 import { Tenant } from "interfaces/tenant";
 import { getGameByTenant, GET_GAME_URL, playGame } from "api/game";
 import Alert from "components/commons/Alert";
-import Spinner from "components/commons/Spinner";
 import { ApiContext } from "utils/context/api";
 
 const Game = dynamic(() => import("components/game"), {
@@ -34,9 +33,9 @@ interface Params extends ParsedUrlQuery {
 
 const CompanyProfile: React.FC<Props> = ({ tenant }) => {
   const apiContext = React.useContext(ApiContext);
-  const [done, setDone] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [attempted, setAttempted] = useState<number>(0);
 
   const { data: game, error: errorFetching } = useSWR(
     tenant.id !== undefined
@@ -45,18 +44,18 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
     () => getGameByTenant(apiContext.axios, String(tenant.id))
   );
 
-  const gameId = game?.data?.data && Object.keys(game?.data?.data)[0];
-  const attempted = game?.data?.data && Object.values(game?.data?.data)[0];
+  const gameId = game?.data?.gameid;
+  React.useEffect(() => {
+    game?.data && setAttempted(game?.data?.attempt);
+  }, [game]);
 
   const postChallenge = useCallback(async () => {
-    if (game?.data?.data && attempted === 0) {
+    if (gameId && attempted === 0) {
       setLoading(true);
       try {
-        const res = await playGame(
-          apiContext.axios,
-          Object.keys(game?.data?.data)[0]
-        );
+        const res = await playGame(apiContext.axios, String(gameId));
         if (res) {
+          setAttempted(1);
           setError(null);
         }
       } catch (e) {
@@ -65,19 +64,16 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
         setLoading(false);
       }
     }
-  }, []);
+  }, [gameId, attempted]);
 
   return (
     <Layout title={tenant.name}>
-      {errorFetching && <Alert error={errorFetching.message} />}
-      {!game && <Spinner height="200px" />}
-      {error && <Alert error={error} />}
       {tenant.pageType !== 0 ? (
         <div className="container pb-4">
           <Logo logo={tenant.logo} title={tenant.name} />
           <div>
             <CombinedMain
-              done={!done}
+              done={attempted === 2}
               aboutUs={tenant.aboutUs}
               videoUrl={tenant.videoUrl}
               hiring={tenant.hiring}
@@ -90,9 +86,9 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             loading={loading}
             startGame={postChallenge}
           />
-          {attempted === 1 && gameId && (
-            <Game setDone={setDone} gameId={parseInt(gameId, 10)} />
-          )}
+          {errorFetching && <Alert error={errorFetching.message} />}
+          {error && <Alert error={error} />}
+          {gameId && attempted === 1 && <Game gameId={gameId} />}
         </div>
       ) : (
         <div className="container pb-4">
@@ -100,7 +96,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           <CombinedAlt videoUrl={tenant.videoUrl} />
           <AboutUsAlt aboutUs={tenant.aboutUs} />
           <ButtonsAlt
-            done={done}
+            done={attempted === 2}
             hiring={tenant.hiring}
             socialMedia={tenant.socialMedia}
           />
@@ -110,9 +106,9 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             loading={loading}
             startGame={postChallenge}
           />
-          {attempted === 1 && gameId && (
-            <Game setDone={setDone} gameId={parseInt(gameId, 10)} />
-          )}
+          {errorFetching && <Alert error={errorFetching.message} />}
+          {error && <Alert error={error} />}
+          {gameId && attempted === 1 && <Game gameId={gameId} />}
         </div>
       )}
     </Layout>

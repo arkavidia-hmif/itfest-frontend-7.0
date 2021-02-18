@@ -28,7 +28,7 @@ const Tenants: Array<Tenant> = [
     ],
   },
   {
-    id: 1,
+    id: 3,
     name: "Dino",
     logo: "/img/company-logo/dino.png",
     slug: "dino",

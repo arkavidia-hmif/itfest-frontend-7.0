@@ -9,17 +9,26 @@ export const GET_GAME_URL = "/game/";
 interface OKData {
   code: string;
   status: number;
-  data?: { [key: number]: number };
+  data?: { gameid: number; attempt: number };
 }
 
 export async function getGameByTenant(
   axios: AxiosInstance,
   id: string
-): Promise<ApiResponse<OKData>> {
+): Promise<OKData> {
   try {
     const response = await axios.get(`${GET_GAME_URL}tenant/${id}`);
-    return response.data as ApiResponse<OKData>;
+    return response.data as OKData;
   } catch (e) {
+    if (e.response) {
+      const errorCode = e.response.data?.code;
+      if (errorCode === "no-game") {
+        throw new ApiError<StandardError>(
+          StandardError.ERROR,
+          "Tenant tidak ada game"
+        );
+      }
+    }
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }

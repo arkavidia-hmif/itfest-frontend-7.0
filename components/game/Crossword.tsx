@@ -1,10 +1,4 @@
-import {
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useLayoutEffect,
-  useState,
-} from "react";
+import { useContext, useLayoutEffect, useState } from "react";
 import Crossword from "react-crossword";
 import FilledButton from "components/commons/FilledButton";
 import { ApiContext } from "utils/context/api";
@@ -16,10 +10,9 @@ import { CrosswordData } from "interfaces/game";
 interface Props {
   gameId: string;
   gameData: CrosswordData;
-  setDone: Dispatch<SetStateAction<boolean>>;
 }
 
-const CrossWordItem: React.FC<Props> = ({ gameId, gameData, setDone }) => {
+const CrossWordItem: React.FC<Props> = ({ gameId, gameData }) => {
   const data = gameData;
   const apiContext = useContext(ApiContext);
   const [local, setLocal] = useState<{ [key: string]: string }>({});
@@ -74,7 +67,6 @@ const CrossWordItem: React.FC<Props> = ({ gameId, gameData, setDone }) => {
         JSON.stringify({ answer: local })
       );
       if (res) {
-        setDone(true);
         setSuccess(true);
         setError(null);
       }
