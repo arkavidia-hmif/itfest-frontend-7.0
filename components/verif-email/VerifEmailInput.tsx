@@ -16,7 +16,7 @@ export interface VerifEmailInput {
   disabled?: boolean;
 }
 
-const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
+const VerifEmailInputComponent: React.FC<VerifEmailInput> = (
   props: VerifEmailInput
 ) => {
   const {
@@ -189,7 +189,7 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
     verifEmail(apiContext.axios, email.replace("?email=", ""), inputValues.join(""))
       .then(() => {
         progressObj.setSuccess(true);
-        router.push("/login");
+        router.push("/login#verif");
       })
       .catch((e) => {
         progressObj.setError(e.message);

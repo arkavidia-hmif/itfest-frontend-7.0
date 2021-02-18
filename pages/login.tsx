@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Alert from "components/commons/Alert";
 import AuthWrapper from "components/auth/AuthWrapper";
 import InputField from "components/commons/InputField";
@@ -9,6 +9,7 @@ import { AuthContext } from "utils/context/auth";
 import { isValidEmail } from "utils/validator";
 import { login } from "api/auth";
 import { getProfile } from "api/profile";
+import { Theme } from "styles/theme";
 
 const LoginPage: React.FC = () => {
   const router = useRouter();
@@ -21,6 +22,13 @@ const LoginPage: React.FC = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [verifSuccess, setVerifSuccess] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (window.location.hash === "#verif") {
+      setVerifSuccess("Verifikasi sukses, silahkan login");
+    }
+  }, []);
 
   const handleSubmit = async () => {
     setError(null);
@@ -53,6 +61,7 @@ const LoginPage: React.FC = () => {
   return (
     <AuthWrapper title="Login IT FEST">
       <Alert error={error} />
+      <Alert error={verifSuccess} color={Theme.alertColors.greenAlert} />
       <form
         onSubmit={(evt) => {
           evt.preventDefault();
