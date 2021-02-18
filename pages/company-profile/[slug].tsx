@@ -90,7 +90,9 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             loading={loading}
             startGame={postChallenge}
           />
-          {attempted === 2 && <Game setDone={setDone} gameId={gameId} />}
+          {attempted === 2 && gameId && (
+            <Game setDone={setDone} gameId={parseInt(gameId, 10)} />
+          )}
         </div>
       ) : (
         <div className="container pb-4">
@@ -108,7 +110,9 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             loading={loading}
             startGame={postChallenge}
           />
-          {attempted === 2 && <Game setDone={setDone} gameId={gameId} />}
+          {attempted === 2 && gameId && (
+            <Game setDone={setDone} gameId={parseInt(gameId, 10)} />
+          )}
         </div>
       )}
     </Layout>
