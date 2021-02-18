@@ -49,7 +49,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
   const attempted = game?.data?.data && Object.values(game?.data?.data)[0];
 
   const postChallenge = useCallback(async () => {
-    if (game?.data?.data && attempted === 1) {
+    if (game?.data?.data && attempted === 0) {
       setLoading(true);
       try {
         const res = await playGame(
@@ -86,11 +86,11 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           </div>
           <GalleryMain items={tenant.gallery} />
           <ChallengeDone
-            done={attempted === 3}
+            done={attempted === 2}
             loading={loading}
             startGame={postChallenge}
           />
-          {attempted === 2 && gameId && (
+          {attempted === 1 && gameId && (
             <Game setDone={setDone} gameId={parseInt(gameId, 10)} />
           )}
         </div>
@@ -106,11 +106,11 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           />
           <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
           <ChallengeDone
-            done={attempted === 3}
+            done={attempted === 2}
             loading={loading}
             startGame={postChallenge}
           />
-          {attempted === 2 && gameId && (
+          {attempted === 1 && gameId && (
             <Game setDone={setDone} gameId={parseInt(gameId, 10)} />
           )}
         </div>
