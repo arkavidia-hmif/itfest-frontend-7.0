@@ -1,4 +1,8 @@
+import * as React from  "react";
+import { useContext} from "react";
 import Carousel from "react-elastic-carousel";
+import { CheckoutBagContext } from "../../provider/CheckoutBagContext";
+import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import MerchStoreCarouselItem from "./MerchStoreCarouselItem";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
 import { MerchStoreCarouselBreakPoints } from "utils/constants/merch-store-placeholder";
@@ -9,10 +13,10 @@ interface Props {
 }
 
 const MerchStoreCarousel: React.FC<Props> = ({ items }) => {
+  const { addData } = useContext(CheckoutBagContext) as CheckoutBagContextType;
+
   const buyCallback = (item: MerchStoreItem) => {
-    // debug
-    // eslint-disable-next-line no-console
-    console.log(`Buy ${item.name}`);
+    addData(item);
   };
 
   return (
