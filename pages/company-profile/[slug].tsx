@@ -1,7 +1,9 @@
 import { ParsedUrlQuery } from "querystring";
 import * as React from "react";
+import { useState, useCallback } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import dynamic from "next/dynamic";
+import useSWR from "swr";
 import Logo from "../../components/commons/company-profile/LogoTitle/logo-title";
 import LogoAlt from "../../components/commons/company-profile/LogoTitle/logo-title-alt";
 import AboutUsAlt from "../../components/commons/company-profile/AboutUs/about-us-alt";
@@ -14,6 +16,10 @@ import ChallengeDone from "../../components/commons/company-profile/Challenge/ch
 import Tenants from "../../utils/constants/tenants";
 import Layout from "components/commons/Layout";
 import { Tenant } from "interfaces/tenant";
+import { getGameByTenant, GET_GAME_URL, playGame } from "api/game";
+import Alert from "components/commons/Alert";
+import Spinner from "components/commons/Spinner";
+import { ApiContext } from "utils/context/api";
 
 const Game = dynamic(() => import("components/game"), {
   ssr: false,
@@ -27,10 +33,46 @@ interface Params extends ParsedUrlQuery {
 }
 
 const CompanyProfile: React.FC<Props> = ({ tenant }) => {
-  const [done, setDone] = React.useState<boolean>(!false);
+  const apiContext = React.useContext(ApiContext);
+  const [done, setDone] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const { data: game, error: errorFetching } = useSWR(
+    tenant.id !== undefined
+      ? `${GET_GAME_URL}${GET_GAME_URL}tenant/${tenant.id}`
+      : null,
+    () => getGameByTenant(apiContext.axios, String(tenant.id))
+  );
+
+  const gameId = game?.data?.data && Object.keys(game?.data?.data)[0];
+  const attempted = game?.data?.data && Object.values(game?.data?.data)[0];
+
+  const postChallenge = useCallback(async () => {
+    if (game?.data?.data && attempted === 1) {
+      setLoading(true);
+      try {
+        const res = await playGame(
+          apiContext.axios,
+          Object.keys(game?.data?.data)[0]
+        );
+        if (res) {
+          setError(null);
+        }
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, []);
+
   return (
     <Layout title={tenant.name}>
-      {tenant.pageType === 0 ? (
+      {errorFetching && <Alert error={errorFetching.message} />}
+      {!game && <Spinner height="200px" />}
+      {error && <Alert error={error} />}
+      {tenant.pageType !== 0 ? (
         <div className="container pb-4">
           <Logo logo={tenant.logo} title={tenant.name} />
           <div>
@@ -43,7 +85,12 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             />
           </div>
           <GalleryMain items={tenant.gallery} />
-          <ChallengeDone done={!done} />
+          <ChallengeDone
+            done={attempted === 3}
+            loading={loading}
+            startGame={postChallenge}
+          />
+          {attempted === 2 && <Game setDone={setDone} gameId={gameId} />}
         </div>
       ) : (
         <div className="container pb-4">
@@ -56,7 +103,12 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             socialMedia={tenant.socialMedia}
           />
           <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
-          <ChallengeDone done={done} />
+          <ChallengeDone
+            done={attempted === 3}
+            loading={loading}
+            startGame={postChallenge}
+          />
+          {attempted === 2 && <Game setDone={setDone} gameId={gameId} />}
         </div>
       )}
     </Layout>

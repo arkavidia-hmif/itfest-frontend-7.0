@@ -9,6 +9,7 @@ export const GET_GAME_URL = "/game/";
 interface OKData {
   code: string;
   status: number;
+  data?: { [key: number]: number };
 }
 
 export async function getGameByTenant(
@@ -17,7 +18,6 @@ export async function getGameByTenant(
 ): Promise<ApiResponse<OKData>> {
   try {
     const response = await axios.get(`${GET_GAME_URL}tenant/${id}`);
-    console.log(response);
     return response.data as ApiResponse<OKData>;
   } catch (e) {
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
