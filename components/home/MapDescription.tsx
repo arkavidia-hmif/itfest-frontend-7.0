@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
-import { ApiContext } from "../../utils/context/api";
-import ColorfulHeader from "../commons/ColorfulHeader";
+import { ApiContext } from "utils/context/api";
+import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
 import { getGlobalScoreboard, getPointsAndRank } from "api/home";
+import { AuthContext } from "utils/context/auth";
 
 const MapDescription: React.FC = () => {
+  const authContext = useContext(AuthContext);
   const apiContext = useContext(ApiContext);
   const [points, setPoints] = useState(0);
   const [rank, setRank] = useState(-1);
   const [numberRanked, setNumberRanked] = useState(0);
+
   let rankText;
-  if(rank === -1){
+  if (rank === -1) {
     rankText = "Belum Tersedia";
   } else {
     rankText = `${rank} of ${numberRanked}`;
@@ -21,12 +24,15 @@ const MapDescription: React.FC = () => {
       .then((res) => {
         setNumberRanked(res.data.length);
       });
-    getPointsAndRank(apiContext.axios)
-      .then((res) => {
-        setPoints(res.data.score);
-        setRank(res.data.rank);
-      });
-  },[]);
+
+    if (authContext.authenticated) {
+      getPointsAndRank(apiContext.axios)
+        .then((res) => {
+          setPoints(res.data.score);
+          setRank(res.data.rank);
+        });
+    }
+  }, [authContext.authenticated]);
 
   return (
     <>
@@ -39,7 +45,7 @@ const MapDescription: React.FC = () => {
             > <span id="title-size">START&nbsp;YOUR&nbsp;JOURNEY!</span>
             </ColorfulHeader>
           </div>
-          <img src="img/home/email-icon.png" className="email-img"/>
+          <img src="img/home/email-icon.png" className="email-img" />
         </div>
         <h1 className="journey-text"></h1>
         <div className="description-container">

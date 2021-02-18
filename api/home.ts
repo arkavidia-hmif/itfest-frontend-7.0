@@ -36,7 +36,6 @@ export async function getPointsAndRank(
 
     return response.data as ApiResponse<PointsAndRank>;
   } catch (e) {
-
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
