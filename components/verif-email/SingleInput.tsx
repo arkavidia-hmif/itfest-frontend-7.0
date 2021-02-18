@@ -35,7 +35,7 @@ const SingleInputComponent: React.SFC<SingleInputProps> = (
       <style jsx>
         {`
           .single-input input {
-            width: 1.75rem !important;
+            width: 1.5rem !important;
             height: 2rem;
             margin: 0 0.25rem;
             font-size: 1.75rem;
@@ -53,31 +53,13 @@ const SingleInputComponent: React.SFC<SingleInputProps> = (
 
           @media (max-width: ${Dimen.xlBreakpoint}) {
             .single-input input {
-              width: 1.5rem !important;
-              height: 2rem;
               font-size: 1.5rem;
-              margin: 0 0.15rem;
             }
           }
-
-          @media (max-width: ${Dimen.lgBreakpoint}) {
-          }
-
+          
           @media (max-width: ${Dimen.mdBreakpoint}) {
             .single-input input {
-              width: 1.1rem !important;
-              height: 1.5rem;
               font-size: 1.3rem;
-              margin: 0 0.15rem;
-            }
-          }
-
-          @media (max-width: 507px) {
-            .single-input input {
-              width: .85rem !important;
-              height: 1rem;
-              font-size: 1rem;
-              margin: 0 0.05rem;
             }
           }
         `}

@@ -112,32 +112,32 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
   const handleOnKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       switch (e.key) {
-      case "Backspace":
-      case "Delete": {
-        e.preventDefault();
-        if (inputValues[activeInput]) {
-          changeCodeAtFocus("");
-        } else {
-          focusPrevInput();
+        case "Backspace":
+        case "Delete": {
+          e.preventDefault();
+          if (inputValues[activeInput]) {
+            changeCodeAtFocus("");
+          } else {
+            focusPrevInput();
+          }
+          break;
         }
-        break;
-      }
-      case "ArrowLeft": {
-        e.preventDefault();
-        focusPrevInput();
-        break;
-      }
-      case "ArrowRight": {
-        e.preventDefault();
-        focusNextInput();
-        break;
-      }
-      case " ": {
-        e.preventDefault();
-        break;
-      }
-      default:
-        break;
+        case "ArrowLeft": {
+          e.preventDefault();
+          focusPrevInput();
+          break;
+        }
+        case "ArrowRight": {
+          e.preventDefault();
+          focusNextInput();
+          break;
+        }
+        case " ": {
+          e.preventDefault();
+          break;
+        }
+        default:
+          break;
       }
     },
     [
@@ -195,7 +195,7 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
 
   return (
     <>
-      <div className="w-100 d-flex flex-column align-items-center justify-content-center mb-5">
+      <div className="d-flex flex-column align-items-center justify-content-center mb-5">
         <div>
           <h1>Enter your code</h1>
         </div>
@@ -237,7 +237,7 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
 
       <style jsx>{`
         .verif-email-input {
-          width: 85%;
+          width: 50%;
           background: #fe5982;
           box-shadow: 1px 2px 11px rgba(0, 0, 0, 0.25);
           border-radius: 15px;
@@ -246,26 +246,26 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
 
         @media (max-width: ${Dimen.xlBreakpoint}) {
           .verif-email-input {
-            width: 70%;
+            width: 60%;
           }
         }
 
         @media (max-width: ${Dimen.lgBreakpoint}) {
           .verif-email-input {
-            width: 100%;
+            width: 70%;
           }
         }
 
         @media (max-width: ${Dimen.mdBreakpoint}) {
           .verif-email-input {
-            width: 100%;
+            width: 80%;
             padding: 1rem;
           }
         }
 
         @media (max-width: ${Dimen.smBreakpoint}) {
           .verif-email-input {
-            width: 100%;
+            width: 90%;
           }
         }
       `}</style>

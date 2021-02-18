@@ -21,7 +21,7 @@ const RegisterCompletePage: React.FC = () => {
         <VerifEmailInputCode
           autoFocus
           isNumberInput={false}
-          length={22}
+          length={6}
           onChangeInput={() => null}
         />
       </div>
