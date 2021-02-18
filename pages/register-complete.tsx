@@ -1,4 +1,4 @@
-import VerifEmail from "./verif-email/VerifEmail";
+import VerifEmailInputCode from "components/verif-email/VerifEmailInput";
 import GradientSeparator from "components/auth/GradientSeparator";
 import ColorfulHeader from "components/ColorfulHeader";
 import Layout from "components/commons/Layout";
@@ -6,19 +6,24 @@ import { Theme } from "styles/theme";
 
 const RegisterCompletePage: React.FC = () => {
   const title = "Registrasi Akun";
+
   return (
     <Layout title={title}>
       <div className="container">
         <ColorfulHeader color={Theme.headerColors.pipl} headingLevel={1} size="3rem">{title}</ColorfulHeader>
         <GradientSeparator />
-        <br />
-        <br />
+        <div className="mb-5" />
         <p>
           Terima kasih telah mendaftar, silahkan cek email untuk tautan
           konfirmasi
         </p>
         <br />
-        <VerifEmail />
+        <VerifEmailInputCode
+          autoFocus
+          isNumberInput={false}
+          length={22}
+          onChangeInput={() => null}
+        />
       </div>
       <style jsx>{`
         p { 
