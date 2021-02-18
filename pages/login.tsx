@@ -59,7 +59,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <AuthWrapper title="Login IT FEST">
+    <AuthWrapper title="Login">
       <Alert error={error} />
       <Alert error={verifSuccess} color={Theme.alertColors.greenAlert} />
       <form
