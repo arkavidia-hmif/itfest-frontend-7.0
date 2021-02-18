@@ -32,6 +32,11 @@ const LoginPage: React.FC = () => {
     if (window.location.hash === "#verif") {
       setVerifSuccess("Verifikasi sukses, silahkan login");
     }
+
+    const redirectTarget = window.location.search;
+    if (redirectTarget.startsWith("?continue=")) {
+      setError("Harap login dulu");
+    }
   }, []);
 
   const handleSubmit = async () => {
