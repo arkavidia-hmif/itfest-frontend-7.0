@@ -12,7 +12,7 @@ const MerchStorePage: React.FC = () => {
         <BagButton />
         <ShoppingBagContainer />
         <div className="container my-5">
-          <MerchStoreExpanded />
+          <MerchStoreExpanded merchantName="Test" handleClose={() => 2*10}/>
         </div>
       </CheckoutBagProvider>
     </Layout>
