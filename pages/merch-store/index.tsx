@@ -3,7 +3,7 @@ import MerchStore from "components/merchstore/MerchStore";
 import MerchStoreTop from "components/merchstore/MerchStoreTop";
 
 
-const MerchStoreMain: React.SFC = () => {
+const MerchStoreMain: React.FC = () => {
   return (
     <>
       <div className="mt-3 mb-5">
