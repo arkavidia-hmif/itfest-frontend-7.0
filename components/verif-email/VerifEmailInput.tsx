@@ -179,9 +179,14 @@ const VerifEmailInputComponent: React.SFC<VerifEmailInput> = (
   const handleSubmit = () => {
     progressObj.reset();
 
+    const email = window.location.search;
+    if (!email.startsWith("?email=")) {
+      progressObj.setError("Data email tidak valid");
+    }
+
     progressObj.startLoad();
 
-    verifEmail(apiContext.axios, inputValues.join(""))
+    verifEmail(apiContext.axios, email.replace("?email=", ""), inputValues.join(""))
       .then(() => {
         progressObj.setSuccess(true);
         router.push("/login");

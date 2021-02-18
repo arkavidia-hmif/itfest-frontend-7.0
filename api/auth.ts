@@ -72,17 +72,21 @@ export async function resetPassword(
     await axios.post(`/validation/${token}`, {
       password,
     });
-  } catch(e) {
+  } catch (e) {
     throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e);
   }
 }
 
 export async function verifEmail(
   axios: AxiosInstance,
+  email: string,
   token: string
 ): Promise<void> {
   try {
-    await axios.post(`/validation/${token}`, {});
+    await axios.post("/validation", {
+      email,
+      token
+    });
   } catch (e) {
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
