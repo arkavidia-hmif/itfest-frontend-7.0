@@ -141,7 +141,10 @@ export const checkTruthPersonal = async (
 
   if (gender) {
     data.gender = Number(gender);
-  } else data.gender = Number(personal?.gender);
+  } else {
+    data.gender = Number(personal?.gender);
+    throw new Error("Gender tidak valid");
+  }
 
   data.filled = filled;
 
