@@ -1,14 +1,33 @@
-import * as React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ApiContext } from "../../utils/context/api";
 import ColorfulHeader from "../commons/ColorfulHeader";
 import { Theme } from "styles/theme";
+import { getGlobalScoreboard, getPointsAndRank } from "api/home";
 
-// interface Props {
-//   type: string;
-//   done: boolean;
-// }
 const MapDescription: React.FC = () => {
-  const points = 1000;
-  const rank = "1 of 9999";
+  const apiContext = useContext(ApiContext);
+  const [points, setPoints] = useState(0);
+  const [rank, setRank] = useState(-1);
+  const [numberRanked, setNumberRanked] = useState(0);
+  let rankText;
+  if(rank === -1){
+    rankText = "Belum Tersedia";
+  } else {
+    rankText = `${rank} of ${numberRanked}`;
+  }
+
+  useEffect(() => {
+    getGlobalScoreboard(apiContext.axios)
+      .then((res) => {
+        setNumberRanked(res.data.length);
+      });
+    getPointsAndRank(apiContext.axios)
+      .then((res) => {
+        setPoints(res.data.score);
+        setRank(res.data.rank);
+      });
+  },[]);
+
   return (
     <>
       <div className="flex-container">
@@ -32,7 +51,7 @@ const MapDescription: React.FC = () => {
             </div>
             <div>
               <p className="text-bold-left-up-value">{points}</p>
-              <p className="text-bold-left-down-value">{rank}</p>
+              <p className="text-bold-left-down-value">{rankText}</p>
             </div>
           </div>
           <div className="grid-right">
@@ -64,7 +83,7 @@ const MapDescription: React.FC = () => {
               padding: 1% 3%;
               align-items: center;
               border-radius: 1rem;
-              grid-template-columns: 1rem 1rem 4rem 6rem;
+              grid-template-columns: 1rem 1rem 4rem 8rem;
           }
 
           .grid-right {
@@ -164,7 +183,7 @@ const MapDescription: React.FC = () => {
               }
 
               .grid-left {
-                  grid-template-columns: 1rem 1rem 3.4rem 5rem;
+                  grid-template-columns: 1rem 1rem 3.4rem 7rem;
               }
           }
 
