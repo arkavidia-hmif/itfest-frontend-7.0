@@ -5,7 +5,7 @@ import Layout from "components/commons/Layout";
 import { Theme } from "styles/theme";
 
 const RegisterCompletePage: React.FC = () => {
-  const title = "Registrasi Akun";
+  const title = "Verifikasi Email";
 
   return (
     <Layout title={title}>
@@ -14,8 +14,7 @@ const RegisterCompletePage: React.FC = () => {
         <GradientSeparator />
         <div className="mb-5" />
         <p>
-          Terima kasih telah mendaftar, silahkan cek email untuk tautan
-          konfirmasi
+          Terima kasih telah mendaftar, silahkan cek email untuk kode konfirmasi
         </p>
         <br />
         <VerifEmailInputCode
