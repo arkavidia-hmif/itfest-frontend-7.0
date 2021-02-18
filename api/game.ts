@@ -11,6 +11,19 @@ interface OKData {
   status: number;
 }
 
+export async function getGameByTenant(
+  axios: AxiosInstance,
+  id: string
+): Promise<ApiResponse<OKData>> {
+  try {
+    const response = await axios.get(`${GET_GAME_URL}tenant/${id}`);
+    console.log(response);
+    return response.data as ApiResponse<OKData>;
+  } catch (e) {
+    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
+  }
+}
+
 export async function playGame(
   axios: AxiosInstance,
   id: string
@@ -19,10 +32,6 @@ export async function playGame(
     const response = await axios.post(`${GET_GAME_URL}${id}/play`);
     return response.data as ApiResponse<OKData>;
   } catch (e) {
-    // if (e.response) {
-    //   const errorCode = e.response.data?.code;
-    //   console.log(errorCode);
-    // }
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }

@@ -27,7 +27,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 const CompanyProfile: React.FC<Props> = ({ tenant }) => {
-  const [done, setDone] = React.useState<boolean>(false);
+  const [done, setDone] = React.useState<boolean>(!false);
   return (
     <Layout title={tenant.name}>
       {tenant.pageType === 0 ? (
