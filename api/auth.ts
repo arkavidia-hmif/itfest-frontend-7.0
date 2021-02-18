@@ -28,10 +28,15 @@ export async function login(
           LoginStatus.INVALID_CREDS,
           "Email dan/atau password salah"
         );
+      } else if (errorCode === "not-verified") {
+        throw new ApiError<LoginStatus>(
+          LoginStatus.EMAIL_NOT_CONFIRMED,
+          "Email belum diverifikasi"
+        );
       }
     }
 
-    throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
+    throw new ApiError<LoginStatus>(LoginStatus.ERROR, e.message);
   }
 }
 

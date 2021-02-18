@@ -1,4 +1,5 @@
 import { useRouter } from "next/dist/client/router";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import Alert from "components/commons/Alert";
 import AuthWrapper from "components/auth/AuthWrapper";
@@ -10,6 +11,8 @@ import { isValidEmail } from "utils/validator";
 import { login } from "api/auth";
 import { getProfile } from "api/profile";
 import { Theme } from "styles/theme";
+import { ApiError } from "interfaces/api";
+import { LoginStatus } from "interfaces/auth";
 
 const LoginPage: React.FC = () => {
   const router = useRouter();
@@ -23,6 +26,7 @@ const LoginPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [verifSuccess, setVerifSuccess] = useState<string | null>(null);
+  const [showVerif, setShowVerif] = useState<boolean>(false);
 
   useEffect(() => {
     if (window.location.hash === "#verif") {
@@ -32,6 +36,7 @@ const LoginPage: React.FC = () => {
 
   const handleSubmit = async () => {
     setError(null);
+    setShowVerif(false);
 
     if (!isValidEmail(email)) {
       setError("Alamat email invalid");
@@ -53,8 +58,12 @@ const LoginPage: React.FC = () => {
         router.push("/profile");
       }
     } catch (e) {
-      setError(e.message);
       setLoading(false);
+      setError(e.message);
+
+      if (e instanceof ApiError && e.code === LoginStatus.EMAIL_NOT_CONFIRMED) {
+        setShowVerif(true);
+      }
     }
   };
 
@@ -74,6 +83,7 @@ const LoginPage: React.FC = () => {
           setValue={setEmail}
           placeholder="johndoe@email.com"
         />
+        {showVerif && <Link href={`/register-complete?email=${email}`}><a><br /><b>(Klik untuk verifikasi)</b></a></Link>}
         <div className="mb-4" />
         <label>Kata Sandi</label>
         <InputField
@@ -102,7 +112,7 @@ const LoginPage: React.FC = () => {
           color: #7446a1;
         }
 
-        .login-link a {
+        a {
           color: #fe789a;
         }
 

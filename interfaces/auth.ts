@@ -42,7 +42,7 @@ export interface PersonalData {
 }
 
 export enum LoginStatus {
-  UNKNOWN,
+  ERROR,
   INVALID_CREDS,
   EMAIL_NOT_CONFIRMED,
 }
