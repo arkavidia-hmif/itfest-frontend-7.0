@@ -1,25 +1,35 @@
-import Link from "next/link";
-import AuthWrapper from "components/auth/AuthWrapper";
-import FilledButton from "components/commons/FilledButton";
+import VerifEmailInputCode from "components/verif-email/VerifEmailInput";
+import GradientSeparator from "components/auth/GradientSeparator";
+import ColorfulHeader from "components/ColorfulHeader";
+import Layout from "components/commons/Layout";
+import { Theme } from "styles/theme";
 
 const RegisterCompletePage: React.FC = () => {
+  const title = "Verifikasi Email";
+
   return (
-    <AuthWrapper title="Registrasi Akun">
-      <br />
-      <p>
-        Terima kasih telah mendaftar, silahkan cek email untuk tautan
-        konfirmasi
-      </p>
-      <br />
-      <Link href="/login">
-        <FilledButton text="LOGIN" padding="0.75em 1.5em" />
-      </Link>
+    <Layout title={title}>
+      <div className="container">
+        <ColorfulHeader color={Theme.headerColors.pipl} headingLevel={1} size="3rem">{title}</ColorfulHeader>
+        <GradientSeparator />
+        <div className="mb-5" />
+        <p>
+          Terima kasih telah mendaftar, silahkan cek email untuk kode konfirmasi
+        </p>
+        <br />
+        <VerifEmailInputCode
+          autoFocus
+          isNumberInput={false}
+          length={6}
+          onChangeInput={() => null}
+        />
+      </div>
       <style jsx>{`
         p { 
           color: #7446a1;
         }  
       `}</style>
-    </AuthWrapper>
+    </Layout>
   );
 };
 

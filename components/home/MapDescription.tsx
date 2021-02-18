@@ -1,14 +1,39 @@
-import * as React from "react";
-import ColorfulHeader from "../commons/ColorfulHeader";
+import React, { useState, useEffect, useContext } from "react";
+import { ApiContext } from "utils/context/api";
+import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
+import { getGlobalScoreboard, getPointsAndRank } from "api/home";
+import { AuthContext } from "utils/context/auth";
 
-// interface Props {
-//   type: string;
-//   done: boolean;
-// }
 const MapDescription: React.FC = () => {
-  const points = 1000;
-  const rank = "1 of 9999";
+  const authContext = useContext(AuthContext);
+  const apiContext = useContext(ApiContext);
+  const [points, setPoints] = useState(0);
+  const [rank, setRank] = useState(-1);
+  const [numberRanked, setNumberRanked] = useState(0);
+
+  let rankText;
+  if (rank === -1) {
+    rankText = "Belum Tersedia";
+  } else {
+    rankText = `${rank} of ${numberRanked}`;
+  }
+
+  useEffect(() => {
+    getGlobalScoreboard(apiContext.axios)
+      .then((res) => {
+        setNumberRanked(res.data.length);
+      });
+
+    if (authContext.authenticated) {
+      getPointsAndRank(apiContext.axios)
+        .then((res) => {
+          setPoints(res.data.score);
+          setRank(res.data.rank);
+        });
+    }
+  }, [authContext.authenticated]);
+
   return (
     <>
       <div className="flex-container">
@@ -20,7 +45,7 @@ const MapDescription: React.FC = () => {
             > <span id="title-size">START&nbsp;YOUR&nbsp;JOURNEY!</span>
             </ColorfulHeader>
           </div>
-          <img src="img/home/email-icon.png" className="email-img"/>
+          <img src="img/home/email-icon.png" className="email-img" />
         </div>
         <h1 className="journey-text"></h1>
         <div className="description-container">
@@ -32,13 +57,13 @@ const MapDescription: React.FC = () => {
             </div>
             <div>
               <p className="text-bold-left-up-value">{points}</p>
-              <p className="text-bold-left-down-value">{rank}</p>
+              <p className="text-bold-left-down-value">{rankText}</p>
             </div>
           </div>
           <div className="grid-right">
             <div className="text-right">
-              <p className="text-bold-right-up">Download Guidebook</p>
-              <p className="text-bold-right-down">Download Booklet</p>
+              <a href="https://link.arkavidia.id/itfest_guidebook"><p className="text-bold-right-up" >Download Guidebook</p></a>
+              <a href="https://link.arkavidia.id/itfest_booklet"><p className="text-bold-right-down" >Download Booklet</p></a>
             </div>
             <div className="border-right"></div>
           </div>
@@ -64,7 +89,7 @@ const MapDescription: React.FC = () => {
               padding: 1% 3%;
               align-items: center;
               border-radius: 1rem;
-              grid-template-columns: 1rem 1rem 4rem 6rem;
+              grid-template-columns: 1rem 1rem 4rem 8rem;
           }
 
           .grid-right {
@@ -164,7 +189,7 @@ const MapDescription: React.FC = () => {
               }
 
               .grid-left {
-                  grid-template-columns: 1rem 1rem 3.4rem 5rem;
+                  grid-template-columns: 1rem 1rem 3.4rem 7rem;
               }
           }
 

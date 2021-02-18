@@ -43,7 +43,7 @@ const RegisterPage: React.FC = () => {
     registerVisitor(apiContext.axios, name, email, password, telp)
       .then(() => {
         progressObj.setSuccess(true);
-        router.push("/register-complete");
+        router.push(`/register-complete?email=${email}`);
       })
       .catch((e) => {
         progressObj.setError(e.message);

@@ -1,5 +1,11 @@
 import { AxiosInstance } from "axios";
-import { AuthData, LoginStatus, RegisterStatus } from "interfaces/auth";
+import {
+  AuthData,
+  EmailResetPasswordStatus,
+  LoginStatus,
+  RegisterStatus,
+  EmailVerifStatus,
+} from "interfaces/auth";
 import { ApiError } from "interfaces/api";
 
 export async function login(
@@ -22,10 +28,15 @@ export async function login(
           LoginStatus.INVALID_CREDS,
           "Email dan/atau password salah"
         );
+      } else if (errorCode === "not-verified") {
+        throw new ApiError<LoginStatus>(
+          LoginStatus.EMAIL_NOT_CONFIRMED,
+          "Email belum diverifikasi"
+        );
       }
     }
 
-    throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
+    throw new ApiError<LoginStatus>(LoginStatus.ERROR, e.message);
   }
 }
 
@@ -55,5 +66,44 @@ export async function registerVisitor(
     }
 
     throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
+  }
+}
+
+export async function resetPassword(
+  axios: AxiosInstance,
+  token: string,
+  password: string
+): Promise<void> {
+  try {
+    await axios.post(`/validation/${token}`, {
+      password,
+    });
+  } catch (e) {
+    throw new ApiError<EmailResetPasswordStatus>(
+      EmailResetPasswordStatus.ERROR,
+      e.message
+    );
+  }
+}
+
+export async function verifEmail(
+  axios: AxiosInstance,
+  email: string,
+  token: string
+): Promise<void> {
+  try {
+    await axios.post("/validation", {
+      email,
+      token,
+    });
+  } catch (e) {
+    if (e.response?.data?.code === "invalid-token") {
+      throw new ApiError<EmailVerifStatus>(
+        EmailVerifStatus.INVALID_TOKEN,
+        "Token invalid"
+      );
+    }
+
+    throw new ApiError<EmailVerifStatus>(EmailVerifStatus.ERROR, e.message);
   }
 }

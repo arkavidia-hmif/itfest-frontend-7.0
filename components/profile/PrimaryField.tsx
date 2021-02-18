@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import useSWR from "swr";
-import InputField from "./InputField";
+import InputField from "components/commons/InputField";
 import { editPrimaryData, getPrimaryData, PROFILE_URL } from "api/profile";
 import { ApiContext } from "utils/context/api";
 import { Theme } from "styles/theme";
@@ -11,7 +11,6 @@ import { PrimaryData } from "interfaces/auth";
 import { AuthContext } from "utils/context/auth";
 import useFormInput from "utils/hooks/useFormInput";
 import Alert from "components/commons/Alert";
-import Success from "components/commons/Success";
 import Spinner from "components/commons/Spinner";
 import useStringFormInput from "utils/hooks/useStringFormInput";
 
@@ -50,10 +49,7 @@ const PrimaryField: React.FC = () => {
       }
     }
   }, [
-    primary,
-    email.setValue,
-    telp.setValue,
-    name.setValue,
+    primary
   ]);
 
   if (errorPrimary) return <Alert error="Masalah koneksi" />;
@@ -90,8 +86,7 @@ const PrimaryField: React.FC = () => {
 
   return (
     <>
-      {error && isEdit && <Alert error={error} />}
-      {success && !isEdit && <Success message="Successfully update" />}
+      <Alert error={success ? "Update sukses" : error} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} />
       <div className="mt-3">
         {[
           { state: email, key: "email" },
@@ -101,18 +96,17 @@ const PrimaryField: React.FC = () => {
           const label = profileAttributes[data.key];
           const value = primary[data.key as keyof PrimaryData] || "";
           return (
-            <div key={label} className="row">
+            <div key={label} className="row mt-3">
               <div className="col-md-6 col-sm-12"><h2>{label}</h2></div>
               <div className="col-md-6 col-sm-12">
                 {!(isEdit && data.key !== "email") ? (
-                  <h2>{value ?? "-"}</h2>
+                  <h2 className="value">{value ?? "-"}</h2>
                 ) :
                   (
                     <InputField
-                      type={data.key === "dob" ? "date" : "text"}
-                      value={String(data.state.value)}
+                      type="text"
+                      value={data.state.value}
                       setValue={data.state.setValue}
-                      choices={[]}
                     />
                   )}
               </div>
@@ -158,6 +152,9 @@ const PrimaryField: React.FC = () => {
           font: viga;
           font-size: 1.3rem;
           color: #441985;
+        }
+        .value {
+          color: #0f2f2f;
         }
         @media only screen and (max-width: 767px) {
           h2{

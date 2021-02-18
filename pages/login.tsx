@@ -1,5 +1,6 @@
 import { useRouter } from "next/dist/client/router";
-import { useContext, useState } from "react";
+import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
 import Alert from "components/commons/Alert";
 import AuthWrapper from "components/auth/AuthWrapper";
 import InputField from "components/commons/InputField";
@@ -9,6 +10,9 @@ import { AuthContext } from "utils/context/auth";
 import { isValidEmail } from "utils/validator";
 import { login } from "api/auth";
 import { getProfile } from "api/profile";
+import { Theme } from "styles/theme";
+import { ApiError } from "interfaces/api";
+import { LoginStatus } from "interfaces/auth";
 
 const LoginPage: React.FC = () => {
   const router = useRouter();
@@ -21,9 +25,23 @@ const LoginPage: React.FC = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [verifSuccess, setVerifSuccess] = useState<string | null>(null);
+  const [showVerif, setShowVerif] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (window.location.hash === "#verif") {
+      setVerifSuccess("Verifikasi sukses, silahkan login");
+    }
+
+    const redirectTarget = window.location.search;
+    if (redirectTarget.startsWith("?continue=")) {
+      setError("Harap login dulu");
+    }
+  }, []);
 
   const handleSubmit = async () => {
     setError(null);
+    setShowVerif(false);
 
     if (!isValidEmail(email)) {
       setError("Alamat email invalid");
@@ -45,15 +63,19 @@ const LoginPage: React.FC = () => {
         router.push("/profile");
       }
     } catch (e) {
-      setError(e.message);
-    } finally {
       setLoading(false);
+      setError(e.message);
+
+      if (e instanceof ApiError && e.code === LoginStatus.EMAIL_NOT_CONFIRMED) {
+        setShowVerif(true);
+      }
     }
   };
 
   return (
-    <AuthWrapper title="Login IT FEST">
+    <AuthWrapper title="Login">
       <Alert error={error} />
+      <Alert error={verifSuccess} color={Theme.alertColors.greenAlert} />
       <form
         onSubmit={(evt) => {
           evt.preventDefault();
@@ -66,6 +88,8 @@ const LoginPage: React.FC = () => {
           setValue={setEmail}
           placeholder="johndoe@email.com"
         />
+        {showVerif && <Link href={`/register-complete?email=${email}`}><a><br /><b>(Klik untuk verifikasi)</b></a></Link>}
+        <div className="mb-4" />
         <label>Kata Sandi</label>
         <InputField
           type="password"
@@ -93,7 +117,7 @@ const LoginPage: React.FC = () => {
           color: #7446a1;
         }
 
-        .login-link a {
+        a {
           color: #fe789a;
         }
 

@@ -38,10 +38,11 @@ export interface PersonalData {
   gender: number | null;
   dob: string | null;
   institute: string | null;
+  filled: boolean;
 }
 
 export enum LoginStatus {
-  UNKNOWN,
+  ERROR,
   INVALID_CREDS,
   EMAIL_NOT_CONFIRMED,
 }
@@ -52,4 +53,14 @@ export enum RegisterStatus {
   EMAIL_USED,
   INVALID_EMAIL,
   INVALID_NAME,
+}
+
+export enum EmailResetPasswordStatus {
+  ERROR,
+  TOKEN_NOT_FOUND,
+}
+
+export enum EmailVerifStatus {
+  ERROR,
+  INVALID_TOKEN,
 }

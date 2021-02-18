@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import useSWR from "swr";
-import InputField from "./InputField";
+import InputField from "components/commons/InputField";
+import SelectField from "components/commons/SelectField";
 import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
 import FilledButton from "components/commons/FilledButton";
@@ -10,9 +11,10 @@ import { editPersonalData, getPersonalData, PROFILE_URL } from "api/profile";
 import Alert from "components/commons/Alert";
 import Spinner from "components/commons/Spinner";
 import { checkTruthPersonal } from "utils/transformer/profile";
-import Success from "components/commons/Success";
 import profileAttributes, { genderList } from "utils/constants/profile-attributes";
 import { PersonalData } from "interfaces/auth";
+import { Dimen } from "styles/dimen";
+
 
 const PersonalField: React.FC = () => {
   const apiContext = useContext(ApiContext);
@@ -41,17 +43,15 @@ const PersonalField: React.FC = () => {
         gender.setValue(String(personal.gender));
       }
       if (personal.dob && personal.dob !== "") {
-        dob.setValue(personal.dob);
+        const datePart = personal.dob.split("T")[0];
+        dob.setValue(datePart);
       }
       if (personal.institute && personal.institute !== "") {
         institute.setValue(personal.institute);
       }
     }
   }, [
-    personal,
-    gender.setValue,
-    dob.setValue,
-    institute.setValue,
+    personal
   ]);
 
   if (errorPersonal) return <Alert error="Masalah koneksi" />;
@@ -61,9 +61,10 @@ const PersonalField: React.FC = () => {
     setLoading(true);
     try {
       const truth = await checkTruthPersonal(
-        Number(gender.value),
+        gender.value,
         dob.value,
         institute.value,
+        personal.filled,
         personal
       );
       const res = await editPersonalData(apiContext.axios, truth);
@@ -79,41 +80,73 @@ const PersonalField: React.FC = () => {
     }
   };
 
+  const dataField = [
+    {
+      state: gender,
+      key: "gender",
+      viewTransformer: (data: string) => genderList[data] || "",
+      choices: genderList
+    },
+    {
+      state: dob,
+      key: "dob",
+      viewTransformer: (data: string) => data.substring(0, 10)
+    },
+    {
+      key: "institute",
+      state: institute,
+      viewTransformer: (data: string) => data
+    }
+  ];
+
+  const getInputBox = (
+    value: string,
+    setValue: (data: string) => void,
+    key: string,
+    choices?: Record<string, string>
+  ) => {
+    if (choices) {
+      return (
+        <SelectField
+          value={value}
+          setValue={setValue}
+          choices={choices}
+        />
+      );
+    } else {
+      return (
+        <InputField
+          type={key === "dob" ? "date" : "text"}
+          value={value}
+          setValue={setValue}
+        />
+      );
+    }
+  };
+
   return (
     <>
-      {error && isEdit && <Alert error={error} />}
-      {success && !isEdit && <Success message="Successfully update" />}
       <div>
-        <ColorfulHeader
+        {!personal.filled && <ColorfulHeader
           color={Theme.headerColors.pipl}
           headingLevel={6}
           size="1.5rem"
-        > Fill these data to get extra points! (Optional)
-        </ColorfulHeader>
+        > Lengkapi data untuk poin ekstra! (Opsional)
+        </ColorfulHeader>}
       </div>
+      <Alert error={success ? "Update sukses" : error} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} />
       <div className="mt-3">
-        {[
-          { state: gender, key: "gender", choices: genderList },
-          { state: dob, key: "dob" },
-          { state: institute, key: "institute" },
-        ].map((data) => {
+        {dataField.map((data) => {
           const label = profileAttributes[data.key];
           const value = personal[data.key as keyof PersonalData] || "";
+
           return (
-            <div key={label} className="row">
+            <div key={label} className="row mt-3">
               <div className="col-md-6 col-sm-12"><h2>{label}</h2></div>
               <div className="col-md-6 col-sm-12">
-                {!(isEdit) ? (
-                  <h2>{data.key === "gender" ? genderList[Number(gender.value) - 1] : value}</h2>
-                ) :
-                  (
-                    <InputField
-                      type={data.key === "dob" ? "date" : "text"}
-                      value={String(data.state.value)}
-                      setValue={data.state.setValue}
-                      choices={data.choices ?? []}
-                    />
-                  )}
+                {isEdit ?
+                  getInputBox(data.state.value, data.state.setValue, data.key, data.choices) :
+                  (<h2 className="value">{data.viewTransformer(value.toString())}</h2>)}
               </div>
             </div>
           );
@@ -154,11 +187,13 @@ const PersonalField: React.FC = () => {
       </div>
       <style jsx>{`
         h2 {
-          font: viga;
           font-size: 1.3rem;
           color: #441985;
         }
-        @media only screen and (max-width: 767px) {
+        .value {
+          color: #0f2f2f;
+        }
+        @media only screen and (max-width: ${Dimen.mdBreakpoint}) {
           h2{
             font-size: 1rem;
           }

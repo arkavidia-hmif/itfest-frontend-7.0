@@ -17,6 +17,7 @@ const Map: React.FC = () => {
 
   return (
     <MapContainer
+      attributionControl={false}
       touchZoom={true}
       center={center}
       zoom={1}
@@ -62,18 +63,6 @@ const Map: React.FC = () => {
                   <Link
                     href={{
                       pathname: "/company-profile/[slug]",
-                      query: { slug: tenant.slug },
-                    }}
-                  >
-                    <a>
-                      <p>more &gt; &gt; &gt;</p>
-                    </a>
-                  </Link>
-                </div>
-                <div className="info col">
-                  <Link
-                    href={{
-                      pathname: "/company-profile-alt/[slug]",
                       query: { slug: tenant.slug },
                     }}
                   >
