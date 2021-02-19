@@ -2,9 +2,6 @@ import * as React from "react";
 import MerchStore from "components/merchstore/MerchStore";
 import MerchStoreTop from "components/merchstore/MerchStoreTop";
 import Layout from "components/commons/Layout";
-import ColorfulHeader from "components/ColorfulHeader";
-import { Theme } from "styles/theme";
-import GradientSeparator from "components/auth/GradientSeparator";
 
 
 const MerchStoreMain: React.FC = () => {
@@ -12,8 +9,6 @@ const MerchStoreMain: React.FC = () => {
   return (
     <Layout title={title}>
       <div className="container">
-        <ColorfulHeader color={Theme.headerColors.pipl} headingLevel={1} size="3rem">{title}</ColorfulHeader>
-        <GradientSeparator />
         <div className="mb-5" />
         <div className="mt-3 mb-5">
           <MerchStoreTop />
