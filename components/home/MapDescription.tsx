@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import useSWR from "swr";
 import { ApiContext } from "utils/context/api";
 import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
@@ -10,21 +11,18 @@ const MapDescription: React.FC = () => {
   const apiContext = useContext(ApiContext);
   const [points, setPoints] = useState(0);
   const [rank, setRank] = useState(-1);
-  const [numberRanked, setNumberRanked] = useState(0);
+
+  const { data: leaderboardData } = useSWR("/global-scoreboard", () => getGlobalScoreboard(apiContext.axios));
 
   let rankText;
-  if (rank === -1) {
-    rankText = "Belum Tersedia";
+  if (leaderboardData) {
+    rankText = `${rank} of ${leaderboardData.data.length}`;
   } else {
-    rankText = `${rank} of ${numberRanked}`;
+    rankText = "Belum Tersedia";
   }
 
-  useEffect(() => {
-    getGlobalScoreboard(apiContext.axios)
-      .then((res) => {
-        setNumberRanked(res.data.length);
-      });
 
+  useEffect(() => {
     if (authContext.authenticated) {
       getPointsAndRank(apiContext.axios)
         .then((res) => {
