@@ -1,4 +1,6 @@
 import * as React from "react";
+import BagButton from "components/checkout_bag/BagButton";
+import ShoppingBagContainer from "components/checkout_bag/ShoppingBagContainer";
 import { Dimen } from "styles/dimen";
 
 const MerchStoreTop: React.SFC = () => {
@@ -17,8 +19,9 @@ const MerchStoreTop: React.SFC = () => {
           <div className="ms-mid-left m-3">
             <input type="text" placeholder="Cari Startup" />
           </div>
-          <div className="ms-mid-left m-3">
-            <input type="text" placeholder="Keranjang belanja" />
+          <div className="m-3 mr-sm-5">
+            <BagButton />
+            <ShoppingBagContainer />
           </div>
         </div>
       </div>
@@ -55,6 +58,7 @@ const MerchStoreTop: React.SFC = () => {
             box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
             border-radius: 51px;
             border: 0px;
+            
           }
 
           .ms-hero-title {

@@ -1,34 +1,24 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext } from "react";
+import useSWR from "swr";
 import { ApiContext } from "../utils/context/api";
 import LeaderBoardChild from "./LeaderBoardChild";
-import ColorfulHeader from "./ColorfulHeader";
 import Alert from "./commons/Alert";
+import ColorfulHeader from "./ColorfulHeader";
+
 import { Theme } from "styles/theme";
 import { getGlobalScoreboard, getTotalVisitors } from "api/home";
-import { LeaderboardData } from "interfaces/home";
 
 const LeaderBoard: React.FC = () => {
   const apiContext = useContext(ApiContext);
-  const [leaderboardData, setLeaderboardData] = useState<
-    LeaderboardData["data"] | null
-  >(null);
-  const [visitorNumber, setVisitorNumber] = useState(0);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    getGlobalScoreboard(apiContext.axios)
-      .then((res) => {
-        setLeaderboardData(res.data);
-      })
-      .catch((e) => setError(e.message));
-    getTotalVisitors(apiContext.axios)
-      .then((res) => {
-        setVisitorNumber(res.data.count);
-      })
-      .catch((e) => setError(e.message));
-  }, []);
-
-  if (error) return <Alert error={error} />;
+  const {
+    data: leaderboardData,
+    error: leaderboardErr,
+  } = useSWR("/global-scoreboard", () => getGlobalScoreboard(apiContext.axios));
+  const { data: visitorData, error: visitorErr } = useSWR(
+    "/visitor-count",
+    () => getTotalVisitors(apiContext.axios)
+  );
 
   return (
     <div className="container-sm manual-lg-width margin-bot">
@@ -42,12 +32,13 @@ const LeaderBoard: React.FC = () => {
             LEADERBOARD
           </ColorfulHeader>
           <b className="visitor">
-            Visitors: <span>{visitorNumber}</span>
+            Visitors: <span>{visitorData?.data.count}</span>
           </b>
         </div>
       </div>
+      <Alert error={leaderboardErr || visitorErr ? "Masalah koneksi" : null} />
       {leaderboardData &&
-        leaderboardData?.map((item, index) => (
+        leaderboardData?.data.map((item, index) => (
           <LeaderBoardChild
             no={index + 1}
             name={item.user.name}

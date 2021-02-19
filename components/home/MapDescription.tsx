@@ -1,44 +1,37 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
+import useSWR from "swr";
 import { ApiContext } from "utils/context/api";
 import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
 import { getGlobalScoreboard, getPointsAndRank } from "api/home";
-import { AuthContext } from "utils/context/auth";
 import Alert from "components/commons/Alert";
 
 const MapDescription: React.FC = () => {
-  const authContext = useContext(AuthContext);
   const apiContext = useContext(ApiContext);
-  const [points, setPoints] = useState(0);
-  const [rank, setRank] = useState(-1);
-  const [numberRanked, setNumberRanked] = useState(0);
-  const [error, setError] = useState<string | null>(null);
+
+  const {
+    data: leaderboardData,
+    error: errorLeaderboardData,
+  } = useSWR("/global-scoreboard", () => getGlobalScoreboard(apiContext.axios));
+  const {
+    data: rankPointsData,
+    error: errorRankPointsData,
+  } = useSWR("/visitor/rankpoint", () => getPointsAndRank(apiContext.axios));
+
+  const points = rankPointsData?.data?.score;
+  const rank = rankPointsData?.data?.rank;
 
   let rankText;
-  if (rank === -1) {
-    rankText = "Belum Tersedia";
+  if (leaderboardData) {
+    rankText = `${rank} of ${leaderboardData.data.length}`;
   } else {
-    rankText = `${rank} of ${numberRanked}`;
+    rankText = "Belum Tersedia";
   }
 
-  useEffect(() => {
-    getGlobalScoreboard(apiContext.axios)
-      .then((res) => {
-        setNumberRanked(res.data.length);
-      })
-      .catch((e) => setError(e.message));
-
-    if (authContext.authenticated) {
-      getPointsAndRank(apiContext.axios)
-        .then((res) => {
-          setPoints(res.data.score);
-          setRank(res.data.rank);
-        })
-        .catch((e) => setError(e.message));
-    }
-  }, [authContext.authenticated]);
-
-  if (error) return <Alert error={error} />;
+  if (errorLeaderboardData) {
+    return <Alert error={errorLeaderboardData.message} />;
+  }
+  if (errorRankPointsData) return <Alert error={errorRankPointsData.message} />;
 
   return (
     <>
