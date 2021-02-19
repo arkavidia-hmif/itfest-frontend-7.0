@@ -88,7 +88,9 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           />
           {errorFetching && <Alert error={errorFetching.message} />}
           {error && <Alert error={error} />}
-          {gameId && attempted === 1 && <Game gameId={gameId} />}
+          {gameId && attempted === 1 && (
+            <Game setAttempted={setAttempted} gameId={gameId} />
+          )}
         </div>
       ) : (
         <div className="container pb-4">
@@ -108,7 +110,9 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           />
           {errorFetching && <Alert error={errorFetching.message} />}
           {error && <Alert error={error} />}
-          {gameId && attempted === 1 && <Game gameId={gameId} />}
+          {gameId && attempted === 1 && (
+            <Game setAttempted={setAttempted} gameId={gameId} />
+          )}
         </div>
       )}
     </Layout>

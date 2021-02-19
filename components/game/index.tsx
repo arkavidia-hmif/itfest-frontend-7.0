@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import useSWR from "swr";
 import Quiz from "./Quiz";
 import CrossWord from "./Crossword";
@@ -22,9 +22,10 @@ const isQuiz = (
 
 interface Props {
   gameId: number;
+  setAttempted: Dispatch<SetStateAction<number>>;
 }
 
-const Game: React.FC<Props> = ({ gameId }) => {
+const Game: React.FC<Props> = ({ gameId, setAttempted }) => {
   const apiContext = useContext(ApiContext);
   const { data: game, error } = useSWR(
     gameId !== undefined ? `${GET_GAME_URL}${gameId}` : null,
@@ -40,11 +41,13 @@ const Game: React.FC<Props> = ({ gameId }) => {
         <Quiz
           gameData={game?.data.question as QuizData}
           gameId={String(gameId)}
+          setAttempted={setAttempted}
         />
       )}
       {!isQuiz(game?.data) && game?.data.type === 2 && (
         <CrossWord
           gameData={game?.data.problem as CrosswordData}
+          setAttempted={setAttempted}
           gameId={String(gameId)}
         />
       )}

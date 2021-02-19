@@ -2,7 +2,9 @@ import { AxiosInstance } from "axios";
 import {
   QuizAPIResponseData,
   CrosswordAPIResponseData,
+  QuizResponse,
 } from "./../interfaces/game";
+
 import { ApiError, ApiResponse, StandardError } from "interfaces/api";
 
 export const GET_GAME_URL = "/game/";
@@ -84,10 +86,12 @@ export async function getGame(
 export async function submitGame(
   axios: AxiosInstance,
   id: string,
-  body: string
+  body: QuizResponse
 ): Promise<ApiResponse<string>> {
   try {
-    const response = await axios.post(`${GET_GAME_URL}${id}/submit`, body);
+    const response = await axios.post(`${GET_GAME_URL}${id}/submit`, {
+      answer: body,
+    });
     return response.data as ApiResponse<string>;
   } catch (e) {
     if (e.response) {

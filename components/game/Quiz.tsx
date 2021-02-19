@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { Dispatch, SetStateAction, useContext, useState } from "react";
 import Success from "components/commons/Success";
 import Alert from "components/commons/Alert";
 import { QuizData, QuizResponse } from "interfaces/game";
@@ -9,9 +9,10 @@ import { ApiContext } from "utils/context/api";
 interface Props {
   gameId: string;
   gameData: QuizData;
+  setAttempted: Dispatch<SetStateAction<number>>;
 }
 
-const Quiz: React.FC<Props> = ({ gameId, gameData }) => {
+const Quiz: React.FC<Props> = ({ gameId, gameData, setAttempted }) => {
   const realData = gameData;
   const apiContext = useContext(ApiContext);
   const [submission, setSubmission] = useState<QuizResponse>({});
@@ -37,13 +38,10 @@ const Quiz: React.FC<Props> = ({ gameId, gameData }) => {
       if (Object.keys(submission)?.length < Object.keys(gameData).length) {
         throw new Error("Game belum terisi semua");
       }
-      const res = await submitGame(
-        apiContext.axios,
-        gameId,
-        JSON.stringify({ answer: submission })
-      );
+      const res = await submitGame(apiContext.axios, gameId, submission);
       if (res) {
         setSuccess(true);
+        setAttempted(2);
         setError(null);
       }
     } catch (e) {

@@ -1,21 +1,28 @@
-import { useContext, useLayoutEffect, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useLayoutEffect,
+  useState,
+} from "react";
 import Crossword from "react-crossword";
 import FilledButton from "components/commons/FilledButton";
 import { ApiContext } from "utils/context/api";
 import Success from "components/commons/Success";
 import Alert from "components/commons/Alert";
 import { submitGame } from "api/game";
-import { CrosswordData } from "interfaces/game";
+import { CrosswordData, QuizResponse } from "interfaces/game";
 
 interface Props {
   gameId: string;
   gameData: CrosswordData;
+  setAttempted: Dispatch<SetStateAction<number>>;
 }
 
-const CrossWordItem: React.FC<Props> = ({ gameId, gameData }) => {
+const CrossWordItem: React.FC<Props> = ({ gameId, gameData, setAttempted }) => {
   const data = gameData;
   const apiContext = useContext(ApiContext);
-  const [local, setLocal] = useState<{ [key: string]: string }>({});
+  const [local, setLocal] = useState<QuizResponse>({});
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -61,13 +68,10 @@ const CrossWordItem: React.FC<Props> = ({ gameId, gameData }) => {
       if (totalInitLength > totalLocalLength) {
         throw new Error("Fill all board first");
       }
-      const res = await submitGame(
-        apiContext.axios,
-        gameId,
-        JSON.stringify({ answer: local })
-      );
+      const res = await submitGame(apiContext.axios, gameId, local);
       if (res) {
         setSuccess(true);
+        setAttempted(2);
         setError(null);
       }
     } catch (e) {
