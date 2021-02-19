@@ -16,24 +16,28 @@ const AboutUs: React.FC<Props> = ({ aboutUs }) => {
         }
 
         .title-main {
-            font-size: 1.8rem;
+          font-size: 1.8rem;
+        }
+
+        .description-text-main {
+          text-align: justify;
         }
 
         @media only screen and (max-width: 1000px) {
           .flex-container {
-              margin-top: 5%;
-              justify-content: center;
+            margin-top: 5%;
+            justify-content: center;
           }
 
           .title-main {
-              text-align: center;
-              font-size: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
           }
 
           .description-text-main {
-              text-align: center;
-              margin-left: 10%;
-              margin-right: 10%;
+            text-align: center;
+            margin-left: 10%;
+            margin-right: 10%;
           }
         }
       `}</style>

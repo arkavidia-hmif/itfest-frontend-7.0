@@ -1,23 +1,25 @@
 import { AxiosInstance } from "axios";
 import {
   AuthData,
+  EmailResetPasswordStatus,
   LoginStatus,
   RegisterStatus,
+  EmailVerifStatus
 } from "interfaces/auth";
-import { ApiError, ApiResponse, StandardError } from "interfaces/api";
+import { ApiError } from "interfaces/api";
 
 export async function login(
   axios: AxiosInstance,
   email: string,
   password: string
-): Promise<ApiResponse<AuthData>> {
+): Promise<AuthData> {
   try {
     const response = await axios.post("/login", {
       email,
       password,
     });
 
-    return response.data as ApiResponse<AuthData>;
+    return response.data.data as AuthData;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
@@ -26,25 +28,32 @@ export async function login(
           LoginStatus.INVALID_CREDS,
           "Email dan/atau password salah"
         );
+      } else if (errorCode === "not-verified") {
+        throw new ApiError<LoginStatus>(
+          LoginStatus.EMAIL_NOT_CONFIRMED,
+          "Email belum diverifikasi"
+        );
       }
     }
 
-    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
+    throw new ApiError<LoginStatus>(LoginStatus.ERROR, e.message);
   }
 }
 
 export async function registerVisitor(
   axios: AxiosInstance,
+  name: string,
   email: string,
   password: string,
-): Promise<ApiResponse<AuthData>> {
+  telp: string
+): Promise<void> {
   try {
-    const response = await axios.post("/register/visitor/", {
+    await axios.post("/register/visitor", {
+      name,
       email,
       password,
+      telp
     });
-
-    return response.data as ApiResponse<AuthData>;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
@@ -56,6 +65,43 @@ export async function registerVisitor(
       }
     }
 
-    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
+    throw new ApiError<RegisterStatus>(RegisterStatus.UNKNOWN, e.message);
   }
 }
+
+export async function resetPassword(
+  axios: AxiosInstance,
+  token: string,
+  password: string
+): Promise<void> {
+  try {
+    await axios.post(`/validation/${token}`, {
+      password,
+    });
+  } catch (e) {
+    throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e.message);
+  }
+}
+
+export async function verifEmail(
+  axios: AxiosInstance,
+  email: string,
+  token: string
+): Promise<void> {
+  try {
+    await axios.post("/validation", {
+      email,
+      token
+    });
+  } catch (e) {
+    if (e.response?.data?.code === "invalid-token") {
+      throw new ApiError<EmailVerifStatus>(
+        EmailVerifStatus.INVALID_TOKEN,
+        "Token invalid"
+      );
+    }
+
+    throw new ApiError<EmailVerifStatus>(EmailVerifStatus.ERROR, e.message);
+  }
+}
+

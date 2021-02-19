@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from "react";
-import { AuthData } from "interfaces/auth";
+import { AuthData, VisitorProfileData } from "interfaces/auth";
 import { AuthContext, AuthContextType } from "utils/context/auth";
 
 interface Props {
@@ -9,11 +9,13 @@ interface Props {
 const AuthProvider: React.FC<Props> = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [auth, setAuth] = useState<AuthData>();
+  const [profile, setProfile] = useState<VisitorProfileData>();
   const [loaded, setLoaded] = useState(false);
 
   const authenticatedKey =
     process.env.LOCAL_STORAGE_AUTHENTICATED || "authenticated_dev";
   const authKey = process.env.LOCAL_STORAGE_AUTH || "auth_dev";
+  const profileKey = process.env.LOCAL_STORAGE_PROFILE || "profile_dev";
 
   const setAndSaveAuthenticated = (newValue: boolean) => {
     setAuthenticated(newValue);
@@ -29,11 +31,30 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
+  const setAndSaveProfile = (newValue?: VisitorProfileData) => {
+    setProfile(newValue);
+    if (newValue) {
+      localStorage.setItem(profileKey, JSON.stringify(newValue));
+    } else {
+      localStorage.removeItem(profileKey);
+    }
+  };
+
+  const login = (auth: AuthData, profile: VisitorProfileData) => {
+    setAndSaveAuthenticated(true);
+    setAndSaveAuth(auth);
+    setAndSaveProfile(profile);
+  };
+
   useEffect(() => {
     setAuthenticated(localStorage.getItem(authenticatedKey) === "true");
     const savedAuth = localStorage.getItem(authKey);
     if (savedAuth) {
       setAuth(JSON.parse(savedAuth));
+    }
+    const savedProfile = localStorage.getItem(profileKey);
+    if (savedProfile) {
+      setProfile(JSON.parse(savedProfile));
     }
     setLoaded(true);
   }, []);
@@ -41,8 +62,14 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   const authContext: AuthContextType = {
     authenticated,
     auth,
-    setAuthenticated: setAndSaveAuthenticated,
-    setAuth: setAndSaveAuth,
+    profile,
+    setProfile: setAndSaveProfile,
+    login,
+    logout: () => {
+      setAndSaveAuthenticated(false);
+      setAndSaveAuth();
+      setAndSaveProfile();
+    }
   };
 
   if (loaded || typeof window === "undefined") {

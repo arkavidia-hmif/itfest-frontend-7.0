@@ -1,4 +1,4 @@
-const profileAttributes: { [slug: string]: string } = {
+const profileAttributes: Record<string, string> = {
   username: "Username",
   telp: "Nomor Telepon",
   name: "Nama",
@@ -10,9 +10,9 @@ const profileAttributes: { [slug: string]: string } = {
   email: "Email",
 };
 
-const MALE = "Male";
-const FEMALE = "Female";
-
-export const genderList = [MALE, FEMALE];
+export const genderList: Record<string, string> = {
+  "1": "Male",
+  "2": "Female"
+};
 
 export default profileAttributes;

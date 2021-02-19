@@ -17,6 +17,7 @@ const Map: React.FC = () => {
 
   return (
     <MapContainer
+      attributionControl={false}
       touchZoom={true}
       center={center}
       zoom={1}
@@ -32,7 +33,7 @@ const Map: React.FC = () => {
         bounds={bounds}
       />
 
-      {Tenants.map((tenant, index : number) => (
+      {Tenants.map((tenant, index: number) => (
         <Marker position={tenant.position}
           title={"asd"}
           icon={icon({
@@ -56,17 +57,9 @@ const Map: React.FC = () => {
               </div>
               <div className="row">
                 <div className="info col">
-                  <Link href={{ 
-                    pathname: "/company-profile/[slug]", 
-                    query: { slug: tenant.slug } 
-                  }}>
-                    <a><p>more &gt; &gt; &gt;</p></a>
-                  </Link>
-                </div>
-                <div className="info col">
-                  <Link href={{ 
-                    pathname: "/company-profile-alt/[slug]", 
-                    query: { slug: tenant.slug } 
+                  <Link href={{
+                    pathname: "/company-profile/[slug]",
+                    query: { slug: tenant.slug }
                   }}>
                     <a><p>more &gt; &gt; &gt;</p></a>
                   </Link>

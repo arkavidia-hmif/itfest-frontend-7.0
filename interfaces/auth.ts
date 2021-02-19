@@ -1,26 +1,28 @@
 export interface AuthData {
   jwt: string;
-  user?: UserData;
-  primary?: PrimaryData;
-  personal?: PersonalData;
+  user: {
+    id: number;
+    email?: string;
+    username: string;
+    role: string;
+    isVerified: boolean;
+  };
 }
 
-export interface ProfileData {
+export interface VisitorProfileData {
   id: number;
+  role: string;
   username: string;
+  point: number;
+  name: string;
+  filled: boolean;
   telp: string | null;
-  name: string | null;
-  role: string | null;
   gender: number | null;
   dob: string | null;
   institute: string | null;
-  point: number;
-  filled: boolean;
-  photo: string | null;
-  interest: Array<string>;
 }
 
-export interface UserData extends ProfileData {
+export interface UserData extends VisitorProfileData {
   createdAt: string;
   updatedAt: string;
   email: string;
@@ -36,13 +38,30 @@ export interface PersonalData {
   gender: number | null;
   dob: string | null;
   institute: string | null;
+  filled: boolean;
 }
 
 export enum LoginStatus {
-  INVALID_CREDS
+  ERROR,
+  INVALID_CREDS,
+  EMAIL_NOT_CONFIRMED,
 }
 
 
 export enum RegisterStatus {
-  USER_EXISTS
+  UNKNOWN,
+  USER_EXISTS,
+  EMAIL_USED,
+  INVALID_EMAIL,
+  INVALID_NAME,
+}
+
+export enum EmailResetPasswordStatus {
+  ERROR,
+  TOKEN_NOT_FOUND,
+}
+
+export enum EmailVerifStatus {
+  ERROR,
+  INVALID_TOKEN
 }

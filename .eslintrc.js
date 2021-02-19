@@ -14,7 +14,13 @@ module.exports = {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "import/order": ["error"],
-    indent: ["error", 2],
+    indent: [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
     semi: ["warn"],
     "no-var": "error",
     eqeqeq: "error",

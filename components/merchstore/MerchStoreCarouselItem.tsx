@@ -2,24 +2,36 @@ import FilledButton from "components/commons/FilledButton";
 import { MerchStoreItem } from "interfaces/merch-store";
 
 export interface Props {
-  item: MerchStoreItem,
-  buyCallback: (item: MerchStoreItem) => void
+  item: MerchStoreItem;
+  buyCallback?: (item: MerchStoreItem) => void;
+  hover: boolean;
 }
 
-const MerchStoreCarouselItem: React.FC<Props> = ({ item, buyCallback }) => {
+const MerchStoreCarouselItem: React.FC<Props> = ({
+  item,
+  buyCallback = () => null,
+  hover,
+}) => {
   return (
     <div>
       <div className="store-item">
         <div className="item-image">
           <img src={item.image} className="w-100" />
           <div className="item-hover">
-            <FilledButton text="Buy" onClick={() => {
-              buyCallback(item);
-            }} />
+            {hover ? (
+              <FilledButton
+                text="Buy"
+                onClick={() => {
+                  buyCallback(item);
+                }}
+              />
+            ) : null}
           </div>
         </div>
 
-        <p className="mt-3 item-name"><b>{item.name}</b></p>
+        <p className="mt-3 item-name">
+          <b>{item.name}</b>
+        </p>
         <p className="mt-3 mb-2">{item.price.toLocaleString()}</p>
       </div>
       <style jsx>
@@ -44,8 +56,8 @@ const MerchStoreCarouselItem: React.FC<Props> = ({ item, buyCallback }) => {
 
             border-radius: 0.25rem;
 
-            background-color: rgba(0,0,0,0.2);
-            
+            background-color: rgba(0, 0, 0, 0.2);
+
             justify-content: center;
             align-items: center;
             display: flex;
