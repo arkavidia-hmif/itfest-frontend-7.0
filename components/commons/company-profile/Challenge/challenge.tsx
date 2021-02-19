@@ -5,9 +5,10 @@ interface Props {
   done: boolean;
   loading?: boolean;
   startGame?: React.MouseEventHandler<HTMLImageElement>;
+  prize: number;
 }
 
-const Challenge: React.FC<Props> = ({ done, loading, startGame }) => {
+const Challenge: React.FC<Props> = ({ done, loading, startGame, prize }) => {
   if (done) {
     return (
       <>
@@ -28,7 +29,7 @@ const Challenge: React.FC<Props> = ({ done, loading, startGame }) => {
                 />
               </div>
               <div className="flex-center">
-                <button className="button">+100 Points</button>
+                <button className="button">+{prize} Points</button>
               </div>
             </div>
           </div>

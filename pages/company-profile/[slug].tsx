@@ -36,6 +36,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [attempted, setAttempted] = useState<number>(0);
+  const [prize, setPrize] = useState<number>(0);
 
   const { data: game, error: errorFetching } = useSWR(
     tenant.id !== undefined
@@ -82,6 +83,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           </div>
           <GalleryMain items={tenant.gallery} />
           <ChallengeDone
+            prize={prize}
             done={attempted === 2}
             loading={loading}
             startGame={postChallenge}
@@ -89,7 +91,11 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           {errorFetching && <Alert error={errorFetching.message} />}
           {error && <Alert error={error} />}
           {gameId && attempted === 1 && (
-            <Game setAttempted={setAttempted} gameId={gameId} />
+            <Game
+              setAttempted={setAttempted}
+              gameId={gameId}
+              setPrize={setPrize}
+            />
           )}
         </div>
       ) : (
@@ -104,6 +110,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           />
           <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
           <ChallengeDone
+            prize={prize}
             done={attempted === 2}
             loading={loading}
             startGame={postChallenge}
@@ -111,7 +118,11 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           {errorFetching && <Alert error={errorFetching.message} />}
           {error && <Alert error={error} />}
           {gameId && attempted === 1 && (
-            <Game setAttempted={setAttempted} gameId={gameId} />
+            <Game
+              setAttempted={setAttempted}
+              gameId={gameId}
+              setPrize={setPrize}
+            />
           )}
         </div>
       )}

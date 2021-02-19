@@ -23,9 +23,10 @@ const isQuiz = (
 interface Props {
   gameId: number;
   setAttempted: Dispatch<SetStateAction<number>>;
+  setPrize: Dispatch<SetStateAction<number>>;
 }
 
-const Game: React.FC<Props> = ({ gameId, setAttempted }) => {
+const Game: React.FC<Props> = ({ gameId, setAttempted, setPrize }) => {
   const apiContext = useContext(ApiContext);
   const { data: game, error } = useSWR(
     gameId !== undefined ? `${GET_GAME_URL}${gameId}` : null,
@@ -42,12 +43,14 @@ const Game: React.FC<Props> = ({ gameId, setAttempted }) => {
           gameData={game?.data?.problem?.question as QuizData}
           gameId={String(gameId)}
           setAttempted={setAttempted}
+          setPrize={setPrize}
         />
       )}
       {!isQuiz(game?.data) && game?.data.type === 2 && (
         <CrossWord
           gameData={game?.data.problem as CrosswordData}
           setAttempted={setAttempted}
+          setPrize={setPrize}
           gameId={String(gameId)}
         />
       )}

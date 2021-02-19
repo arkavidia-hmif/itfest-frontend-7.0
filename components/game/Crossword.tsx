@@ -17,9 +17,15 @@ interface Props {
   gameId: string;
   gameData: CrosswordData;
   setAttempted: Dispatch<SetStateAction<number>>;
+  setPrize: Dispatch<SetStateAction<number>>;
 }
 
-const CrossWordItem: React.FC<Props> = ({ gameId, gameData, setAttempted }) => {
+const CrossWordItem: React.FC<Props> = ({
+  gameId,
+  gameData,
+  setAttempted,
+  setPrize,
+}) => {
   const data = gameData;
   const apiContext = useContext(ApiContext);
   const [local, setLocal] = useState<QuizResponse>({});
@@ -69,8 +75,9 @@ const CrossWordItem: React.FC<Props> = ({ gameId, gameData, setAttempted }) => {
         throw new Error("Fill all board first");
       }
       const res = await submitGame(apiContext.axios, gameId, local);
-      if (res) {
+      if (res?.data) {
         setSuccess(true);
+        setPrize(res?.data?.prize);
         setAttempted(2);
         setError(null);
       }

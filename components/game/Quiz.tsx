@@ -10,9 +10,15 @@ interface Props {
   gameId: string;
   gameData: QuizData;
   setAttempted: Dispatch<SetStateAction<number>>;
+  setPrize: Dispatch<SetStateAction<number>>;
 }
 
-const Quiz: React.FC<Props> = ({ gameId, gameData, setAttempted }) => {
+const Quiz: React.FC<Props> = ({
+  gameId,
+  gameData,
+  setAttempted,
+  setPrize,
+}) => {
   const apiContext = useContext(ApiContext);
   const [submission, setSubmission] = useState<QuizResponse>({});
 
@@ -38,8 +44,9 @@ const Quiz: React.FC<Props> = ({ gameId, gameData, setAttempted }) => {
         throw new Error("Game belum terisi semua");
       }
       const res = await submitGame(apiContext.axios, gameId, submission);
-      if (res) {
+      if (res?.data) {
         setSuccess(true);
+        setPrize(res?.data?.prize);
         setAttempted(2);
         setError(null);
       }

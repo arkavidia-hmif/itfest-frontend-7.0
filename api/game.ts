@@ -14,6 +14,12 @@ interface OKData {
   data?: { gameid: number; attempt: number };
 }
 
+interface SubmitOKData {
+  code: string;
+  status: number;
+  data?: { prize: number };
+}
+
 export async function getGameByTenant(
   axios: AxiosInstance,
   id: string
@@ -87,12 +93,12 @@ export async function submitGame(
   axios: AxiosInstance,
   id: string,
   body: QuizResponse
-): Promise<ApiResponse<string>> {
+): Promise<SubmitOKData> {
   try {
     const response = await axios.post(`${GET_GAME_URL}${id}/submit`, {
       answer: body,
     });
-    return response.data as ApiResponse<string>;
+    return response.data as SubmitOKData;
   } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
