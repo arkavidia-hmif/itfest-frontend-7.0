@@ -107,9 +107,11 @@ const LoginPage: React.FC = () => {
         </p> */}
         <p className="login-link mt-4 mb-0">
           Belum terdaftar ?{" "}
-          <a href="/register">
-            <b>Daftar</b>
-          </a>
+          <Link href="/register">
+            <a>
+              <b>Daftar</b>
+            </a>
+          </Link>
         </p>
       </form>
       <style jsx>{`
