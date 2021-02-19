@@ -1,14 +1,26 @@
+import { useRouter } from "next/dist/client/router";
 import * as React from "react";
 import { useContext } from "react";
+import { AuthContext } from "utils/context/auth";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../../utils/context/checkout";
 
 
 const BagButton: React.FC = () => {
+
+  const { authenticated } = useContext(AuthContext);
+
+  const router = useRouter();
+
   const { showBag, data } = useContext(CheckoutBagContext) as CheckoutBagContextType;
 
   const showBagContainer = () => {
-    showBag(true);
+    if (authenticated) {
+      showBag(true);
+    } else {
+      router.push("/login");
+    }
+
   };
 
   return (

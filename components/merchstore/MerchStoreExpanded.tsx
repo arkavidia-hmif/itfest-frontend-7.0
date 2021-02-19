@@ -15,6 +15,7 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchantName, handleClose }) => {
   return (
     <div className="w-100 merch-store-container">
       <div className="row">
+        {/* <button ></button> */}
         <div className="merch-store-cross-button">
           <button onClick={handleClose}>
             <img src="/img/merchstore/cross_button.png" />

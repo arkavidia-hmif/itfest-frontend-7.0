@@ -1,16 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CheckoutBagContextType from "../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../utils/context/checkout";
 import { MerchStoreItem } from "interfaces/merch-store";
+import { AuthContext } from "utils/context/auth";
+import { useRouter } from "next/dist/client/router";
 
 
 
 const CheckoutBagProvider: React.FC = ({ children }) => {
+
+  const { authenticated } = useContext(AuthContext);
+
+  const router = useRouter();
+
   const [items, setItems] = useState<Array<MerchStoreItem>>([]);
   const [show, setShow] = useState(false);
 
   const addItem = (item: MerchStoreItem) => {
-    setItems([...items ?? [], item]);
+
+    if (authenticated) {
+      if (items.find(currentItem => currentItem.id === item.id)) {
+        addQuantity(item);
+      } else {
+        setItems([...items ?? [], item]);
+      }
+    } else {
+      router.push("/login");
+    }
+
+
+
   };
 
   const deleteAllItem = () => {

@@ -81,7 +81,6 @@ const ShoppingBag: React.FC<Props> = ({ item }) => {
           .quantity img:hover, .btn-del:hover {
             opacity: 0.5;
           }
-
         `}
       </style>
     </tr>
