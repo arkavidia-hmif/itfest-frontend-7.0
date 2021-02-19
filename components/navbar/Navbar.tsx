@@ -12,6 +12,12 @@ const Navbar: React.FC = () => {
     setOpen: setOpen,
   };
 
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      setOpen(true);
+    }
+  }, []);
+
   const [onTop, setOnTop] = useState(true);
 
   const handleScroll = () => {

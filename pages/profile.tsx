@@ -1,16 +1,19 @@
-// import { useContext } from "react";
-// import { useRouter } from "next/dist/client/router";
+import { useRouter } from "next/dist/client/router";
+import { useContext, useEffect } from "react";
 import Layout from "components/commons/Layout";
 import ProfileWrapper from "components/profile/ProfileWrapper";
 import { Theme } from "styles/theme";
-// import { AuthContext } from "utils/context/auth";
+import { AuthContext } from "utils/context/auth";
 
-const Home: React.FC = () => {
-  //   const authContext = useContext(AuthContext);
-  //   const router = useRouter();
-  //   if (!authContext.authenticated) {
-  //     router.push("/login?continue=/profile");
-  //   }
+const Profile: React.FC = () => {
+  const authContext = useContext(AuthContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!authContext.authenticated) {
+      router.push("/login?continue=/profile");
+    }
+  });
 
   return (
     <Layout background={Theme.bgColors.whpipl} title="Profile">
@@ -19,4 +22,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Profile;
