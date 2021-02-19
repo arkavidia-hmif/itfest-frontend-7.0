@@ -12,6 +12,7 @@ import {
   QuizAPIResponseData,
   QuizData,
 } from "interfaces/game";
+import { AuthContext } from "utils/context/auth";
 
 const isQuiz = (
   tbd: QuizAPIResponseData | CrosswordAPIResponseData | undefined
@@ -28,8 +29,9 @@ interface Props {
 
 const Game: React.FC<Props> = ({ gameId, setAttempted, setPrize }) => {
   const apiContext = useContext(ApiContext);
+  const { authenticated } = useContext(AuthContext);
   const { data: game, error } = useSWR(
-    gameId !== undefined ? `${GET_GAME_URL}${gameId}` : null,
+    gameId !== undefined && authenticated ? `${GET_GAME_URL}${gameId}` : null,
     () => getGame(apiContext.axios, String(gameId))
   );
 

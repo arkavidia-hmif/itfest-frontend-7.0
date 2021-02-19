@@ -1,5 +1,8 @@
 import * as React from "react";
+import { useRouter } from "next/dist/client/router";
 import Spinner from "components/commons/Spinner";
+import { AuthContext } from "utils/context/auth";
+import FilledButton from "components/commons/FilledButton";
 
 interface Props {
   done: boolean;
@@ -9,6 +12,8 @@ interface Props {
 }
 
 const Challenge: React.FC<Props> = ({ done, loading, startGame, prize }) => {
+  const { authenticated } = React.useContext(AuthContext);
+  const router = useRouter();
   if (done) {
     return (
       <>
@@ -177,11 +182,16 @@ const Challenge: React.FC<Props> = ({ done, loading, startGame, prize }) => {
                 </h2>
                 {loading ? (
                   <Spinner height="50px" />
-                ) : (
+                ) : authenticated ? (
                   <img
                     src="/img/company-profile/play-polygon.png"
                     className="play-image"
                     onClick={startGame}
+                  />
+                ) : (
+                  <FilledButton
+                    text="Login terlebih dahulu"
+                    onClick={() => router.push("/login")}
                   />
                 )}
               </div>

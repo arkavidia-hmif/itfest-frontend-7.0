@@ -6,7 +6,7 @@ import {
   RegisterStatus,
   EmailVerifStatus,
 } from "interfaces/auth";
-import { ApiError } from "interfaces/api";
+import { ApiError, StandardError } from "interfaces/api";
 
 export async function login(
   axios: AxiosInstance,
@@ -61,6 +61,13 @@ export async function registerVisitor(
         throw new ApiError<RegisterStatus>(
           RegisterStatus.USER_EXISTS,
           "Email ini sudah terdaftar"
+        );
+      }
+      const message = e.response.data?.data[0];
+      if (errorCode === "invalid-input") {
+        throw new ApiError<StandardError>(
+          StandardError.ERROR,
+          `${message.part} ${message.message}`
         );
       }
     }

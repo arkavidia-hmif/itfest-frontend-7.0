@@ -37,6 +37,12 @@ export async function getGameByTenant(
         );
       }
     }
+    if (e.response.data.status === 401) {
+      throw new ApiError<StandardError>(
+        StandardError.ERROR,
+        "Login terlebih dahulu"
+      );
+    }
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
@@ -49,6 +55,12 @@ export async function playGame(
     const response = await axios.post(`${GET_GAME_URL}${id}/play`);
     return response.data as ApiResponse<OKData>;
   } catch (e) {
+    if (e.response.data.status === 401) {
+      throw new ApiError<StandardError>(
+        StandardError.ERROR,
+        "Login terlebih dahulu"
+      );
+    }
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
@@ -84,7 +96,12 @@ export async function getGame(
         );
       }
     }
-
+    if (e.response.data.status === 401) {
+      throw new ApiError<StandardError>(
+        StandardError.ERROR,
+        "Login terlebih dahulu"
+      );
+    }
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
@@ -109,23 +126,12 @@ export async function submitGame(
         );
       }
     }
-    throw new ApiError<StandardError>(StandardError.ERROR, e.message);
-  }
-}
-
-export async function getAllGames(
-  axios: AxiosInstance
-): Promise<ApiResponse<string>> {
-  try {
-    const response = await axios.get(GET_GAME_URL);
-    // console.log(response);
-    return response.data as ApiResponse<string>;
-  } catch (e) {
-    if (e.response) {
-      // const errorCode = e.response.data?.code;
-      // console.log(errorCode);
+    if (e.response.data.status === 401) {
+      throw new ApiError<StandardError>(
+        StandardError.ERROR,
+        "Login terlebih dahulu"
+      );
     }
-
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }
