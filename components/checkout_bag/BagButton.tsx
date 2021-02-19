@@ -1,9 +1,9 @@
 import { useRouter } from "next/dist/client/router";
 import * as React from "react";
 import { useContext } from "react";
-import { AuthContext } from "utils/context/auth";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../../utils/context/checkout";
+import { AuthContext } from "utils/context/auth";
 
 
 const BagButton: React.FC = () => {

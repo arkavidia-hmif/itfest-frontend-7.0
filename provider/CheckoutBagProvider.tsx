@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
+import { useRouter } from "next/dist/client/router";
 import CheckoutBagContextType from "../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../utils/context/checkout";
 import { MerchStoreItem } from "interfaces/merch-store";
 import { AuthContext } from "utils/context/auth";
-import { useRouter } from "next/dist/client/router";
 
 
 
