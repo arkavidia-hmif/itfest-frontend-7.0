@@ -1,5 +1,5 @@
-import * as React from  "react";
-import { useContext} from "react";
+import * as React from "react";
+import { useContext } from "react";
 import Carousel from "react-elastic-carousel";
 import { CheckoutBagContext } from "../../utils/context/checkout";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
@@ -17,13 +17,8 @@ const MerchStoreCarousel: React.FC<Props> = ({ items }) => {
 
   const buyCallback = (item: MerchStoreItem) => {
     // debug
-<<<<<<< HEAD
     // eslint-disable-next-line no-console 
     addData(item);
-=======
-    // eslint-disable-next-line no-console
-    console.log(`Buy ${item.name}`);
->>>>>>> 31bd11d9a48fbda3e2e4c63726ecaa8bee86bf30
   };
 
   return (

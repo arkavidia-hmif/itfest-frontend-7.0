@@ -1,4 +1,4 @@
-import * as React from  "react";
+import * as React from "react";
 import { useContext } from "react";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../../utils/context/checkout";
@@ -21,23 +21,25 @@ const BagButton: React.FC = () => {
           <img src="/img/bag.svg" />
         </div>
         <div className="notif">
-          <p style={{color: "white", fontWeight: "bold", marginTop: "0.2rem"}}>{data.length}</p>
+          <p style={{ color: "white", fontWeight: "bold", marginTop: "0.2rem" }}>{data.length}</p>
         </div>
       </div>
 
       <style jsx>
         {`
           .main {
-            box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.25);
-            border-radius: 4rem;
-            width: 20%;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+            border-radius: 51px;
+            width: 110%;
             cursor: pointer;
             position: relative;
-            margin-top: 5rem;
+            padding: .8rem 2.5rem;
+            background: white;
+            font-size: 1rem;
           }
 
           img {
-            width: 2.5rem;
+            width: 2rem;
             float: right;
           }
 
