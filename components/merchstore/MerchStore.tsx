@@ -37,55 +37,53 @@ const MerchStore: React.SFC = () => {
             merchantName={`${storeArray[currentPosition]}`}
             handleClose={handleClose}
           />
-        ) : (
-          <div className="d-flex merch-store-simple align-items-center">
-            <div className="merch-store-l-btn">
-              <MerchStoreCarouselButton
-                type="PREV"
-                onClick={goLeft}
-                isEdge={false}
-              />
-            </div>
-            <div className="merch-store-left">
-              <MerchStoreSimple
-                merchantName={`${storeArray[currentPosition]}`}
-                handleMore={handleMore}
-              />
-            </div>
+        ) :
+          (
+            <div className="d-flex merch-store-simple align-items-center">
+              <div className="merch-store-l-btn">
+                <MerchStoreCarouselButton
+                  type="PREV"
+                  onClick={goLeft}
+                  isEdge={false}
+                />
+              </div>
+              <div className="merch-store-left">
+                <MerchStoreSimple
+                  merchantName={`${storeArray[currentPosition]}`}
+                  handleMore={handleMore}
+                />
+              </div>
 
-            <div className="merch-store-simple-minor merch-store-center">
-              <MerchStoreSimple
-                merchantName={`${
-                  storeArray[(currentPosition + 1) % storeArray.length]
-                }`}
-                handleMore={() => null}
-              />
-            </div>
+              <div className="merch-store-simple-minor merch-store-center">
+                <MerchStoreSimple
+                  merchantName={`${storeArray[(currentPosition + 1) % storeArray.length]}`}
+                  handleMore={() => null}
+                />
+              </div>
 
-            <div className="merch-store-simple-minor merch-store-right">
-              <MerchStoreSimple
-                merchantName={`${
-                  storeArray[(currentPosition + 2) % storeArray.length]
-                }`}
-                handleMore={() => null}
-              />
-            </div>
+              <div className="merch-store-simple-minor merch-store-right">
+                <MerchStoreSimple
+                  merchantName={`${storeArray[(currentPosition + 2) % storeArray.length]}`}
+                  handleMore={() => null}
+                />
+              </div>
 
-            <div className="merch-store-r-btn">
-              <MerchStoreCarouselButton
-                type="NEXT"
-                onClick={goRight}
-                isEdge={false}
-              />
+              <div className="merch-store-r-btn">
+                <MerchStoreCarouselButton
+                  type="NEXT"
+                  onClick={goRight}
+                  isEdge={false}
+                />
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
       <style jsx>
         {`
           .merch-store-simple {
             margin-left: -4vw;
           }
+
           .merch-store-simple-minor {
             transform: scale3d(0.7, 0.7, 1);
             opacity: 0.5;
