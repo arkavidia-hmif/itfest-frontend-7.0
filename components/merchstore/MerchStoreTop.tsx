@@ -1,6 +1,6 @@
+import * as React from "react";
 import BagButton from "components/checkout_bag/BagButton";
 import ShoppingBagContainer from "components/checkout_bag/ShoppingBagContainer";
-import * as React from "react";
 import { Dimen } from "styles/dimen";
 
 const MerchStoreTop: React.SFC = () => {
