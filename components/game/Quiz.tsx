@@ -13,7 +13,6 @@ interface Props {
 }
 
 const Quiz: React.FC<Props> = ({ gameId, gameData, setAttempted }) => {
-  const realData = gameData;
   const apiContext = useContext(ApiContext);
   const [submission, setSubmission] = useState<QuizResponse>({});
 
@@ -35,7 +34,7 @@ const Quiz: React.FC<Props> = ({ gameId, gameData, setAttempted }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      if (Object.keys(submission)?.length < Object.keys(gameData).length) {
+      if (Object?.keys(submission)?.length < Object?.keys(gameData)?.length) {
         throw new Error("Game belum terisi semua");
       }
       const res = await submitGame(apiContext.axios, gameId, submission);
@@ -58,28 +57,29 @@ const Quiz: React.FC<Props> = ({ gameId, gameData, setAttempted }) => {
         {error && <Alert error={error} />}
         {success && <Success message="Successfully submitted" />}
         <form onSubmit={handleSubmit}>
-          {Object.entries(realData).map((datum, i) => (
-            <div key={i} className="one-question">
-              <div className="quest">{datum[1].text}</div>
-              <div className="choices">
-                {datum[1]?.choice.map((ans, j) => (
-                  <div key={j} className="choice">
-                    <input
-                      required
-                      type="radio"
-                      value={ans}
-                      id={`answer-${String(i)}-${String(j)}`}
-                      checked={String(ans) === String(submission[datum[0]])}
-                      onChange={(e) => handleChange(e.target.value, datum[0])}
-                    />
-                    <label htmlFor={`answer-${String(i)}-${String(j)}`}>
-                      {ans}
-                    </label>
-                  </div>
-                ))}
+          {gameData &&
+            Object?.entries(gameData)?.map((datum, i) => (
+              <div key={i} className="one-question">
+                <div className="quest">{datum[1].text}</div>
+                <div className="choices">
+                  {datum[1]?.choice.map((ans, j) => (
+                    <div key={j} className="choice">
+                      <input
+                        required
+                        type="radio"
+                        value={ans}
+                        id={`answer-${String(i)}-${String(j)}`}
+                        checked={String(ans) === String(submission[datum[0]])}
+                        onChange={(e) => handleChange(e.target.value, datum[0])}
+                      />
+                      <label htmlFor={`answer-${String(i)}-${String(j)}`}>
+                        {ans}
+                      </label>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
           <FilledButton text="Submit" submit={true} loading={loading} />
         </form>
       </div>

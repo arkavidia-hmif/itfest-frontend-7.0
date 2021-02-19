@@ -9,7 +9,7 @@ export interface QuizData {
 }
 export interface QuizAPIResponseData {
   type: number;
-  question: QuizData;
+  problem: { question: QuizData };
 }
 export interface CrosswordData {
   crosswordType: "quick";

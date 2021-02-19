@@ -39,7 +39,7 @@ const Game: React.FC<Props> = ({ gameId, setAttempted }) => {
     <div className="">
       {isQuiz(game?.data) && game?.data.type === 1 && (
         <Quiz
-          gameData={game?.data.question as QuizData}
+          gameData={game?.data?.problem?.question as QuizData}
           gameId={String(gameId)}
           setAttempted={setAttempted}
         />
