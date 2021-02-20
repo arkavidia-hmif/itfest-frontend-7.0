@@ -61,6 +61,7 @@ const Checkout: React.FC = () => {
       { buy ? <Alert error={status} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} /> : null}
       <div className="btn">
         <FilledButton
+          disabled={total === 0}
           color={Theme.buttonColors.pinkButton}
           text="CHECKOUT"
           onClick={handleSubmit}
