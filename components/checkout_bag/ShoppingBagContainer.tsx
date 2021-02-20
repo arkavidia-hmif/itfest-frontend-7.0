@@ -14,7 +14,7 @@ const ShoppingBagContainer: React.FC = () => {
   return (
     <div className="main container-sm" style={{ display: show ? "block" : "none" }}>
       <div className="row">
-        <div className="content col-sm-8" style={{ overflowY: "scroll" }}>
+        <div className="content col-md-6 col-lg-8" style={{ overflowY: "scroll" }}>
           <h2>Shopping Bag</h2>
           <table style={{ width: "100%" }}>
             <tbody>
@@ -31,7 +31,7 @@ const ShoppingBagContainer: React.FC = () => {
             </tbody>
           </table>
         </div>
-        <div className="content col-sm-4">
+        <div className="content col-md-6 col-lg-4">
           <Checkout />
         </div>
         <img className="btn-close" src="/img/close.svg" onClick={() => showBag(false)} />

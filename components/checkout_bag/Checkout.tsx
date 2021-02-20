@@ -1,4 +1,4 @@
-import * as React from  "react";
+import * as React from "react";
 import { useContext, useState } from "react";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../../utils/context/checkout";
@@ -33,7 +33,7 @@ const Checkout: React.FC = () => {
 
   const handleSubmit = () => {
     setBuy(true);
-    
+
     checkout(apiContext.axios, line, whatsapp, address, data).then(() => {
       setStatus("Pembelian berhasil");
       setSucess(true);
@@ -46,25 +46,25 @@ const Checkout: React.FC = () => {
   return (
     <div className="checkout-box">
       <h4>SHIPPING DETAILS</h4>
-      <hr/>
+      <hr />
       <InputField text="Alamat" value={address} setValue={setAddress} />
       <InputField text="WhatsApp" value={whatsapp} setValue={setWhatsapp} />
       <InputField text="LINE" value={line} setValue={setLine} />
       <h4>PAYMENT DETAILS</h4>
-      <hr/>
+      <hr />
       <h5>SUBTOTAL</h5>
-      <h5 style={{float: "right"}}>
+      <h5 style={{ float: "right" }}>
         {
           total
-        }  
+        }
       </h5>
-      { buy ? <Alert error={status} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} /> : null }
+      { buy ? <Alert error={status} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} /> : null}
       <div className="btn">
         <FilledButton
           color={Theme.buttonColors.pinkButton}
           text="CHECKOUT"
-          padding="0.75rem 6rem"
           onClick={handleSubmit}
+          fullWidth
         />
       </div>
 
