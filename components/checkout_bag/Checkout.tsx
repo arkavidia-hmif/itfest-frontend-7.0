@@ -47,6 +47,8 @@ const Checkout: React.FC = () => {
     });
   };
 
+  const point = authContext.profile?.point || 0;
+  
   return (
     <div className="checkout-box">
       <h4>SHIPPING DETAILS</h4>
@@ -59,7 +61,7 @@ const Checkout: React.FC = () => {
       <h5>POINT</h5>
       <h5 style={{ float: "right" }}>
         {
-          authContext.profile?.point || 0
+          point
         }
       </h5>
       <br />
@@ -72,7 +74,7 @@ const Checkout: React.FC = () => {
       { buy ? <Alert error={status} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} /> : null}
       <div className="btn">
         <FilledButton
-          disabled={total === 0}
+          disabled={total === 0 || point < total}
           color={Theme.buttonColors.pinkButton}
           text="CHECKOUT"
           onClick={handleSubmit}
