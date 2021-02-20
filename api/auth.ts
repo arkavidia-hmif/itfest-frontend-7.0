@@ -4,9 +4,9 @@ import {
   EmailResetPasswordStatus,
   LoginStatus,
   RegisterStatus,
-  EmailVerifStatus
+  EmailVerifStatus,
 } from "interfaces/auth";
-import { ApiError } from "interfaces/api";
+import { ApiError, StandardError } from "interfaces/api";
 
 export async function login(
   axios: AxiosInstance,
@@ -52,7 +52,7 @@ export async function registerVisitor(
       name,
       email,
       password,
-      telp
+      telp,
     });
   } catch (e) {
     if (e.response) {
@@ -61,6 +61,13 @@ export async function registerVisitor(
         throw new ApiError<RegisterStatus>(
           RegisterStatus.USER_EXISTS,
           "Email ini sudah terdaftar"
+        );
+      }
+      const message = e.response.data?.data[0];
+      if (errorCode === "invalid-input") {
+        throw new ApiError<StandardError>(
+          StandardError.ERROR,
+          `${message.part} ${message.message}`
         );
       }
     }
@@ -79,7 +86,10 @@ export async function resetPassword(
       password,
     });
   } catch (e) {
-    throw new ApiError<EmailResetPasswordStatus>(EmailResetPasswordStatus.ERROR, e.message);
+    throw new ApiError<EmailResetPasswordStatus>(
+      EmailResetPasswordStatus.ERROR,
+      e.message
+    );
   }
 }
 
@@ -91,7 +101,7 @@ export async function verifEmail(
   try {
     await axios.post("/validation", {
       email,
-      token
+      token,
     });
   } catch (e) {
     if (e.response?.data?.code === "invalid-token") {
@@ -104,4 +114,3 @@ export async function verifEmail(
     throw new ApiError<EmailVerifStatus>(EmailVerifStatus.ERROR, e.message);
   }
 }
-

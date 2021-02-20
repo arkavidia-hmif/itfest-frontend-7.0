@@ -28,9 +28,7 @@ const Layout: React.FC<Props> = ({
       </Head>
       <Navbar />
       <div id="main-container">
-        <div className="background-image">
-          {children}
-        </div>
+        <div className="background-image">{children}</div>
       </div>
       <Footer />
       <style jsx>{`

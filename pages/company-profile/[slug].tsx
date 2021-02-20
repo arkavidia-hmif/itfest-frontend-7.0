@@ -1,6 +1,9 @@
 import { ParsedUrlQuery } from "querystring";
 import * as React from "react";
+import { useState, useCallback } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
+import dynamic from "next/dynamic";
+import useSWR from "swr";
 import Logo from "../../components/commons/company-profile/LogoTitle/logo-title";
 import LogoAlt from "../../components/commons/company-profile/LogoTitle/logo-title-alt";
 import AboutUsAlt from "../../components/commons/company-profile/AboutUs/about-us-alt";
@@ -13,66 +16,134 @@ import ChallengeDone from "../../components/commons/company-profile/Challenge/ch
 import Tenants from "../../utils/constants/tenants";
 import Layout from "components/commons/Layout";
 import { Tenant } from "interfaces/tenant";
+import { getGameByTenant, GET_GAME_URL, playGame } from "api/game";
+import Alert from "components/commons/Alert";
+import { ApiContext } from "utils/context/api";
 
+const Game = dynamic(() => import("components/game"), {
+  ssr: false,
+});
 interface Props {
-  tenant: Tenant
+  tenant: Tenant;
 }
 
 interface Params extends ParsedUrlQuery {
-  slug: string,
+  slug: string;
 }
 
 const CompanyProfile: React.FC<Props> = ({ tenant }) => {
-  const done = false;
+  const apiContext = React.useContext(ApiContext);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [attempted, setAttempted] = useState<number>(0);
+  const [prize, setPrize] = useState<number>(0);
+
+  const { data: game, error: errorFetching } = useSWR(
+    tenant.id !== undefined
+      ? `${GET_GAME_URL}${GET_GAME_URL}tenant/${tenant.id}`
+      : null,
+    () => getGameByTenant(apiContext.axios, String(tenant.id))
+  );
+
+  const gameId = game?.data?.gameid;
+  React.useEffect(() => {
+    game?.data && setAttempted(game?.data?.attempt);
+  }, [game]);
+
+  const postChallenge = useCallback(async () => {
+    if (gameId && attempted === 0) {
+      setLoading(true);
+      try {
+        const res = await playGame(apiContext.axios, String(gameId));
+        if (res) {
+          setAttempted(1);
+          setError(null);
+        }
+      } catch (e) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, [gameId, attempted]);
+
   return (
     <Layout title={tenant.name}>
-      {tenant.pageType === 0 ?
+      {tenant.pageType !== 0 ? (
         <div className="container pb-4">
           <Logo logo={tenant.logo} title={tenant.name} />
           <div>
-            <CombinedMain 
-              done={!done} 
-              aboutUs={tenant.aboutUs} 
+            <CombinedMain
+              done={attempted === 2}
+              aboutUs={tenant.aboutUs}
               videoUrl={tenant.videoUrl}
               hiring={tenant.hiring}
               socialMedia={tenant.socialMedia}
             />
           </div>
           <GalleryMain items={tenant.gallery} />
-          <ChallengeDone done={!done}/>
+          <ChallengeDone
+            prize={prize}
+            done={attempted === 2}
+            loading={loading}
+            startGame={postChallenge}
+          />
+          {errorFetching && <Alert error={errorFetching.message} />}
+          {error && <Alert error={error} />}
+          {gameId && attempted === 1 && (
+            <Game
+              setAttempted={setAttempted}
+              gameId={gameId}
+              setPrize={setPrize}
+            />
+          )}
         </div>
-        :
+      ) : (
         <div className="container pb-4">
           <LogoAlt logo={tenant.logo} title={tenant.name} />
           <CombinedAlt videoUrl={tenant.videoUrl} />
           <AboutUsAlt aboutUs={tenant.aboutUs} />
-          <ButtonsAlt 
-            done={done}
+          <ButtonsAlt
+            done={attempted === 2}
             hiring={tenant.hiring}
             socialMedia={tenant.socialMedia}
           />
           <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
-          <ChallengeDone done={done}/>
+          <ChallengeDone
+            prize={prize}
+            done={attempted === 2}
+            loading={loading}
+            startGame={postChallenge}
+          />
+          {errorFetching && <Alert error={errorFetching.message} />}
+          {error && <Alert error={error} />}
+          {gameId && attempted === 1 && (
+            <Game
+              setAttempted={setAttempted}
+              gameId={gameId}
+              setPrize={setPrize}
+            />
+          )}
         </div>
-      }
+      )}
     </Layout>
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async() => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const paths = Tenants.map((tenant) => ({
-    params : { slug: tenant.slug }
+    params: { slug: tenant.slug },
   }));
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps = async(context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as Params;
-  const data = Tenants.filter(obj => {
+  const data = Tenants.filter((obj) => {
     return obj.slug === slug;
   });
 

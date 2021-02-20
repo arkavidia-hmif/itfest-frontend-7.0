@@ -12,17 +12,13 @@ const ApiProvider: React.FC<Props> = ({ children }) => {
 
   const apiClient = Axios.create({
     baseURL: process.env.API_BASE_URL,
-
     withCredentials: false,
   });
 
   apiClient.interceptors.request.use((config) => {
     if (authContext.authenticated && authContext.auth) {
-      config.headers.common[
-        "Authorization"
-      ] = `Bearer ${authContext.auth.jwt}`;
+      config.headers.common["Authorization"] = `Bearer ${authContext.auth.jwt}`;
     }
-
     return config;
   });
 

@@ -6,7 +6,7 @@ import CarouselItem from "components/CarouselItem";
 
 const Home: React.FC = () => {
   const MapWithNoSSR = dynamic(() => import("components/map/Map"), {
-    ssr: false
+    ssr: false,
   });
 
   return (

@@ -47,7 +47,6 @@ export enum LoginStatus {
   EMAIL_NOT_CONFIRMED,
 }
 
-
 export enum RegisterStatus {
   UNKNOWN,
   USER_EXISTS,
@@ -63,5 +62,5 @@ export enum EmailResetPasswordStatus {
 
 export enum EmailVerifStatus {
   ERROR,
-  INVALID_TOKEN
+  INVALID_TOKEN,
 }

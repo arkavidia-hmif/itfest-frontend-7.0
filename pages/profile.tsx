@@ -1,5 +1,3 @@
-// import { useContext } from "react";
-// import { useRouter } from "next/dist/client/router";
 import { useRouter } from "next/dist/client/router";
 import { useContext, useEffect } from "react";
 import Layout from "components/commons/Layout";
