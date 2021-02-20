@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
 import MerchStoreExpanded from "./MerchStoreExpanded";
 import MerchStoreSimple from "./MerchStoreSimple";
+import SnackBar from "./SnackBar";
 import { Dimen } from "styles/dimen";
 
-const MerchStore: React.SFC = () => {
+const MerchStore: React.FC = () => {
+  const [snackBar, setSnackBar] = useState(false);
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [currentPosition, setCurrentPosition] = useState(0);
 
   const storeArray = ["Dinosaur", "Dinosaur 2"];
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSnackBar(false);
+    }, 1400);
+
+    return () => clearTimeout(timer);
+  });
 
   const goRight = () => {
     setCurrentPosition((currentPosition + 1) % storeArray.length);
@@ -29,6 +40,7 @@ const MerchStore: React.SFC = () => {
     setIsExpanded(false);
   };
 
+
   return (
     <>
       <div>
@@ -36,6 +48,7 @@ const MerchStore: React.SFC = () => {
           <MerchStoreExpanded
             merchantName={`${storeArray[currentPosition]}`}
             handleClose={handleClose}
+            handleSnackBar={setSnackBar}
           />
         ) :
           (
@@ -78,6 +91,11 @@ const MerchStore: React.SFC = () => {
             </div>
           )}
       </div>
+
+      <SnackBar 
+        open={snackBar} 
+      />
+
       <style jsx>
         {`
           .merch-store-simple {

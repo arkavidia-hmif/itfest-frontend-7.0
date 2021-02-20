@@ -5,9 +5,10 @@ import { Dimen } from "styles/dimen";
 interface Props {
   merchantName: string;
   handleClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handleSnackBar: (input: boolean) => void;
 }
 
-const MerchStoreExpanded: React.FC<Props> = ({ merchantName, handleClose }) => {
+const MerchStoreExpanded: React.FC<Props> = ({ merchantName, handleClose, handleSnackBar }) => {
   const { storeLogo } = {
     storeLogo: "/img/merchstore/store_logo.png",
   };
@@ -40,13 +41,13 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchantName, handleClose }) => {
         <div>
           <h3 className="store-items-title">Top Merch</h3>
           <div className="mt-4 mb-2">
-            <MerchStoreCarousel items={MerchStorePlaceholderItems} />
+            <MerchStoreCarousel items={MerchStorePlaceholderItems} handleSnackBar={handleSnackBar} />
           </div>
         </div>
         <div>
           <h3 className="store-items-title">Merch Lain</h3>
           <div className="mt-4 mb-2">
-            <MerchStoreCarousel items={MerchStorePlaceholderItems} />
+            <MerchStoreCarousel items={MerchStorePlaceholderItems} handleSnackBar={handleSnackBar} />
           </div>
         </div>
       </div>

@@ -10,12 +10,14 @@ import { MerchStoreItem } from "interfaces/merch-store";
 
 interface Props {
   items: Array<MerchStoreItem>;
+  handleSnackBar: (input: boolean) => void;
 }
 
-const MerchStoreCarousel: React.FC<Props> = ({ items }) => {
+const MerchStoreCarousel: React.FC<Props> = ({ items, handleSnackBar }) => {
   const { addData } = useContext(CheckoutBagContext) as CheckoutBagContextType;
 
   const buyCallback = (item: MerchStoreItem) => {
+    handleSnackBar(true);
     addData(item);
   };
 
