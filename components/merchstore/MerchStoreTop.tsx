@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import useSWR from "swr";
 import BagButton from "components/checkout_bag/BagButton";
 import ShoppingBagContainer from "components/checkout_bag/ShoppingBagContainer";
@@ -13,9 +13,11 @@ const MerchStoreTop: React.FC = () => {
   const authContext = useContext(AuthContext);
   const { data: profile, error: profileError } = useSWR(PROFILE_URL, () => getProfile(apiContext.axios));
 
-  if (profile) {
-    authContext.setProfile(profile);
-  }
+  useEffect(() => {
+    if (profile) {
+      authContext.setProfile(profile);
+    }
+  }, [profile]);
 
   return (
     <>
