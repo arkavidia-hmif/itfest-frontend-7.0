@@ -26,11 +26,11 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchantName, handleClose }) => {
           <h2 className="mb-0 col-md-6">{merchantName}&#39;s Shop</h2>
         </div>
         <div className="merch-store-search col-lg-6 pr-lg-5 align-items-center align-items-lg-end ">
-          <input
+          {/* <input
             className="merch-store-search-bar mx-3 mr-md-5 my-3"
             type="text"
             placeholder="Cari Merchandise"
-          />
+          /> */}
         </div>
       </div>
 
