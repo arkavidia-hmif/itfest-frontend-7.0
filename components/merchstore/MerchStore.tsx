@@ -2,9 +2,12 @@ import { useState } from "react";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
 import MerchStoreExpanded from "./MerchStoreExpanded";
 import MerchStoreSimple from "./MerchStoreSimple";
+import SnackBar from "./SnackBar";
 import { Dimen } from "styles/dimen";
 
-const MerchStore: React.SFC = () => {
+const MerchStore: React.FC = () => {
+  const [snackBar, setSnackBar] = useState(false);
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [currentPosition, setCurrentPosition] = useState(0);
@@ -27,7 +30,9 @@ const MerchStore: React.SFC = () => {
 
   const handleClose = () => {
     setIsExpanded(false);
+    console.log(isExpanded);
   };
+
 
   return (
     <>
@@ -36,6 +41,7 @@ const MerchStore: React.SFC = () => {
           <MerchStoreExpanded
             merchantName={`${storeArray[currentPosition]}`}
             handleClose={handleClose}
+            handleSnackBar={setSnackBar}
           />
         ) :
           (
@@ -78,6 +84,12 @@ const MerchStore: React.SFC = () => {
             </div>
           )}
       </div>
+
+      <SnackBar 
+        open={snackBar} 
+        setOpen={setSnackBar} 
+      />
+
       <style jsx>
         {`
           .merch-store-simple {
