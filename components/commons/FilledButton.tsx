@@ -10,6 +10,7 @@ interface Props {
   loading?: boolean;
   fontSize?: string;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const FilledButton: React.FC<Props> = ({
@@ -20,11 +21,12 @@ const FilledButton: React.FC<Props> = ({
   submit,
   fontSize = "1rem",
   fullWidth,
+  disabled,
   color = Theme.buttonColors.pinkButton,
 }) => {
 
   const clickHandler = (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (!loading && onClick) {
+    if ((!loading && !disabled) && onClick) {
       onClick(evt);
     }
   };
@@ -86,15 +88,17 @@ const FilledButton: React.FC<Props> = ({
       }
     `}</style>
       <style jsx>{`
+
       #loader {
         ${loading ? "display: block" : ""}
       }
       #container {
         ${loading ? "color: " + color.main + ";" : ""}
-        ${loading ? "cursor: auto;" : "cursor: pointer;"}
+        ${disabled ? "filter: grayscale(100%);" : ""}
+        ${(loading || disabled) ? "cursor: auto;" : "cursor: pointer;"}
       }
       #container:hover, #container:focus {
-        ${loading ? "" : "background-color: " + color.hover}
+        ${(loading || disabled) ? "" : "background-color: " + color.hover}
       }
     `}</style>
     </>
