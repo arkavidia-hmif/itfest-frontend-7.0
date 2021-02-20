@@ -3,7 +3,7 @@ import BagButton from "components/checkout_bag/BagButton";
 import ShoppingBagContainer from "components/checkout_bag/ShoppingBagContainer";
 import { Dimen } from "styles/dimen";
 
-const MerchStoreTop: React.SFC = () => {
+const MerchStoreTop: React.FC = () => {
   return (
     <>
       <div className="d-sm-flex justify-content-sm-between align-items-center mb-4 ms-top">
@@ -17,7 +17,7 @@ const MerchStoreTop: React.SFC = () => {
       <div className="d-md-flex justify-content-md-center ms-mid-container">
         <div className="d-md-flex justify-content-md-between ms-mid">
           <div className="ms-mid-left m-3">
-            <input type="text" placeholder="Cari Startup" />
+            {/* <input type="text" placeholder="Cari Startup" /> */}
           </div>
           <div className="m-3 mr-sm-5">
             <BagButton />
