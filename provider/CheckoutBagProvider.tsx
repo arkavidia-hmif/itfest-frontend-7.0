@@ -71,6 +71,10 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
     }
   };
 
+  const clearItem = () => {
+    setItems([]);
+  };
+
   const checkoutContext: CheckoutBagContextType = {
     data: items,
     show: show,
@@ -79,7 +83,8 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
     showBag: showBagContainer,
     deleteItem: deleteItem,
     addQuantity: addQuantity,
-    subQuantity: subQuantity
+    subQuantity: subQuantity,
+    clearItem
   };
 
   return (
