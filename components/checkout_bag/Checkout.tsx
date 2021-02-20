@@ -14,7 +14,7 @@ import { AuthContext } from "utils/context/auth";
 
 
 const Checkout: React.FC = () => {
-  const { data } = useContext(CheckoutBagContext) as CheckoutBagContextType;
+  const { data, clearItem } = useContext(CheckoutBagContext) as CheckoutBagContextType;
   const apiContext = useContext(ApiContext);
   const authContext = useContext(AuthContext);
 
@@ -39,6 +39,8 @@ const Checkout: React.FC = () => {
     checkout(apiContext.axios, line, whatsapp, address, data).then(() => {
       setStatus("Pembelian berhasil");
       setSucess(true);
+
+      clearItem();
     }).catch((err) => {
       setStatus(err.msg);
       setSucess(false);

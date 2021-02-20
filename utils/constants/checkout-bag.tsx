@@ -10,6 +10,7 @@ type CheckoutBagContextType = {
   deleteItem: (item: MerchStoreItem) => void;
   addQuantity: (item: MerchStoreItem) => void;
   subQuantity: (item: MerchStoreItem) => void;
+  clearItem: () => void;
 }
 
 export default CheckoutBagContextType;
