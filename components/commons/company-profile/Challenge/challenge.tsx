@@ -33,9 +33,11 @@ const Challenge: React.FC<Props> = ({ done, loading, startGame, prize }) => {
                   className="hologram-image"
                 />
               </div>
-              <div className="flex-center">
-                <button className="button">+{prize} Points</button>
-              </div>
+              {prize > 0 && (
+                <div className="flex-center">
+                  <button className="button">+{prize} Points</button>
+                </div>
+              )}
             </div>
           </div>
           <div className="gameconsole-flex">

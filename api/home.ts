@@ -34,6 +34,12 @@ export async function getPointsAndRank(
 
     return response.data as ApiResponse<PointsAndRank>;
   } catch (e) {
+    if (e.response.data.status === 401) {
+      throw new ApiError<StandardError>(
+        StandardError.ERROR,
+        "Login untuk melihat rank dan point Anda"
+      );
+    }
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
 }

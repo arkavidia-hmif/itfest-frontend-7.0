@@ -80,6 +80,7 @@ const Quiz: React.FC<Props> = ({
                         onChange={(e) => handleChange(e.target.value, datum[0])}
                       />
                       <label htmlFor={`answer-${String(i)}-${String(j)}`}>
+                        {" "}
                         {ans}
                       </label>
                     </div>
