@@ -26,6 +26,9 @@ const ShoppingBagContainer: React.FC = () => {
                 <th></th>
               </tr>
               {
+                data.length === 0 && <tr><td colSpan={5} align="center"><br />Belum ada barang</td></tr>
+              }
+              {
                 data.map((item: MerchStoreItem) => <ShoppingBag key={item.id} item={item} />)
               }
             </tbody>
