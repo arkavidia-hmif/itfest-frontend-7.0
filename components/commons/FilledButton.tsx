@@ -9,6 +9,8 @@ interface Props {
   color?: ButtonColor;
   loading?: boolean;
   fontSize?: string;
+  fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 const FilledButton: React.FC<Props> = ({
@@ -18,12 +20,14 @@ const FilledButton: React.FC<Props> = ({
   loading,
   submit,
   fontSize = "1rem",
+  fullWidth,
+  disabled,
   color = Theme.buttonColors.pinkButton,
 }) => {
   const clickHandler = (
     evt: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    if (!loading && onClick) {
+    if (!loading && !disabled && onClick) {
       onClick(evt);
     }
   };
@@ -54,18 +58,16 @@ const FilledButton: React.FC<Props> = ({
           transition: background-color 0.1s;
           position: relative;
           font-size: ${fontSize};
+          width: ${fullWidth ? "100%" : ""};
         }
-
         #loader {
           display: none;
-
           border: 4px solid white;
           border-top: 4px solid transparent;
           border-radius: 50%;
           width: 30px;
           height: 30px;
           animation: spin 2s linear infinite;
-
           position: absolute;
           margin: auto;
           left: 0;
@@ -73,7 +75,6 @@ const FilledButton: React.FC<Props> = ({
           top: 0;
           bottom: 0;
         }
-
         @keyframes spin {
           0% {
             transform: rotate(0deg);
@@ -89,11 +90,12 @@ const FilledButton: React.FC<Props> = ({
         }
         #container {
           ${loading ? "color: " + color.main + ";" : ""}
-          ${loading ? "cursor: auto;" : "cursor: pointer;"}
+          ${disabled ? "filter: grayscale(100%);" : ""}
+        ${loading || disabled ? "cursor: auto;" : "cursor: pointer;"}
         }
         #container:hover,
         #container:focus {
-          ${loading ? "" : "background-color: " + color.hover}
+          ${loading || disabled ? "" : "background-color: " + color.hover}
         }
       `}</style>
     </>

@@ -17,12 +17,14 @@ const Home: React.FC = () => {
           mainText="Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"
           backgroundImage="img/carousel/bground.png"
           companyImage="img/carousel/dino.svg"
+          slug="dino"
         />
         <CarouselItem
-          textCompany="Brontosaurus"
-          mainText="Lalaland2"
+          textCompany="Dinosaurus 2"
+          mainText="Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"
           backgroundImage="img/carousel/bground.png"
           companyImage="img/carousel/dino.svg"
+          slug="dino"
         />
       </Carousel>
       <MapDescription />

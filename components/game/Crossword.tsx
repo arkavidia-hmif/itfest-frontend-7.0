@@ -77,7 +77,8 @@ const CrossWordItem: React.FC<Props> = ({
       const res = await submitGame(apiContext.axios, gameId, local);
       if (res?.data) {
         setSuccess(true);
-        setPrize(res?.data?.prize);
+        // setPrize(res?.data?.prize);
+        setPrize(100);
         setAttempted(2);
         setError(null);
       }

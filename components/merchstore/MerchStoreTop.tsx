@@ -1,23 +1,38 @@
-import * as React from "react";
+import { useContext, useEffect } from "react";
+import useSWR from "swr";
 import BagButton from "components/checkout_bag/BagButton";
 import ShoppingBagContainer from "components/checkout_bag/ShoppingBagContainer";
 import { Dimen } from "styles/dimen";
+import { getProfile, PROFILE_URL } from "api/profile";
+import { ApiContext } from "utils/context/api";
+import { AuthContext } from "utils/context/auth";
 
-const MerchStoreTop: React.SFC = () => {
+const MerchStoreTop: React.FC = () => {
+
+  const apiContext = useContext(ApiContext);
+  const authContext = useContext(AuthContext);
+  const { data: profile, error: profileError } = useSWR(PROFILE_URL, () => getProfile(apiContext.axios));
+
+  useEffect(() => {
+    if (profile) {
+      authContext.setProfile(profile);
+    }
+  }, [profile]);
+
   return (
     <>
       <div className="d-sm-flex justify-content-sm-between align-items-center mb-4 ms-top">
         <div className="ms-top-left">
           <h1>Tukarkan Poinmu!</h1>
         </div>
-        <div className="ms-top-right">
-          <h1>10,000,000</h1>
-        </div>
+        {!profileError && <div className="ms-top-right py-3 px-5">
+          <p className="m-0 poin-text"><b>{profile ? `${profile.point} poin` : "Loading..."}</b></p>
+        </div>}
       </div>
       <div className="d-md-flex justify-content-md-center ms-mid-container">
         <div className="d-md-flex justify-content-md-between ms-mid">
           <div className="ms-mid-left m-3">
-            <input type="text" placeholder="Cari Startup" />
+            {/* <input type="text" placeholder="Cari Startup" /> */}
           </div>
           <div className="m-3 mr-sm-5">
             <BagButton />
@@ -39,6 +54,10 @@ const MerchStoreTop: React.SFC = () => {
             width: 90%;
           }
 
+          .poin-text {
+            font-size: 1.5rem;
+          }
+
           .ms-top-left h1 {
             background: linear-gradient(to right, #fe5982, #441985);
             -webkit-background-clip: text;
@@ -50,7 +69,6 @@ const MerchStoreTop: React.SFC = () => {
             background: #ffffff;
             box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.25);
             border-radius: 15px;
-            padding: 0.35rem 1rem 0.35rem 5rem;
           }
 
           .ms-mid-left input {
@@ -92,20 +110,8 @@ const MerchStoreTop: React.SFC = () => {
               font-size: 1.75rem;
             }
 
-            .ms-top-right h1 {
-              font-size: 1.75rem;
-              padding: 0.35rem 0.5rem 0.35rem 0.5rem;
-            }
-
             .ms-mid {
               width: 100%;
-            }
-
-            .ms-top-right {
-              padding: 0;
-              display: flex;
-              justify-content: center;
-              width: 50%;
             }
 
             .ms-mid-left {
@@ -127,6 +133,10 @@ const MerchStoreTop: React.SFC = () => {
             .ms-top-left {
               display: flex;
               justify-content: center;
+            }
+
+            .ms-top-right {
+              width: 90%;
             }
           }
         `}

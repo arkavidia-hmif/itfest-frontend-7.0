@@ -9,7 +9,7 @@ const MerchStore: React.SFC = () => {
 
   const [currentPosition, setCurrentPosition] = useState(0);
 
-  const storeArray = ["Arkav0", "Arkav1", "Testtt2", "Testtt3", "TestTest4"];
+  const storeArray = ["Dinosaur", "Dinosaur 2"];
 
   const goRight = () => {
     setCurrentPosition((currentPosition + 1) % storeArray.length);
