@@ -48,6 +48,12 @@ const BagButton: React.FC = () => {
             padding: .8rem 2.5rem;
             background: white;
             font-size: 1rem;
+
+            transition: filter 100ms ease-out;
+          }
+
+          .main:hover {
+            filter: brightness(90%);
           }
 
           img {
