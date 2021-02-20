@@ -24,10 +24,10 @@ export async function checkout(
       "items": items
     };
 
-    const response = await axios.post("/checkout",  data);
+    const response = await axios.post("/checkout", data);
 
     return response.data;
-  } catch(e) {
+  } catch (e) {
     if (e.response) {
       const errorCode = e.response.data?.code;
       if (errorCode === "insufficient-quantity") {
@@ -44,6 +44,11 @@ export async function checkout(
         throw new ApiError<CheckoutGeneralStatus>(
           CheckoutGeneralStatus.CheckAllData,
           "Pastikan data anda benar"
+        );
+      } else if (errorCode === "item-not-found") {
+        throw new ApiError<CheckoutQuantityStatus>(
+          CheckoutQuantityStatus.InsufficientQuantity,
+          "Stok barang habis"
         );
       }
     }
