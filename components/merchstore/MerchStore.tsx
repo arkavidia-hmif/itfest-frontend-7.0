@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
 import MerchStoreExpanded from "./MerchStoreExpanded";
 import MerchStoreSimple from "./MerchStoreSimple";
@@ -13,6 +13,14 @@ const MerchStore: React.FC = () => {
   const [currentPosition, setCurrentPosition] = useState(0);
 
   const storeArray = ["Dinosaur", "Dinosaur 2"];
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSnackBar(false);
+    }, 1400);
+
+    return () => clearTimeout(timer);
+  });
 
   const goRight = () => {
     setCurrentPosition((currentPosition + 1) % storeArray.length);
@@ -30,7 +38,6 @@ const MerchStore: React.FC = () => {
 
   const handleClose = () => {
     setIsExpanded(false);
-    console.log(isExpanded);
   };
 
 
@@ -87,7 +94,6 @@ const MerchStore: React.FC = () => {
 
       <SnackBar 
         open={snackBar} 
-        setOpen={setSnackBar} 
       />
 
       <style jsx>

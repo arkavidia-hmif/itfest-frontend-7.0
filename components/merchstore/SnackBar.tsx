@@ -1,38 +1,33 @@
-import { useEffect } from "react";
-
 interface Props {
   open : boolean;
-  setOpen: (input: boolean) => void;
 }
 
-const SnackBar : React.FC<Props> = ({open, setOpen}) => {
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpen(false);
-    }, 1400);
-
-    return () => clearTimeout(timer);
-  });
+const SnackBar : React.FC<Props> = ({ open }) => {
 
   return (
     <div id="snackbar">
       Barang ditambahkan ke keranjang
       <style jsx>{`
         #snackbar {
+          position: fixed;
           min-width: 250px;
           margin-left: -125px;
-          background-color: #333;
+          left: 50%;
+          bottom: 30px;
+          z-index: 1;
+          background-color: #441985;
           color: #fff;
           text-align: center;
           border-radius: 2px;
-          padding: 16px;
-          position: fixed;
-          z-index: 1;
-          left: 50%;
-          bottom: 30px;
-          font-size: 17px;
+          padding: 1rem;
+          font-size: 1rem;
         }  
+
+        @media (max-width: 400px) {
+          #snackbar {
+            margin-left: -135px;
+          }
+        }
       `}</style>
       <style jsx>{`
         #snackbar {
@@ -63,6 +58,6 @@ const SnackBar : React.FC<Props> = ({open, setOpen}) => {
       `}</style>
     </div>
   );
-}
+};
 
 export default SnackBar;
