@@ -6,13 +6,15 @@ interface CarouselItemProps {
   companyImage?: string;
   textCompany: string;
   mainText: string;
+  slug: string;
 }
 
 const CarouselItem: React.FC<CarouselItemProps> = ({
   backgroundImage,
   companyImage,
   textCompany,
-  mainText
+  mainText,
+  slug
 }) => {
   const background = {
     backgroundImage: `url(${backgroundImage})`,
@@ -29,7 +31,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
         <img className="dino-img" style={company} />
         <div className="dino-text">
           <p className="dino-txt-large">{textCompany}</p>
-          <a><p className="dino-txt-normal">Find out more</p></a>
+          <a href={`/company-profile/${slug}`}><p className="dino-txt-normal">Find out more</p></a>
         </div>
         <div className="dino-paragraph">
           <p>{mainText}</p>

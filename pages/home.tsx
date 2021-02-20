@@ -12,8 +12,20 @@ const Home: React.FC = () => {
   return (
     <div className="container">
       <Carousel>
-        <CarouselItem textCompany="Dinosaurus" mainText="Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer" backgroundImage="img/carousel/bground.png" companyImage="img/carousel/dino.svg" />
-        <CarouselItem textCompany="Brontosaurus" mainText="Lalaland2" backgroundImage="img/carousel/bground.png" companyImage="img/carousel/dino.svg" />
+        <CarouselItem
+          textCompany="Dinosaurus"
+          mainText="Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"
+          backgroundImage="img/carousel/bground.png"
+          companyImage="img/carousel/dino.svg"
+          slug="dino"
+        />
+        <CarouselItem
+          textCompany="Dinosaurus 2"
+          mainText="Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"
+          backgroundImage="img/carousel/bground.png"
+          companyImage="img/carousel/dino.svg"
+          slug="dino"
+        />
       </Carousel>
       <MapDescription />
       <MapWithNoSSR />
