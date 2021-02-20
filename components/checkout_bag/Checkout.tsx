@@ -72,7 +72,7 @@ const Checkout: React.FC = () => {
         {`
           .checkout-box {
             border-radius: 1rem;
-            box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.25);
+            box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.25);
             width: 95%;
             margin: auto;
             padding: 2rem;

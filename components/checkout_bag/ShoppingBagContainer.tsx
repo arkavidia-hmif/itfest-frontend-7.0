@@ -39,12 +39,14 @@ const ShoppingBagContainer: React.FC = () => {
       <style jsx>
         {`
           .main {
+            border-radius: 1rem;
             background-color: white;
             position: absolute;
             z-index: 3;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -20%);
+            box-shadow: 2px 4px 14px rgb(0 0 0 / 25%);
             padding: 1rem;
           }
 
