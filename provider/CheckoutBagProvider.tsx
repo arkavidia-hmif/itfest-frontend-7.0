@@ -17,19 +17,16 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
   const [show, setShow] = useState(false);
 
   const addItem = (item: MerchStoreItem) => {
-
     if (authenticated) {
       if (items.find(currentItem => currentItem.id === item.id)) {
         addQuantity(item);
       } else {
+        item.quantity = 1;
         setItems([...items ?? [], item]);
       }
     } else {
       router.push("/login");
     }
-
-
-
   };
 
   const deleteAllItem = () => {
