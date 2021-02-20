@@ -9,12 +9,14 @@ import { MerchStoreItem } from "interfaces/merch-store";
 import { ApiContext } from "utils/context/api";
 import Alert from "components/commons/Alert";
 import { checkout } from "api/checkout";
+import { AuthContext } from "utils/context/auth";
 
 
 
 const Checkout: React.FC = () => {
   const { data } = useContext(CheckoutBagContext) as CheckoutBagContextType;
   const apiContext = useContext(ApiContext);
+  const authContext = useContext(AuthContext);
 
   const [whatsapp, setWhatsapp] = useState("");
   const [line, setLine] = useState("");
@@ -52,8 +54,15 @@ const Checkout: React.FC = () => {
       <InputField text="LINE" value={line} setValue={setLine} />
       <h4>PAYMENT DETAILS</h4>
       <hr />
-      <h5>SUBTOTAL</h5>
+      <h5>POINT</h5>
       <h5 style={{ float: "right" }}>
+        {
+          authContext.profile?.point || 0
+        }
+      </h5>
+      <br />
+      <h5 className="mt-0" >SUBTOTAL</h5>
+      <h5 className="mt-0" style={{ float: "right" }}>
         {
           total
         }

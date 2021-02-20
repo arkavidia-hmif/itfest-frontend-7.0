@@ -5,11 +5,17 @@ import ShoppingBagContainer from "components/checkout_bag/ShoppingBagContainer";
 import { Dimen } from "styles/dimen";
 import { getProfile, PROFILE_URL } from "api/profile";
 import { ApiContext } from "utils/context/api";
+import { AuthContext } from "utils/context/auth";
 
 const MerchStoreTop: React.FC = () => {
 
   const apiContext = useContext(ApiContext);
+  const authContext = useContext(AuthContext);
   const { data: profile, error: profileError } = useSWR(PROFILE_URL, () => getProfile(apiContext.axios));
+
+  if (profile) {
+    authContext.setProfile(profile);
+  }
 
   return (
     <>
