@@ -29,7 +29,7 @@ const Checkout: React.FC = () => {
 
   data.map(
     (item: MerchStoreItem) => {
-      total += item.quantity * item.price;
+      total += item.qty * item.price;
     }
   );
 
@@ -48,7 +48,7 @@ const Checkout: React.FC = () => {
   };
 
   const point = authContext.profile?.point || 0;
-  
+
   return (
     <div className="checkout-box">
       <h4>SHIPPING DETAILS</h4>

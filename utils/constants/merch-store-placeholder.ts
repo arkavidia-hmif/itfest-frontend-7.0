@@ -12,65 +12,74 @@ export const MerchStoreCarouselBreakPoints = [
 export const MerchStorePlaceholderItems: Array<MerchStoreItem> = [
   {
     id: 1,
-    image: "/img/merchstore/store_item_1.png",
+    imageUrl: "/img/merchstore/store_item_1.png",
     name: "Tas Totebag Shopee",
     price: 100,
-    quantity: 0
+    qty: 0,
+    hasPhysical: false
   },
   {
     id: 2,
-    image: "/img/merchstore/store_item_2.png",
+    imageUrl: "/img/merchstore/store_item_2.png",
     name: "Kaos Putih",
     price: 200,
-    quantity: 0
+    qty: 0,
+    hasPhysical: false
   },
   {
     id: 3,
-    image: "/img/merchstore/store_item_3.png",
+    imageUrl: "/img/merchstore/store_item_3.png",
     name: "Kaos Kuning",
     price: 300,
-    quantity: 0
+    qty: 0,
+    hasPhysical: false
   },
   {
     id: 4,
-    image: "/img/merchstore/store_item_1.png",
+    imageUrl: "/img/merchstore/store_item_1.png",
     name: "Tas Totebag Shopee",
     price: 400,
-    quantity: 0
+    qty: 0,
+    hasPhysical: false
   },
   {
     id: 5,
-    image: "/img/merchstore/store_item_2.png",
+    imageUrl: "/img/merchstore/store_item_2.png",
     name: "Tas Totebag Shopee",
     price: 500,
-    quantity: 0
+    qty: 0,
+    hasPhysical: false
   },
   {
     id: 6,
-    image: "/img/merchstore/store_item_3.png",
+    imageUrl: "/img/merchstore/store_item_3.png",
     name: "Tas Totebag Shopee",
     price: 100,
-    quantity: 0
+    qty: 0,
+    hasPhysical: false
   },
   {
     id: 6,
-    image: "/img/merchstore/store_item_1.png",
+    imageUrl: "/img/merchstore/store_item_1.png",
     name: "Tas Totebag Shopee",
     price: 100,
-    quantity: 0
+    qty: 0,
+    hasPhysical: false
   },
   {
     id: 7,
-    image: "/img/merchstore/store_item_2.png",
+    imageUrl: "/img/merchstore/store_item_2.png",
     name: "Tas Totebag Shopee",
     price: 100,
-    quantity: 0
+    qty: 0,
+    hasPhysical: false
   },
   {
     id: 8,
-    image: "/img/merchstore/store_item_3.png",
+    imageUrl: "/img/merchstore/store_item_3.png",
     name: "Tas Totebag Shopee",
     price: 100,
-    quantity: 0
+    qty: 0,
+    hasPhysical: false
   },
 ];

@@ -21,7 +21,7 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
       if (items.find(currentItem => currentItem.id === item.id)) {
         addQuantity(item);
       } else {
-        item.quantity = 1;
+        item.qty = 1;
         setItems([...items ?? [], item]);
       }
     } else {
@@ -52,8 +52,8 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
     const index = newItem.indexOf(item);
 
     if (index !== -1) {
-      if (item.quantity >= 0) {
-        item.quantity += 1;
+      if (item.qty >= 0) {
+        item.qty += 1;
         setItems(newItem);
       }
     }
@@ -64,8 +64,8 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
     const index = newItem.indexOf(item);
 
     if (index !== -1) {
-      if (item.quantity > 0) {
-        item.quantity -= 1;
+      if (item.qty > 0) {
+        item.qty -= 1;
         setItems(newItem);
       }
     }

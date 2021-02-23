@@ -1,4 +1,4 @@
-import * as React from  "react";
+import * as React from "react";
 import { useContext } from "react";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../../utils/context/checkout";
@@ -14,22 +14,22 @@ const ShoppingBag: React.FC<Props> = ({ item }) => {
 
   return (
     <tr>
-      <td style={{width: "45%"}}>
+      <td style={{ width: "45%" }}>
         <div className="product">
-          <img src={item.image}/>
+          <img src={item.imageUrl} />
           <p>{item.name}</p>
         </div>
       </td>
-      <td style={{width: "15%"}}><p>{item.price}</p></td>
-      <td style={{width: "20%"}}>
+      <td style={{ width: "15%" }}><p>{item.price}</p></td>
+      <td style={{ width: "20%" }}>
         <div className="quantity">
-          <img src="/img/minus.svg" style={{marginRight: "0.5rem"}} onClick={() => subQuantity(item)}/>
-          <p>{item.quantity}</p>
-          <img src="/img/plus.svg" style={{marginLeft: "0.5rem"}} onClick={() => addQuantity(item)}/>
+          <img src="/img/minus.svg" style={{ marginRight: "0.5rem" }} onClick={() => subQuantity(item)} />
+          <p>{item.qty}</p>
+          <img src="/img/plus.svg" style={{ marginLeft: "0.5rem" }} onClick={() => addQuantity(item)} />
         </div>
       </td>
-      <td><p>{item.price * item.quantity}</p></td>
-      <td><img className="btn-del" src="/img/trash.svg" onClick={() => deleteItem(item)}/></td>
+      <td><p>{item.price * item.qty}</p></td>
+      <td><img className="btn-del" src="/img/trash.svg" onClick={() => deleteItem(item)} /></td>
 
       <style jsx>
         {`

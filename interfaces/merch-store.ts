@@ -1,9 +1,10 @@
 export interface MerchStoreItem {
   id: number,
-  image: string,
+  imageUrl: string,
   name: string,
   price: number,
-  quantity: number
+  qty: number,
+  hasPhysical: boolean;
 }
 
 export type MerchStoreCarouselButtonType = "PREV" | "NEXT";
