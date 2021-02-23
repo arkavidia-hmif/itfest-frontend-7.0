@@ -32,6 +32,9 @@ const ProfileHeader: React.FC = () => {
           Points<div className="indicator"></div>
         </h2>
       </div>
+      <div className="col-9">
+        <h2>{profile?.point}</h2>
+      </div>
       <style jsx>{`
         .points {
           max-width: 4.5em;
@@ -47,11 +50,6 @@ const ProfileHeader: React.FC = () => {
           width: 100%;
           height: 0.25em;
           background: linear-gradient(90deg, #fe789a 0%, #623fa2 100%);
-        }
-        @media screen and (max-width: 991px) {
-          .main-profile {
-            background: none;
-          }
         }
       `}</style>
     </>
