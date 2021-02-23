@@ -61,21 +61,21 @@ const MerchStore: React.FC = () => {
               </div>
               <div className="merch-store-left">
                 <MerchStoreSimple
-                  merchantName={`${storeArray[currentPosition].name}`}
+                  merchant={storeArray[currentPosition]}
                   handleMore={handleMore}
                 />
               </div>
 
               <div className="merch-store-simple-minor merch-store-center">
                 <MerchStoreSimple
-                  merchantName={`${storeArray[(currentPosition + 1) % storeArray.length].name}`}
+                  merchant={storeArray[(currentPosition + 1) % storeArray.length]}
                   handleMore={() => null}
                 />
               </div>
 
               <div className="merch-store-simple-minor merch-store-right">
                 <MerchStoreSimple
-                  merchantName={`${storeArray[(currentPosition + 2) % storeArray.length].name}`}
+                  merchant={storeArray[(currentPosition + 2) % storeArray.length]}
                   handleMore={() => null}
                 />
               </div>

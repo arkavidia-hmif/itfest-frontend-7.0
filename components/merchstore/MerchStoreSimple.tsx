@@ -1,25 +1,30 @@
+import { useContext } from "react";
+import useSWR from "swr";
 import MerchStoreMerchSimple from "./MerchStoreMerchSimple";
-import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
 import { Dimen } from "styles/dimen";
 import FilledButton from "components/commons/FilledButton";
+import { Tenant } from "interfaces/tenant";
+import { ApiContext } from "utils/context/api";
+import { getMerchFromTenant, getMerchFromTenantKey } from "api/merch";
+import Spinner from "components/commons/Spinner";
+import Alert from "components/commons/Alert";
 
 interface Props {
-  merchantName: string;
+  merchant: Tenant;
   handleMore: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const MerchStoreSimple: React.FC<Props> = ({ merchantName, handleMore }) => {
-  const { storeLogo } = {
-    storeLogo: "/img/merchstore/store_logo.png",
-  };
+const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore }) => {
+  const apiContext = useContext(ApiContext);
+  const { data: itemData, error: itemError } = useSWR(getMerchFromTenantKey(merchant), () => getMerchFromTenant(apiContext.axios, merchant.id));
 
   return (
     <div className="merch-store-container">
       <div className="row merch-store-container-top">
         <div className="w-100 merch-title">
           <div className="merch-store-top-left">
-            <img className="" src={storeLogo} alt={merchantName} />
-            <h2 className="">{merchantName}&#39;s Shop</h2>
+            <img className="" src={merchant.logo} alt={merchant.name} />
+            <h2 className="">{merchant.name}&#39;s Shop</h2>
           </div>
           <div className="merch-store-top-right">
             <FilledButton
@@ -35,15 +40,12 @@ const MerchStoreSimple: React.FC<Props> = ({ merchantName, handleMore }) => {
       <div className="px-3 merch-store-container-bottom d-flex justify-content-center">
         <div className="merch-store-bottom ">
           <div>
-            <h3 className="store-items-title">Top Merch</h3>
-            <div className="mt-4 mb-2">
-              <MerchStoreMerchSimple items={MerchStorePlaceholderItems} />
+            <h3 className="store-items-title">Merch</h3>
+            <div className="px-3">
+              <Alert error={itemError && "Gagal mengambil item"} />
             </div>
-          </div>
-          <div>
-            <h3 className="store-items-title">Merch Lain</h3>
-            <div className="mt-4 mb-2">
-              <MerchStoreMerchSimple items={MerchStorePlaceholderItems} />
+            <div className="my-4">
+              {itemData ? <MerchStoreMerchSimple items={itemData.data} /> : <Spinner />}
             </div>
           </div>
         </div>
