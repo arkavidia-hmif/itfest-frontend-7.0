@@ -31,21 +31,6 @@ const ProfileWrapper: React.FC = () => {
             background-repeat: no-repeat;
             background-size: 60%;
           }
-          .points {
-            max-width: 4.5em;
-          }
-          #point {
-            color: #441985;
-          }
-          h2 {
-            color: #441985;
-          }
-          .indicator {
-            position: absolute;
-            width: 100%;
-            height: 0.25em;
-            background: linear-gradient(90deg, #fe789a 0%, #623fa2 100%);
-          }
           @media screen and (max-width: 991px) {
             .main-profile {
               background: none;
