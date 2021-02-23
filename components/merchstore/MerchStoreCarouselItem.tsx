@@ -35,7 +35,7 @@ const MerchStoreCarouselItem: React.FC<Props> = ({
         <p className="mt-3 item-name">
           <b>{item.name}</b>
         </p>
-        <p className="mt-3 mb-2">{item.price.toLocaleString()}</p>
+        <p className="mt-3 mb-2">{item.price.toLocaleString()} P</p>
       </div>
       <style jsx>
         {`
