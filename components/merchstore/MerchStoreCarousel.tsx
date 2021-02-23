@@ -5,7 +5,7 @@ import { CheckoutBagContext } from "../../utils/context/checkout";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import MerchStoreCarouselItem from "./MerchStoreCarouselItem";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
-import { MerchStoreCarouselBreakPoints } from "utils/constants/merch-store-placeholder";
+import { MerchStoreCarouselBreakPoints } from "utils/constants/merch-store";
 import { MerchStoreItem } from "interfaces/merch-store";
 
 interface Props {
