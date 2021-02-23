@@ -1,7 +1,12 @@
+import useSWR from "swr";
+import { useContext } from "react";
 import MerchStoreCarousel from "./MerchStoreCarousel";
-import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
 import { Dimen } from "styles/dimen";
+import { getMerchFromTenant, getMerchFromTenantKey } from "api/merch";
 import { Tenant } from "interfaces/tenant";
+import { ApiContext } from "utils/context/api";
+import Spinner from "components/commons/Spinner";
+import Alert from "components/commons/Alert";
 
 interface Props {
   merchant: Tenant;
@@ -10,6 +15,9 @@ interface Props {
 }
 
 const MerchStoreExpanded: React.FC<Props> = ({ merchant, handleClose, handleSnackBar }) => {
+  const apiContext = useContext(ApiContext);
+
+  const { data: itemData, error: itemError } = useSWR(getMerchFromTenantKey(merchant), () => getMerchFromTenant(apiContext.axios, merchant.id));
 
   return (
     <div className="w-100 merch-store-container">
@@ -30,8 +38,9 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchant, handleClose, handleSnac
       <div className="px-3">
         <div>
           <h3 className="store-items-title">Merch</h3>
+          <Alert error={itemError && "Gagal mengambil item"} />
           <div className="my-4">
-            <MerchStoreCarousel items={MerchStorePlaceholderItems} handleSnackBar={handleSnackBar} />
+            {itemData ? <MerchStoreCarousel items={itemData.data} handleSnackBar={handleSnackBar} /> : <Spinner />}
           </div>
         </div>
       </div>
