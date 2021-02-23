@@ -4,15 +4,14 @@ import MerchStoreExpanded from "./MerchStoreExpanded";
 import MerchStoreSimple from "./MerchStoreSimple";
 import SnackBar from "./SnackBar";
 import { Dimen } from "styles/dimen";
+import Tenants from "utils/constants/tenants";
 
 const MerchStore: React.FC = () => {
   const [snackBar, setSnackBar] = useState(false);
-
   const [isExpanded, setIsExpanded] = useState(false);
-
   const [currentPosition, setCurrentPosition] = useState(0);
 
-  const storeArray = ["Dinosaur", "Dinosaur 2"];
+  const storeArray = Tenants;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -46,7 +45,7 @@ const MerchStore: React.FC = () => {
       <div>
         {isExpanded ? (
           <MerchStoreExpanded
-            merchantName={`${storeArray[currentPosition]}`}
+            merchantName={`${storeArray[currentPosition].name}`}
             handleClose={handleClose}
             handleSnackBar={setSnackBar}
           />
@@ -62,21 +61,21 @@ const MerchStore: React.FC = () => {
               </div>
               <div className="merch-store-left">
                 <MerchStoreSimple
-                  merchantName={`${storeArray[currentPosition]}`}
+                  merchantName={`${storeArray[currentPosition].name}`}
                   handleMore={handleMore}
                 />
               </div>
 
               <div className="merch-store-simple-minor merch-store-center">
                 <MerchStoreSimple
-                  merchantName={`${storeArray[(currentPosition + 1) % storeArray.length]}`}
+                  merchantName={`${storeArray[(currentPosition + 1) % storeArray.length].name}`}
                   handleMore={() => null}
                 />
               </div>
 
               <div className="merch-store-simple-minor merch-store-right">
                 <MerchStoreSimple
-                  merchantName={`${storeArray[(currentPosition + 2) % storeArray.length]}`}
+                  merchantName={`${storeArray[(currentPosition + 2) % storeArray.length].name}`}
                   handleMore={() => null}
                 />
               </div>
@@ -92,8 +91,8 @@ const MerchStore: React.FC = () => {
           )}
       </div>
 
-      <SnackBar 
-        open={snackBar} 
+      <SnackBar
+        open={snackBar}
       />
 
       <style jsx>
