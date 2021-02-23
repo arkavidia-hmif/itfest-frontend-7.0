@@ -45,7 +45,7 @@ const MerchStore: React.FC = () => {
       <div>
         {isExpanded ? (
           <MerchStoreExpanded
-            merchantName={`${storeArray[currentPosition].name}`}
+            merchant={storeArray[currentPosition]}
             handleClose={handleClose}
             handleSnackBar={setSnackBar}
           />

@@ -1,30 +1,27 @@
 import MerchStoreCarousel from "./MerchStoreCarousel";
 import { MerchStorePlaceholderItems } from "utils/constants/merch-store-placeholder";
 import { Dimen } from "styles/dimen";
+import { Tenant } from "interfaces/tenant";
 
 interface Props {
-  merchantName: string;
+  merchant: Tenant;
   handleClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   handleSnackBar: (input: boolean) => void;
 }
 
-const MerchStoreExpanded: React.FC<Props> = ({ merchantName, handleClose, handleSnackBar }) => {
-  const { storeLogo } = {
-    storeLogo: "/img/merchstore/store_logo.png",
-  };
+const MerchStoreExpanded: React.FC<Props> = ({ merchant, handleClose, handleSnackBar }) => {
 
   return (
     <div className="w-100 merch-store-container">
       <div className="row">
-        {/* <button ></button> */}
         <div className="merch-store-cross-button">
           <button onClick={handleClose}>
             <img src="/img/merchstore/cross_button.png" />
           </button>
         </div>
         <div className="col-lg-6 merch-title justify-content-center justify-content-lg-start row">
-          <img className="col-md-6" src={storeLogo} alt={merchantName} />
-          <h2 className="mb-0 col-md-6">{merchantName}&#39;s Shop</h2>
+          <img className="col-md-6 ml-0 ml-md-4 my-0 my-md-3" src={merchant.logo} alt={merchant.name} />
+          <h2 className="mb-0 col-md-6">{merchant.name}&#39;s Shop</h2>
         </div>
         <div className="merch-store-search col-lg-6 pr-lg-5 align-items-center align-items-lg-end ">
           {/* <input
@@ -63,6 +60,7 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchantName, handleClose, handle
             position: absolute;
             right: 1rem;
             top: 1rem;
+            z-index: 1;
           }
 
           .merch-store-cross-button button {
