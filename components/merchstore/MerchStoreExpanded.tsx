@@ -19,16 +19,9 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchant, handleClose, handleSnac
             <img src="/img/merchstore/cross_button.png" />
           </button>
         </div>
-        <div className="col-lg-6 merch-title justify-content-center justify-content-lg-start row">
+        <div className="col-12 merch-title justify-content-center justify-content-lg-start row">
           <img className="col-md-6 ml-0 ml-md-4 my-0 my-md-3" src={merchant.logo} alt={merchant.name} />
-          <h2 className="mb-0 col-md-6">{merchant.name}&#39;s Shop</h2>
-        </div>
-        <div className="merch-store-search col-lg-6 pr-lg-5 align-items-center align-items-lg-end ">
-          {/* <input
-            className="merch-store-search-bar mx-3 mr-md-5 my-3"
-            type="text"
-            placeholder="Cari Merchandise"
-          /> */}
+          <h2 className="mb-0 col-md-6 mt-3 mt-md-0">{merchant.name}&#39;s Shop</h2>
         </div>
       </div>
 
@@ -36,14 +29,8 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchant, handleClose, handleSnac
 
       <div className="px-3">
         <div>
-          <h3 className="store-items-title">Top Merch</h3>
-          <div className="mt-4 mb-2">
-            <MerchStoreCarousel items={MerchStorePlaceholderItems} handleSnackBar={handleSnackBar} />
-          </div>
-        </div>
-        <div>
-          <h3 className="store-items-title">Merch Lain</h3>
-          <div className="mt-4 mb-2">
+          <h3 className="store-items-title">Merch</h3>
+          <div className="my-4">
             <MerchStoreCarousel items={MerchStorePlaceholderItems} handleSnackBar={handleSnackBar} />
           </div>
         </div>
