@@ -20,9 +20,12 @@ const MerchStoreCarouselItem: React.FC<Props> = ({
           <div className="item-hover">
             {hover ? (
               <FilledButton
-                text="Buy"
+                disabled={item.qty === 0}
+                text={item.qty === 0 ? "Habis" : "Beli"}
                 onClick={() => {
-                  buyCallback(item);
+                  if (item.qty > 0) {
+                    buyCallback(item);
+                  }
                 }}
               />
             ) : null}
