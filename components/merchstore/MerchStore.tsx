@@ -63,6 +63,7 @@ const MerchStore: React.FC = () => {
                 <MerchStoreSimple
                   merchant={storeArray[currentPosition]}
                   handleMore={handleMore}
+                  handleSnackBar={setSnackBar}
                 />
               </div>
 
@@ -70,6 +71,7 @@ const MerchStore: React.FC = () => {
                 <MerchStoreSimple
                   merchant={storeArray[(currentPosition + 1) % storeArray.length]}
                   handleMore={() => null}
+                  handleSnackBar={setSnackBar}
                 />
               </div>
 
@@ -77,6 +79,7 @@ const MerchStore: React.FC = () => {
                 <MerchStoreSimple
                   merchant={storeArray[(currentPosition + 2) % storeArray.length]}
                   handleMore={() => null}
+                  handleSnackBar={setSnackBar}
                 />
               </div>
 
