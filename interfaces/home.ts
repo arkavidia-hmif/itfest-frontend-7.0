@@ -1,9 +1,9 @@
 export interface IndividualLeaderboardData {
-    id: number,
-    score: number,
-    user: {
-      name: string
-    }
+  id: number,
+  score: number,
+  user: {
+    name: string
+  }
 }
 
 export interface LeaderboardData {
@@ -16,5 +16,6 @@ export interface VisitorCount {
 
 export interface PointsAndRank {
   score: number,
-  rank: number
+  rank: number,
+  total: number
 }

@@ -3,35 +3,20 @@ import useSWR from "swr";
 import { ApiContext } from "utils/context/api";
 import ColorfulHeader from "components/commons/ColorfulHeader";
 import { Theme } from "styles/theme";
-import { getGlobalScoreboard, getPointsAndRank } from "api/home";
-import Alert from "components/commons/Alert";
+import { getPointsAndRank } from "api/home";
 
 const MapDescription: React.FC = () => {
   const apiContext = useContext(ApiContext);
 
   const {
-    data: leaderboardData,
-    error: errorLeaderboardData,
-  } = useSWR("/global-scoreboard", () => getGlobalScoreboard(apiContext.axios));
-  const {
-    data: rankPointsData,
-    error: errorRankPointsData,
+    data: rankPointsData
   } = useSWR("/visitor/rankpoint", () => getPointsAndRank(apiContext.axios));
 
-  const points = rankPointsData?.data?.score;
-  const rank = rankPointsData?.data?.rank;
+  const points = rankPointsData?.data?.score || 0;
+  const rank = rankPointsData?.data?.rank || -1;
+  const total = rankPointsData?.data.total || 0;
 
-  let rankText;
-  if (leaderboardData) {
-    rankText = `${rank} of ${leaderboardData.data.length}`;
-  } else {
-    rankText = "Belum Tersedia";
-  }
-
-  if (errorLeaderboardData) {
-    return <Alert error={errorLeaderboardData.message} />;
-  }
-  if (errorRankPointsData) return <Alert error={errorRankPointsData.message} />;
+  const rankText = rank !== -1 ? `${rank} of ${total}` : "Belum Tersedia";
 
   return (
     <>
