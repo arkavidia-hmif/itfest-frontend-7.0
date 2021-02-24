@@ -1,4 +1,6 @@
 import React from "react";
+import ColorfulHeader from "components/ColorfulHeader";
+import { Dimen } from "styles/dimen";
 import { Theme } from "styles/theme";
 
 interface CarouselItemProps {
@@ -18,24 +20,26 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 }) => {
   const background = {
     backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: "cover",
   };
 
   const company = {
     backgroundImage: `url(${companyImage})`,
-    backgroundSize: "cover",
-    marginTop: "1rem"
+    backgroundSize: "contain",
   };
 
   return (
     <div className="item-carousel" style={background}>
-      <div className="content-wrapper">
-        <img className="dino-img" style={company} />
-        <div className="dino-text">
-          <p className="dino-txt-large">{textCompany}</p>
-          <a href={liveUrl} target="_blank" rel="noreferrer"><p className="dino-txt-normal">Watch Live</p></a>
+      <div className="row py-3 mx-3 content-container">
+        <div className="col-md-5 col-lg-4 company-detail-container">
+          <img className="company-logo mr-3" style={company} />
+          <div >
+            <span className="header-wrapper">
+              <ColorfulHeader color={Theme.headerColors.pipl} headingLevel={6} size="1em">{textCompany}</ColorfulHeader>
+            </span>
+            <a href={liveUrl} target="_blank" rel="noreferrer"><p className="live-link"><b>Watch Live</b></p></a>
+          </div>
         </div>
-        <div className="dino-paragraph">
+        <div className="company-detail d-none d-md-flex col-md-7 col-lg-8">
           <p>{mainText.substr(0, 150)}...</p>
         </div>
       </div>
@@ -47,142 +51,61 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
           }
 
           .item-carousel {
-            position: absolute;
             width: 100%;
             height: 300px;
-            margin: 0;
-            padding: 0;
             border-radius: 1rem;
             position: relative;
             overflow: hidden;
             background-size: cover;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
           }
 
-          .content-wrapper {
-            width: 95%;
+          .content-container {
+            margin-bottom:1rem;
+            background-color: white;
+            border-radius: 1rem;
+          }
+
+          .company-detail-container {
             display: flex;
             flex-direction: row;
-            background-color: white;
-            margin: 0 auto;
-            height: 100px;
-            position: relative;
-            margin-top: 11.5rem;
-            bottom: 0;
-            border-radius: 1rem;
-            padding: 0 1.5rem 0 1.5rem;
           }
 
-          .dino-text {
-            width: 30%;
-            padding-left: 2.5rem;
+          .live-link {
+            font-size: 1rem;
+            color: #FE5982;
           }
 
-          .dino-paragraph {
-            width: 60%;
-            text-align: center;
-            vertical-align: middle;
-            padding-top: 1rem;
-          }
-          
-          .dino-paragraph p {
-            height: 100%;
-            font-size: 0.8rem;
-            text-overflow: ellipsis;
-          }
-
-          .dino-text, .dino-paragraph {
-            height: 4rem;
-            align-self: center;
-          }
-
-          .dino-text p {
-            background-image: ${Theme.headerColors.pipl};
-            font-family: Viga;
-          }
-
-          .dino-paragraph p {
-            background-image: ${Theme.headerColors.plbl};
-          }
-
-          .dino-text p, .dino-paragraph p {
-            background-size: 100%;
-            background-clip: text;
-            -webkit-background-clip: text;
-            text-fill-color: transparent;
-            -webkit-text-fill-color: transparent;
-          }
-
-          .dino-txt-large {
-            font-size: 2rem;
-            font-weight: bold;
-          }
-
-          a {
-            cursor: pointer;
-            text-decoration: none;
-          }
-
-          p {
-            display: block;
-            margin-block-start: 0;
-            margin-block-end: 0;
-            margin-inline-start: 0;
-            margin-inline-end: 0;
-          }
-
-          .dino-img {
+          .company-logo {
             width: 4rem;
             height: 4rem;
           }
 
-          @media (max-width: 1000px) {
-            .dino-txt-normal {
-              font-size: 0.6rem;
-            }
-  
-            .dino-paragraph p {
-              font-size: 0.6rem;
-            }
+          .header-wrapper {
+            font-size: 3rem;
+          }
 
-            .dino-text {
-              padding: 0.8rem 0 0 1rem;
-            }
+          .company-detail {
+            font-weight: bold;
+            color: #8f75b7;
 
-            .dino-txt-large {
-              font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+          @media (max-width: ${Dimen.lgBreakpoint}) { 
+            .company-detail {
+              font-size: 0.8rem;
             }
           }
 
-          @media (max-width: 576px) {
-            .dino-paragraph p {
-              display: none;
-            }
-
-            .dino-text {
-              width: 70%;
-              padding: 0.45rem 0 0 1rem;
-            }
-
-            .dino-img {
-              width: 6.5rem;
-              height: 4rem;
-              object-fit: contain;
-            }
-
-            .dino-txt-large {
-              font-size: 1.4rem;
-            }
-
-            .dino-txt-normal {
-              font-size: 0.9rem;
-            }
-          }
-
-          @media (max-width: 400px) {
-            .dino-img {
-              width: 180px;
-              height: 4rem;
-              object-fit: contain;
+          @media (max-width: ${Dimen.smBreakpoint}) { 
+            .header-wrapper {
+              font-size: 2rem;
             }
           }
         `}
