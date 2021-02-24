@@ -36,7 +36,7 @@ const Checkout: React.FC = () => {
   const handleSubmit = () => {
     setBuy(true);
 
-    checkout(apiContext.axios, line, whatsapp, address, data).then(() => {
+    checkout(apiContext.axios, data, line, whatsapp, address).then(() => {
       setStatus("Pembelian berhasil");
       setSucess(true);
 
