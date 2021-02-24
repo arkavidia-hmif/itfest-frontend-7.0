@@ -30,7 +30,7 @@ const LiveCarousel: React.FC = () => {
               key={el.id}
               textCompany={tenantObj.name}
               mainText={tenantObj.aboutUs}
-              backgroundImage="img/carousel/bground.png"
+              backgroundImage={tenantObj.gallery[0]}
               companyImage={tenantObj.logo}
               liveUrl={el.liveURL}
             />
