@@ -25,7 +25,7 @@ const ShoppingBagContainer: React.FC = () => {
                   <th>PRODUCT</th>
                   <th>POINT</th>
                   <th>QUANTITY</th>
-                  <th>TOTAL</th>
+                  <th>SUBTOTAL</th>
                   <th></th>
                 </tr>
                 {

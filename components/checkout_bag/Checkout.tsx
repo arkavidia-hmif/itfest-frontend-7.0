@@ -65,7 +65,7 @@ const Checkout: React.FC = () => {
         }
       </h5>
       <br />
-      <h5 className="mt-0" >SUBTOTAL</h5>
+      <h5 className="mt-0" >TOTAL</h5>
       <h5 className="mt-0" style={{ float: "right" }}>
         {
           total
