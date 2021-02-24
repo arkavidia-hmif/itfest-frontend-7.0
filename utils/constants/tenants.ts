@@ -1,8 +1,8 @@
-import { Tenant } from "../../interfaces/tenant";
+import { Tenant } from "interfaces/tenant";
 
-const Tenants: Array<Tenant> = [
-  {
-    id: 27,
+const Tenants: Record<string, Tenant> = {
+  "create-it": {
+    id: 7,
     name: "Create IT",
     logo: "/img/company-logo/createit.jpg",
     slug: "create-it",
@@ -27,8 +27,8 @@ const Tenants: Array<Tenant> = [
       "/img/company-gallery/create-it/wice-2020.png",
     ],
   },
-  {
-    id: 3,
+  "dino": {
+    id: 5,
     name: "Dino",
     logo: "/img/company-logo/dino.png",
     slug: "dino",
@@ -48,6 +48,6 @@ const Tenants: Array<Tenant> = [
       "/img/company-logo/dino.png",
     ],
   },
-];
+};
 
 export default Tenants;
