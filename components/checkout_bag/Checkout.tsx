@@ -10,11 +10,12 @@ import { ApiContext } from "utils/context/api";
 import Alert from "components/commons/Alert";
 import { checkout } from "api/checkout";
 import { AuthContext } from "utils/context/auth";
+import { ApiResponse } from "interfaces/api";
 
 
 
 const Checkout: React.FC = () => {
-  const { data, clearItem } = useContext(CheckoutBagContext) as CheckoutBagContextType;
+  const { data, clearItem, hasPhysical } = useContext(CheckoutBagContext) as CheckoutBagContextType;
   const apiContext = useContext(ApiContext);
   const authContext = useContext(AuthContext);
 
@@ -36,7 +37,15 @@ const Checkout: React.FC = () => {
   const handleSubmit = () => {
     setBuy(true);
 
-    checkout(apiContext.axios, data, line, whatsapp, address).then(() => {
+    let checkoutPromise: Promise<ApiResponse<void>>;
+
+    if (!hasPhysical) {
+      checkoutPromise = checkout(apiContext.axios, data);
+    } else {
+      checkoutPromise = checkout(apiContext.axios, data, line, whatsapp, address);
+    }
+
+    checkoutPromise.then(() => {
       setStatus("Pembelian berhasil");
       setSucess(true);
 
@@ -53,9 +62,11 @@ const Checkout: React.FC = () => {
     <div className="checkout-box">
       <h4>SHIPPING DETAILS</h4>
       <hr />
-      <InputField text="Alamat" value={address} setValue={setAddress} />
-      <InputField text="WhatsApp" value={whatsapp} setValue={setWhatsapp} />
-      <InputField text="LINE" value={line} setValue={setLine} />
+      {hasPhysical ? <>
+        <InputField text="Alamat" value={address} setValue={setAddress} />
+        <InputField text="WhatsApp" value={whatsapp} setValue={setWhatsapp} />
+        <InputField text="LINE" value={line} setValue={setLine} />
+      </> : <p>Barang virtual akan dikirim via email terdaftar</p>}
       <h4>PAYMENT DETAILS</h4>
       <hr />
       <h5>POINT</h5>

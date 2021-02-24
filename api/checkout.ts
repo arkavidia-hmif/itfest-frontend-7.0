@@ -1,5 +1,4 @@
 import { AxiosInstance } from "axios";
-import { AuthData } from "interfaces/auth";
 import { MerchStoreItem } from "interfaces/merch-store";
 import { ApiError, ApiResponse } from "interfaces/api";
 import {
@@ -12,7 +11,7 @@ export async function checkout(
   line?: string,
   whatsapp?: string,
   address?: string
-): Promise<ApiResponse<AuthData>> {
+): Promise<ApiResponse<void>> {
   try {
     const data = {
       "lineContact": line,
@@ -37,7 +36,7 @@ export async function checkout(
           CheckoutErrorStatus.INSUFFICIENT_POINT,
           "Point tidak cukup"
         );
-      } else if (errorCode === "incomplete-contact") {
+      } else if (errorCode === "incomplete-contact" || errorCode === "invalid-input") {
         throw new ApiError<CheckoutErrorStatus>(
           CheckoutErrorStatus.DATA_INCOMPLETE,
           "Pastikan data anda benar"

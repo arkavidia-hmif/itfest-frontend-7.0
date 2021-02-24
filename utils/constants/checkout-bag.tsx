@@ -11,6 +11,7 @@ type CheckoutBagContextType = {
   addQuantity: (item: MerchStoreItem) => void;
   subQuantity: (item: MerchStoreItem) => void;
   clearItem: () => void;
+  hasPhysical: boolean;
 }
 
 export default CheckoutBagContextType;
