@@ -8,6 +8,7 @@ import Spinner from "components/commons/Spinner";
 import { ApiContext } from "utils/context/api";
 import ColorfulHeader from "components/ColorfulHeader";
 import { Theme } from "styles/theme";
+import Tenants from "utils/constants/tenants";
 
 const LiveCarousel: React.FC = () => {
   const apiContext = useContext(ApiContext);
@@ -23,14 +24,15 @@ const LiveCarousel: React.FC = () => {
     } else {
       return (<Carousel>
         {liveTenant.data.map(el => {
+          const tenantObj = Tenants[el.slug];
           return (
             <CarouselItem
               key={el.id}
-              textCompany="Dinosaurus"
-              mainText="Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer Lorem ipsum dolor sit amer"
+              textCompany={tenantObj.name}
+              mainText={tenantObj.aboutUs}
               backgroundImage="img/carousel/bground.png"
-              companyImage="img/carousel/dino.svg"
-              slug="dino"
+              companyImage={tenantObj.logo}
+              liveUrl={el.liveURL}
             />
           );
         })}

@@ -6,7 +6,7 @@ interface CarouselItemProps {
   companyImage?: string;
   textCompany: string;
   mainText: string;
-  slug: string;
+  liveUrl: string;
 }
 
 const CarouselItem: React.FC<CarouselItemProps> = ({
@@ -14,14 +14,16 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
   companyImage,
   textCompany,
   mainText,
-  slug
+  liveUrl
 }) => {
   const background = {
     backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
   };
 
   const company = {
     backgroundImage: `url(${companyImage})`,
+    backgroundSize: "cover",
     marginTop: "1rem"
   };
 
@@ -31,10 +33,10 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
         <img className="dino-img" style={company} />
         <div className="dino-text">
           <p className="dino-txt-large">{textCompany}</p>
-          <a href={`/company-profile/${slug}`}><p className="dino-txt-normal">Find out more</p></a>
+          <a href={liveUrl} target="_blank" rel="noreferrer"><p className="dino-txt-normal">Watch Live</p></a>
         </div>
         <div className="dino-paragraph">
-          <p>{mainText}</p>
+          <p>{mainText.substr(0, 150)}...</p>
         </div>
       </div>
 
@@ -83,7 +85,9 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
           }
           
           .dino-paragraph p {
+            height: 100%;
             font-size: 0.8rem;
+            text-overflow: ellipsis;
           }
 
           .dino-text, .dino-paragraph {
@@ -93,6 +97,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 
           .dino-text p {
             background-image: ${Theme.headerColors.pipl};
+            font-family: Viga;
           }
 
           .dino-paragraph p {
@@ -105,7 +110,6 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             -webkit-background-clip: text;
             text-fill-color: transparent;
             -webkit-text-fill-color: transparent;
-            font-family: Viga;
           }
 
           .dino-txt-large {
