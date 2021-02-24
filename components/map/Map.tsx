@@ -23,9 +23,9 @@ const Map: React.FC = () => {
       attributionControl={false}
       touchZoom={true}
       center={center}
-      zoom={1}
+      zoom={0.25}
       maxZoom={2}
-      minZoom={1}
+      minZoom={0}
       maxBounds={maxBounds}
       scrollWheelZoom={true}
       style={{
