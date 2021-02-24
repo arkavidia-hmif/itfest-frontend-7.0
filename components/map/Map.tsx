@@ -33,7 +33,7 @@ const Map: React.FC = () => {
       }}
       crs={CRS.Simple}
     >
-      <ImageOverlay url="img/indonesia.svg" bounds={bounds} />
+      <ImageOverlay url="img/map.png" bounds={bounds} />
 
       {Tenants.map((tenant, index: number) => (
         <Marker
