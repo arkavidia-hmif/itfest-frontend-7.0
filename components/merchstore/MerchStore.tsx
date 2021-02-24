@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
 import MerchStoreExpanded from "./MerchStoreExpanded";
 import MerchStoreSimple from "./MerchStoreSimple";
@@ -11,7 +11,7 @@ const MerchStore: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [currentPosition, setCurrentPosition] = useState(0);
 
-  const storeArray = Tenants;
+  const storeArray = useMemo(() => Object.values(Tenants), [Tenants]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
