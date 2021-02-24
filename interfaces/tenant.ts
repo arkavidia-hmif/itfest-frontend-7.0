@@ -19,3 +19,9 @@ export interface Tenant {
   videoUrl: string;
   gallery: string[];
 }
+
+export interface LiveTenant {
+  id: number;
+  slug: string;
+  liveURL: string;
+}
