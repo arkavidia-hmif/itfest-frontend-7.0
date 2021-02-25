@@ -16,7 +16,7 @@ const ProfileWrapper: React.FC = () => {
   };
 
   return (
-    <div className="container main-profile">
+    <div className="container main-profile mb-5">
       <div className="row">
         <ProfileHeader />
         <div className="col-lg-4 col-xs-12 mt-4">
