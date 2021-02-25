@@ -11,6 +11,7 @@ import { Dimen } from "styles/dimen";
 const MerchStore: React.FC = () => {
   const [snackBar, setSnackBar] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [expandSelect, setExpandSelect] = useState("");
 
   const storeArray = useMemo(() => Object.values(Tenants), [Tenants]);
 
@@ -25,7 +26,8 @@ const MerchStore: React.FC = () => {
     return () => clearTimeout(timer);
   });
 
-  const handleMore = () => {
+  const handleMore = (slug: string) => {
+    setExpandSelect(slug);
     setIsExpanded(true);
   };
 
@@ -39,7 +41,7 @@ const MerchStore: React.FC = () => {
       <div>
         {isExpanded && (
           <MerchStoreExpanded
-            merchant={storeCarouselArray[currentPosition]}
+            merchant={Tenants[expandSelect]}
             handleClose={handleClose}
             handleSnackBar={setSnackBar}
           />
@@ -85,7 +87,6 @@ const MerchStore: React.FC = () => {
       <style jsx>
         {`
           .merch-store-simple {
-            transform: scale3d(0.875, 0.875, 1);
             transition: all .5s;
             overflow: 
           }
@@ -97,7 +98,9 @@ const MerchStore: React.FC = () => {
           }
 
           @media only screen and (max-width: ${Dimen.smBreakpoint}) {
-
+            .merch-store-simple {
+              width: 100%;
+            }
             .merchant-carousel {
               width: 95%;
             }

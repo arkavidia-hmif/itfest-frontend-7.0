@@ -11,7 +11,7 @@ import Alert from "components/commons/Alert";
 
 interface Props {
   merchant: Tenant;
-  handleMore: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handleMore: (slug: string) => void;
   handleSnackBar: (input: boolean) => void;
 }
 
@@ -27,18 +27,18 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
             <img className="" src={merchant.logo} alt={merchant.name} />
             <h2 className="">{merchant.name}&#39;s Shop</h2>
           </div>
-          <div className="merch-store-top-right">
+          <div className="merch-store-top-right mt-3 mt-sm-0">
             <FilledButton
               text="More"
               padding=".5rem 2.25rem"
               fontSize="1.25rem"
-              onClick={handleMore}
+              onClick={() => handleMore(merchant.slug)}
             />
           </div>
         </div>
       </div>
 
-      <div className="px-3 merch-store-container-bottom d-flex justify-content-center">
+      <div className="px-0 px-md-3 merch-store-container-bottom d-flex justify-content-center">
         <div className="merch-store-bottom ">
           <div>
             <h3 className="store-items-title">Merch</h3>
@@ -110,22 +110,29 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
           }
 
           .store-items-title {
-            font-size: 1.9rem;
+            font-size: 1.5rem;
             padding-left: 1.5rem;
             margin-top: 2.5rem;
           }
 
           @media (max-width: ${Dimen.mdBreakpoint}) {
             .merch-title h2 {
+              font-size: 1.5rem;
               text-align: center;
             }
           }
 
           @media (max-width: ${Dimen.smBreakpoint}) {
+            .merch-store-container-top { 
+              border-radius: 1rem;
+              width: 100%;
+              margin: 0;
+            }
             
             .merch-title h2 {
               text-align: center;
               font-size: 1.25rem;
+              margin: 0;
             }
 
             .merch-title {
