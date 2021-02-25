@@ -83,6 +83,12 @@ const ShoppingBagContainer: React.FC = () => {
             border-collapse: separate; 
             border-spacing: 0 1rem;
           } 
+
+          @media (max-width: 768px) {
+            .main {
+              top: 55%;
+            }
+          }
         `}
       </style>
     </>
