@@ -5,6 +5,12 @@ enum PageType {
   ALT = 1,
 }
 
+export interface TenatSocmed {
+  email?: string
+  linkedin?: string;
+  instagram?: string;
+}
+
 export interface Tenant {
   id: number;
   name: string;
@@ -15,11 +21,7 @@ export interface Tenant {
   aboutUs: string;
   galleryText: string;
   hiring?: string;
-  socialMedia: {
-    email?: string
-    linkedin?: string;
-    instagram?: string;
-  }
+  socialMedia: TenatSocmed
   videoUrl: string;
   gallery: string[];
   contactLink: string;

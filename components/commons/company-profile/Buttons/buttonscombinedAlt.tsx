@@ -1,14 +1,11 @@
 import * as React from "react";
 import FilledButton from "../../FilledButton";
-import { Theme } from "../../../../styles/theme";
+import SocialMediaRow from "./SocialMediaRow";
+import { TenatSocmed } from "interfaces/tenant";
 
 interface Props {
   done: boolean;
-  socialMedia: {
-    instagram?: string;
-    email?: string
-    linkedin?: string;
-  };
+  socialMedia: TenatSocmed;
   hiring?: string;
 }
 
@@ -18,24 +15,18 @@ const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia }) => {
       <div className="flex-container-alt">
         <div className="margin-right-button">
           <FilledButton
-            color={Theme.buttonColors.pinkButton}
-            text="MEET"
+            disabled={!done}
+            text="APPLY NOW"
             padding="0.75em 1.5em"
-            onClick={() => window.open(socialMedia.instagram)}
+            onClick={() => {
+              if (done) {
+                window.open(hiring);
+              }
+            }}
           />
         </div>
-        <FilledButton
-          color={(done) ? Theme.buttonColors.lightPurpleButton : Theme.buttonColors.greyButton}
-          text="APPLY NOW"
-          padding="0.75em 1.5em"
-          onClick={() => {
-            if (done) {
-              window.open(hiring);
-            } else {
-              null;
-            }
-          }}
-        />
+        <SocialMediaRow socmed={socialMedia} />
+
       </div>
       <style jsx>{`
         .flex-container-alt {

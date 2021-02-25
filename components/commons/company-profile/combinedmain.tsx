@@ -2,17 +2,14 @@ import * as React from "react";
 import Video from "./Video/video";
 import AboutUs from "./AboutUs/about-us";
 import ButtonCombined from "./Buttons/buttonscombined";
+import { TenatSocmed } from "interfaces/tenant";
 
 interface Props {
   done: boolean;
   aboutUs: string;
   videoUrl: string;
   hiring?: string;
-  socialMedia: {
-    instagram?: string;
-    email?: string
-    linkedin?: string;
-  };
+  socialMedia: TenatSocmed;
   contactLink: string;
 }
 

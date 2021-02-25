@@ -12,7 +12,7 @@ const Tenants: Record<string, Tenant> = {
       "Create It is an EduTech Platform focused on Project-Based and Creative Economy-related curriculum to help final year students, fresh grads, and career-shifters to become creative agile talent to build a professional track in the digital & creative industry. So far, we have 3 major Profession outcomes: Creativepreneur, professional, and Content Creators / Freelance. Let’s Create with Create It!",
     hiring: "https://www.linkedin.com/company/createitindonesia/",
     socialMedia: {
-      instagram: "https://www.instagram.com/createit_id/"
+      instagram: "https://www.instagram.com/createit_id/",
     },
     galleryText:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ",
@@ -40,7 +40,9 @@ const Tenants: Record<string, Tenant> = {
     aboutUs:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ",
     socialMedia: {
-      instagram: "https://www.instagram.com/arkavidia/"
+      instagram: "https://www.instagram.com/arkavidia/",
+      linkedin: "https://www.google.com",
+      email: "https://www.email.com"
     },
     galleryText:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut ",

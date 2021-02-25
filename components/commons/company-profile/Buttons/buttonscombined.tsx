@@ -1,6 +1,6 @@
 import * as React from "react";
 import FilledButton from "../../FilledButton";
-import { Theme } from "../../../../styles/theme";
+import SocialMediaRow from "./SocialMediaRow";
 
 interface Props {
   done: boolean;
@@ -18,24 +18,17 @@ const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia }) => {
       <div className="flex-container">
         <div className="margin-right-button">
           <FilledButton
-            color={Theme.buttonColors.pinkButton}
-            text="MEET"
+            disabled={!done}
+            text="APPLY NOW"
             padding="0.75em 1.5em"
-            onClick={() => window.open(socialMedia.instagram)}
+            onClick={() => {
+              if (done) {
+                window.open(hiring);
+              }
+            }}
           />
         </div>
-        <FilledButton
-          color={(done) ? Theme.buttonColors.lightPurpleButton : Theme.buttonColors.greyButton}
-          text="APPLY NOW"
-          padding="0.75em 1.5em"
-          onClick={() => {
-            if (done) {
-              window.open(hiring);
-            } else {
-              null;
-            }
-          }}
-        />
+        <SocialMediaRow socmed={socialMedia} />
       </div>
       <style jsx>{`
         .flex-container {
