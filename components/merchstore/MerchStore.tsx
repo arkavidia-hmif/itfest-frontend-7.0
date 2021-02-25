@@ -1,17 +1,22 @@
 import { useState, useEffect, useMemo } from "react";
+import Carousel from "react-elastic-carousel";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
 import MerchStoreExpanded from "./MerchStoreExpanded";
 import MerchStoreSimple from "./MerchStoreSimple";
 import SnackBar from "./SnackBar";
-import { Dimen } from "styles/dimen";
 import Tenants from "utils/constants/tenants";
+import { MerchStoreMerchantCarouselBreakPoints } from "utils/constants/merch-store-merchant";
+import { Dimen } from "styles/dimen";
 
 const MerchStore: React.FC = () => {
   const [snackBar, setSnackBar] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [currentPosition, setCurrentPosition] = useState(0);
 
   const storeArray = useMemo(() => Object.values(Tenants), [Tenants]);
+
+  const storeCarouselArray = [...storeArray, ...storeArray, ...storeArray, ...storeArray, ...storeArray];
+
+  const [currentPosition, setCurrentPosition] = useState(storeArray.length * 2);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -20,16 +25,6 @@ const MerchStore: React.FC = () => {
 
     return () => clearTimeout(timer);
   });
-
-  const goRight = () => {
-    setCurrentPosition((currentPosition + 1) % storeArray.length);
-  };
-
-  const goLeft = () => {
-    setCurrentPosition(
-      (currentPosition - 1 + storeArray.length) % storeArray.length
-    );
-  };
 
   const handleMore = () => {
     setIsExpanded(true);
@@ -51,46 +46,37 @@ const MerchStore: React.FC = () => {
           />
         ) :
           (
-            <div className="d-flex merch-store-simple align-items-center">
-              <div className="merch-store-l-btn">
-                <MerchStoreCarouselButton
-                  type="PREV"
-                  onClick={goLeft}
-                  isEdge={false}
-                />
-              </div>
-              <div className="merch-store-left">
-                <MerchStoreSimple
-                  merchant={storeArray[currentPosition]}
-                  handleMore={handleMore}
-                  handleSnackBar={setSnackBar}
-                />
-              </div>
+            <div className="merchant-carousel">
+              <Carousel
+                initialActiveIndex={storeArray.length * 2}
+                onNextStart={() => {
+                  setCurrentPosition(currentPosition + 1);
+                }}
 
-              <div className="merch-store-simple-minor merch-store-center">
-                <MerchStoreSimple
-                  merchant={storeArray[(currentPosition + 1) % storeArray.length]}
-                  handleMore={() => null}
-                  handleSnackBar={setSnackBar}
-                />
-              </div>
+                onPrevStart={() => {
+                  setCurrentPosition(currentPosition - 1);
+                }}
 
-              <div className="merch-store-simple-minor merch-store-right">
-                <MerchStoreSimple
-                  merchant={storeArray[(currentPosition + 2) % storeArray.length]}
-                  handleMore={() => null}
-                  handleSnackBar={setSnackBar}
-                />
-              </div>
+                renderPagination={() => <></>}
+                renderArrow={MerchStoreCarouselButton}
+                breakPoints={MerchStoreMerchantCarouselBreakPoints}
 
-              <div className="merch-store-r-btn">
-                <MerchStoreCarouselButton
-                  type="NEXT"
-                  onClick={goRight}
-                  isEdge={false}
-                />
-              </div>
+              >
+                {storeCarouselArray.map((merchant, index) => (
+                  <div key={index} className={`merch-store-simple ${index === currentPosition ? "" : "merch-store-simple-minor"
+                  }`}>
+                    <MerchStoreSimple
+                      merchant={merchant}
+                      handleMore={handleMore}
+                      handleSnackBar={setSnackBar}
+                      key={index}
+                    />
+                  </div>
+
+                ))}
+              </Carousel>
             </div>
+
           )}
       </div>
 
@@ -101,56 +87,25 @@ const MerchStore: React.FC = () => {
       <style jsx>
         {`
           .merch-store-simple {
-            margin-left: -4vw;
+            transform: scale3d(0.875, 0.875, 1);
+            transition: all .5s;
+            overflow: 
           }
 
           .merch-store-simple-minor {
-            transform: scale3d(0.7, 0.7, 1);
+            transition: all .5s;
+            transform: scale3d(0.6, 0.6, 1);
             opacity: 0.5;
           }
 
-          .merch-store-center {
-            margin-left: -3vw;
-          }
+          @media only screen and (max-width: ${Dimen.smBreakpoint}) {
 
-          .merch-store-right {
-            margin-left: -6vw;
-          }
-
-          .merch-store-r-btn {
-            margin-left: ${currentPosition === storeArray.length - 1 ? "-10px" : "-50px"};
-          }
-
-          @media (max-width: 1400px) {
-            .merch-store-right {
-              display: none;
+            .merchant-carousel {
+              width: 95%;
             }
 
-            .merch-store-simple {
-              margin-left: 0;
-            }
           }
-
-          @media (max-width: ${Dimen.lgBreakpoint}) {
-            .merch-store-center {
-              display: none;
-            }
-
-            .merch-store-r-btn {
-              margin-left: 0;
-            }
-          }
-
-          @media (max-width: ${Dimen.lgBreakpoint}) {
-            .merch-store-l-btn {
-              margin-left: 3vw;
-              margin-right: 3vw;
-            }
-
-            .merch-store-r-btn {
-              margin-left: -1vw;
-            }
-          }
+          
         `}
       </style>
     </>
