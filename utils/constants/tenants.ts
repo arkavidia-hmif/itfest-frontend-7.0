@@ -27,7 +27,7 @@ const Tenants: Record<string, Tenant> = {
       "/img/company-gallery/create-it/wice-2020.png",
     ],
   },
-  "dino": {
+  dino: {
     id: 5,
     name: "Dino",
     logo: "/img/company-logo/dino.png",

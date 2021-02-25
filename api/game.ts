@@ -25,7 +25,7 @@ export async function getGameByTenant(
   id: string
 ): Promise<OKData> {
   try {
-    const response = await axios.get(`${GET_GAME_URL}tenant/${id}`);
+    const response = await axios.get(`${GET_GAME_URL}tenant/${id}/`);
     return response.data as OKData;
   } catch (e) {
     if (e.response) {
