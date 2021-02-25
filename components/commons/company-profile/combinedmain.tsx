@@ -7,8 +7,12 @@ interface Props {
   done: boolean;
   aboutUs: string;
   videoUrl: string;
-  hiring: string;
-  socialMedia: string;
+  hiring?: string;
+  socialMedia: {
+    instagram?: string;
+    email?: string
+    linkedin?: string;
+  };
   contactLink: string;
 }
 

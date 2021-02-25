@@ -4,11 +4,15 @@ import { Theme } from "../../../../styles/theme";
 
 interface Props {
   done: boolean;
-  hiring: string;
-  socialMedia: string;
+  hiring?: string;
+  socialMedia: {
+    instagram?: string;
+    email?: string
+    linkedin?: string;
+  };
 }
 
-const CombinedButton: React.FC<Props> = ({done, hiring, socialMedia}) => {
+const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia }) => {
   return (
     <>
       <div className="flex-container">
@@ -17,7 +21,7 @@ const CombinedButton: React.FC<Props> = ({done, hiring, socialMedia}) => {
             color={Theme.buttonColors.pinkButton}
             text="MEET"
             padding="0.75em 1.5em"
-            onClick={() => window.open(socialMedia)}
+            onClick={() => window.open(socialMedia.instagram)}
           />
         </div>
         <FilledButton
