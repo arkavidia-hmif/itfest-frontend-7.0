@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo} from "react";
+import { useState, useEffect, useMemo } from "react";
 import Carousel from "react-elastic-carousel";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
 import MerchStoreExpanded from "./MerchStoreExpanded";
@@ -46,37 +46,36 @@ const MerchStore: React.FC = () => {
           />
         ) :
           (
-              <div className="merchant-carousel">
-                <Carousel
+            <div className="merchant-carousel">
+              <Carousel
+                initialActiveIndex={storeArray.length * 2}
+                onNextStart={() => {
+                  setCurrentPosition(currentPosition + 1);
+                }}
 
-                  initialActiveIndex={storeArray.length * 2}
-                  onNextStart={() => {
-                    setCurrentPosition(currentPosition + 1);
-                  }}
+                onPrevStart={() => {
+                  setCurrentPosition(currentPosition - 1);
+                }}
 
-                  onPrevStart={() => {
-                    setCurrentPosition(currentPosition - 1);
-                  }}
+                renderPagination={() => <></>}
+                renderArrow={MerchStoreCarouselButton}
+                breakPoints={MerchStoreMerchantCarouselBreakPoints}
 
-                  renderPagination={() => <></>}
-                  renderArrow={MerchStoreCarouselButton}
-                  breakPoints={MerchStoreMerchantCarouselBreakPoints}
-
-                >
-                  {storeCarouselArray.map((merchant, index) => (
-                    <div key={index} className={`merch-store-simple ${index === currentPosition ? "" : "merch-store-simple-minor"
+              >
+                {storeCarouselArray.map((merchant, index) => (
+                  <div key={index} className={`merch-store-simple ${index === currentPosition ? "" : "merch-store-simple-minor"
                     }`}>
-                      <MerchStoreSimple
-                        merchant={merchant}
-                        handleMore={handleMore}
-                        handleSnackBar={setSnackBar}
-                        key={index}
-                      />
-                    </div>
+                    <MerchStoreSimple
+                      merchant={merchant}
+                      handleMore={handleMore}
+                      handleSnackBar={setSnackBar}
+                      key={index}
+                    />
+                  </div>
 
-                  ))}
-                </Carousel>
-              </div>
+                ))}
+              </Carousel>
+            </div>
 
           )}
       </div>
