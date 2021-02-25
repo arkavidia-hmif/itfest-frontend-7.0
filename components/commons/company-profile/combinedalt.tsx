@@ -2,10 +2,11 @@ import * as React from "react";
 import VideoAlt from "./Video/video-alt";
 
 interface Props {
-    videoUrl: string;
+  videoUrl: string;
+  contactLink: string;
 }
 
-const CombinedComponents: React.FC<Props> = ({ videoUrl }) => {
+const CombinedComponents: React.FC<Props> = ({ videoUrl, contactLink }) => {
   return (
     <>
       <div className="flex-container">
@@ -16,13 +17,15 @@ const CombinedComponents: React.FC<Props> = ({ videoUrl }) => {
         </div>
         <div className="grid-item-2-image">
           <div className="video-icon-flex">
-            <img src="/img/company-profile/video-right.png" className="video-image-alt"/>
+            <img src="/img/company-profile/video-right.png" className="video-image-alt" />
           </div>
         </div>
         <div className="grid-item-3-image">
-          <div className="chat-button-flex">
-            <img src="/img/company-profile/chat-button.png" className="chat-image-alt"/>
-          </div>
+          <a href={contactLink}>
+            <div className="chat-button-flex">
+              <img src="/img/company-profile/chat-button.png" className="chat-image-alt" />
+            </div>
+          </a>
         </div>
       </div>
       <style jsx>{`

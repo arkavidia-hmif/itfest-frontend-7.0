@@ -9,6 +9,7 @@ interface Props {
   videoUrl: string;
   hiring: string;
   socialMedia: string;
+  contactLink: string;
 }
 
 const CombinedComponents: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const CombinedComponents: React.FC<Props> = ({
   videoUrl,
   hiring,
   socialMedia,
+  contactLink
 }) => {
   return (
     <>
@@ -43,12 +45,14 @@ const CombinedComponents: React.FC<Props> = ({
           </div>
         </div>
         <div className="grid-item-3-image">
-          <div className="chat-flex">
-            <img
-              src="/img/company-profile/chat-button.png"
-              className="chat-image-main"
-            />
-          </div>
+          <a href={contactLink}>
+            <div className="chat-flex">
+              <img
+                src="/img/company-profile/chat-button.png"
+                className="chat-image-main"
+              />
+            </div>
+          </a>
         </div>
       </div>
       <style jsx>{`

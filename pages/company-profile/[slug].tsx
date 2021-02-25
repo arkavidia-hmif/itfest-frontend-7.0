@@ -79,6 +79,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
               videoUrl={tenant.videoUrl}
               hiring={tenant.hiring}
               socialMedia={tenant.socialMedia}
+              contactLink={tenant.contactLink}
             />
           </div>
           <GalleryMain items={tenant.gallery} />
@@ -102,7 +103,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
         (
           <div className="container pb-4">
             <LogoAlt logo={tenant.logo} title={tenant.name} />
-            <CombinedAlt videoUrl={tenant.videoUrl} />
+            <CombinedAlt videoUrl={tenant.videoUrl} contactLink={tenant.contactLink} />
             <AboutUsAlt aboutUs={tenant.aboutUs} />
             <ButtonsAlt
               done={attempted === 2}
