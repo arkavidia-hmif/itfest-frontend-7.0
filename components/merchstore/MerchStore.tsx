@@ -64,7 +64,7 @@ const MerchStore: React.FC = () => {
               >
                 {storeCarouselArray.map((merchant, index) => (
                   <div key={index} className={`merch-store-simple ${index === currentPosition ? "" : "merch-store-simple-minor"
-                    }`}>
+                  }`}>
                     <MerchStoreSimple
                       merchant={merchant}
                       handleMore={handleMore}
