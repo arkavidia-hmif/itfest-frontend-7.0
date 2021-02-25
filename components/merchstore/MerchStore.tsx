@@ -14,8 +14,7 @@ const MerchStore: React.FC = () => {
 
   const storeArray = useMemo(() => Object.values(Tenants), [Tenants]);
 
-  const storeCarouselArray = [...storeArray, ...storeArray, ...storeArray];
-
+  const storeCarouselArray = storeArray;
   const [currentPosition, setCurrentPosition] = useState(1);
 
   useEffect(() => {
@@ -49,22 +48,23 @@ const MerchStore: React.FC = () => {
           <Carousel
             initialActiveIndex={0}
             onNextStart={() => {
-              setCurrentPosition(currentPosition + 1);
+              if (currentPosition < storeCarouselArray.length - 1) {
+                setCurrentPosition(currentPosition + 1);
+              }
             }}
 
             onPrevStart={() => {
-              setCurrentPosition(currentPosition - 1);
+              if (currentPosition > 0) {
+                setCurrentPosition(currentPosition - 1);
+              }
             }}
 
             renderPagination={() => <></>}
             renderArrow={MerchStoreCarouselButton}
             breakPoints={MerchStoreMerchantCarouselBreakPoints}
-
           >
             {storeCarouselArray.map((merchant, index) => (
-              <div key={index} className={
-                `merch-store-simple ${index === currentPosition ? "" : "merch-store-simple-minor"
-                }`}>
+              <div key={index} className="merch-store-simple">
                 <MerchStoreSimple
                   merchant={merchant}
                   handleMore={handleMore}
@@ -72,7 +72,6 @@ const MerchStore: React.FC = () => {
                   key={index}
                 />
               </div>
-
             ))}
           </Carousel>
         </div>
