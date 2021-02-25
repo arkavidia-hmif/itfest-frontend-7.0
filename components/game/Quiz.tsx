@@ -46,8 +46,7 @@ const Quiz: React.FC<Props> = ({
       const res = await submitGame(apiContext.axios, gameId, submission);
       if (res?.data) {
         setSuccess(true);
-        setPrize(100);
-        // setPrize(res?.data?.prize);
+        setPrize(res?.data?.prize);
         setAttempted(2);
         setError(null);
       }

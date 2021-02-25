@@ -2,7 +2,7 @@ import { Tenant } from "../../interfaces/tenant";
 
 const Tenants: Array<Tenant> = [
   {
-    id: 27,
+    id: 5,
     name: "Create IT",
     logo: "/img/company-logo/createit.jpg",
     slug: "create-it",

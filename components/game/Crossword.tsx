@@ -77,8 +77,7 @@ const CrossWordItem: React.FC<Props> = ({
       const res = await submitGame(apiContext.axios, gameId, local);
       if (res?.data) {
         setSuccess(true);
-        // setPrize(res?.data?.prize);
-        setPrize(100);
+        setPrize(res?.data?.prize);
         setAttempted(2);
         setError(null);
       }
@@ -100,12 +99,12 @@ const CrossWordItem: React.FC<Props> = ({
       const word = [];
       if (entry === "across") {
         for (let j = x; j < x + len; j++) {
-          word.push(grid[j][y]);
+          word.push(String(grid[j][y]).toLowerCase());
         }
       }
       if (entry === "down") {
         for (let i = y; i < y + len; i++) {
-          word.push(grid[x][i]);
+          word.push(String(grid[x][i]).toLowerCase());
         }
       }
       const finalWord = word.join("");
