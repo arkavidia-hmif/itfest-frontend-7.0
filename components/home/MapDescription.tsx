@@ -35,7 +35,7 @@ const MapDescription: React.FC = () => {
           <div className="grid-left">
             <div className="border-left"></div>
             <div className="text-left">
-              <p className="text-bold-left-up">Points</p>
+              <p className="text-bold-left-up">Point game</p>
               <p className="text-bold-left-down">Rank</p>
             </div>
             <div>
@@ -76,7 +76,7 @@ const MapDescription: React.FC = () => {
           padding: 1% 3%;
           align-items: center;
           border-radius: 1rem;
-          grid-template-columns: 1rem 1rem 4rem 8rem;
+          grid-template-columns: 1rem 1rem 6rem 8rem;
         }
 
         .grid-right {
@@ -176,7 +176,7 @@ const MapDescription: React.FC = () => {
           }
 
           .grid-left {
-            grid-template-columns: 1rem 1rem 3.4rem 7rem;
+            grid-template-columns: 1rem 1rem 6rem 7rem;
           }
         }
 
@@ -238,7 +238,7 @@ const MapDescription: React.FC = () => {
             padding: 1% 3%;
             align-items: center;
             border-radius: 1rem;
-            grid-template-columns: 2% 3% 3.5rem 60%;
+            grid-template-columns: 2% 3% 6rem 60%;
           }
 
           .grid-right {
