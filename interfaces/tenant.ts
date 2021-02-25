@@ -18,6 +18,7 @@ export interface Tenant {
   socialMedia: string;
   videoUrl: string;
   gallery: string[];
+  contactLink: string;
 }
 
 export interface LiveTenant {

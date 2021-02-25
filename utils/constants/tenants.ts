@@ -26,6 +26,7 @@ const Tenants: Record<string, Tenant> = {
       "/img/company-gallery/create-it/ui-studentpreneur.jpeg",
       "/img/company-gallery/create-it/wice-2020.png",
     ],
+    contactLink: "www.whatsapp.com"
   },
   dino: {
     id: 5,
@@ -47,6 +48,7 @@ const Tenants: Record<string, Tenant> = {
       "/img/company-logo/dino.png",
       "/img/company-logo/dino.png",
     ],
+    contactLink: "www.whatsapp.com"
   },
 };
 
