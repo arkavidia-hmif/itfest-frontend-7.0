@@ -64,30 +64,33 @@ const Quiz: React.FC<Props> = ({
         {error && <Alert error={error} />}
         {success && <Success message="Successfully submitted" />}
         <form onSubmit={handleSubmit}>
-          {gameData &&
-            Object?.entries(gameData)?.map((datum, i) => (
-              <div key={i} className="one-question">
-                <div className="quest">{datum[1].text}</div>
-                <div className="choices">
-                  {datum[1]?.choice.map((ans, j) => (
-                    <div key={j} className="choice">
-                      <input
-                        required
-                        type="radio"
-                        value={ans}
-                        id={`answer-${String(i)}-${String(j)}`}
-                        checked={String(ans) === String(submission[datum[0]])}
-                        onChange={(e) => handleChange(e.target.value, datum[0])}
-                      />
-                      <label htmlFor={`answer-${String(i)}-${String(j)}`}>
-                        {" "}
-                        {ans}
-                      </label>
-                    </div>
-                  ))}
+          <div className="q-area row">
+            {gameData &&
+              Object?.entries(gameData)?.map((datum, i) => (
+                <div key={i} className="one-question col-md-4">
+                  <div className="quest mb-3">{datum[1].text}</div>
+                  <p>Pilihan Jawaban :</p>
+                  <div className="choices">
+                    {datum[1]?.choice.map((ans, j) => (
+                      <div key={j} className="choice">
+                        <input
+                          required
+                          type="radio"
+                          value={ans}
+                          id={`answer-${String(i)}-${String(j)}`}
+                          checked={String(ans) === String(submission[datum[0]])}
+                          onChange={(e) => handleChange(e.target.value, datum[0])}
+                        />
+                        <label className="ml-2" htmlFor={`answer-${String(i)}-${String(j)}`}>
+                          {" "}
+                          {ans}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+          </div>
           <FilledButton text="Submit" submit={true} loading={loading} />
         </form>
       </div>

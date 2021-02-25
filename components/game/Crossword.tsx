@@ -115,7 +115,7 @@ const CrossWordItem: React.FC<Props> = ({
 
   return (
     <>
-      <div className="mb-5">
+      <div>
         {error && <Alert error={error} />}
         {success && <Success message="Successfully submitted" />}
         <div className="mt-3">
@@ -125,23 +125,29 @@ const CrossWordItem: React.FC<Props> = ({
           />
         </div>
         <div className="clear">
-          <FilledButton
-            text="Submit"
-            padding=".75rem 1.5rem"
-            onClick={handleSubmit}
-            loading={loading}
-          />
         </div>
+        <br />
+        <FilledButton
+          text="Submit"
+          padding=".75rem 1.5rem"
+          onClick={handleSubmit}
+          loading={loading}
+        />
       </div>
 
       <style jsx>{`
-        .crossword * {
-          font-family: Roboto !important;
-        }
         .clear {
           margin: 1rem 0;
           clear: both;
-          float: left;
+        }
+      `}</style>
+      <style jsx global>{`
+        div[class^="crossword"] {
+          font-family: Roboto !important;
+        }
+
+        .crossword__clues__gradient {
+          display: none !important;
         }
       `}</style>
     </>

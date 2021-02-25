@@ -89,15 +89,17 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             loading={loading}
             startGame={postChallenge}
           />
-          {errorFetching && <Alert error={errorFetching.message} />}
-          {error && <Alert error={error} />}
-          {gameId && attempted === 1 && (
-            <Game
-              setAttempted={setAttempted}
-              gameId={gameId}
-              setPrize={setPrize}
-            />
-          )}
+          <div className="game-area">
+            {errorFetching && <Alert error={errorFetching.message} />}
+            {error && <Alert error={error} />}
+            {gameId && attempted === 1 && (
+              <Game
+                setAttempted={setAttempted}
+                gameId={gameId}
+                setPrize={setPrize}
+              />
+            )}
+          </div>
         </div>
       ) :
         (
@@ -117,17 +119,26 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
               loading={loading}
               startGame={postChallenge}
             />
-            {errorFetching && <Alert error={errorFetching.message} />}
-            {error && <Alert error={error} />}
-            {gameId && attempted === 1 && (
-              <Game
-                setAttempted={setAttempted}
-                gameId={gameId}
-                setPrize={setPrize}
-              />
-            )}
+            <div className="game-area">
+              {errorFetching && <Alert error={errorFetching.message} />}
+              {error && <Alert error={error} />}
+              {gameId && attempted === 1 && (
+                <Game
+                  setAttempted={setAttempted}
+                  gameId={gameId}
+                  setPrize={setPrize}
+                />
+              )}
+            </div>
           </div>
         )}
+      <style jsx>{`
+          .game-area {
+            padding: 2rem;
+            border-radius: 2rem;
+            background-color: #ffffff50;
+          }
+      `}</style>
     </Layout>
   );
 };
