@@ -85,6 +85,15 @@ const Navbar: React.FC = () => {
           height: 40px;
         }
 
+        @media screen and (max-width: ${Dimen.mdBreakpoint}){
+          .itfest-container img{
+            height: 20px;
+          }
+          .itfest-container h1{
+            font-size: 1.5rem;
+          }
+        }
+
         @media (max-width: ${Dimen.navbarBreakpoint}) {
           nav {
             height: ${Dimen.navbarMobileHeight};
