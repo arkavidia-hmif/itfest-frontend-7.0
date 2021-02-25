@@ -3,6 +3,7 @@ import { useContext } from "react";
 import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../../utils/context/checkout";
 import { MerchStoreItem } from "interfaces/merch-store";
+import { Dimen } from "styles/dimen";
 
 
 interface Props {
@@ -13,40 +14,48 @@ const ShoppingBag: React.FC<Props> = ({ item }) => {
   const { deleteItem, addQuantity, subQuantity } = useContext(CheckoutBagContext) as CheckoutBagContextType;
 
   return (
-    <tr>
-      <td style={{ width: "45%" }}>
-        <div className="product">
+    <>
+      <div className="hide-small">
+        <div className="product product-row">
           <img src={item.imageUrl} />
           <p>{item.name}</p>
         </div>
-      </td>
-      <td style={{ width: "15%" }}><p>{item.price}</p></td>
-      <td style={{ width: "20%" }}>
+      </div>
+      <div className="show-small">
+        <div className="product">
+          <img className="mb-3" src={item.imageUrl} />
+          <p>{item.name}</p>
+          <p>{item.price} poin</p>
+        </div>
+      </div>
+      <div className="center hide-small"><p>{item.price}</p></div>
+      <div className="center v-center-small">
         <div className="quantity">
           <img src="/img/minus.svg" style={{ marginRight: "0.5rem" }} onClick={() => subQuantity(item)} />
           <p>{item.qty}</p>
           <img src="/img/plus.svg" style={{ marginLeft: "0.5rem" }} onClick={() => addQuantity(item)} />
         </div>
-      </td>
-      <td><p>{item.price * item.qty}</p></td>
-      <td><img className="btn-del" src="/img/trash.svg" onClick={() => deleteItem(item)} /></td>
-
+      </div>
+      <div className="center hide-small"><p>{item.price * item.qty}</p></div>
+      <div className="v-center-small"><img className="btn-del" src="/img/trash.svg" onClick={() => deleteItem(item)} /></div>
+      <hr className="show-small w-100" style={{ gridColumn: "1 / span 3" }} />
       <style jsx>
         {`
-          td {
-            border-right:hidden; 
+
+          .center {
+            text-align: center;
           }
 
           .product {
             position: relative;
           }
 
-          .product p {
+          .product-row p {
             top: 25%;
             position: absolute;
           }
 
-          .product img, .product p, .quantity img, .quantity p{
+          .product-row img, .product-row p, .quantity img, .quantity p{
             display: inline-block;
           }
 
@@ -70,7 +79,7 @@ const ShoppingBag: React.FC<Props> = ({ item }) => {
           }
 
           .btn-del {
-            width: 1.5rem;
+            width: 20px;
             margin-top: -1rem;
           }
 
@@ -81,9 +90,29 @@ const ShoppingBag: React.FC<Props> = ({ item }) => {
           .quantity img:hover, .btn-del:hover {
             opacity: 0.5;
           }
-        `}
-      </style>
-    </tr>
+
+          .show-small {
+            display: none;
+          } 
+
+
+          @media screen and (max-width:${Dimen.mdBreakpoint}){
+            .v-center-small {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+
+            .hide-small {
+              display: none;
+            }
+
+            .show-small {
+              display: block;
+            }
+          }
+      `}</style>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import { CheckoutBagContext } from "../../utils/context/checkout";
 import ShoppingBag from "./ShoppingBag";
 import Checkout from "./Checkout";
 import { MerchStoreItem } from "interfaces/merch-store";
+import { Dimen } from "styles/dimen";
 
 
 
@@ -19,23 +20,20 @@ const ShoppingBagContainer: React.FC = () => {
         <div className="row">
           <div className="content col-md-6 col-lg-8" style={{ overflowY: "scroll" }}>
             <h2>Shopping Bag</h2>
-            <table style={{ width: "100%" }}>
-              <tbody>
-                <tr>
-                  <th>PRODUCT</th>
-                  <th>POINT</th>
-                  <th>QUANTITY</th>
-                  <th>SUBTOTAL</th>
-                  <th></th>
-                </tr>
-                {
-                  data.length === 0 && <tr><td colSpan={5} align="center"><br />Belum ada barang</td></tr>
-                }
-                {
-                  data.map((item: MerchStoreItem) => <ShoppingBag key={item.id} item={item} />)
-                }
-              </tbody>
-            </table>
+            <div className="bag-container mt-3">
+              <p><b>PRODUCT</b></p>
+              <p className="hide-small"><b>POINT</b></p>
+              <p><b>QUANTITY</b></p>
+              <p className="hide-small"><b>SUBTOTAL</b></p>
+              <p></p>
+
+              {
+                data.length === 0 && <div style={{ gridColumn: "1 / span 5", textAlign: "center" }}><br />Belum ada barang</div>
+              }
+              {
+                data.map((item: MerchStoreItem) => <ShoppingBag key={item.id} item={item} />)
+              }
+            </div>
           </div>
           <div className="content col-md-6 col-lg-4">
             <Checkout />
@@ -45,6 +43,11 @@ const ShoppingBagContainer: React.FC = () => {
       </div>
       <style jsx>
         {`
+          .bag-container {
+            display: grid;
+            grid-template-columns: auto repeat(4, min-content);
+            grid-gap: 0 1rem;
+          }
           #shadow {
             width: 100vw;
             height: 100vh;
@@ -83,6 +86,16 @@ const ShoppingBagContainer: React.FC = () => {
             border-collapse: separate; 
             border-spacing: 0 1rem;
           } 
+
+          @media screen and (max-width:${Dimen.mdBreakpoint}){
+            .bag-container {
+              grid-template-columns: auto repeat(2, min-content);
+            }
+
+            .hide-small {
+              display: none;
+            }
+          }
         `}
       </style>
     </>
