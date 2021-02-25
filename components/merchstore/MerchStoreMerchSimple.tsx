@@ -20,7 +20,7 @@ const MerchStoreMerchSimple: React.FC<Props> = ({ items, handleSnackBar }) => {
 
   return (
     <>
-      <div className="d-flex">
+      <div className="d-flex" style={{ overflowX: "hidden" }}>
         {items.slice(0, 3).map((item, index) => {
           return (
             <div
