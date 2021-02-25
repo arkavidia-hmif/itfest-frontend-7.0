@@ -96,7 +96,7 @@ const ShoppingBag: React.FC<Props> = ({ item }) => {
           } 
 
 
-          @media screen and (max-width:${Dimen.mdBreakpoint}){
+          @media screen and (max-width:${Dimen.lgBreakpoint}){
             .v-center-small {
               display: flex;
               flex-direction: column;

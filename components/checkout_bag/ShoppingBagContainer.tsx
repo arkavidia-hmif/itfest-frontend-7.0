@@ -87,7 +87,7 @@ const ShoppingBagContainer: React.FC = () => {
             border-spacing: 0 1rem;
           } 
 
-          @media screen and (max-width:${Dimen.mdBreakpoint}){
+          @media screen and (max-width:${Dimen.lgBreakpoint}){
             .bag-container {
               grid-template-columns: auto repeat(2, min-content);
             }
