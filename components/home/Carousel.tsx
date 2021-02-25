@@ -1,14 +1,18 @@
 import React, { ReactNode, useState } from "react";
 
 interface CarouselProps {
-  children: ReactNode[];
+  children: Array<ReactNode>;
+  contactLink: Array<string>;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ children }) => {
+const Carousel: React.FC<CarouselProps> = ({ children, contactLink }) => {
   const [position, setPosition] = useState(0);
+  const [index, setIndex] = useState(0);
 
   const goLeft = () => {
     setPosition(position + 100);
+    setIndex((index - 1) % children.length);
+
     if (position === 0) {
       setPosition(-100 * (children.length - 1));
     } else {
@@ -17,6 +21,8 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
   };
 
   const goRight = () => {
+    setIndex((index + 1) % children.length);
+
     if (position === -100 * (children.length - 1)) {
       setPosition(0);
     } else {
@@ -54,6 +60,12 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
         />
       </div>
 
+      <div className="message">
+        <a href={contactLink[index]}>
+          <img src="/img/carousel/message.svg" />
+        </a>
+      </div>
+
       <style jsx>
         {`
           .carousel-wrapper {
@@ -85,20 +97,6 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
             transition: 0.5s;
           }
 
-          .message {
-            position: absolute;
-            background-color: white;
-            bottom: 1.5rem;
-            right: -3rem;
-            padding: 0.5rem;
-            border-radius: 100%;
-            background: linear-gradient(309.03deg, rgba(205, 187, 255, 0.63) 8.8%, #FBBCC8 51.93%, rgba(205, 187, 255, 0.83) 76.67%);
-          }
-
-          .message img {
-            width: 3rem;
-          }
-
           .nav-wrapper {
             position: absolute;
             top: 44%;
@@ -125,6 +123,21 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
 
           .nav-wrapper:hover {
             filter: brightness(75%);
+          }
+
+
+          .message {
+            position: absolute;
+            background-color: white;
+            bottom: 1.5rem;
+            right: -3rem;
+            padding: 0.5rem;
+            border-radius: 100%;
+            background: linear-gradient(309.03deg, rgba(205, 187, 255, 0.63) 8.8%, #FBBCC8 51.93%, rgba(205, 187, 255, 0.83) 76.67%);
+          }
+
+          .message img {
+            width: 3rem;
           }
 
           @media (max-width: 576px) { 

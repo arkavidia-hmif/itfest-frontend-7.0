@@ -22,7 +22,9 @@ const LiveCarousel: React.FC = () => {
     if (liveTenant.data.length === 0) {
       return <p style={{ textAlign: "center" }}>Sedang belum ada yang Live nih, silahkan browsing tenant kami pada peta di bawah ini</p>;
     } else {
-      return (<Carousel>
+      return (<Carousel
+        contactLink={liveTenant.data.map(el => Tenants[el.slug].contactLink)}
+      >
         {liveTenant.data.map(el => {
           const tenantObj = Tenants[el.slug];
           return (
