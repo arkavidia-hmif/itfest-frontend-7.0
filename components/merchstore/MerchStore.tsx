@@ -14,9 +14,9 @@ const MerchStore: React.FC = () => {
 
   const storeArray = useMemo(() => Object.values(Tenants), [Tenants]);
 
-  const storeCarouselArray = [...storeArray, ...storeArray, ...storeArray, ...storeArray, ...storeArray];
+  const storeCarouselArray = [...storeArray, ...storeArray, ...storeArray];
 
-  const [currentPosition, setCurrentPosition] = useState(storeArray.length * 2);
+  const [currentPosition, setCurrentPosition] = useState(1);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,47 +38,45 @@ const MerchStore: React.FC = () => {
   return (
     <>
       <div>
-        {isExpanded ? (
+        {isExpanded && (
           <MerchStoreExpanded
-            merchant={storeArray[currentPosition % storeArray.length]}
+            merchant={storeCarouselArray[currentPosition]}
             handleClose={handleClose}
             handleSnackBar={setSnackBar}
           />
-        ) :
-          (
-            <div className="merchant-carousel">
-              <Carousel
-                initialActiveIndex={storeArray.length * 2}
-                onNextStart={() => {
-                  setCurrentPosition(currentPosition + 1);
-                }}
+        )}
+        <div className={`merchant-carousel ${isExpanded && "d-none"}`}>
+          <Carousel
+            initialActiveIndex={0}
+            onNextStart={() => {
+              setCurrentPosition(currentPosition + 1);
+            }}
 
-                onPrevStart={() => {
-                  setCurrentPosition(currentPosition - 1);
-                }}
+            onPrevStart={() => {
+              setCurrentPosition(currentPosition - 1);
+            }}
 
-                renderPagination={() => <></>}
-                renderArrow={MerchStoreCarouselButton}
-                breakPoints={MerchStoreMerchantCarouselBreakPoints}
+            renderPagination={() => <></>}
+            renderArrow={MerchStoreCarouselButton}
+            breakPoints={MerchStoreMerchantCarouselBreakPoints}
 
-              >
-                {storeCarouselArray.map((merchant, index) => (
-                  <div key={index} className={
-                    `merch-store-simple ${index === currentPosition ? "" : "merch-store-simple-minor"
-                    }`}>
-                    <MerchStoreSimple
-                      merchant={merchant}
-                      handleMore={handleMore}
-                      handleSnackBar={setSnackBar}
-                      key={index}
-                    />
-                  </div>
+          >
+            {storeCarouselArray.map((merchant, index) => (
+              <div key={index} className={
+                `merch-store-simple ${index === currentPosition ? "" : "merch-store-simple-minor"
+                }`}>
+                <MerchStoreSimple
+                  merchant={merchant}
+                  handleMore={handleMore}
+                  handleSnackBar={setSnackBar}
+                  key={index}
+                />
+              </div>
 
-                ))}
-              </Carousel>
-            </div>
+            ))}
+          </Carousel>
+        </div>
 
-          )}
       </div>
 
       <SnackBar
