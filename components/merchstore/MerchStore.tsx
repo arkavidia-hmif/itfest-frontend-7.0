@@ -6,6 +6,7 @@ import MerchStoreSimple from "./MerchStoreSimple";
 import SnackBar from "./SnackBar";
 import Tenants from "utils/constants/tenants";
 import { MerchStoreMerchantCarouselBreakPoints } from "utils/constants/merch-store-merchant";
+import { Dimen } from "styles/dimen";
 
 const MerchStore: React.FC = () => {
   const [snackBar, setSnackBar] = useState(false);
@@ -45,7 +46,6 @@ const MerchStore: React.FC = () => {
           />
         ) :
           (
-            <div className="">
               <div className="merchant-carousel">
                 <Carousel
 
@@ -77,7 +77,6 @@ const MerchStore: React.FC = () => {
                   ))}
                 </Carousel>
               </div>
-            </div>
 
           )}
       </div>
@@ -89,8 +88,7 @@ const MerchStore: React.FC = () => {
       <style jsx>
         {`
           .merch-store-simple {
-            // margin-left: -4vw;
-            transform: scale3d(0.9, 0.9, 1);
+            transform: scale3d(0.875, 0.875, 1);
             transition: all .5s;
             overflow: 
           }
@@ -99,6 +97,14 @@ const MerchStore: React.FC = () => {
             transition: all .5s;
             transform: scale3d(0.6, 0.6, 1);
             opacity: 0.5;
+          }
+
+          @media only screen and (max-width: ${Dimen.smBreakpoint}) {
+
+            .merchant-carousel {
+              width: 95%;
+            }
+
           }
           
         `}
