@@ -1,4 +1,4 @@
 import { createContext } from "react";
 import CheckoutBagContextType from "../constants/checkout-bag";
 
-export const CheckoutBagContext = createContext<CheckoutBagContextType | undefined>(undefined);
+export const CheckoutBagContext = createContext<CheckoutBagContextType>({} as CheckoutBagContextType);

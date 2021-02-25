@@ -1,7 +1,8 @@
+import { useMemo } from "react";
 import { MapContainer, Marker, Popup, ImageOverlay } from "react-leaflet";
 import { CRS, icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import Link from "next/link";
-import Tenants from "../../utils/constants/tenants";
+import Tenants from "utils/constants/tenants";
 import "leaflet/dist/leaflet.css";
 
 const Map: React.FC = () => {
@@ -15,14 +16,16 @@ const Map: React.FC = () => {
     [500, 1250],
   ];
 
+  const tenantArray = useMemo(() => Object.values(Tenants), [Tenants]);
+
   return (
     <MapContainer
       attributionControl={false}
       touchZoom={true}
       center={center}
-      zoom={1}
+      zoom={0.25}
       maxZoom={2}
-      minZoom={1}
+      minZoom={0}
       maxBounds={maxBounds}
       scrollWheelZoom={true}
       style={{
@@ -33,9 +36,9 @@ const Map: React.FC = () => {
       }}
       crs={CRS.Simple}
     >
-      <ImageOverlay url="img/indonesia.svg" bounds={bounds} />
+      <ImageOverlay url="img/map.png" bounds={bounds} />
 
-      {Tenants.map((tenant, index: number) => (
+      {tenantArray.map((tenant, index) => (
         <Marker
           position={tenant.position}
           title={"asd"}

@@ -54,10 +54,6 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
         />
       </div>
 
-      <div className="message">
-        <img src="/img/carousel/message.svg"/>
-      </div>
-
       <style jsx>
         {`
           .carousel-wrapper {

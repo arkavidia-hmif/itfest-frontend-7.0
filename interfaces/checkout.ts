@@ -1,11 +1,6 @@
-export enum CheckoutQuantityStatus {
-    InsufficientQuantity
-}
-
-export enum CheckoutPointStatus {
-    InsufficientPoint
-}
-
-export enum CheckoutGeneralStatus {
-    CheckAllData
+export enum CheckoutErrorStatus {
+  INSUFFICIENT_QUANTITY,
+  INSUFFICIENT_POINT,
+  DATA_INCOMPLETE,
+  ERROR
 }

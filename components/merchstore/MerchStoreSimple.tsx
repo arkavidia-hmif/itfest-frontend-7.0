@@ -12,9 +12,10 @@ import Alert from "components/commons/Alert";
 interface Props {
   merchant: Tenant;
   handleMore: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handleSnackBar: (input: boolean) => void;
 }
 
-const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore }) => {
+const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBar }) => {
   const apiContext = useContext(ApiContext);
   const { data: itemData, error: itemError } = useSWR(getMerchFromTenantKey(merchant), () => getMerchFromTenant(apiContext.axios, merchant.id));
 
@@ -45,7 +46,7 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore }) => {
               <Alert error={itemError && "Gagal mengambil item"} />
             </div>
             <div className="my-4">
-              {itemData ? <MerchStoreMerchSimple items={itemData.data} /> : <Spinner />}
+              {itemData ? <MerchStoreMerchSimple handleSnackBar={handleSnackBar} items={itemData.data} /> : <Spinner />}
             </div>
           </div>
         </div>

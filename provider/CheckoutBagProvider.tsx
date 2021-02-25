@@ -84,7 +84,8 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
     deleteItem: deleteItem,
     addQuantity: addQuantity,
     subQuantity: subQuantity,
-    clearItem
+    clearItem,
+    hasPhysical: items.some(entry => entry.hasPhysical)
   };
 
   return (

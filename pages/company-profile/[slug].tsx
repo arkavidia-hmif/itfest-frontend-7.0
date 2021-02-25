@@ -4,16 +4,16 @@ import { useState, useCallback } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
-import Logo from "../../components/commons/company-profile/LogoTitle/logo-title";
-import LogoAlt from "../../components/commons/company-profile/LogoTitle/logo-title-alt";
-import AboutUsAlt from "../../components/commons/company-profile/AboutUs/about-us-alt";
-import ButtonsAlt from "../../components/commons/company-profile/Buttons/buttonscombinedAlt";
-import CombinedMain from "../../components/commons/company-profile/combinedmain";
-import CombinedAlt from "../../components/commons/company-profile/combinedalt";
-import GalleryMain from "../../components/commons/company-profile/Gallery/gallery";
-import GalleryAlt from "../../components/commons/company-profile/Gallery/galleryAlt";
-import ChallengeDone from "../../components/commons/company-profile/Challenge/challenge";
-import Tenants from "../../utils/constants/tenants";
+import Logo from "components/commons/company-profile/LogoTitle/logo-title";
+import LogoAlt from "components/commons/company-profile/LogoTitle/logo-title-alt";
+import AboutUsAlt from "components/commons/company-profile/AboutUs/about-us-alt";
+import ButtonsAlt from "components/commons/company-profile/Buttons/buttonscombinedAlt";
+import CombinedMain from "components/commons/company-profile/combinedmain";
+import CombinedAlt from "components/commons/company-profile/combinedalt";
+import GalleryMain from "components/commons/company-profile/Gallery/gallery";
+import GalleryAlt from "components/commons/company-profile/Gallery/galleryAlt";
+import ChallengeDone from "components/commons/company-profile/Challenge/challenge";
+import Tenants from "utils/constants/tenants";
 import Layout from "components/commons/Layout";
 import { Tenant } from "interfaces/tenant";
 import { getGameByTenant, GET_GAME_URL, playGame } from "api/game";
@@ -98,41 +98,42 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             />
           )}
         </div>
-      ) : (
-        <div className="container pb-4">
-          <LogoAlt logo={tenant.logo} title={tenant.name} />
-          <CombinedAlt videoUrl={tenant.videoUrl} />
-          <AboutUsAlt aboutUs={tenant.aboutUs} />
-          <ButtonsAlt
-            done={attempted === 2}
-            hiring={tenant.hiring}
-            socialMedia={tenant.socialMedia}
-          />
-          <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
-          <ChallengeDone
-            prize={prize}
-            done={attempted === 2}
-            loading={loading}
-            startGame={postChallenge}
-          />
-          {errorFetching && <Alert error={errorFetching.message} />}
-          {error && <Alert error={error} />}
-          {gameId && attempted === 1 && (
-            <Game
-              setAttempted={setAttempted}
-              gameId={gameId}
-              setPrize={setPrize}
+      ) :
+        (
+          <div className="container pb-4">
+            <LogoAlt logo={tenant.logo} title={tenant.name} />
+            <CombinedAlt videoUrl={tenant.videoUrl} />
+            <AboutUsAlt aboutUs={tenant.aboutUs} />
+            <ButtonsAlt
+              done={attempted === 2}
+              hiring={tenant.hiring}
+              socialMedia={tenant.socialMedia}
             />
-          )}
-        </div>
-      )}
+            <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
+            <ChallengeDone
+              prize={prize}
+              done={attempted === 2}
+              loading={loading}
+              startGame={postChallenge}
+            />
+            {errorFetching && <Alert error={errorFetching.message} />}
+            {error && <Alert error={error} />}
+            {gameId && attempted === 1 && (
+              <Game
+                setAttempted={setAttempted}
+                gameId={gameId}
+                setPrize={setPrize}
+              />
+            )}
+          </div>
+        )}
     </Layout>
   );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = Tenants.map((tenant) => ({
-    params: { slug: tenant.slug },
+  const paths = Object.keys(Tenants).map((slug) => ({
+    params: { slug },
   }));
 
   return {
@@ -143,13 +144,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as Params;
-  const data = Tenants.filter((obj) => {
-    return obj.slug === slug;
-  });
+  const data = Tenants[slug];
 
   return {
     props: {
-      tenant: data[0],
+      tenant: data,
     },
   };
 };
