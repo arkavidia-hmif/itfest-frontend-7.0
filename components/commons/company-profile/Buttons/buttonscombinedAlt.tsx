@@ -9,9 +9,10 @@ interface Props {
   socialMedia: TenatSocmed;
   hiring?: string;
   liveUrl?: string;
+  isApplyRegister?: boolean;
 }
 
-const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl }) => {
+const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl, isApplyRegister }) => {
   const [showHint, setShowHint] = React.useState(false);
 
   React.useEffect(() => {
@@ -28,7 +29,7 @@ const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl
         <div className="margin-right-button">
           <FilledButton
             color={done ? Theme.buttonColors.pinkButton : Theme.buttonColors.greyButton}
-            text="APPLY NOW"
+            text={isApplyRegister ? "WEBSITE REGISTRATION" : "APPLY NOW"}
             padding="0.75em 1.5em"
             onClick={() => {
               if (done) {
@@ -49,8 +50,10 @@ const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl
             }}
           />
         </div>}
-        <SocialMediaRow socmed={socialMedia} />
 
+      </div>
+      <div className="flex-container-alt mt-3">
+        <SocialMediaRow socmed={socialMedia} />
       </div>
       <style jsx>{`
         .flex-container-alt {

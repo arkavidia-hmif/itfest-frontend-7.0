@@ -95,6 +95,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
               socialMedia={tenant.socialMedia}
               contactLink={tenant.contactLink}
               liveUrl={liveTenantUrl}
+              isApplyRegister={tenant.isApplyRegister}
             />
           </div>
           <GalleryMain items={tenant.gallery} />
@@ -131,6 +132,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
               hiring={tenant.hiring}
               socialMedia={tenant.socialMedia}
               liveUrl={liveTenantUrl}
+              isApplyRegister={tenant.isApplyRegister}
             />
             <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
             <ChallengeDone

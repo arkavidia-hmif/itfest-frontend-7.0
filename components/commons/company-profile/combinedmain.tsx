@@ -12,6 +12,7 @@ interface Props {
   socialMedia: TenatSocmed;
   contactLink: string;
   liveUrl?: string;
+  isApplyRegister?: boolean;
 }
 
 const CombinedComponents: React.FC<Props> = ({
@@ -21,7 +22,8 @@ const CombinedComponents: React.FC<Props> = ({
   hiring,
   socialMedia,
   contactLink,
-  liveUrl
+  liveUrl,
+  isApplyRegister
 }) => {
   return (
     <>
@@ -33,6 +35,7 @@ const CombinedComponents: React.FC<Props> = ({
             hiring={hiring}
             socialMedia={socialMedia}
             liveUrl={liveUrl}
+            isApplyRegister={isApplyRegister}
           />
         </div>
         <div className="grid-item-2">

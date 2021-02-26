@@ -12,9 +12,10 @@ interface Props {
     linkedin?: string;
   };
   liveUrl?: string;
+  isApplyRegister?: boolean;
 }
 
-const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl }) => {
+const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl, isApplyRegister }) => {
   const [showHint, setShowHint] = React.useState(false);
 
   React.useEffect(() => {
@@ -31,7 +32,7 @@ const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl })
         <div className="margin-right-button">
           <FilledButton
             color={done ? Theme.buttonColors.pinkButton : Theme.buttonColors.greyButton}
-            text="APPLY NOW"
+            text={isApplyRegister ? "WEBSITE REGISTRATION" : "APPLY NOW"}
             padding="0.75em 1.5em"
             onClick={() => {
               if (done) {
@@ -52,6 +53,8 @@ const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl })
             }}
           />
         </div>}
+      </div>
+      <div className="flex-container mt-3">
         <SocialMediaRow socmed={socialMedia} />
       </div>
       <style jsx>{`
