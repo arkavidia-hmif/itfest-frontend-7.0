@@ -186,7 +186,7 @@ const VerifEmailInputComponent: React.FC<VerifEmailInput> = (
 
     progressObj.startLoad();
 
-    verifEmail(apiContext.axios, email.replace("?email=", ""), inputValues.join(""))
+    verifEmail(apiContext.axios, email.replace("?email=", ""), inputValues.join("").toLowerCase())
       .then(() => {
         progressObj.setSuccess(true);
         router.push("/login#verif");
