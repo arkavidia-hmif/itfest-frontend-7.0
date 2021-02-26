@@ -36,8 +36,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/okegarden-153a66ec-6bbf-4e3d-9b34-f866b9654a35.png",
     "slug": "okegarden",
     "position": [
-      214,
-      450
+      300,
+      800
     ],
     "pageType": 0,
     "aboutUs": "OKE Garden adalah layanan jasa desain, pembuatan dan perawatan taman untuk mewujudkan taman yang asri dengan mudah. OKE Garden hadir untuk mengatasi masalah yang ada di industri pertamanan yaitu, ketidakpastian kerja tukang taman, petani tanaman hias dan juga kebingungan pelanggan terkait informasi pembuatan taman terutama mengenai transparansi harga. Layanan jasa OKE Garden berusaha membuat taman sesuai dengan impianmu karena kami percaya #asriitumudah.",
@@ -71,7 +71,7 @@ const Tenants: Record<string, Tenant> = {
     "slug": "desaloka",
     "position": [
       184,
-      187
+      230
     ],
     "pageType": 0,
     "aboutUs": "Desaloka Indonesia, memiliki visi untuk memajukan desa - desa di Indonesia demi mewujudkan pemerataan ekonomi. Dengan beberapa layanan yang kami tawarkan, kami memiliki ambisi untuk bisa membantu memajukan desa - desa di Indonesia, seiring dengan misi jangka panjang Indonesia",
@@ -95,8 +95,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/studiin-23b919fc-6ed1-4856-acb2-e7638369194f.png",
     "slug": "studiin",
     "position": [
-      76,
-      456
+      300,
+      975
     ],
     "pageType": 0,
     "aboutUs": "Studi.in adalah platform yang mempertemukan pelajar dengan tutor pilihan di waktu dan tempat sesuai dengan kebutuhanmu dengan biaya yang variatif. Tidak hanya itu, disini siapapun memiliki kesempatan untuk menjadi tutor kapan pun dan dimana pun. Untuk informasi lebih lanjut, follow akun Instagram dan LinkedIn kita @studiin.id",
@@ -122,8 +122,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/idstar-8e9cd203-5b27-4159-95f6-eaa881f9e059.png",
     "slug": "idstar",
     "position": [
-      248,
-      450
+      150,
+      380
     ],
     "pageType": 0,
     "aboutUs": "PT IDStar Cipta Teknologi focuses on providing professional IT services through consultation for individuals and companies. We aim to be your one-stop solution, by providing IT consultancy for CRM, RPA, Mobile Apps, HR, and Digital Transformation. \nWe also endeavor to educate young individuals in developing their skills and becoming professionals to meet the current demand in their respective industry in this era of technology through classes, trainings, and events.",
@@ -152,8 +152,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/sportigo-ac06a292-7870-49c7-9f90-d0bb18785332.png",
     "slug": "sportigo",
     "position": [
-      114,
-      502
+      275,
+      1050
     ],
     "pageType": 0,
     "aboutUs": "Sportigo is a sport tech company based in Jakarta. We make a platform where individual could join group sport activity like futsal and football as easy as joining fitness class. We make a football performance app using data and statistic based on real life match or training.",
@@ -180,7 +180,7 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/createit-691dd605-e4aa-4eca-9409-71ffa34e15d4.png",
     "slug": "createit",
     "position": [
-      226,
+      170,
       86
     ],
     "pageType": 0,
@@ -212,7 +212,7 @@ const Tenants: Record<string, Tenant> = {
     "slug": "philoit",
     "position": [
       170,
-      296
+      350
     ],
     "pageType": 0,
     "aboutUs": "Diluncurkan tahun 2019, Philoit adalah platform tanya jawab untuk mencari pengetahuan dan saling berbagi ilmu serta pengalaman dengan pengguna lainnya yang dilengkapi dengan fitur-fitur asik seperti gamifikasi, level, poin, title, dan coin redeem untuk kamu generasi muda millennial Indonesia. Temukan jawaban, jadilah jawaban.",
@@ -328,8 +328,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/matagi-36cf1b8e-728f-4eed-925f-772722cb75c8.png",
     "slug": "matagi",
     "position": [
-      63,
-      158
+      400,
+      740
     ],
     "pageType": 0,
     "aboutUs": "We are dreamers, doers, geeks and technology addicts! (also gamers). Combine together,\nwe are a diverse team with big ideas. Each of us is an expert and a problem solver, sweat\nthe details and design the solution into a whole picture. We\u2019ve been trusted by some of the\nbest companies and startups to help them achieve their goals.",
@@ -357,8 +357,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/ocistok-dfa64987-3206-4aa0-8419-3e1260b87018.png",
     "slug": "ocistok",
     "position": [
-      203,
-      549
+      325,
+      700
     ],
     "pageType": 0,
     "aboutUs": "OCISTOK.com adalah sebuah platform belanja grosir impor dan lokal yang menawarkan produk dengan harga termurah, terlengkap, serta terpercaya. Ocistok.com didesain khusus untuk membantu dan memudahkan para pelaku bisnis online maupun offline di Indonesia untuk mendapatkan barang impor maupun lokal yang dibuat semudah berbelanja melalui Marketplace.",
@@ -381,8 +381,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/xendit-d9395c33-85c4-496a-9679-1081254f6196.png",
     "slug": "xendit",
     "position": [
-      247,
-      8
+      300,
+      650
     ],
     "pageType": 0,
     "aboutUs": "Xendit adalah perusahaan teknologi keuangan yang menyediakan solusi pembayaran yang\nmenyederhanakan proses pembayaran untuk bisnis di Indonesia dan Filipina, dari UKM,\nstartup e-commerce hingga perusahaan besar. Sebagai startup Indonesia pertama yang\nberhasil lulus dari inkubator YCombinator yang bergengsi di Silicon Valley, Xendit bertujuan\nuntuk membangun infrastruktur pembayaran Indonesia.\n",
@@ -410,7 +410,7 @@ const Tenants: Record<string, Tenant> = {
     "slug": "qwork",
     "position": [
       60,
-      589
+      830
     ],
     "pageType": 0,
     "aboutUs": "We Empower talents and businesses to sustainably navigate through the gig economy by matching our community of Giggers(Gig Workers) to dynamic manpower needs of businesses. \nFor Businesses \nTransform your workforce by shifting to on-demand, flexible and skilled giggers! \nFor Giggers \nChart your own path and enrich your career with Qwork! \n",
@@ -437,8 +437,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/flocs-33aa2935-ae86-4ed8-a619-72c5404b54fd.png",
     "slug": "flocs",
     "position": [
-      91,
-      128
+      250,
+      600
     ],
     "pageType": 0,
     "aboutUs": "Flocs is an app for social profile sharing as the solution of multiple account, social and physical distancing, many links or URLs shared. Our ultimate vision is to build a platform that makes it safe and secure for you to interact with the world around you.",
@@ -465,8 +465,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/avana-45faa7e6-e283-4442-8a06-75183314f2ad.png",
     "slug": "avana",
     "position": [
-      50,
-      13
+      250,
+      150
     ],
     "pageType": 1,
     "aboutUs": "Lahir dari keinginan untuk membantu para pebisnis untuk mendigitalisasi bisnis mereka secara efisien, AVANA didirikan oleh Luqman Adris (sebagai Co-Founder & CEO) dan Yienyee Soh (sebagai Co-Founder & COO). Luqman Adris, lulusan jurusan Teknik Penerbangan Michigan Ann Arbor yang telah berpengalaman mengelola agensi digital selama lebih dari 6 tahun. Sementara Yienyee Soh merupakan lulusan Psikologi dan pendiri dari agregator bisnis online pertama di Malaysia. Keduanya berasal dari latar belakang yang jauh berbeda, namun mengemban visi misi yang sama.\nPerjalanan mereka jelas tidaklah mudah. Namun hingga kini, AVANA telah berkembang ke tiga negara berbeda (Indonesia, Singapura dan Malaysia) dan telah membantu lebih dari 100.000 brand mendigitalisasi bisnis mereka. Bekerjasama dengan Facebook, Google, Instagram, Whatsapp dan puluhan partner-partner lainnya, AVANA terus berinovasi untuk mengembangkan produk terbaik yang dapat memenuhi kebutuhan para pebisnis di masa kini.\n",
@@ -522,8 +522,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/lindungihutan-c41a8a35-1177-4aab-90b3-f55a1ceb272f.png",
     "slug": "lindungihutan",
     "position": [
-      91,
-      484
+      150,
+      650
     ],
     "pageType": 0,
     "aboutUs": "LindungiHutan merupakan platform crowdsourcing online untuk konservasi hutan & lingkungan Indonesia. Melalui LindungiHutan, Anda dapat berdonasi, membuat campaign, menjadi relawan, magang, dan ikut kegiatan seru lainnya. LindungiHutan memiliki berbagai proyek menarik dan berdampak seperti SatuHutan, HutanMerdeka, RawatBumi, KadoBumi, CollaboraTree, dan LivePlanting. Kunjungi situs web lindungihutan.com untuk informasi lengkapnya. Mari #BersamaMenghijaukanIndonesia!",
@@ -547,8 +547,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/indobot-3d76a200-0d18-4954-b981-fd5856ae3bbd.png",
     "slug": "indobot",
     "position": [
-      107,
-      223
+      400,
+      610
     ],
     "pageType": 0,
     "aboutUs": "Indobot Academy merupakan sebuah platform pembelajaran yang mengajarkan cara membuat alat elektronika tepat guna tanpa harus memiliki basic elektronika. Lebih dari sepuluh ribu user sudah belajar elektronika menggunakan kurikulum Indobot serta video pembelajaran step by step dan interaktif. Yuk daftar sekarang dan bergabung bersama komunitas electronics maker Indobot Academy.",
@@ -572,8 +572,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/kulina-fec49dcd-6d3a-4369-b587-38b55b99d0d4.png",
     "slug": "kulina",
     "position": [
-      168,
-      161
+      350,
+      180
     ],
     "pageType": 0,
     "aboutUs": "Kulina is a meal curation platform & delivery service using technology to optimize food supply and logistics, making quality meals affordable for millions of people. Kulina is on the mission of serving the best meal with an outstanding customer experience. Our startup started in 2015 with the aim of eliminating all the unnecessary costs, inefficiencies in food production, and supply chain. Our team currently works on end-to-end food service from designing each day's menu to delivering it to customers' desks.",
@@ -597,8 +597,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/amartha-2da9b3d1-8ed6-4863-8a0f-28b0015c4e0d.png",
     "slug": "amartha",
     "position": [
-      26,
-      287
+      380,
+      450
     ],
     "pageType": 0,
     "aboutUs": "Amartha is pioneering P2P lending for micro entrepreneurs. We connect aspiring unbanked micro-entrepreneurs with lenders interested in making profitable, impactful investments. We have developed our proprietary technology platform and self-learning algorithm to support our marketplace. Our proprietary technology automates key aspects of our operations, including the borrower application process, data gathering, credit decisioning and scoring, and servicing.",
@@ -625,8 +625,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/latihid-5932b208-434c-4472-b639-13a5bab0b895.png",
     "slug": "latihid",
     "position": [
-      24,
-      604
+      210,
+      990
     ],
     "pageType": 0,
     "aboutUs": "LatihID adalah sebuah platform pembelajaran online yang bertujuan untuk meningkatkan kompetensi dan keahlian UMKM di seluruh Indonesia melalui penyediaan modul pelatihan yang berkualitas dengan biaya yang ekonomis.\nVisi LatihID adalah membantu UMKM agar dapat bersaing di pasar lokal dan pasar internasional, sehingga UMKM dapat berkontribusi dalam meningkatkan perekonomian Indonesia.\n",
@@ -652,7 +652,7 @@ const Tenants: Record<string, Tenant> = {
     "slug": "qlue",
     "position": [
       246,
-      500
+      750
     ],
     "pageType": 0,
     "aboutUs": "Established in 2016, Qlue has transformed from a tech startup to a comprehensive smart city provider company in Indonesia. Driven by the mission to accelerate positive changes worldwide, we have built a platform which consists of cutting-edge technology products leveraging workforce management, artificial intelligence (AI) and internet of things (IoT). Three years working on the industry, Qlue received multiple awards, including Global Smart City Contest winner by World Smart City Organization in London (2018), Best M-Government Service Award from the World Government Summit in Dubai (2019), and Startup of the Year from Jumpstart Magazine, Hong Kong (2019).",
@@ -673,8 +673,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/credibook-2c413225-1fa9-4c89-9db2-0ac80f8b97be.png",
     "slug": "credibook",
     "position": [
-      14,
-      557
+      450,
+      554
     ],
     "pageType": 0,
     "aboutUs": "Aplikasi pencatatan keuangan untuk UMKM",
@@ -700,8 +700,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/idsindonesia-c4da4df1-834c-45e4-97ef-54557b56905b.png",
     "slug": "idsindonesia",
     "position": [
-      181,
-      452
+      100,
+      300
     ],
     "pageType": 0,
     "aboutUs": "PT. IDS Teknologi Indonesia atau dikenal dengan IDS Indonesia, adalah information technology and digital services yang berdiri sejak 2013. Pada awalnya IDS Indonesia hanya focus di dalam implementasi SAP Business One sebuah software Enterprise Resource Planning (ERP) . Dengan berjalannya waktu kami mulai masuk ke custom software development (web , desktop and mobile application) yang kemudian kini bertransformasi menjadi System Integrator (SI).\nBusiness IDS Indonesia per 2020 :\n\u2022 Enterprises Resource Planning (ERP) Business\n\u2022 Business & Data Intelligence Business\n\u2022 Consulting (Digital Transformation & Business Process Consulting) Business\n\u2022 Cloud & Digital Solution Business\n\nCustomer dari IDS cukup bervariasi dari sehi industri mulai dari Biznet Data Center & Biznet Cloud Cloud (Cloud & Telco), Ebiz (IT Services), Haus! (Food and Beverage), Angkasa Pura 2 & Kertajati (Airport Company) hingga ke manufacturing industry seperti Hino Motors, dll.\n\nDengan perkembangan teknologi informasi dan digital yang sangat agile, di masa\nmendatang IDS Indonesia akan masuk ke arena Artificial Inteligence (AI) , Machine\nLearning & Data Science.",
@@ -730,8 +730,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jooalan-aa023052-7b87-4de0-970f-9f5a2fe4e8b3.png",
     "slug": "jooalan",
     "position": [
-      247,
-      28
+      350,
+      100
     ],
     "pageType": 0,
     "aboutUs": "Kelola pesanan online lebih mudah dengan Jooalan!",
@@ -757,8 +757,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/tutee-id-93658fea-ca41-40e2-82b5-2369f33cf83e.png",
     "slug": "tutee-id",
     "position": [
-      94,
-      446
+      120,
+      950
     ],
     "pageType": 0,
     "aboutUs": "Tutee.id is a friendly peer-study-group platform with a verified peer tutor that helps college students achieve higher academic performance. We aim to help students find credible tutors easily while giving them access to be one as well, so they can develop themselves by being a tutee or a tutor.\n\nOur initiative started off in January 2020, currently we have accumulated 300+ tutors as our program partners. For the time being, our services are available at 40+ universities in Indonesia.\n\nOur platform provides you the convenience of small study groups with tutors who are active students or young alumni of your university. Our Tutor will gladly help you to prepare for your exam, assignments, or projects. To book classes at Tutee.id, you just need to enter your university and faculty then you can choose a date and time that suits your availability on our website www.tutee.id.",
@@ -787,8 +787,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/automate-all-6408b0ff-f8bf-4d04-b0dc-683b224b228b.png",
     "slug": "automate-all",
     "position": [
-      2,
-      325
+      200,
+      700
     ],
     "pageType": 0,
     "aboutUs": "Automate All adalah startup teknologi yang menyediakan layanan jasa automasi pada proses bisnis di perusahaan. \nDengan visi Menjadi nomer satu dalam membantu perusahaan go automate pada setiap proses bisnisnya ",
@@ -815,8 +815,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/uangteman-494d1404-533f-4903-88c4-3b4715590193.png",
     "slug": "uangteman",
     "position": [
-      158,
-      575
+      340,
+      530
     ],
     "pageType": 0,
     "aboutUs": "UangTeman adalah platform pinjaman online di Indonesia milik PT Digital Alpha Indonesia, anak perusahaan dari Digital Alpha Group Pte Ltd. Dengan algoritma berbasis data, UangTeman menyediakan pinjaman mikro jangka pendek yang transparan untuk konsumen dan UMKM. UangTeman telah terdaftar dan diawasi oleh Otoritas Jasa Keuangan (OJK) sebagai layanan pinjaman peer-to-peer online, sesuai dengan Peraturan OJK 77/2016. Untuk informasi lebih lanjut, kunjungi situs www.uangteman.com.",
@@ -842,8 +842,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/doku-574db310-2b1b-4406-8a3f-1d3def988a45.png",
     "slug": "doku",
     "position": [
-      173,
-      179
+      120,
+      100
     ],
     "pageType": 0,
     "aboutUs": "Transaksi adalah nafas dari perekonomian. Karenanya langkah awal kami dimulai dari sebuah mimpi besar untuk merintis jalan menuju kebebasan bertransaksi. Sebagai pelopor pembayaran elektronik di Indonesia, inovasi teknologi terus dilakukan untuk menghasilkan solusi pembayaran yang bisa menjawab berbagai kebutuhan bisnis, seiring dengan dinamika ekonomi.\n\nSemua mungkin dilakukan bersama DOKU. Mulai dari soal membayar dan menerima pembayaran, hingga transfer dana. Selama lebih dari satu dekade, kami telah bertumbuh bersama dengan perusahaan besar menengah maupun bisnis individu dari berbagai latar belakang. Mulai dari bisnis transportasi, pariwisata, asuransi, retail, donasi, komunitas, peer to peer lending, dan masih banyak lagi. Kolaborasi dengan mitra seperti bank lokal dan internasional, termasuk institusi non-perbankan, telah memperkuat reputasi kami sebagai solusi pembayaran elektronik lokal yang tepercaya. Bersama kami, ekonomi digital di Indonesia akan lebih berenergi.\n\nKini kita makin leluasa untuk bernafas dan bergerak menembus batasan dalam bertransaksi, beragam pilihan sistem pembayaran, hingga menantang waktu dengan sistem transaksi yang real-time.\n\nTransformasi pembayaran, dari konvensional dan menjadi digital, membebaskan kita dari banyak kendala sehingga menghasilkan akses yang lebih cepat menuju literasi keuangan di Indonesia.",
@@ -867,8 +867,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/merempah-b9bbfe24-33b4-4595-a253-37a46070d5cf.png",
     "slug": "merempah",
     "position": [
-      37,
-      243
+      150,
+      260
     ],
     "pageType": 0,
     "aboutUs": "Merempah merupakan platform Sistem Informasi berbasis teknologi penyedia rempah-rempah dengan moto \u201cEmpowering, Simple, and Trusted\u201d.\n\nMemiliki visi \n\u201cMenumbuhkan kebanggaan akan kekayaan rempah bagi daerah penghasil dalam upaya pelestarian dan pengembangan rempah sebagai mother spices Indonesia melalui teknologi digital\u201d \n\nMerempah akan hadir untuk membantu proses kegiatan usaha jual-beli rempah, mulai dari transaksi jual-beli hingga pendistribusian sampai ke tangan konsumen. Platform Merempah dapat memberikan layanan meliputi marketing, logistik, distribusi, accounting dan lain sebagainya sesuai dengan kebutuhan kegiatan usaha yang bersangkutan. Menyediakan rempah maupun olahan rempah untuk memenuhi kebutuhan dapur sehari-hari. \n\nSecara spesifik, Merempah ingin membantu proses kegiatan usaha jual-beli rempah yang semula memiliki mata rantai pasok yang panjang dari petani hingga ke tangan konsumen. Mata rantai ini dapat berupa dimulai dari petani rempah yang mayoritas berada di pedesaan, dikumpulkan oleh tengkulak/pengepul kemudian masuk ke pasar mikro melalui Pedagang Pengecer, dan dipasarkan kembali ke pasar makro hingga kemudian sampai pada tangan konsumen.  \n",
@@ -897,8 +897,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jagelid-9fa8936c-e3aa-46ad-942a-89ce492dfa4b.png",
     "slug": "jagel-id",
     "position": [
-      41,
-      433
+      100,
+      400
     ],
     "pageType": 0,
     "aboutUs": "Jagel.id adalah aplikasi mobile Android yang dapat membuat aplikasi Android sendiri bagi para penggunanya untuk mengembangkan usaha seperti aplikasi online shop hingga ojek online, dengan cara yang relatif mudah, cepat, tanpa coding, dan biaya terjangkau.",
@@ -963,7 +963,7 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/hangry-09cfbeb8-a961-4098-8a79-cf7d6cfe8324.png",
     "slug": "hangry",
     "position": [
-      183,
+      160,
       524
     ],
     "pageType": 0,
@@ -992,8 +992,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/feedloop-ac21b9a6-650f-41f5-bba7-63012b6d7c56.png",
     "slug": "feedloop",
     "position": [
-      239,
-      426
+      220,
+      375
     ],
     "pageType": 0,
     "aboutUs": "Feedloop is a technology information and digital product company that can help businesses digitalize and grow their business through a modern platform-based solution. We aim to enhance company's productivity by providing a platform with means to digitalize, analize, and automate the whole process of their business and to enhance customer lifetime value.",
@@ -1019,7 +1019,7 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/codex-0547cced-80bc-4638-9078-2df281180492.png",
     "slug": "codex",
     "position": [
-      7,
+      50,
       470
     ],
     "pageType": 0,

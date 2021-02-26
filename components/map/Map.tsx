@@ -6,14 +6,14 @@ import Tenants from "utils/constants/tenants";
 import "leaflet/dist/leaflet.css";
 
 const Map: React.FC = () => {
-  const center: LatLngTuple = [125, 312.5];
+  const center: LatLngTuple = [250, 625];
   const bounds: LatLngBoundsExpression = [
     [0, 0],
-    [250, 625],
+    [500, 1250],
   ];
   const maxBounds: LatLngBoundsExpression = [
     [-250, -625],
-    [500, 1250],
+    [500, 1450],
   ];
 
   const tenantArray = useMemo(() => Object.values(Tenants), [Tenants]);
@@ -23,7 +23,7 @@ const Map: React.FC = () => {
       attributionControl={false}
       touchZoom={true}
       center={center}
-      zoom={0.25}
+      zoom={0.1}
       maxZoom={2}
       minZoom={0}
       maxBounds={maxBounds}
