@@ -5,33 +5,27 @@ interface Props {
   title: string;
 }
 
-const LogoTitleCompany: React.FC<Props> = ({logo, title}) => {
+const LogoTitleCompany: React.FC<Props> = ({ logo, title }) => {
   return (
-    <div className="flex-container">
-      <img src={logo} className="logo-photo"/>
+    <div className="flex-container mt-3">
+      <img src={logo} className="logo-photo" />
       <div className="logo-title">
         <h1 className="title">{title}</h1>
       </div>
       <style jsx>{`
         .flex-container {
-          display: flex;
-          flex-direction: row;
-          margin-top: 3%;
+          text-align: left;
         }
 
         .logo-photo {
-          max-width: 5rem;
-        }
-
-        .logo-title {
-          display: flex;
-          align-items: center;
-          margin-left: 1.5rem;
+          max-width: 15rem;
+          max-height: 5rem;
         }
 
         @media only screen and (max-width: 1000px) {
           .logo-photo {
-            max-width: 3rem;
+            max-width: 80vw;
+            max-height: 5rem;
           }
 
           .title {
@@ -39,9 +33,7 @@ const LogoTitleCompany: React.FC<Props> = ({logo, title}) => {
           }
 
           .flex-container {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
+            text-align: center;
           }
         }
       `}</style>

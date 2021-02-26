@@ -5,10 +5,10 @@ interface Props {
   title: string;
 }
 
-const LogoTitleCompanyAlt: React.FC<Props> = ({logo, title}) => {
+const LogoTitleCompanyAlt: React.FC<Props> = ({ logo, title }) => {
   return (
     <div className="flex-container-alt">
-      <img src={logo} className="logo-photo-alt"/>
+      <img src={logo} className="logo-photo-alt" />
       <div className="logo-title-alt">
         <h1 className="title">{title}</h1>
       </div>
@@ -22,7 +22,8 @@ const LogoTitleCompanyAlt: React.FC<Props> = ({logo, title}) => {
           }
 
           .logo-photo-alt {
-            max-width: 5rem;
+            max-width: 20rem;
+            max-height: 5rem;
             margin-bottom: 1%;
           }
 
@@ -33,7 +34,8 @@ const LogoTitleCompanyAlt: React.FC<Props> = ({logo, title}) => {
 
           @media only screen and (max-width: 1000px) {
             .logo-photo-alt {
-              max-width: 4rem;
+              max-width: 80vw;
+              max-height: 5rem;
             }
 
             .title {
