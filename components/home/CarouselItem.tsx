@@ -83,8 +83,9 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
           }
 
           .company-logo {
-            width: 4rem;
-            height: 4rem;
+            max-width: 8rem;
+            max-height: 4rem;
+            width: 100%;
           }
 
           .header-wrapper {
@@ -104,9 +105,21 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             .company-detail {
               font-size: 0.8rem;
             }
+
+            .company-logo {
+              max-width: 6rem;
+            }
+          }
+
+
+          @media (max-width: ${Dimen.mdBreakpoint}) { 
+            .company-logo {
+              max-width: 12rem;
+            }
           }
 
           @media (max-width: ${Dimen.smBreakpoint}) { 
+
             .header-wrapper {
               font-size: 2rem;
             }
