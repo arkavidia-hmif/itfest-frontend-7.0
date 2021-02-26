@@ -89,17 +89,19 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             loading={loading}
             startGame={postChallenge}
           />
-          <div className="game-area">
-            {errorFetching && <Alert error={errorFetching.message} />}
-            {error && <Alert error={error} />}
-            {gameId && attempted === 1 && (
-              <Game
-                setAttempted={setAttempted}
-                gameId={gameId}
-                setPrize={setPrize}
-              />
-            )}
-          </div>
+          {attempted === 1 &&
+            <div className="game-area">
+              {errorFetching && <Alert error={errorFetching.message} />}
+              {error && <Alert error={error} />}
+              {gameId && attempted === 1 && (
+                <Game
+                  setAttempted={setAttempted}
+                  gameId={gameId}
+                  setPrize={setPrize}
+                />
+              )}
+            </div>
+          }
         </div>
       ) :
         (
@@ -119,17 +121,19 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
               loading={loading}
               startGame={postChallenge}
             />
-            <div className="game-area">
-              {errorFetching && <Alert error={errorFetching.message} />}
-              {error && <Alert error={error} />}
-              {gameId && attempted === 1 && (
-                <Game
-                  setAttempted={setAttempted}
-                  gameId={gameId}
-                  setPrize={setPrize}
-                />
-              )}
-            </div>
+            {attempted === 1 &&
+              <div className="game-area">
+                {errorFetching && <Alert error={errorFetching.message} />}
+                {error && <Alert error={error} />}
+                {gameId && attempted === 1 && (
+                  <Game
+                    setAttempted={setAttempted}
+                    gameId={gameId}
+                    setPrize={setPrize}
+                  />
+                )}
+              </div>
+            }
           </div>
         )}
       <style jsx>{`
