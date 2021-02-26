@@ -1,7 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import { useContext, useState, useEffect } from "react";
 import { UserData } from "../interfaces/auth";
-import { givePoint} from "../api/point";
+import { givePoint } from "../api/point";
 import AuthWrapper from "../components/auth/AuthWrapper";
 import InputField from "../components/auth/InputField";
 import FilledButton from "../components/commons/FilledButton";
@@ -11,7 +11,7 @@ import { Theme } from "styles/theme";
 import { ApiResponse } from "interfaces/api";
 import Alert from "components/commons/Alert";
 
-const SendPoint : React.FC = () => {
+const SendPoint: React.FC = () => {
 
   const authContext = useContext(AuthContext);
   const apiContext = useContext(ApiContext);
@@ -33,21 +33,17 @@ const SendPoint : React.FC = () => {
 
   // Ambil data all visitor dan masukkan ke state visitor
   useEffect(() => {
-    const fetchVisitor = async() => {
-      apiContext.axios
-        .get("user/visitor")
-        .then((data) => {
-          setVisitor(data.data.data.array);
-        })
-        .catch((err) => {
-          setError(err);
-        });
-    };
-
-    fetchVisitor();
+    apiContext.axios
+      .get("user/visitor")
+      .then((data) => {
+        setVisitor(data.data.data.array);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
   }, []);
 
-  const findId = (visitor : Array<UserData>, email: string) => {
+  const findId = (visitor: Array<UserData>, email: string) => {
     const user = visitor.find(object => object.email === email);
 
     if (user !== undefined) {
@@ -80,19 +76,19 @@ const SendPoint : React.FC = () => {
   return (
     <AuthWrapper title="Send Point">
       <Alert error={success ? "Poin berhasil dikirim" : error} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} />
-      <form 
+      <form
         onSubmit={(evt) => {
           evt.preventDefault();
           handleSubmit();
         }}
       >
-        <InputField 
+        <InputField
           name="Email"
           value={email}
           setValue={setEmail}
           placeholder="Email Penerima"
         />
-        <InputField 
+        <InputField
           name="Jumlah Poin"
           value={point}
           setValue={setPoint}
