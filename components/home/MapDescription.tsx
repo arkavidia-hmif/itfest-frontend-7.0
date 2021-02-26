@@ -42,6 +42,11 @@ const MapDescription: React.FC = () => {
               <p className="text-bold-left-up-value">{points}</p>
               <p className="text-bold-left-down-value">{rankText}</p>
             </div>
+            <div className="border-left"></div>
+            <a></a>
+            <a href="bit.ly/RedeemPointsITFest">
+              <p className="text-bold-left-down" style={{ gridColumn: "1 / span 2" }}>Free Point</p>
+            </a>
           </div>
           <div className="grid-right">
             <div className="text-right">
@@ -50,6 +55,9 @@ const MapDescription: React.FC = () => {
               </a>
               <a href="https://link.arkavidia.id/itfest_booklet">
                 <p className="text-bold-right-down">Download Booklet</p>
+              </a>
+              <a href="https://chat.whatsapp.com/C4hlXdljewG7h2b2TFto4s">
+                <p className="text-bold-right-down">Chat Admin</p>
               </a>
             </div>
             <div className="border-right"></div>
