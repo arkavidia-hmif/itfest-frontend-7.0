@@ -10,9 +10,10 @@ interface Props {
   loading?: boolean;
   startGame?: React.MouseEventHandler<HTMLImageElement>;
   prize: number;
+  additionalChallenge?: string;
 }
 
-const Challenge: React.FC<Props> = ({ done, ongoing, loading, startGame, prize }) => {
+const Challenge: React.FC<Props> = ({ done, ongoing, loading, startGame, prize, additionalChallenge }) => {
   const { authenticated } = React.useContext(AuthContext);
   const router = useRouter();
   if (done) {
@@ -39,6 +40,16 @@ const Challenge: React.FC<Props> = ({ done, ongoing, loading, startGame, prize }
                   <button className="button">+{prize} Points</button>
                 </div>
               )}
+              {additionalChallenge &&
+                <>
+                  <h2 className="challenge-description mt-3">
+                    Mau challenge lebih (berhadiah loh)?
+                  </h2>
+                  <div className="flex-center">
+                    <button className="button" onClick={() => { router.push(additionalChallenge); }}>Mau!</button>
+                  </div>
+                </>
+              }
             </div>
           </div>
           <div className="gameconsole-flex">

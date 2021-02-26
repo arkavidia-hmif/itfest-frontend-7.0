@@ -25,6 +25,8 @@ export interface Tenant {
   videoUrl: string;
   gallery: string[];
   contactLink: string;
+  additionalChallenge?: string;
+  isApplyRegister?: boolean;
 }
 
 export interface LiveTenant {

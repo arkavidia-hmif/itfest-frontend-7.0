@@ -104,6 +104,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             done={attempted === 2}
             loading={loading}
             startGame={postChallenge}
+            additionalChallenge={tenant.additionalChallenge}
           />
           {attempted === 1 &&
             <div className="game-area">
@@ -138,6 +139,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
               done={attempted === 2}
               loading={loading}
               startGame={postChallenge}
+              additionalChallenge={tenant.additionalChallenge}
             />
             {attempted === 1 &&
               <div className="game-area">
