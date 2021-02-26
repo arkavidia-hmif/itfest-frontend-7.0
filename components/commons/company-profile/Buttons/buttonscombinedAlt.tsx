@@ -41,7 +41,7 @@ const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl
           />
           <p className="play-hint">Mainkan challenge untuk membuka link ini</p>
         </div>
-        {liveUrl && <div className="mr-1 mr-md-4">
+        {liveUrl && <div className="ml-3">
           <FilledButton
             text="MEET"
             padding="0.75em 1.5em"
@@ -63,7 +63,6 @@ const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl
         }
 
         .margin-right-button {
-            margin-right: 3%;
         }
       `}</style>
       <style jsx>{`
