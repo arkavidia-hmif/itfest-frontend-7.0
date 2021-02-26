@@ -16,7 +16,7 @@ const MerchStoreCarouselItem: React.FC<Props> = ({
     <div>
       <div className="store-item">
         <div className="item-image">
-          <img src={item.imageUrl} className="w-100" />
+          <img src={item.imageUrl} className="w-100" loading="lazy" />
           <div className="item-hover">
             {hover ? (
               <FilledButton

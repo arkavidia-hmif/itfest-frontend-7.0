@@ -24,7 +24,7 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
       <div className="d-flex merch-store-container-top">
         <div className="w-100 merch-title">
           <div className="merch-store-top-left">
-            <img className="" src={merchant.logo} alt={merchant.name} />
+            <img className="" src={merchant.logo} alt={merchant.name} loading="lazy" />
             <h2 className="ml-1 ml-sm-3">{merchant.name}&#39;s Shop</h2>
           </div>
           <div className="merch-store-top-right mt-3 mt-sm-0">
