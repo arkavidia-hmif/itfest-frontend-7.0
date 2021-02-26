@@ -25,13 +25,16 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
   const company = {
     backgroundImage: `url(${companyImage})`,
     backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    backgroundPositionX: "center",
+    backgroundPositionY: "center",
   };
 
   return (
     <div className="item-carousel" style={background}>
       <div className="row py-3 mx-3 content-container">
         <div className="col-md-5 col-lg-4 company-detail-container">
-          <img className="company-logo mr-3" style={company} />
+          <img className="company-logo mr-3" style={company} src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
           <div >
             <span className="header-wrapper">
               <ColorfulHeader color={Theme.headerColors.pipl} headingLevel={6} size="1em">{textCompany}</ColorfulHeader>
