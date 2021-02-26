@@ -685,7 +685,7 @@ const Tenants: Record<string, Tenant> = {
       "linkedin": "https://www.linkedin.com/company/credibook",
       "instagram": "https://www.instagram.com/credibook/"
     },
-    "videoUrl": "<iframe width=\"640\" height=\"360\" src=\"https://www.youtube.com/embed/KdNPnfeuFnk\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+    "videoUrl": "https://www.youtube.com/embed/KdNPnfeuFnk",
     "gallery": [
       "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/credibook-e9764046-26d0-4d91-9d3a-21d3534c75cd.jpg",
       "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/credibook-02f1f278-d3cd-480f-9b43-c8226088ea18.jpg",
@@ -712,7 +712,7 @@ const Tenants: Record<string, Tenant> = {
       "linkedin": "https://www.linkedin.com/company/idsindonesia/",
       "instagram": "https://www.instagram.com/idsindonesia/\n"
     },
-    "videoUrl": "<iframe width=\"640\" height=\"360\" src=\"https://www.youtube.com/embed/D46-JF8qDjo\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+    "videoUrl": "https://www.youtube.com/embed/D46-JF8qDjo",
     "gallery": [
       "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/idsindonesia-20956b13-824c-49cb-a445-fa36d6be4130.jpeg",
       "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/idsindonesia-169de97c-5b26-479c-bd52-a2059f96e9ff.jpeg",
@@ -742,7 +742,7 @@ const Tenants: Record<string, Tenant> = {
       "linkedin": "https://www.linkedin.com/company/31340349/",
       "instagram": "https://www.instagram.com/jooalan.id/"
     },
-    "videoUrl": "<iframe width=\"640\" height=\"360\" src=\"https://www.youtube.com/embed/PGDw6gIgcrU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+    "videoUrl": "https://www.youtube.com/embed/PGDw6gIgcrU",
     "gallery": [
       "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jooalan-29b1666f-f3d0-4387-acef-a48fc27e3121.jpg",
       "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jooalan-2a6ab7f2-684d-4ac4-810e-78b60ab19112.jpg",
