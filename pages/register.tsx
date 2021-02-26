@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import Link from "next/link";
 import Alert from "../components/commons/Alert";
@@ -9,9 +9,11 @@ import { ApiContext } from "../utils/context/api";
 import { isValidName, isValidPhone, isValidEmail, isValidString } from "../utils/validator";
 import { registerVisitor } from "api/auth";
 import useProgress from "utils/hooks/useProgress";
+import { AuthContext } from "utils/context/auth";
 
 const RegisterPage: React.FC = () => {
   const apiContext = useContext(ApiContext);
+  const authContext = useContext(AuthContext);
   const router = useRouter();
 
   const [email, setEmail] = useState("");
@@ -20,6 +22,12 @@ const RegisterPage: React.FC = () => {
   const [telp, setTelp] = useState("");
 
   const progressObj = useProgress();
+
+  useEffect(() => {
+    if (authContext.authenticated) {
+      router.push("/profile");
+    }
+  });
 
   const handleSubmit = () => {
     progressObj.reset();

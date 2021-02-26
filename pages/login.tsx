@@ -29,6 +29,10 @@ const LoginPage: React.FC = () => {
   const [showVerif, setShowVerif] = useState<boolean>(false);
 
   useEffect(() => {
+    if (authContext.authenticated) {
+      router.push("/profile");
+    }
+
     if (window.location.hash === "#verif") {
       setVerifSuccess("Verifikasi sukses, silahkan login");
     }
