@@ -44,7 +44,7 @@ const MapDescription: React.FC = () => {
             </div>
             <div className="border-left"></div>
             <a></a>
-            <a href="bit.ly/RedeemPointsITFest">
+            <a href="https://bit.ly/RedeemPointsITFest">
               <p className="text-bold-left-down" style={{ gridColumn: "1 / span 2" }}>Free Point</p>
             </a>
           </div>
