@@ -83,7 +83,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
 
   return (
     <Layout title={tenant.name}>
-      {tenant.pageType !== 0 ? (
+      {tenant.pageType === 0 ? (
         <div className="container pb-4">
           <Logo logo={tenant.logo} title={tenant.name} />
           <div>
