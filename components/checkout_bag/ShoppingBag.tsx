@@ -15,30 +15,30 @@ const ShoppingBag: React.FC<Props> = ({ item }) => {
 
   return (
     <>
-      <div className="hide-small">
+      <div className="hide-small v-center">
         <div className="product product-row">
           <img src={item.imageUrl} />
           <p>{item.name}</p>
         </div>
       </div>
-      <div className="show-small">
+      <div className="show-small v-center">
         <div className="product">
           <img className="mb-3" src={item.imageUrl} />
           <p>{item.name}</p>
           <p>{item.price} poin</p>
         </div>
       </div>
-      <div className="center hide-small"><p>{item.price}</p></div>
-      <div className="center v-center-small">
+      <div className="center v-center hide-small"><p>{item.price}</p></div>
+      <div className="center v-center d-flex">
         <div className="quantity">
           <img src="/img/minus.svg" style={{ marginRight: "0.5rem" }} onClick={() => subQuantity(item)} />
           <p>{item.qty}</p>
           <img src="/img/plus.svg" style={{ marginLeft: "0.5rem" }} onClick={() => addQuantity(item)} />
         </div>
       </div>
-      <div className="center hide-small"><p>{item.price * item.qty}</p></div>
-      <div className="v-center-small"><img className="btn-del" src="/img/trash.svg" onClick={() => deleteItem(item)} /></div>
-      <hr className="show-small w-100" style={{ gridColumn: "1 / span 3" }} />
+      <div className="center v-center hide-small"><p>{item.price * item.qty}</p></div>
+      <div className="v-center"><img className="btn-del" src="/img/trash.svg" onClick={() => deleteItem(item)} /></div>
+      <hr className="w-100 v-center separator" style={{}} />
       <style jsx>
         {`
 
@@ -51,8 +51,6 @@ const ShoppingBag: React.FC<Props> = ({ item }) => {
           }
 
           .product-row p {
-            top: 25%;
-            position: absolute;
           }
 
           .product-row img, .product-row p, .quantity img, .quantity p{
@@ -95,20 +93,27 @@ const ShoppingBag: React.FC<Props> = ({ item }) => {
             display: none;
           } 
 
+          .v-center {
+            align-self: center;
+          }
+
+          .separator {
+            grid-column: 1 / span 5;
+            height: 1px; 
+          }
 
           @media screen and (max-width:${Dimen.lgBreakpoint}){
-            .v-center-small {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-            }
 
             .hide-small {
               display: none;
             }
 
             .show-small {
-              display: block;
+              display: flex;
+            }
+
+            .separator {
+              grid-column: 1 / span 3;
             }
           }
       `}</style>

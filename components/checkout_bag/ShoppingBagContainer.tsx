@@ -46,6 +46,8 @@ const ShoppingBagContainer: React.FC = () => {
           .bag-container {
             display: grid;
             grid-template-columns: auto repeat(4, min-content);
+            grid-auto-rows: 1fr 1rem;
+            grid-template-rows: 30px;
             grid-gap: 0 1rem;
           }
           #shadow {
