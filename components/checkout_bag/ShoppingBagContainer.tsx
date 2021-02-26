@@ -65,9 +65,9 @@ const ShoppingBagContainer: React.FC = () => {
             background-color: white;
             position: absolute;
             z-index: 4;
-            top: 50%;
+            top: calc(${Dimen.navbarHeight} + 1rem);
             left: 50%;
-            transform: translate(-50%, -40%);
+            transform: translateX(-50%);
             box-shadow: 2px 4px 14px rgb(0 0 0 / 25%);
             padding: 1rem;
           }
