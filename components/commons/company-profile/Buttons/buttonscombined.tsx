@@ -43,7 +43,7 @@ const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl })
           />
           <p className="play-hint">Mainkan challenge untuk membuka link ini</p>
         </div>
-        {liveUrl && <div className="mr-3">
+        {liveUrl && <div className="mr-1 mr-md-3">
           <FilledButton
             text="MEET"
             padding="0.75em 1.5em"
