@@ -2,6 +2,8 @@ import { AxiosInstance } from "axios";
 import { ApiError, ApiResponse, StandardError } from "interfaces/api";
 import { LiveTenant } from "interfaces/tenant";
 
+export const TENANT_LIVE_URL = "tenant/live";
+
 export async function getLiveTenant(
   axios: AxiosInstance
 ): Promise<ApiResponse<Array<LiveTenant>>> {

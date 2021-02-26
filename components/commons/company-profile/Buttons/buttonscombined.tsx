@@ -11,9 +11,10 @@ interface Props {
     email?: string
     linkedin?: string;
   };
+  liveUrl?: string;
 }
 
-const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia }) => {
+const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl }) => {
   const [showHint, setShowHint] = React.useState(false);
 
   React.useEffect(() => {
@@ -42,6 +43,15 @@ const CombinedButton: React.FC<Props> = ({ done, hiring, socialMedia }) => {
           />
           <p className="play-hint">Mainkan challenge untuk membuka link ini</p>
         </div>
+        {liveUrl && <div className="mr-3">
+          <FilledButton
+            text="MEET"
+            padding="0.75em 1.5em"
+            onClick={() => {
+              window.open(liveUrl);
+            }}
+          />
+        </div>}
         <SocialMediaRow socmed={socialMedia} />
       </div>
       <style jsx>{`

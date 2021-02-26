@@ -19,6 +19,7 @@ import { Tenant } from "interfaces/tenant";
 import { getGameByTenant, GET_GAME_URL, playGame } from "api/game";
 import Alert from "components/commons/Alert";
 import { ApiContext } from "utils/context/api";
+import { getLiveTenant, TENANT_LIVE_URL } from "api/tenant";
 
 const Game = dynamic(() => import("components/game"), {
   ssr: false,
@@ -44,6 +45,19 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
       : null,
     () => getGameByTenant(apiContext.axios, String(tenant.id))
   );
+
+  const { data: liveData } = useSWR(TENANT_LIVE_URL,
+    () => getLiveTenant(apiContext.axios)
+  );
+
+  let liveTenantUrl;
+  if (liveData) {
+    const selected = liveData.data.filter(el => el.id === tenant.id);
+    if (selected.length === 1) {
+      liveTenantUrl = selected[0].liveURL;
+    }
+  }
+
 
   const gameId = game?.data?.gameid;
   React.useEffect(() => {
@@ -80,6 +94,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
               hiring={tenant.hiring}
               socialMedia={tenant.socialMedia}
               contactLink={tenant.contactLink}
+              liveUrl={liveTenantUrl}
             />
           </div>
           <GalleryMain items={tenant.gallery} />
@@ -114,6 +129,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
               done={attempted === 2}
               hiring={tenant.hiring}
               socialMedia={tenant.socialMedia}
+              liveUrl={liveTenantUrl}
             />
             <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
             <ChallengeDone

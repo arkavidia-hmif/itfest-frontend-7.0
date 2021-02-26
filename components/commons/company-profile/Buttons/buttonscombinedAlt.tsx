@@ -8,9 +8,10 @@ interface Props {
   done: boolean;
   socialMedia: TenatSocmed;
   hiring?: string;
+  liveUrl?: string;
 }
 
-const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia }) => {
+const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia, liveUrl }) => {
   const [showHint, setShowHint] = React.useState(false);
 
   React.useEffect(() => {
@@ -39,6 +40,15 @@ const CombinedButtonAlt: React.FC<Props> = ({ done, hiring, socialMedia }) => {
           />
           <p className="play-hint">Mainkan challenge untuk membuka link ini</p>
         </div>
+        {liveUrl && <div className="mr-4">
+          <FilledButton
+            text="MEET"
+            padding="0.75em 1.5em"
+            onClick={() => {
+              window.open(liveUrl);
+            }}
+          />
+        </div>}
         <SocialMediaRow socmed={socialMedia} />
 
       </div>

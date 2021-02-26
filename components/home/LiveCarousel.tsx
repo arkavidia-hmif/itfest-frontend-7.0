@@ -2,7 +2,7 @@ import { useContext } from "react";
 import useSWR from "swr";
 import Carousel from "./Carousel";
 import CarouselItem from "./CarouselItem";
-import { getLiveTenant } from "api/tenant";
+import { getLiveTenant, TENANT_LIVE_URL } from "api/tenant";
 import Alert from "components/commons/Alert";
 import Spinner from "components/commons/Spinner";
 import { ApiContext } from "utils/context/api";
@@ -13,7 +13,7 @@ import Tenants from "utils/constants/tenants";
 const LiveCarousel: React.FC = () => {
   const apiContext = useContext(ApiContext);
 
-  const { data: liveTenant, error } = useSWR("tenant/live", () => getLiveTenant(apiContext.axios));
+  const { data: liveTenant, error } = useSWR(TENANT_LIVE_URL, () => getLiveTenant(apiContext.axios));
 
   if (error) return <Alert error={"Gagal mengambil event yang sedang live"} />;
   if (!liveTenant) return <Spinner />;
