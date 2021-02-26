@@ -84,6 +84,7 @@ const Checkout: React.FC = () => {
       </h5>
       { buy ? <Alert error={status} color={success ? Theme.alertColors.greenAlert : Theme.alertColors.redAlert} /> : null}
       <div className="btn">
+        <p className={point < total ? "d-block" : "d-none"}>Poin tidak cukup</p>
         <FilledButton
           disabled={total === 0 || point < total}
           color={Theme.buttonColors.pinkButton}
