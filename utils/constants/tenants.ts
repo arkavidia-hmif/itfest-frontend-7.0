@@ -2,7 +2,7 @@ import { Tenant } from "interfaces/tenant";
 
 const Tenants: Record<string, Tenant> = {
   "rekeningku": {
-    "id": 1,
+    "id": 38,
     "name": "Rekeningku",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-281d8b7c-dd03-4a10-867f-8dffa4da1833.png",
     "slug": "rekeningku",
@@ -31,7 +31,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": ""
   },
   "okegarden": {
-    "id": 2,
+    "id": 39,
     "name": "OkeGarden",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/okegarden-153a66ec-6bbf-4e3d-9b34-f866b9654a35.png",
     "slug": "okegarden",
@@ -65,7 +65,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/081382166012"
   },
   "desaloka": {
-    "id": 3,
+    "id": 40,
     "name": "Desaloka",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/desaloka-af046188-418a-48d7-8366-079593a3ceeb.png",
     "slug": "desaloka",
@@ -90,7 +90,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/6285707765684"
   },
   "studiin": {
-    "id": 4,
+    "id": 41,
     "name": "Studi.in",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/studiin-23b919fc-6ed1-4856-acb2-e7638369194f.png",
     "slug": "studiin",
@@ -117,7 +117,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "wa.me/6287869919423"
   },
   "idstar": {
-    "id": 5,
+    "id": 75,
     "name": "IDStar Cipta Teknologi",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/idstar-8e9cd203-5b27-4159-95f6-eaa881f9e059.png",
     "slug": "idstar",
@@ -147,7 +147,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "wa.link/mp8dqv"
   },
   "sportigo": {
-    "id": 6,
+    "id": 42,
     "name": "Sportigo",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/sportigo-ac06a292-7870-49c7-9f90-d0bb18785332.png",
     "slug": "sportigo",
@@ -175,7 +175,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/085771559962"
   },
   "createit": {
-    "id": 7,
+    "id": 43,
     "name": "Create It",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/createit-691dd605-e4aa-4eca-9409-71ffa34e15d4.png",
     "slug": "createit",
@@ -206,7 +206,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://chat.whatsapp.com/HuOhKTVdq7gJkQ1BIpliUU"
   },
   "philoit": {
-    "id": 8,
+    "id": 44,
     "name": "Philoit",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/philoit-3a447689-0158-4f20-a8c8-e2a563ab21c6.png",
     "slug": "philoit",
@@ -233,7 +233,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://chat.whatsapp.com/KHmaHfMtDg3GwWRwAz0FiZ"
   },
   "cakap": {
-    "id": 9,
+    "id": 45,
     "name": "Cakap",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/cakap-c0a32b5d-5f38-463a-82aa-a9e9ea8ffe2c.jpg",
     "slug": "cakap",
@@ -264,7 +264,7 @@ const Tenants: Record<string, Tenant> = {
   },
   "icehouse": {
     "additionalChallenge": "https://drive.google.com/drive/folders/15o-XT1eLy1kXY8YNb1ekopcAWy-H3h7j?usp=sharing",
-    "id": 10,
+    "id": 46,
     "name": "Icehouse",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/icehouse-ccfbaf4e-9ab6-4495-9c5e-166eeca59745.png",
     "slug": "icehouse",
@@ -294,7 +294,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://api.whatsapp.com/send?phone=6285659623487"
   },
   "propertree-id": {
-    "id": 11,
+    "id": 47,
     "name": "Propertree.id",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/propertree-id-b63123a1-8a82-4556-9537-7a3a75186a7a.png",
     "slug": "propertree-id",
@@ -323,7 +323,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "wa.me/6281281708874"
   },
   "matagi": {
-    "id": 12,
+    "id": 48,
     "name": "Matagi Informasi Pertiwi",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/matagi-36cf1b8e-728f-4eed-925f-772722cb75c8.png",
     "slug": "matagi",
@@ -352,7 +352,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://chat.whatsapp.com/FiX86Ia6TV56V20Coteqw4"
   },
   "ocistok": {
-    "id": 13,
+    "id": 49,
     "name": "Ocistok",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/ocistok-dfa64987-3206-4aa0-8419-3e1260b87018.png",
     "slug": "ocistok",
@@ -376,7 +376,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://chat.whatsapp.com/LKou60GvH77Gnv3t0kwjis"
   },
   "xendit": {
-    "id": 14,
+    "id": 50,
     "name": "Xendit",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/xendit-d9395c33-85c4-496a-9679-1081254f6196.png",
     "slug": "xendit",
@@ -404,7 +404,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://chat.whatsapp.com/E1Dhwpj67PP77V516pHrpZ"
   },
   "qwork": {
-    "id": 15,
+    "id": 51,
     "name": "Qwork",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/qwork-8a947e70-f796-4c8d-ada9-bbef37923c8e.png",
     "slug": "qwork",
@@ -432,7 +432,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.link/ucybi4"
   },
   "flocs": {
-    "id": 16,
+    "id": 52,
     "name": "Flocs",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/flocs-33aa2935-ae86-4ed8-a619-72c5404b54fd.png",
     "slug": "flocs",
@@ -460,7 +460,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/08122020648"
   },
   "avana": {
-    "id": 17,
+    "id": 53,
     "name": "Avana",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/avana-45faa7e6-e283-4442-8a06-75183314f2ad.png",
     "slug": "avana",
@@ -487,7 +487,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/082210000365"
   },
   "agate": {
-    "id": 18,
+    "id": 54,
     "name": "Agate",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/agate-db981bf5-5996-4feb-835e-938b017e6e13.png",
     "slug": "agate",
@@ -517,7 +517,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/6282119923915"
   },
   "lindungihutan": {
-    "id": 19,
+    "id": 55,
     "name": "LindungiHutan",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/lindungihutan-c41a8a35-1177-4aab-90b3-f55a1ceb272f.png",
     "slug": "lindungihutan",
@@ -542,7 +542,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "wa.me/6281329182514"
   },
   "indobot": {
-    "id": 20,
+    "id": 56,
     "name": "Indobot",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/indobot-3d76a200-0d18-4954-b981-fd5856ae3bbd.png",
     "slug": "indobot",
@@ -567,7 +567,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/085731636408"
   },
   "kulina": {
-    "id": 21,
+    "id": 57,
     "name": "Kulina",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/kulina-fec49dcd-6d3a-4369-b587-38b55b99d0d4.png",
     "slug": "kulina",
@@ -592,7 +592,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "wa.me/628175484146"
   },
   "amartha": {
-    "id": 22,
+    "id": 58,
     "name": "Amartha",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/amartha-2da9b3d1-8ed6-4863-8a0f-28b0015c4e0d.png",
     "slug": "amartha",
@@ -620,7 +620,7 @@ const Tenants: Record<string, Tenant> = {
   },
   "latihid": {
     "isApplyRegister": true,
-    "id": 23,
+    "id": 59,
     "name": "Latih ID",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/latihid-5932b208-434c-4472-b639-13a5bab0b895.png",
     "slug": "latihid",
@@ -646,7 +646,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/081337488385"
   },
   "qlue": {
-    "id": 24,
+    "id": 60,
     "name": "Qlue",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/qlue-9a45c15c-bb04-4c6c-a494-3d0c2c5636de.png",
     "slug": "qlue",
@@ -668,7 +668,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/087883731997"
   },
   "credibook": {
-    "id": 25,
+    "id": 61,
     "name": "Credibook",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/credibook-2c413225-1fa9-4c89-9db2-0ac80f8b97be.png",
     "slug": "credibook",
@@ -695,7 +695,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/6287881095392"
   },
   "idsindonesia": {
-    "id": 26,
+    "id": 62,
     "name": "IDS Indonesia",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/idsindonesia-c4da4df1-834c-45e4-97ef-54557b56905b.png",
     "slug": "idsindonesia",
@@ -725,7 +725,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/6281366655594"
   },
   "jooalan": {
-    "id": 27,
+    "id": 76,
     "name": "Jooalan",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jooalan-aa023052-7b87-4de0-970f-9f5a2fe4e8b3.png",
     "slug": "jooalan",
@@ -752,7 +752,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/6287881095392"
   },
   "tutee-id": {
-    "id": 28,
+    "id": 64,
     "name": "Tutee.id",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/tutee-id-93658fea-ca41-40e2-82b5-2369f33cf83e.png",
     "slug": "tutee-id",
@@ -782,7 +782,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/087770303540"
   },
   "automate-all": {
-    "id": 29,
+    "id": 65,
     "name": "Automate All",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/automate-all-6408b0ff-f8bf-4d04-b0dc-683b224b228b.png",
     "slug": "automate-all",
@@ -810,7 +810,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "http://wa.me/628999211425"
   },
   "uangteman": {
-    "id": 30,
+    "id": 66,
     "name": "UangTeman",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/uangteman-494d1404-533f-4903-88c4-3b4715590193.png",
     "slug": "uangteman",
@@ -837,7 +837,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": ""
   },
   "doku": {
-    "id": 31,
+    "id": 67,
     "name": "Doku",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/doku-574db310-2b1b-4406-8a3f-1d3def988a45.png",
     "slug": "doku",
@@ -862,7 +862,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/085295845907"
   },
   "merempah": {
-    "id": 32,
+    "id": 68,
     "name": "Merempah",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/merempah-b9bbfe24-33b4-4595-a253-37a46070d5cf.png",
     "slug": "merempah",
@@ -892,7 +892,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/085226017099"
   },
   "jagel-id": {
-    "id": 33,
+    "id": 69,
     "name": "Jagel.id",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jagelid-9fa8936c-e3aa-46ad-942a-89ce492dfa4b.png",
     "slug": "jagel-id",
@@ -928,7 +928,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/089516320900 "
   },
   "kotakode": {
-    "id": 34,
+    "id": 70,
     "name": "Kotakode",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/kotakode-0aefb480-13f3-4c7b-8f58-7a4576f5b85e.png",
     "slug": "kotakode",
@@ -958,7 +958,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": ""
   },
   "hangry": {
-    "id": 35,
+    "id": 71,
     "name": "Hangry",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/hangry-09cfbeb8-a961-4098-8a79-cf7d6cfe8324.png",
     "slug": "hangry",
@@ -987,7 +987,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": ""
   },
   "feedloop": {
-    "id": 36,
+    "id": 72,
     "name": "Feedloop",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/feedloop-ac21b9a6-650f-41f5-bba7-63012b6d7c56.png",
     "slug": "feedloop",
@@ -1014,7 +1014,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/081324440339"
   },
   "codex": {
-    "id": 37,
+    "id": 73,
     "name": "Codex",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/codex-0547cced-80bc-4638-9078-2df281180492.png",
     "slug": "codex",
@@ -1041,7 +1041,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/081218884863"
   },
   "sonar": {
-    "id": 38,
+    "id": 74,
     "name": "Sonar",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/sonar-4e905c59-40d9-4b41-991c-a8b1fa6ae1d0.png",
     "slug": "sonar",
