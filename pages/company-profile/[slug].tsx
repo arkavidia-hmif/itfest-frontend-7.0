@@ -84,6 +84,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
           </div>
           <GalleryMain items={tenant.gallery} />
           <ChallengeDone
+            ongoing={attempted === 1}
             prize={prize}
             done={attempted === 2}
             loading={loading}
@@ -116,6 +117,7 @@ const CompanyProfile: React.FC<Props> = ({ tenant }) => {
             />
             <GalleryAlt items={tenant.gallery} galleryText={tenant.galleryText} />
             <ChallengeDone
+              ongoing={attempted === 1}
               prize={prize}
               done={attempted === 2}
               loading={loading}

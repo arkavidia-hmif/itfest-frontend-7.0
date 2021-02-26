@@ -6,12 +6,13 @@ import FilledButton from "components/commons/FilledButton";
 
 interface Props {
   done: boolean;
+  ongoing: boolean;
   loading?: boolean;
   startGame?: React.MouseEventHandler<HTMLImageElement>;
   prize: number;
 }
 
-const Challenge: React.FC<Props> = ({ done, loading, startGame, prize }) => {
+const Challenge: React.FC<Props> = ({ done, ongoing, loading, startGame, prize }) => {
   const { authenticated } = React.useContext(AuthContext);
   const router = useRouter();
   if (done) {
@@ -180,7 +181,7 @@ const Challenge: React.FC<Props> = ({ done, loading, startGame, prize }) => {
             <div className="challenge-box-undone">
               <div className="flex-center-undone">
                 <h2 className="challenge-description">
-                  Kamu belum menyelesaikan challenge
+                  {ongoing ? "Silahkan selesaikan challenge di bawah ini" : "Kamu belum memulai challenge"}
                 </h2>
                 {loading ? (
                   <Spinner height="50px" />
@@ -188,14 +189,17 @@ const Challenge: React.FC<Props> = ({ done, loading, startGame, prize }) => {
                   <img
                     src="/img/company-profile/play-polygon.png"
                     className="play-image"
-                    onClick={startGame}
+                    onClick={(e) => {
+                      if (!ongoing && startGame) {
+                        startGame(e);
+                      }
+                    }}
                   />
-                ) : (
-                  <FilledButton
-                    text="Login terlebih dahulu"
-                    onClick={() => router.push("/login")}
-                  />
-                )}
+                ) : (<FilledButton
+                  text="Login terlebih dahulu"
+                  onClick={() => router.push("/login")}
+                />)
+                }
               </div>
             </div>
           </div>
