@@ -12,8 +12,8 @@ const Map: React.FC = () => {
     [500, 1250],
   ];
   const maxBounds: LatLngBoundsExpression = [
-    [-250, -625],
-    [500, 1450],
+    [-1000, -1000],
+    [1000, 2000],
   ];
 
   const tenantArray = useMemo(() => Object.values(Tenants), [Tenants]);
