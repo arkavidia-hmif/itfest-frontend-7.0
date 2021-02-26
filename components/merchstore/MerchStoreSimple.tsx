@@ -21,11 +21,11 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
 
   return (
     <div className="merch-store-container">
-      <div className="row merch-store-container-top">
+      <div className="d-flex merch-store-container-top">
         <div className="w-100 merch-title">
           <div className="merch-store-top-left">
             <img className="" src={merchant.logo} alt={merchant.name} />
-            <h2 className="">{merchant.name}&#39;s Shop</h2>
+            <h2 className="ml-1 ml-sm-3">{merchant.name}&#39;s Shop</h2>
           </div>
           <div className="merch-store-top-right mt-3 mt-sm-0">
             <FilledButton
@@ -55,6 +55,7 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
         {`
           .merch-store-container {
             width: 100%;
+            padding: 10px;
           }
           .merch-store-container-top {
             background: white;
@@ -115,20 +116,20 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
             margin-top: 2.5rem;
           }
 
+          .merch-store-container-top { 
+            border-radius: 1rem;
+            width: 100%;
+          }
+          
           @media (max-width: ${Dimen.mdBreakpoint}) {
             .merch-title h2 {
               font-size: 1.5rem;
               text-align: center;
             }
+
           }
 
           @media (max-width: ${Dimen.smBreakpoint}) {
-            .merch-store-container-top { 
-              border-radius: 1rem;
-              width: 100%;
-              margin: 0;
-            }
-            
             .merch-title h2 {
               text-align: center;
               font-size: 1.25rem;
