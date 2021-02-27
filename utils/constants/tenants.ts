@@ -271,7 +271,7 @@ const Tenants: Record<string, Tenant> = {
     "slug": "icehouse",
     "position": [
       236,
-      274
+      550
     ],
     "pageType": 0,
     "aboutUs": "Founded in South Jakarta, Ice House is the first Google Certified Developer in South East Asia. We design, build and maintain mobile apps and their backends for most of the leading companies in various industries, like financial services, logistics and transportation, e-commerce, entertainment, loyalty and many more.\n\nWe are proud to be 1 of 25 Google Certified Agencies in the world.\n\nThe team is made up of world-class designers, architects, business analysts, developers and project managers who have collectively shipped products for some of the world\u2019s largest companies and most innovative startups.\n\nOur mission is to empower the greatest minds to create the greatest digital experiences.\nPlease visit our website at https://icehousecorp.com/ and watch the video about our office environment here: https://bit.ly/3aFDub9.",
@@ -738,8 +738,8 @@ const Tenants: Record<string, Tenant> = {
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jooalan-aa023052-7b87-4de0-970f-9f5a2fe4e8b3.png",
     "slug": "jooalan",
     "position": [
-      350,
-      100
+      400,
+      680
     ],
     "pageType": 0,
     "aboutUs": "Kelola pesanan online lebih mudah dengan Jooalan!",
