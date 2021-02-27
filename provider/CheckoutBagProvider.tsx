@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import CheckoutBagContextType from "../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../utils/context/checkout";
@@ -15,6 +15,19 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
 
   const [items, setItems] = useState<Array<MerchStoreItem>>([]);
   const [show, setShow] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!loaded) {
+      setLoaded(true);
+      const saved = localStorage.getItem("saved_item");
+      if (saved) {
+        setItems(JSON.parse(saved));
+      }
+    } else {
+      localStorage.setItem("saved_item", JSON.stringify(items));
+    }
+  }, [items]);
 
   const addItem = (item: MerchStoreItem) => {
     if (authenticated) {
