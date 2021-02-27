@@ -59,7 +59,7 @@ const Map: React.FC = () => {
             <div id="popup-body" className="container">
               <div className="row">
                 <div className="image col">
-                  <img src={tenant.logo} alt={tenant.name} loading="eager" />
+                  <img src={tenant.logo} alt={tenant.name} />
                 </div>
               </div>
               <div className="row pt-2">
