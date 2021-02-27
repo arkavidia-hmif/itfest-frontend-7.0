@@ -6,7 +6,7 @@ import Tenants from "utils/constants/tenants";
 import "leaflet/dist/leaflet.css";
 
 const Map: React.FC = () => {
-  const center: LatLngTuple = [250, 625];
+  const center: LatLngTuple = [250, 575];
   const bounds: LatLngBoundsExpression = [
     [0, 0],
     [500, 1250],
