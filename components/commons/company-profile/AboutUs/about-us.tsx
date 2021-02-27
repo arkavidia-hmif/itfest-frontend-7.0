@@ -1,4 +1,5 @@
 import * as React from "react";
+import Linkify from "react-linkify";
 
 interface Props {
   aboutUs: string;
@@ -7,7 +8,7 @@ const AboutUs: React.FC<Props> = ({ aboutUs }) => {
   return (
     <div className="flex-container">
       <p className="title-main">Tentang Kami</p>
-      <p className="description-text-main">{aboutUs}</p>
+      <p className="description-text-main"><Linkify>{aboutUs}</Linkify></p>
       <style jsx>{`
         .flex-container {
           display: flex;

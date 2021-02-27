@@ -27,6 +27,7 @@
     "react-elastic-carousel": "^0.9.5",
     "react-ga": "^3.2.0",
     "react-leaflet": "^3.0.5",
+    "react-linkify": "^1.0.0-alpha",
     "styled-components": "^5.2.1",
     "styled-jsx": "^3.4.4",
     "swr": "^0.3.7"
@@ -35,6 +36,7 @@
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "@types/react-linkify": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.6.0",
     "@zeit/next-source-maps": "0.0.3",

@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import Linkify from "react-linkify";
 interface Props {
   aboutUs: string;
 }
@@ -7,7 +7,7 @@ const AboutUsAlt: React.FC<Props> = ({ aboutUs }) => {
   return (
     <div className="flex-container-alt">
       <p className="title">Tentang Kami</p>
-      <p className="description-text-alt">{aboutUs}</p>
+      <p className="description-text-alt"><Linkify>{aboutUs}</Linkify></p>
       <style jsx>{`
         .title {
           font-size: 1.8rem;
