@@ -74,6 +74,7 @@ const Quiz: React.FC<Props> = ({
                     {datum[1]?.choice.map((ans, j) => (
                       <div key={j} className="choice">
                         <input
+                          name={datum[0]}
                           required
                           type="radio"
                           value={ans}
