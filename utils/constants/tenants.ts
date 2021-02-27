@@ -732,6 +732,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/6281366655594"
   },
   "jooalan": {
+    "sponsor": true,
     "id": 79,
     "name": "Jooalan",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jooalan-aa023052-7b87-4de0-970f-9f5a2fe4e8b3.png",
