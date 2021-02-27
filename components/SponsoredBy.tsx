@@ -3,7 +3,7 @@ import * as React from "react";
 import { sponsors } from "utils/constants/sponsors";
 import Tenants from "utils/constants/tenants";
 
-const SponsoredBy: React.SFC = () => {
+const SponsoredBy: React.FC = () => {
   return (
     <>
       <div className="d-flex flex-column align-items-center">
@@ -12,7 +12,7 @@ const SponsoredBy: React.SFC = () => {
           {sponsors.map((sponsor, i) => (
             <div key={i}>
               <Link href={`/company-profile/${sponsor}`}>
-                <img src={Tenants[sponsor].logo} className="sponsor-logo m-3" />
+                <img src={Tenants[sponsor.slug].logo} className={`sponsor-logo m-3 sponsor-${sponsor.size}`} />
               </Link>
             </div>
           ))}
@@ -20,8 +20,16 @@ const SponsoredBy: React.SFC = () => {
       </div>
       <style jsx>
         {`
-          .sponsor-logo {
-            width: 10rem;
+          .sponsor-1 {
+            height: 3rem;
+          }
+
+          .sponsor-2 {
+            height: 4rem;
+          }
+
+          .sponsor-3 {
+            height: 8rem;
           }
 
           .sponsor-logo:hover {
