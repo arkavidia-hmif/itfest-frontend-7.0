@@ -676,7 +676,7 @@ const Tenants: Record<string, Tenant> = {
     "sponsor": true,
     "id": 61,
     "name": "Credibook",
-    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/credibook_large.png",
+    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/logo-credibook.png",
     "slug": "credibook",
     "position": [
       450,
@@ -734,7 +734,7 @@ const Tenants: Record<string, Tenant> = {
     "sponsor": true,
     "id": 79,
     "name": "Jooalan",
-    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jooalan-aa023052-7b87-4de0-970f-9f5a2fe4e8b3.png",
+    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/logo-jooalan.png",
     "slug": "jooalan",
     "position": [
       400,

@@ -33,7 +33,7 @@ const SponsoredBy: React.FC = () => {
           }
 
           .sponsor-4 {
-            height: 8rem;
+            height: 10rem;
           }
 
           .sponsor-logo:hover {
