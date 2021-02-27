@@ -21,7 +21,7 @@ const CheckoutBagProvider: React.FC = ({ children }) => {
     if (!loaded) {
       setLoaded(true);
       const saved = localStorage.getItem("saved_item");
-      if (saved) {
+      if (saved && authenticated) {
         setItems(JSON.parse(saved));
       }
     } else {
