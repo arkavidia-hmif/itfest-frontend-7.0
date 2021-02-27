@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import useSWR from "swr";
+import { useRouter } from "next/dist/client/router";
 import MerchStoreMerchSimple from "./MerchStoreMerchSimple";
 import { Dimen } from "styles/dimen";
 import FilledButton from "components/commons/FilledButton";
@@ -11,32 +12,46 @@ import Alert from "components/commons/Alert";
 
 interface Props {
   merchant: Tenant;
-  handleMore: (slug: string) => void;
+  // handleMore: (slug: string) => void;
   hide: boolean;
   handleSnackBar: (input: boolean) => void;
 }
 
-const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBar, hide }) => {
+const MerchStoreSimple: React.FC<Props> = ({
+  merchant,
+  // handleMore,
+  handleSnackBar,
+  hide,
+}) => {
   const apiContext = useContext(ApiContext);
-  const { data: itemData, error: itemError } = useSWR(getMerchFromTenantKey(merchant), () => getMerchFromTenant(apiContext.axios, merchant.id));
+  const { data: itemData, error: itemError } = useSWR(
+    getMerchFromTenantKey(merchant),
+    () => getMerchFromTenant(apiContext.axios, merchant.id)
+  );
+  const router = useRouter();
 
   if (hide) {
-    return (<div style={{ width: "100%", height: "600px" }}></div>);
+    return <div style={{ width: "100%", height: "600px" }}></div>;
   } else {
     return (
       <div className="merch-store-container">
         <div className="d-flex merch-store-container-top">
           <div className="w-100 merch-title">
-            <div className="merch-store-top-left">
-              <img className={hide ? "d-none" : ""} src={merchant.logo} alt={merchant.name} loading="lazy" />
-              <h2 className="ml-1 ml-sm-3">{merchant.name}&#39;s Shop</h2>
+            <div className="merch-store-top-left ml-2">
+              <img
+                className={hide ? "d-none" : ""}
+                src={merchant.logo}
+                alt={merchant.name}
+                loading="lazy"
+              />
+              <h2 className="ml-1 ml-sm-2">{merchant.name}&#39;s Shop</h2>
             </div>
-            <div className="merch-store-top-right mt-3 mt-sm-0">
+            <div className="merch-store-top-right mt-3 mt-sm-0 mr-2">
               <FilledButton
-                text="More"
+                text="Visit"
                 padding=".5rem 2.25rem"
                 fontSize="1.25rem"
-                onClick={() => handleMore(merchant.slug)}
+                onClick={() => router.push(`/company-profile/${merchant.slug}`)}
               />
             </div>
           </div>
@@ -50,7 +65,14 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
                 <Alert error={itemError && "Gagal mengambil item"} />
               </div>
               <div className="my-4">
-                {itemData ? <MerchStoreMerchSimple handleSnackBar={handleSnackBar} items={itemData.data} /> : <Spinner />}
+                {itemData ? (
+                  <MerchStoreMerchSimple
+                    handleSnackBar={handleSnackBar}
+                    items={itemData.data}
+                  />
+                ) : (
+                  <Spinner />
+                )}
               </div>
             </div>
           </div>
@@ -59,7 +81,7 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
           {`
             .merch-store-container {
               width: 100%;
-              padding: 10px;
+              padding: 10px 0;
             }
             .merch-store-container-top {
               background: white;
@@ -76,6 +98,7 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
               flex-direction: row;
               align-items: center;
               margin: 1rem 0;
+              justify-content: space-between;
             }
   
             .merch-title h2 {
@@ -101,7 +124,6 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
             .merch-store-top-left {
               display: flex;
               align-items: center;
-              margin: 0 0 0 1rem;
             }
             .merch-store-top-right {
               margin-right: 1.5rem;
@@ -117,7 +139,7 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
             .store-items-title {
               font-size: 1.5rem;
               padding-left: 1.5rem;
-              margin-top: 2.5rem;
+              margin-top: 1.2rem;
             }
   
             .merch-store-container-top { 

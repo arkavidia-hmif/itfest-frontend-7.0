@@ -59,7 +59,7 @@ const MerchStoreCarouselItem: React.FC<Props> = ({
 
             border-radius: 0.25rem;
 
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(0, 0, 0, 0.5);
 
             justify-content: center;
             align-items: center;
@@ -74,6 +74,11 @@ const MerchStoreCarouselItem: React.FC<Props> = ({
           }
         `}
       </style>
+      <style jsx>{`
+        .item-hover {
+          opacity: ${item.qty === 0 && 1};
+        }
+      `}</style>
     </div>
   );
 };
