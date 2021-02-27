@@ -1,11 +1,13 @@
 import { useMemo } from "react";
-import { MapContainer, Marker, Popup, ImageOverlay } from "react-leaflet";
+import { useRouter } from "next/dist/client/router";
+import { MapContainer, Marker, ImageOverlay, Tooltip } from "react-leaflet";
 import { CRS, icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
 import Link from "next/link";
 import Tenants from "utils/constants/tenants";
 import "leaflet/dist/leaflet.css";
 
 const Map: React.FC = () => {
+  const router = useRouter();
   const center: LatLngTuple = [250, 575];
   const bounds: LatLngBoundsExpression = [
     [0, 0],
@@ -41,19 +43,24 @@ const Map: React.FC = () => {
       {tenantArray.map((tenant, index) => (
         <Marker
           position={tenant.position}
-          title={"asd"}
+          title={tenant.name}
           icon={icon({
             iconUrl: tenant.sponsor ? "/img/marker_sponsor.png" : "/img/marker.png",
             iconSize: [24, 36],
             iconAnchor: [12, 36],
           })}
+          eventHandlers={{
+            click: () => {
+              router.push(`/company-profile/${tenant.slug}`);
+            }
+          }}
           key={index}
         >
-          <Popup>
+          <Tooltip offset={[0, -20]}>
             <div id="popup-body" className="container">
               <div className="row">
                 <div className="image col">
-                  <img src={tenant.logo} alt={tenant.name} />
+                  <img src={tenant.logo} alt={tenant.name} loading="eager" />
                 </div>
               </div>
               <div className="row pt-2">
@@ -61,22 +68,8 @@ const Map: React.FC = () => {
                   <p>{tenant.name}</p>
                 </div>
               </div>
-              <div className="row">
-                <div className="info col">
-                  <Link
-                    href={{
-                      pathname: "/company-profile/[slug]",
-                      query: { slug: tenant.slug },
-                    }}
-                  >
-                    <a>
-                      <p>more &gt; &gt; &gt;</p>
-                    </a>
-                  </Link>
-                </div>
-              </div>
             </div>
-          </Popup>
+          </Tooltip>
         </Marker>
       ))
       }
