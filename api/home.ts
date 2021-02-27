@@ -6,7 +6,7 @@ export async function getGlobalScoreboard(
   axios: AxiosInstance
 ): Promise<ApiResponse<Array<GlobalLeaderboardData>>> {
   try {
-    const response = await axios.get("/scoreboard/global?limit=30&offset=0");
+    const response = await axios.get("/scoreboard/global?limit=20&offset=0");
 
     return response.data as ApiResponse<Array<GlobalLeaderboardData>>;
   } catch (e) {
