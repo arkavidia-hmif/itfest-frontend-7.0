@@ -21,7 +21,7 @@ const MerchStoreSimple: React.FC<Props> = ({ merchant, handleMore, handleSnackBa
   const { data: itemData, error: itemError } = useSWR(getMerchFromTenantKey(merchant), () => getMerchFromTenant(apiContext.axios, merchant.id));
 
   if (hide) {
-    return (<div style={{ width: "100%" }}></div>);
+    return (<div style={{ width: "100%", height: "600px" }}></div>);
   } else {
     return (
       <div className="merch-store-container">
