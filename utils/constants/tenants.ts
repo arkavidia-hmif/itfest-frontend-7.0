@@ -1,31 +1,31 @@
 import { Tenant } from "interfaces/tenant";
 
 const Tenants: Record<string, Tenant> = {
-  rekeningku: {
-    id: 38,
-    name: "Rekeningku",
-    logo:
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-281d8b7c-dd03-4a10-867f-8dffa4da1833.png",
-    slug: "rekeningku",
-    position: [10, 616],
-    pageType: 0,
-    aboutUs:
-      "Rekeningku merupakan marketplace atau tempat dimana kamu bisa jual atau beli aset kripto seperti bitcoin, ethereum, tron, litecoin, dogecoin, just dan lain sebagainya. Kantor Rekeningku terletak di Equity Tower Lantai 11E, SCBD Lot. 9, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan\n \nRekeningku juga salah satu exchanger yang mendapat surat izin sebagai pedagang fisik aset\nkripto yang dirilis oleh BAPPEBTI di bawah KEMENDAG dengan Nomor\n0006/BAPPEBTI/CP-AK/03/2020. Saat ini Rekeningku menempati peringkat 206 di coinmarketcap.com/rangkings/exchanges dengan volume transaksi sebesar $9.035.898. \n \nMember Rekeningku juga mayoritas adalah muda-mudi\nyang tertarik menjadikan aset kripto sebagai bentuk investasi. Kamu tertarik? Yuk mulai buat akun di Rekeningku https://www.rekeningku.com/",
-    galleryText: "",
-    hiring: "",
-    socialMedia: {
-      email: "",
-      linkedin: "https://www.linkedin.com/company/rekeningku-com",
-      instagram: "https://www.instagram.com/Rekeningkucom/",
+  "rekeningku": {
+    "id": 38,
+    "name": "Rekeningku",
+    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-281d8b7c-dd03-4a10-867f-8dffa4da1833.png",
+    "slug": "rekeningku",
+    "position": [
+      10,
+      616
+    ],
+    "pageType": 0,
+    "aboutUs": "Rekeningku merupakan marketplace atau tempat dimana kamu bisa jual atau beli aset kripto seperti bitcoin, ethereum, tron, litecoin, dogecoin, just dan lain sebagainya. Kantor Rekeningku terletak di Equity Tower Lantai 11E, SCBD Lot. 9, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan Rekeningku juga salah satu exchanger yang mendapat surat izin sebagai pedagang fisik aset kripto yang dirilis oleh BAPPEBTI di bawah KEMENDAG dengan Nomor 0006/BAPPEBTI/CP-AK/03/2020. Saat ini Rekeningku menempati peringkat 63 di coinmarketcap.com/rangkings/exchanges dengan volume transaksi sebesar $9.035.898. Member Rekeningku juga mayoritas adalah muda-mudi yang tertarik menjadikan aset kripto sebagai bentuk investasi. Kamu tertarik? Yuk mulai buat akun di Rekeningku https://www.rekeningku.com/",
+    "galleryText": "",
+    "hiring": "",
+    "socialMedia": {
+      "email": "",
+      "linkedin": "https://www.linkedin.com/company/rekeningku-com",
+      "instagram": "https://www.instagram.com/Rekeningkucom/"
     },
-    videoUrl: "https://youtube.com/embed/5gYI3391HE4",
-    gallery: [
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-9dadf084-376d-49a6-9510-82858f2f9832.jpg",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-65f75515-1bc4-4480-b18e-cc4e14f4a8ab.jpg",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-cd7cce82-0911-4109-905a-57bff11cfe14.png",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-35b6905c-5b82-4f6b-9be3-2d569828bf3a.png",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-95f47a05-5759-4604-bab9-14b28357bc89.jpg",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-23fc90f8-e410-498a-8b11-28219ef2b5da.png",
+    "videoUrl": "https://youtube.com/embed/5gYI3391HE4",
+    "gallery": [
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku.png",
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku2.jpg",
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku3.png",
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku6.jpg",
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku7.jpg"
     ],
     contactLink: "",
   },
@@ -141,23 +141,23 @@ const Tenants: Record<string, Tenant> = {
     ],
     contactLink: "wa.link/mp8dqv",
   },
-  sportigo: {
-    id: 42,
-    name: "Sportigo",
-    logo:
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/sportigo-ac06a292-7870-49c7-9f90-d0bb18785332.png",
-    slug: "sportigo",
-    position: [275, 1050],
-    pageType: 0,
-    aboutUs:
-      "Sportigo is a sport tech company based in Jakarta. We make a platform where individual could join group sport activity like futsal and football as easy as joining fitness class. We make a football performance app using data and statistic based on real life match or training.",
-    galleryText: "",
-    hiring:
-      "https://docs.google.com/forms/d/e/1FAIpQLScqxNkPam_cFtGGkKIwYhC2EgeI767r5dm0RV6UPxe0kKT4DQ/viewform?usp=sf_link",
-    socialMedia: {
-      email: "sportigoindo@gmail.com",
-      linkedin: "https://www.linkedin.com/company/sportigo-indonesia/",
-      instagram: "https://www.instagram.com/sportigofc/ ",
+  "sportigo": {
+    "id": 42,
+    "name": "Sportigo",
+    "logo": "http://nyc3.digitaloceanspaces.com/arkavidia/production/realitfestyep/sportigo-logo-1.png",
+    "slug": "sportigo",
+    "position": [
+      275,
+      1050
+    ],
+    "pageType": 0,
+    "aboutUs": "Sportigo is a sport tech company based in Jakarta. We make a platform where individual could join group sport activity like futsal and football as easy as joining fitness class. We make a football performance app using data and statistic based on real life match or training.",
+    "galleryText": "",
+    "hiring": "https://docs.google.com/forms/d/e/1FAIpQLScqxNkPam_cFtGGkKIwYhC2EgeI767r5dm0RV6UPxe0kKT4DQ/viewform?usp=sf_link",
+    "socialMedia": {
+      "email": "sportigoindo@gmail.com",
+      "linkedin": "https://www.linkedin.com/company/sportigo-indonesia/",
+      "instagram": "https://www.instagram.com/sportigofc/ "
     },
     videoUrl: "https://youtube.com/embed/FkkjVjFCfg8",
     gallery: [
@@ -653,22 +653,24 @@ const Tenants: Record<string, Tenant> = {
     ],
     contactLink: "https://wa.me/087883731997",
   },
-  credibook: {
-    sponsor: true,
-    id: 61,
-    name: "Credibook",
-    logo:
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/credibook-2c413225-1fa9-4c89-9db2-0ac80f8b97be.png",
-    slug: "credibook",
-    position: [450, 554],
-    pageType: 0,
-    aboutUs: "Aplikasi pencatatan keuangan untuk UMKM",
-    galleryText: "",
-    hiring: "https://forms.gle/CGac1hZ6PscX6yHk8",
-    socialMedia: {
-      email: "contact@credibook.com",
-      linkedin: "https://www.linkedin.com/company/credibook",
-      instagram: "https://www.instagram.com/credibook/",
+  "credibook": {
+    "sponsor": true,
+    "id": 61,
+    "name": "Credibook",
+    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/logo-credibook.png",
+    "slug": "credibook",
+    "position": [
+      450,
+      554
+    ],
+    "pageType": 0,
+    "aboutUs": "Aplikasi pencatatan keuangan untuk UMKM",
+    "galleryText": "",
+    "hiring": "https://forms.gle/CGac1hZ6PscX6yHk8",
+    "socialMedia": {
+      "email": "contact@credibook.com",
+      "linkedin": "https://www.linkedin.com/company/credibook",
+      "instagram": "https://www.instagram.com/credibook/"
     },
     videoUrl: "https://www.youtube.com/embed/KdNPnfeuFnk",
     gallery: [
@@ -708,22 +710,24 @@ const Tenants: Record<string, Tenant> = {
     ],
     contactLink: "https://wa.me/6281366655594",
   },
-  jooalan: {
-    sponsor: true,
-    id: 79,
-    name: "Jooalan",
-    logo:
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/jooalan-aa023052-7b87-4de0-970f-9f5a2fe4e8b3.png",
-    slug: "jooalan",
-    position: [400, 680],
-    pageType: 0,
-    aboutUs: "Kelola pesanan online lebih mudah dengan Jooalan!",
-    galleryText: "",
-    hiring: "https://forms.gle/CGac1hZ6PscX6yHk8",
-    socialMedia: {
-      email: "contact@credibook.com",
-      linkedin: "https://www.linkedin.com/company/31340349/",
-      instagram: "https://www.instagram.com/jooalan.id/",
+  "jooalan": {
+    "sponsor": true,
+    "id": 79,
+    "name": "Jooalan",
+    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/logo-jooalan.png",
+    "slug": "jooalan",
+    "position": [
+      400,
+      680
+    ],
+    "pageType": 0,
+    "aboutUs": "Kelola pesanan online lebih mudah dengan Jooalan!",
+    "galleryText": "",
+    "hiring": "https://forms.gle/CGac1hZ6PscX6yHk8",
+    "socialMedia": {
+      "email": "contact@credibook.com",
+      "linkedin": "https://www.linkedin.com/company/31340349/",
+      "instagram": "https://www.instagram.com/jooalan.id/"
     },
     videoUrl: "https://www.youtube.com/embed/PGDw6gIgcrU",
     gallery: [

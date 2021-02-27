@@ -11,7 +11,7 @@ const SponsoredBy: React.FC = () => {
         <div className="d-flex justify-content-center align-items-center w-100 flex-wrap">
           {sponsors.map((sponsor, i) => (
             <div key={i}>
-              <Link href={`/company-profile/${sponsor}`}>
+              <Link href={`/company-profile/${sponsor.slug}`}>
                 <img src={Tenants[sponsor.slug].logo} className={`sponsor-logo m-3 sponsor-${sponsor.size}`} />
               </Link>
             </div>
@@ -29,7 +29,11 @@ const SponsoredBy: React.FC = () => {
           }
 
           .sponsor-3 {
-            height: 8rem;
+            height: 6rem;
+          }
+
+          .sponsor-4 {
+            height: 10rem;
           }
 
           .sponsor-logo:hover {
