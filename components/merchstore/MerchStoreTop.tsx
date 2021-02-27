@@ -11,7 +11,7 @@ const MerchStoreTop: React.FC = () => {
 
   const apiContext = useContext(ApiContext);
   const authContext = useContext(AuthContext);
-  const { data: profile, error: profileError } = useSWR(PROFILE_URL, () => getProfile(apiContext.axios));
+  const { data: profile, error: profileError, mutate: mutateProfile } = useSWR(PROFILE_URL, () => getProfile(apiContext.axios));
 
   useEffect(() => {
     if (profile) {
@@ -36,7 +36,7 @@ const MerchStoreTop: React.FC = () => {
           </div>
           <div className="m-3 mr-sm-5">
             <BagButton />
-            <ShoppingBagContainer />
+            <ShoppingBagContainer mutator={mutateProfile} />
           </div>
         </div>
       </div>

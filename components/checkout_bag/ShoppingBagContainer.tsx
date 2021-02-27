@@ -7,9 +7,11 @@ import Checkout from "./Checkout";
 import { MerchStoreItem } from "interfaces/merch-store";
 import { Dimen } from "styles/dimen";
 
+interface Props {
+  mutator: () => void
+}
 
-
-const ShoppingBagContainer: React.FC = () => {
+const ShoppingBagContainer: React.FC<Props> = ({ mutator }) => {
   const { data, showBag, show } = useContext(CheckoutBagContext) as CheckoutBagContextType;
 
   return (
@@ -36,7 +38,7 @@ const ShoppingBagContainer: React.FC = () => {
             </div>
           </div>
           <div className="content col-md-6 col-lg-4">
-            <Checkout />
+            <Checkout mutator={mutator} />
           </div>
           <img className="btn-close" src="/img/close.svg" onClick={() => showBag(false)} />
         </div>

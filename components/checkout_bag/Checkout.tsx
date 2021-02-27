@@ -13,8 +13,11 @@ import { AuthContext } from "utils/context/auth";
 import { ApiResponse } from "interfaces/api";
 
 
+interface Props {
+  mutator: () => void;
+}
 
-const Checkout: React.FC = () => {
+const Checkout: React.FC<Props> = ({ mutator }) => {
   const { data, clearItem, hasPhysical } = useContext(CheckoutBagContext) as CheckoutBagContextType;
   const apiContext = useContext(ApiContext);
   const authContext = useContext(AuthContext);
@@ -48,6 +51,7 @@ const Checkout: React.FC = () => {
     checkoutPromise.then(() => {
       setStatus("Pembelian berhasil");
       setSucess(true);
+      mutator();
 
       clearItem();
     }).catch((err) => {
