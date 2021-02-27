@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Leaderboard from "components/LeaderBoard";
 import MapDescription from "components/home/MapDescription";
 import LiveCarousel from "components/home/LiveCarousel";
+import SponsoredBy from "components/SponsoredBy";
 
 const Home: React.FC = () => {
   const MapWithNoSSR = dynamic(() => import("components/map/Map"), {
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
       <LiveCarousel />
       <MapDescription />
       <MapWithNoSSR />
+      <SponsoredBy/>
       <Leaderboard />
     </div>
   );
