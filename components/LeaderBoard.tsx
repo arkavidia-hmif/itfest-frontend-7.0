@@ -41,8 +41,8 @@ const LeaderBoard: React.FC = () => {
         leaderboardData?.data.map((item, index) => (
           <LeaderBoardChild
             no={index + 1}
-            name={item.user.name}
-            score={item.score}
+            name={item.user_name}
+            score={item.point}
             key={index}
           />
         ))}

@@ -10,6 +10,12 @@ export interface LeaderboardData {
   data: Array<IndividualLeaderboardData>
 }
 
+export interface GlobalLeaderboardData {
+  user_name: string;
+  point: number;
+}
+
+
 export interface VisitorCount {
   count: number
 }

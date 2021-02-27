@@ -1,14 +1,14 @@
 import { AxiosInstance } from "axios";
 import { ApiError, ApiResponse, StandardError } from "interfaces/api";
-import { LeaderboardData, VisitorCount, PointsAndRank } from "interfaces/home";
+import { VisitorCount, PointsAndRank, GlobalLeaderboardData } from "interfaces/home";
 
 export async function getGlobalScoreboard(
   axios: AxiosInstance
-): Promise<ApiResponse<LeaderboardData["data"]>> {
+): Promise<ApiResponse<Array<GlobalLeaderboardData>>> {
   try {
     const response = await axios.get("/scoreboard/global?limit=30&offset=0");
 
-    return response.data as ApiResponse<LeaderboardData["data"]>;
+    return response.data as ApiResponse<Array<GlobalLeaderboardData>>;
   } catch (e) {
     throw new ApiError<StandardError>(StandardError.ERROR, e.message);
   }
