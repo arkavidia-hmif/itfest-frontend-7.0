@@ -465,7 +465,7 @@ const Tenants: Record<string, Tenant> = {
       linkedin: "",
       instagram: "https://www.instagram.com/avana.id/",
     },
-    videoUrl: "https://youtube.com/embed/KXV7lhk7OEc",
+    videoUrl: "https://www.youtube.com/embed/-eHQjmCKlQg",
     gallery: [
       "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/avana-2e1c901f-7811-46d3-abb3-e5137c13c07c.jpeg",
       "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/avana-958b5db6-a5dc-4745-b8b0-1ee974647c3e.jpeg",
