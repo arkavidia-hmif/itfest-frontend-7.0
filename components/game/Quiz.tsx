@@ -107,6 +107,10 @@ const Quiz: React.FC<Props> = ({
         .choices .choice {
           font-size: 1rem;
         }
+        .choice {
+          display: flex;
+          flex-direction: row;
+        }
       `}</style>
     </>
   );
