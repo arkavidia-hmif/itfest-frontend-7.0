@@ -677,7 +677,7 @@ const Tenants: Record<string, Tenant> = {
     "sponsor": true,
     "id": 61,
     "name": "Credibook",
-    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/credibook-2c413225-1fa9-4c89-9db2-0ac80f8b97be.png",
+    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/credibook_large.png",
     "slug": "credibook",
     "position": [
       450,
