@@ -22,9 +22,14 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       if (typeof window === undefined) return;
 
       ReactGA.initialize(process.env.GA_ID);
+      ReactGA.pageview(window.location.pathname + window.location.search);
       gaLoaded = true;
     }
   }, []);
+
+  if (gaLoaded) {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
 
   return (
     <>
