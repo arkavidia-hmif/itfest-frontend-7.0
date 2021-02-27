@@ -80,6 +80,7 @@ const LoginPage: React.FC = () => {
     <AuthWrapper title="Login">
       <Alert error={error} />
       <Alert error={verifSuccess} color={Theme.alertColors.greenAlert} />
+      <p>Akun ini berbeda dari akun web utama Arkavidia.id</p>
       <form
         onSubmit={(evt) => {
           evt.preventDefault();
