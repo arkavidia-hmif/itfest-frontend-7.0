@@ -99,13 +99,13 @@ const Quiz: React.FC<Props> = ({
           margin: 1rem 0 0.5rem;
         }
         .quest {
-          font-size: 1.5rem;
+          font-size: 1.25rem;
         }
         .choices {
           margin: 0.75rem 0 1rem;
         }
         .choices .choice {
-          font-size: 1.3rem;
+          font-size: 1rem;
         }
       `}</style>
     </>
