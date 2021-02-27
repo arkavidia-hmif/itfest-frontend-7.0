@@ -6,7 +6,7 @@ import Tenants from "utils/constants/tenants";
 const SponsoredBy: React.FC = () => {
   return (
     <>
-      <div className="d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center mb-3">
         <h3>Sponsored By :</h3>
         <div className="d-flex justify-content-center align-items-center w-100 flex-wrap">
           {sponsors.map((sponsor, i) => (
