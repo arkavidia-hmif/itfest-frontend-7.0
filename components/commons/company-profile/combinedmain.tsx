@@ -52,14 +52,16 @@ const CombinedComponents: React.FC<Props> = ({
           </div>
         </div>
         <div className="grid-item-3-image">
-          <a href={contactLink}>
-            <div className="chat-flex">
-              <img
-                src="/img/company-profile/chat-button.png"
-                className="chat-image-main"
-              />
-            </div>
-          </a>
+          {contactLink !== "" &&
+            <a href={contactLink}>
+              <div className="chat-flex">
+                <img
+                  src="/img/company-profile/chat-button.png"
+                  className="chat-image-main"
+                />
+              </div>
+            </a>
+          }
         </div>
       </div>
       <style jsx>{`

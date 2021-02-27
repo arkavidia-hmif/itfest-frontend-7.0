@@ -21,11 +21,13 @@ const CombinedComponents: React.FC<Props> = ({ videoUrl, contactLink }) => {
           </div>
         </div>
         <div className="grid-item-3-image">
-          <a href={contactLink}>
-            <div className="chat-button-flex">
-              <img src="/img/company-profile/chat-button.png" className="chat-image-alt" />
-            </div>
-          </a>
+          {contactLink !== "" &&
+            <a href={contactLink}>
+              <div className="chat-button-flex">
+                <img src="/img/company-profile/chat-button.png" className="chat-image-alt" />
+              </div>
+            </a>
+          }
         </div>
       </div>
       <style jsx>{`

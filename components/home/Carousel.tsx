@@ -71,9 +71,11 @@ const Carousel: React.FC<CarouselProps> = ({ children, contactLink }) => {
       </div>
 
       <div className="message">
-        <a href={contactLink[index]}>
-          <img src="/img/carousel/message.svg" />
-        </a>
+        {contactLink[index] !== "" &&
+          <a href={contactLink[index]}>
+            <img src="/img/carousel/message.svg" />
+          </a>
+        }
       </div>
 
       <style jsx>
