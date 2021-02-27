@@ -18,29 +18,14 @@ function shuffleFisherYates(array: Tenant[]) {
   return array;
 }
 
-// const shuffleArray = (array: Tenant[]) => {
-//   const fix: Tenant[] = [];
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     const temp = array[i];
-//     fix[i] = array[j];
-//     fix[j] = temp;
-//   }
-//   return fix;
-// };
+interface Props {
+  storeCarouselArray: Tenant[]
+}
 
-// interface Props {
-//   storeCarouselArray: Tenant[]
-// }
-const MerchStore: React.FC = () => {
+const MerchStore: React.FC<Props> = ({ storeCarouselArray }) => {
   const [snackBar, setSnackBar] = useState(false);
   // const [isExpanded, setIsExpanded] = useState(false);
   // const [expandSelect, setExpandSelect] = useState("");
-
-  const storeCarouselArray = useMemo(
-    () => shuffleFisherYates(Object.values(Tenants)),
-    [Tenants]
-  );
 
   // const storeCarouselArray = storeArray;
   // const [currentPosition, setCurrentPosition] = useState(1);

@@ -7,6 +7,17 @@ import { AuthContext } from "utils/context/auth";
 import Alert from "components/commons/Alert";
 import { Theme } from "styles/theme";
 import Tenants from "utils/constants/tenants";
+import { Tenant } from "interfaces/tenant";
+
+function shuffleFisherYates(array: Tenant[]) {
+  let i = array.length;
+  while (i--) {
+    const ri = Math.floor(Math.random() * (i + 1));
+    [array[i], array[ri]] = [array[ri], array[i]];
+  }
+  return array;
+}
+
 
 const MerchStoreMain: React.FC = () => {
   const authContext = React.useContext(AuthContext);
@@ -24,7 +35,7 @@ const MerchStoreMain: React.FC = () => {
       setTenantArray(filtered);
     } else {
       setSearch(search);
-      setTenantArray(storeArray);
+      setTenantArray(shuffleFisherYates(storeArray));
     }
 
   };
@@ -43,7 +54,7 @@ const MerchStoreMain: React.FC = () => {
           </div>
           <div className="pt-5">
             {authContext.authenticated ? (
-              <MerchStore />
+              <MerchStore storeCarouselArray={tenantArray} />
             ) :
               (
                 <Alert
