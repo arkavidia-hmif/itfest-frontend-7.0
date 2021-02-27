@@ -1,22 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import MerchStoreSimple from "./MerchStoreSimple";
 import SnackBar from "./SnackBar";
-import Tenants from "utils/constants/tenants";
-// import { MerchStoreMerchantCarouselBreakPoints } from "utils/constants/merch-store-merchant";
 import { Dimen } from "styles/dimen";
 import { Tenant } from "interfaces/tenant";
-// import Carousel from "react-elastic-carousel";
-// import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
-// import MerchStoreExpanded from "./MerchStoreExpanded";
-
-function shuffleFisherYates(array: Tenant[]) {
-  let i = array.length;
-  while (i--) {
-    const ri = Math.floor(Math.random() * (i + 1));
-    [array[i], array[ri]] = [array[ri], array[i]];
-  }
-  return array;
-}
 
 interface Props {
   storeCarouselArray: Tenant[]
