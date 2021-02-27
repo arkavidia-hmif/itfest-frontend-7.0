@@ -8,7 +8,7 @@ const SponsoredBy: React.SFC = () => {
     <>
       <div className="d-flex flex-column align-items-center">
         <h3>Sponsored By :</h3>
-        <div className="d-flex justify-content-center align-items-center w-100">
+        <div className="d-flex justify-content-center align-items-center w-100 flex-wrap">
           {sponsors.map((sponsor, i) => (
             <div key={i}>
               <Link href={`/company-profile/${sponsor}`}>
