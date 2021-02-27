@@ -1,11 +1,31 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { useEffect } from "react";
+import * as ReactGA from "react-ga";
 import "bootstrap/dist/css/bootstrap-reboot.min.css";
 import "bootstrap/dist/css/bootstrap-grid.min.css";
 import ApiProvider from "provider/ApiProvider";
 import AuthProvider from "provider/AuthProvider";
 
+
+let gaLoaded = false;
+
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+  useEffect(() => {
+    if (
+      process.env.GA_ENABLED &&
+      !gaLoaded
+    ) {
+      // Dont run without valid id
+      if (!process.env.GA_ID) return;
+      // Dont run outside browser
+      if (typeof window === undefined) return;
+
+      ReactGA.initialize(process.env.GA_ID);
+      gaLoaded = true;
+    }
+  }, []);
+
   return (
     <>
       <Head>
