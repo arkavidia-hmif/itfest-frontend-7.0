@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { useRouter } from "next/dist/client/router";
 import { MapContainer, Marker, ImageOverlay, Tooltip } from "react-leaflet";
 import { CRS, icon, LatLngBoundsExpression, LatLngTuple } from "leaflet";
-import Link from "next/link";
 import Tenants from "utils/constants/tenants";
 import "leaflet/dist/leaflet.css";
 
