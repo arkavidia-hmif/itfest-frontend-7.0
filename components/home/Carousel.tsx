@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 interface CarouselProps {
   children: Array<ReactNode>;
@@ -29,6 +29,16 @@ const Carousel: React.FC<CarouselProps> = ({ children, contactLink }) => {
       setPosition(position - 100);
     }
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (children.length > 1) {
+        goRight();
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="carousel-wrapper">
       <div className="carousels">
