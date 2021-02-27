@@ -263,6 +263,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://chat.whatsapp.com/L5am6LYGSwBL8tQqvnEftC"
   },
   "icehouse": {
+    "sponsor": true,
     "additionalChallenge": "https://drive.google.com/drive/folders/15o-XT1eLy1kXY8YNb1ekopcAWy-H3h7j?usp=sharing",
     "id": 46,
     "name": "Icehouse",
@@ -673,6 +674,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/087883731997"
   },
   "credibook": {
+    "sponsor": true,
     "id": 61,
     "name": "Credibook",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/credibook-2c413225-1fa9-4c89-9db2-0ac80f8b97be.png",
@@ -1019,6 +1021,7 @@ const Tenants: Record<string, Tenant> = {
     "contactLink": "https://wa.me/081324440339"
   },
   "codex": {
+    "sponsor": true,
     "id": 73,
     "name": "Codex",
     "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/codex-0547cced-80bc-4638-9078-2df281180492.png",

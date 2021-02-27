@@ -43,7 +43,7 @@ const Map: React.FC = () => {
           position={tenant.position}
           title={"asd"}
           icon={icon({
-            iconUrl: "/img/marker.png",
+            iconUrl: tenant.sponsor ? "/img/marker_sponsor.png" : "/img/marker.png",
             iconSize: [24, 36],
             iconAnchor: [12, 36],
           })}
@@ -78,7 +78,8 @@ const Map: React.FC = () => {
             </div>
           </Popup>
         </Marker>
-      ))}
+      ))
+      }
 
       <style jsx>{`
         #popup-body {
@@ -119,7 +120,7 @@ const Map: React.FC = () => {
           margin: 0;
         }
       `}</style>
-    </MapContainer>
+    </MapContainer >
   );
 };
 

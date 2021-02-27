@@ -27,6 +27,7 @@ export interface Tenant {
   contactLink: string;
   additionalChallenge?: string;
   isApplyRegister?: boolean;
+  sponsor?: boolean;
 }
 
 export interface LiveTenant {
