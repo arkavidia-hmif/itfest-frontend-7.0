@@ -11,7 +11,7 @@ const Tenants: Record<string, Tenant> = {
       616
     ],
     "pageType": 0,
-    "aboutUs": "Rekeningku merupakan marketplace atau tempat dimana kamu bisa jual atau beli aset kripto seperti bitcoin, ethereum, tron, litecoin, dogecoin, just dan lain sebagainya. Kantor Rekeningku terletak di Equity Tower Lantai 11E, SCBD Lot. 9, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan\n \nRekeningku juga salah satu exchanger yang mendapat surat izin sebagai pedagang fisik aset\nkripto yang dirilis oleh BAPPEBTI di bawah KEMENDAG dengan Nomor\n0006/BAPPEBTI/CP-AK/03/2020. Saat ini Rekeningku menempati peringkat 206 di coinmarketcap.com/rangkings/exchanges dengan volume transaksi sebesar $9.035.898. \n \nMember Rekeningku juga mayoritas adalah muda-mudi\nyang tertarik menjadikan aset kripto sebagai bentuk investasi. Kamu tertarik? Yuk mulai buat akun di Rekeningku https://www.rekeningku.com/",
+    "aboutUs": "Rekeningku merupakan marketplace atau tempat dimana kamu bisa jual atau beli aset kripto seperti bitcoin, ethereum, tron, litecoin, dogecoin, just dan lain sebagainya. Kantor Rekeningku terletak di Equity Tower Lantai 11E, SCBD Lot. 9, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan Rekeningku juga salah satu exchanger yang mendapat surat izin sebagai pedagang fisik aset kripto yang dirilis oleh BAPPEBTI di bawah KEMENDAG dengan Nomor 0006/BAPPEBTI/CP-AK/03/2020. Saat ini Rekeningku menempati peringkat 63 di coinmarketcap.com/rangkings/exchanges dengan volume transaksi sebesar $9.035.898. Member Rekeningku juga mayoritas adalah muda-mudi yang tertarik menjadikan aset kripto sebagai bentuk investasi. Kamu tertarik? Yuk mulai buat akun di Rekeningku https://www.rekeningku.com/",
     "galleryText": "",
     "hiring": "",
     "socialMedia": {
