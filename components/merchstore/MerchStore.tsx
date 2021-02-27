@@ -29,6 +29,9 @@ function shuffleFisherYates(array: Tenant[]) {
 //   return fix;
 // };
 
+// interface Props {
+//   storeCarouselArray: Tenant[]
+// }
 const MerchStore: React.FC = () => {
   const [snackBar, setSnackBar] = useState(false);
   // const [isExpanded, setIsExpanded] = useState(false);

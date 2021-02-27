@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import useSWR from "swr";
+import SearchBar from "./SearchBar";
 import BagButton from "components/checkout_bag/BagButton";
 import ShoppingBagContainer from "components/checkout_bag/ShoppingBagContainer";
 import { Dimen } from "styles/dimen";
@@ -7,7 +8,12 @@ import { getProfile, PROFILE_URL } from "api/profile";
 import { ApiContext } from "utils/context/api";
 import { AuthContext } from "utils/context/auth";
 
-const MerchStoreTop: React.FC = () => {
+interface Props {
+  search : string,
+  onChange : (newValue: string) => void,
+}
+
+const MerchStoreTop: React.FC<Props> = ({ search, onChange }) => {
 
   const apiContext = useContext(ApiContext);
   const authContext = useContext(AuthContext);
@@ -32,7 +38,10 @@ const MerchStoreTop: React.FC = () => {
       <div className="d-md-flex justify-content-md-center ms-mid-container">
         <div className="d-md-flex justify-content-md-between ms-mid">
           <div className="ms-mid-left m-3">
-            {/* <input type="text" placeholder="Cari Startup" /> */}
+            <SearchBar
+              value={search}
+              OnChange={onChange}
+            />
           </div>
           <div className="m-3 mr-sm-5">
             <BagButton />
