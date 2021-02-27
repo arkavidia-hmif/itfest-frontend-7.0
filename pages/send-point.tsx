@@ -34,7 +34,7 @@ const SendPoint: React.FC = () => {
   // Ambil data all visitor dan masukkan ke state visitor
   useEffect(() => {
     apiContext.axios
-      .get("user/visitor")
+      .get("user/visitor?itemPerPage=2000")
       .then((data) => {
         setVisitor(data.data.data.array);
       })
