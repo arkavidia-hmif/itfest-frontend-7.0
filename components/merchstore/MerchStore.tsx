@@ -1,5 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Carousel from "react-elastic-carousel";
+import { Tenant } from "../../interfaces/tenant";
 import MerchStoreCarouselButton from "./MerchStoreCarouselButton";
 import MerchStoreExpanded from "./MerchStoreExpanded";
 import MerchStoreSimple from "./MerchStoreSimple";
@@ -8,14 +9,17 @@ import Tenants from "utils/constants/tenants";
 import { MerchStoreMerchantCarouselBreakPoints } from "utils/constants/merch-store-merchant";
 import { Dimen } from "styles/dimen";
 
-const MerchStore: React.FC = () => {
+interface Props {
+  storeCarouselArray : Tenant[]
+}
+const MerchStore: React.FC<Props> = ({ storeCarouselArray }) => {
   const [snackBar, setSnackBar] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [expandSelect, setExpandSelect] = useState("");
 
-  const storeArray = useMemo(() => Object.values(Tenants), [Tenants]);
+  // const storeArray = useMemo(() => Object.values(Tenants), [Tenants]);
 
-  const storeCarouselArray = storeArray;
+  // const storeCarouselArray = storeArray;
   const [currentPosition, setCurrentPosition] = useState(1);
 
   useEffect(() => {
