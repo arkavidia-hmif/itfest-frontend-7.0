@@ -5,14 +5,14 @@ import CheckoutBagContextType from "../../utils/constants/checkout-bag";
 import { CheckoutBagContext } from "../../utils/context/checkout";
 import { AuthContext } from "utils/context/auth";
 
-
 const BagButton: React.FC = () => {
-
   const { authenticated } = useContext(AuthContext);
 
   const router = useRouter();
 
-  const { showBag, data } = useContext(CheckoutBagContext) as CheckoutBagContextType;
+  const { showBag, data } = useContext(
+    CheckoutBagContext
+  ) as CheckoutBagContextType;
 
   const showBagContainer = () => {
     if (authenticated) {
@@ -20,7 +20,6 @@ const BagButton: React.FC = () => {
     } else {
       router.push("/login");
     }
-
   };
 
   return (
@@ -33,7 +32,11 @@ const BagButton: React.FC = () => {
           <img src="/img/bag.svg" />
         </div>
         <div className="notif">
-          <p style={{ color: "white", fontWeight: "bold", marginTop: "0.2rem" }}>{data.length}</p>
+          <p
+            style={{ color: "white", fontWeight: "bold", marginTop: "0.2rem" }}
+          >
+            {data.length}
+          </p>
         </div>
       </div>
 
@@ -45,7 +48,7 @@ const BagButton: React.FC = () => {
             width: 110%;
             cursor: pointer;
             position: relative;
-            padding: .8rem 2.5rem;
+            padding: 0.8rem 2.5rem;
             background: white;
             font-size: 1rem;
 

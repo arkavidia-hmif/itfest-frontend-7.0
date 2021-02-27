@@ -7,15 +7,11 @@ import "bootstrap/dist/css/bootstrap-grid.min.css";
 import ApiProvider from "provider/ApiProvider";
 import AuthProvider from "provider/AuthProvider";
 
-
 let gaLoaded = false;
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
-    if (
-      process.env.GA_ENABLED &&
-      !gaLoaded
-    ) {
+    if (process.env.GA_ENABLED && !gaLoaded) {
       // Dont run without valid id
       if (!process.env.GA_ID) return;
       // Dont run outside browser

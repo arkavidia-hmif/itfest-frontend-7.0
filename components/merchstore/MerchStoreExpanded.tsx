@@ -14,10 +14,17 @@ interface Props {
   handleSnackBar: (input: boolean) => void;
 }
 
-const MerchStoreExpanded: React.FC<Props> = ({ merchant, handleClose, handleSnackBar }) => {
+const MerchStoreExpanded: React.FC<Props> = ({
+  merchant,
+  handleClose,
+  handleSnackBar,
+}) => {
   const apiContext = useContext(ApiContext);
 
-  const { data: itemData, error: itemError } = useSWR(getMerchFromTenantKey(merchant), () => getMerchFromTenant(apiContext.axios, merchant.id));
+  const { data: itemData, error: itemError } = useSWR(
+    getMerchFromTenantKey(merchant),
+    () => getMerchFromTenant(apiContext.axios, merchant.id)
+  );
 
   return (
     <div className="w-100 merch-store-container">
@@ -28,8 +35,14 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchant, handleClose, handleSnac
           </button>
         </div>
         <div className="col-12 merch-title justify-content-center justify-content-lg-start row">
-          <img className="col-md-6 ml-0 ml-md-4 my-0 my-md-3" src={merchant.logo} alt={merchant.name} />
-          <h2 className="mb-0 col-md-6 mt-3 mt-md-0">{merchant.name}&#39;s Shop</h2>
+          <img
+            className="col-md-6 ml-0 ml-md-4 my-0 my-md-3"
+            src={merchant.logo}
+            alt={merchant.name}
+          />
+          <h2 className="mb-0 col-md-6 mt-3 mt-md-0">
+            {merchant.name}&#39;s Shop
+          </h2>
         </div>
       </div>
 
@@ -40,7 +53,14 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchant, handleClose, handleSnac
           <h3 className="store-items-title">Merch</h3>
           <Alert error={itemError && "Gagal mengambil item"} />
           <div className="my-4">
-            {itemData ? <MerchStoreCarousel items={itemData.data} handleSnackBar={handleSnackBar} /> : <Spinner />}
+            {itemData ? (
+              <MerchStoreCarousel
+                items={itemData.data}
+                handleSnackBar={handleSnackBar}
+              />
+            ) : (
+              <Spinner />
+            )}
           </div>
         </div>
       </div>
@@ -105,9 +125,9 @@ const MerchStoreExpanded: React.FC<Props> = ({ merchant, handleClose, handleSnac
           }
 
           .store-items-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             padding-left: 1.5rem;
-            margin-top: 2.5rem;
+            margin-top: 1.2rem;
           }
 
           @media (max-width: ${Dimen.mdBreakpoint}) {

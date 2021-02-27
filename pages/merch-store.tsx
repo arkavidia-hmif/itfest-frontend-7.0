@@ -7,7 +7,6 @@ import { AuthContext } from "utils/context/auth";
 import Alert from "components/commons/Alert";
 import { Theme } from "styles/theme";
 
-
 const MerchStoreMain: React.FC = () => {
   const authContext = React.useContext(AuthContext);
 
@@ -21,18 +20,24 @@ const MerchStoreMain: React.FC = () => {
             <MerchStoreTop />
           </div>
           <div className="pt-5">
-            {authContext.authenticated ? <MerchStore /> : <Alert color={Theme.alertColors.greenAlert} error="Harap login terlebih dahulu yaa" />}
+            {authContext.authenticated ? (
+              <MerchStore />
+            ) : (
+              <Alert
+                color={Theme.alertColors.greenAlert}
+                error="Harap login terlebih dahulu yaa"
+              />
+            )}
           </div>
           <div className="mb-5 pb-5" />
         </div>
         <style jsx>{`
-        p { 
-          color: #7446a1;
-        }  
-      `}</style>
+          p {
+            color: #7446a1;
+          }
+        `}</style>
       </CheckoutBagProvider>
     </Layout>
-
   );
 };
 
