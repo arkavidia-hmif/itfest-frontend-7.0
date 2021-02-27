@@ -21,12 +21,11 @@ const Tenants: Record<string, Tenant> = {
     },
     "videoUrl": "https://youtube.com/embed/5gYI3391HE4",
     "gallery": [
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-9dadf084-376d-49a6-9510-82858f2f9832.jpg",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-65f75515-1bc4-4480-b18e-cc4e14f4a8ab.jpg",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-cd7cce82-0911-4109-905a-57bff11cfe14.png",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-35b6905c-5b82-4f6b-9be3-2d569828bf3a.png",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-95f47a05-5759-4604-bab9-14b28357bc89.jpg",
-      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/rekeningku-23fc90f8-e410-498a-8b11-28219ef2b5da.png"
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku.png",
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku2.jpg",
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku3.png",
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku6.jpg",
+      "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/rekeningku_new/rekeningku7.jpg"
     ],
     "contactLink": ""
   },
