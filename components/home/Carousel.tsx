@@ -35,7 +35,7 @@ const Carousel: React.FC<CarouselProps> = ({ children, contactLink }) => {
       if (children.length > 1) {
         goRight();
       }
-    }, 3000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
