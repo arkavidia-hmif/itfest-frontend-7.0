@@ -148,7 +148,7 @@ const Tenants: Record<string, Tenant> = {
   "sportigo": {
     "id": 42,
     "name": "Sportigo",
-    "logo": "https://arkavidia.nyc3.cdn.digitaloceanspaces.com/arkavidia/production/realitfestyep/sportigo-ac06a292-7870-49c7-9f90-d0bb18785332.png",
+    "logo": "http://nyc3.digitaloceanspaces.com/arkavidia/production/realitfestyep/sportigo-logo-1.png",
     "slug": "sportigo",
     "position": [
       275,
